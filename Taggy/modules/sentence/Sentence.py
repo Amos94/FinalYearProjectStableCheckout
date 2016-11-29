@@ -34,9 +34,7 @@ class Sentence():
     """
     __sentenceInParagraph = 0
 
-    """
-    Sentence Constructor
-    """
+
     def __init__(self, postId, sentenceId, sentence, paragraphInPost, sentenceInParagraph):
         self.__postId = postId
         self.__sentenceID = sentenceId
