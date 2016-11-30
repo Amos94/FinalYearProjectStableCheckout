@@ -9,7 +9,6 @@ def index(request):
     user = 'null'
     sessionId = 'null'
 
-
     if(user != 'null' and sessionId != 'null'):
         context = {"pageName":pageName, "user":user, "sessionId":sessionId}
     else:
