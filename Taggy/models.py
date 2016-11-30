@@ -129,7 +129,7 @@ class profiles(models.Model):
     tumorSIze = models.CharField(max_length=20)
     tumorGrade = models.CharField(max_length=30)
     hormoneReceptor = models.CharField(max_length=100)
-    herStatus = models.Charfield(max_length=100)
+    herStatus = models.CharField(max_length=100)
 
 
 
