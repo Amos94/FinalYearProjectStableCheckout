@@ -97,3 +97,46 @@ class posts_emoticons(models.Model):
     postId = models.IntegerField()
     emoticonId = models.IntegerField()
     tagId = models.IntegerField()
+
+
+
+
+class posts_sets(models.Model):
+
+    setId = models.IntegerField()
+    postId = models.IntegerField()
+
+
+
+
+class profiles(models.Model):
+
+    profileId = models.IntegerField()
+    userName = models.CharField(max_length=50)
+    memberSince = models.DateField()
+    lastLogin = models.DateField()
+    location = models.CharField(max_length=100)
+    dob = models.DateField()
+    occupation = models.CharField(max_length=150)
+    biography = models.TextField()
+    diagnosis = models.CharField(max_length=100)
+    diagnosed = models.DateField()
+    recurrent = models.CharField(max_length=150)
+    metastatic = models.CharField(max_length=10)
+    stage = models.CharField(max_length=10)
+    lymph = models.CharField(max_length=10)
+    posLymphNodes = models.CharField(max_length=10)
+    tumorSIze = models.CharField(max_length=20)
+    tumorGrade = models.CharField(max_length=30)
+    hormoneReceptor = models.CharField(max_length=100)
+    herStatus = models.Charfield(max_length=100)
+
+
+
+
+class sentences(models.Model):
+
+    sentenceId = models.AutoField(primary_key=True)
+    postId = models.IntegerField()
+    sentence = models.TextField()
+    
