@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Taggy.modules.users import User as User
+from taggy.modules.users import User as User
 
 # Create your views here.
 

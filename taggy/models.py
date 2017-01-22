@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 
-class annotators(models.Model):
+class Annotators(models.Model):
 
     annotatorId = models.AutoField(primary_key=True)
     username = models.CharField(max_length=25)
@@ -14,7 +14,7 @@ class annotators(models.Model):
 
 
 
-class annotators_sets(models.Model):
+class Annotators_sets(models.Model):
 
     setId = models.AutoField(primary_key=True)
     annotatorId = models.IntegerField()
@@ -22,7 +22,7 @@ class annotators_sets(models.Model):
 
 
 
-class categories(models.Model):
+class Categories(models.Model):
 
     categoryId = models.AutoField(primary_key=True)
     catName = models.CharField(max_length=100)
@@ -30,7 +30,7 @@ class categories(models.Model):
 
 
 
-class chack_posts(models.Model):
+class Check_posts(models.Model):
 
     postId = models.IntegerField()
     forumId = models.IntegerField()
@@ -42,14 +42,14 @@ class chack_posts(models.Model):
 
 
 
-class emoticons(models.Model):
+class Emoticons(models.Model):
 
     emoticonId = models.AutoField(primary_key=True)
     canonicalForm = models.TextField()
 
 
 
-class emoticons_tag(models.Model):
+class Emoticons_tag(models.Model):
 
     tagId = models.AutoField(primary_key=True)
     emoticonId = models.IntegerField()
@@ -57,7 +57,7 @@ class emoticons_tag(models.Model):
 
 
 
-class forums(models.Model):
+class Forums(models.Model):
 
     forumId = models.IntegerField()
     forumName = models.CharField(max_length=100)
@@ -68,7 +68,7 @@ class forums(models.Model):
 
 
 
-class posts(models.Model):
+class Posts(models.Model):
 
     postId  = models.AutoField(primary_key=True)
     forumId = models.IntegerField()
@@ -80,7 +80,7 @@ class posts(models.Model):
 
 
 
-class posts_annotators(models.Model):
+class Posts_annotators(models.Model):
 
     annotatorId = models.IntegerField()
     postId = models.IntegerField()
@@ -92,7 +92,7 @@ class posts_annotators(models.Model):
 
 
 
-class posts_emoticons(models.Model):
+class Posts_emoticons(models.Model):
 
     postId = models.IntegerField()
     emoticonId = models.IntegerField()
@@ -101,7 +101,7 @@ class posts_emoticons(models.Model):
 
 
 
-class posts_sets(models.Model):
+class Posts_sets(models.Model):
 
     setId = models.IntegerField()
     postId = models.IntegerField()
@@ -109,7 +109,7 @@ class posts_sets(models.Model):
 
 
 
-class profiles(models.Model):
+class Profiles(models.Model):
 
     profileId = models.IntegerField()
     userName = models.CharField(max_length=50)
@@ -134,7 +134,7 @@ class profiles(models.Model):
 
 
 
-class sentences(models.Model):
+class Sentences(models.Model):
 
     sentenceId = models.AutoField(primary_key=True)
     postId = models.IntegerField()
@@ -146,7 +146,7 @@ class sentences(models.Model):
 
 
 
-class sentences_tags(models.Model):
+class Sentences_tags(models.Model):
 
     sentenceId = models.IntegerField()
     tagId = models.IntegerField()
@@ -157,7 +157,7 @@ class sentences_tags(models.Model):
 
 
 
-class sets(models.Model):
+class Sets(models.Model):
 
     setId = models.AutoField(primary_key=True)
     name = models.CharField(max_length=25)
@@ -167,7 +167,7 @@ class sets(models.Model):
 
 
 
-class signatures(models.Model):
+class Signatures(models.Model):
 
     postId = models.IntegerField()
     profileId = models.IntegerField()
@@ -176,7 +176,7 @@ class signatures(models.Model):
 
 
 
-class tags(models.Model):
+class Tags(models.Model):
 
     tagId = models.AutoField(primary_key=True)
     tagName = models.CharField(max_length=4)
@@ -186,7 +186,7 @@ class tags(models.Model):
 
 
 
-class topics(models.Model):
+class Topics(models.Model):
 
     topicId = models.IntegerField()
     url = models.CharField(max_length=25)

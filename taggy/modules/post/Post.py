@@ -1,4 +1,4 @@
-import Taggy.modules.Queries as Queries
+import taggy.modules.Queries as Queries
 
 
 class Post():

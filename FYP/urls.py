@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from Taggy.views import index as index
+from taggy.views import index as index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
