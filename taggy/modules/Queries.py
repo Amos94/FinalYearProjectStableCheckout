@@ -7,7 +7,7 @@ from django.db import connection
 class Queries:
 
 
-
+    #----- FUNCTIONS THAT HANDLE ANNOTATORS -------------------------------------
 
 
     """
@@ -118,6 +118,150 @@ class Queries:
         if(state):
             qry += "AND postAnnotatorState='"+state+"'"
 
+
+        # execution of the query 'qry'
+        with connection.cursor() as cursor:
+            cursor.execute(qry)
+            # fetching all data of the query 'qry'
+            qryResult = cursor.fetchall()
+
+        # return the data
+        return qryResult
+
+
+    """
+    * getPostAnnotatorsAndStates()
+    *
+    * returns the Annotator IDs, username and state for a particular Post ID
+    *
+    * @param text $postid
+    """
+
+    def getPostAnnotatorsAndStates(self, postid):
+        # Building the SQL query
+        qry =  "SELECT username, postAnnotatorState"
+        qry += "FROM taggy_annotators, taggy_posts_annotators "
+        qry += "WHERE postId='"+postid+"' "
+        qry += "AND taggy_posts_annotators.annotatorId = taggy_annotators.annotatorId"
+
+
+        # execution of the query 'qry'
+        with connection.cursor() as cursor:
+            cursor.execute(qry)
+            # fetching all data of the query 'qry'
+            qryResult = cursor.fetchall()
+
+        # return the data
+        return qryResult
+
+    """
+   * insertAnnotator()
+   *
+   * inserts a new annotator account into the DB (assumes that dupe check already has
+   * happened)
+   *
+   * @param text $username  username argument
+   * @param text $password  user's password argument
+   * @param text $usertype  user type (default is ANNOT_TYPE)
+    """
+
+    def insertAnnotator(self,  username, password, usertype='ANNOT_TYPE'):
+        # Building the SQL query
+        qry =  "INSERT INTO  annotators (username, password, usertype) "
+        qry += "VALUES ('"+username+"','"+password+"','"+usertype+"')"
+
+
+        # execution of the query 'qry'
+        with connection.cursor() as cursor:
+            cursor.execute(qry)
+            # fetching all data of the query 'qry'
+            qryResult = cursor.fetchall()
+
+        # return the data
+        return qryResult
+
+
+    """
+   * updateAnnotator()
+   *
+   * update an annotator account with a new password
+   *
+   * @param text $username  username argument
+   * @param text $password  user's password argument
+    """
+
+    def updateAnnotator(self,  username, password='', usertype=''):
+        # Building the SQL query
+        updates = []
+
+        if(password):
+            updates.append("password= '"+password+"' ")
+
+        if(usertype):
+            updates.append("usertype= '"+usertype+"' ")
+
+        qry =  "UPDATE taggy_annotators SET"
+        qry += ",".join(updates)
+        qry += "WHERE (username='"+username+"')"
+
+
+        # execution of the query 'qry'
+        with connection.cursor() as cursor:
+            cursor.execute(qry)
+            # fetching all data of the query 'qry'
+            qryResult = cursor.fetchall()
+
+        # return the data
+        return qryResult
+
+
+    #----- FUNCTIONS THAT HANDLE FORUMS -----------------------------------------
+
+
+    """
+    * getForums()
+    *
+    * returns all data from forums table
+    *
+    * NOTE: the differences between PERSEUS and LEO versions are that
+    *  perseus has forums within categories; leo just has forums
+    """
+
+    def getForums(self):
+        # Building the SQL query
+        if(DBName == "perseus"):
+            qry =  "SELECT forumId, forumName, forumDescription, catName "
+            qry += "FROM taggy_forums,taggy_categories "
+            qry += "WHERE taggy_forums.categoryId = taggy_categories.categoryId "
+            qry += "ORDER BY forumId"
+        else:
+            qry =  "SELECT forumId, forumName, forumDescription "
+            qry += "FROM taggy_forums "
+            qry += "ORDER BY forumId"
+
+        # execution of the query 'qry'
+        with connection.cursor() as cursor:
+            cursor.execute(qry)
+            # fetching all data of the query 'qry'
+            qryResult = cursor.fetchall()
+
+        # return the data
+        return qryResult
+
+
+    """
+   * getForum()
+   *
+   * returns data for one specified forum
+   *
+   * @param integer $forumID  forum id number
+    """
+
+    def getForum(self, forumid):
+        # Building the SQL query
+        qry =  "SELECT forumName,formDescription,categoryId "
+        qry += "FROM taggy_formus "
+        qry += "WHERE forumId="+forumid
 
         # execution of the query 'qry'
         with connection.cursor() as cursor:
