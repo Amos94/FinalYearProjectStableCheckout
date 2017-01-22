@@ -1,10 +1,23 @@
 from django.db.models import Q as Q
-from taggy.models import annotators as Annotators
-from taggy.models import posts as Posts
-from taggy.models import posts_annotators as Posts_annotators
+from taggy.models import Annotators as Annotators
+from taggy.models import Posts as Posts
+from taggy.models import Posts_annotators as Posts_annotators
 from django.db import connection
 
 class Queries:
+
+
+
+    #THIS FUNCTION IS FOR CODE OPTIMIZATION AS IS USED TO RETRIEVE DATA FROM A QUERY
+    #ALL FUNCTIONS BELOW THIS FUNCTION, WILL USE getData()
+    #Instead of repeating the code inside getData(), better just call the function.
+    def getData(self, qry):
+        # execution of the query 'qry'
+        with connection.cursor() as cursor:
+            cursor.execute(qry)
+            # fetching all data of the query 'qry'
+            qryResult = cursor.fetchall()
+        return qryResult
 
 
     #----- FUNCTIONS THAT HANDLE ANNOTATORS -------------------------------------
@@ -54,10 +67,7 @@ class Queries:
         qry += "ORDER BY TAGGY_posts_annotators.annotatorId"
 
         #execution of the query 'qry'
-        with connection.cursor() as cursor:
-            cursor.execute(qry)
-            #fetching all data of the query 'qry'
-            qryResult = cursor.fetchall()
+        qryResult = self.getData(qry)
 
         #return the data
         return qryResult
@@ -86,10 +96,7 @@ class Queries:
         qry += "ORDER BY taggy_annotators_sets.annotatorId"
 
         # execution of the query 'qry'
-        with connection.cursor() as cursor:
-            cursor.execute(qry)
-            # fetching all data of the query 'qry'
-            qryResult = cursor.fetchall()
+        qryResult = self.getData(qry)
 
         # return the data
         return qryResult
@@ -118,12 +125,8 @@ class Queries:
         if(state):
             qry += "AND postAnnotatorState='"+state+"'"
 
-
         # execution of the query 'qry'
-        with connection.cursor() as cursor:
-            cursor.execute(qry)
-            # fetching all data of the query 'qry'
-            qryResult = cursor.fetchall()
+        qryResult = self.getData(qry)
 
         # return the data
         return qryResult
@@ -146,10 +149,7 @@ class Queries:
 
 
         # execution of the query 'qry'
-        with connection.cursor() as cursor:
-            cursor.execute(qry)
-            # fetching all data of the query 'qry'
-            qryResult = cursor.fetchall()
+        qryResult = self.getData(qry)
 
         # return the data
         return qryResult
@@ -172,10 +172,7 @@ class Queries:
 
 
         # execution of the query 'qry'
-        with connection.cursor() as cursor:
-            cursor.execute(qry)
-            # fetching all data of the query 'qry'
-            qryResult = cursor.fetchall()
+        qryResult = self.getData(qry)
 
         # return the data
         return qryResult
@@ -206,10 +203,7 @@ class Queries:
 
 
         # execution of the query 'qry'
-        with connection.cursor() as cursor:
-            cursor.execute(qry)
-            # fetching all data of the query 'qry'
-            qryResult = cursor.fetchall()
+        qryResult = self.getData(qry)
 
         # return the data
         return qryResult
@@ -240,10 +234,7 @@ class Queries:
             qry += "ORDER BY forumId"
 
         # execution of the query 'qry'
-        with connection.cursor() as cursor:
-            cursor.execute(qry)
-            # fetching all data of the query 'qry'
-            qryResult = cursor.fetchall()
+        qryResult = self.getData(qry)
 
         # return the data
         return qryResult
@@ -264,10 +255,149 @@ class Queries:
         qry += "WHERE forumId="+forumid
 
         # execution of the query 'qry'
-        with connection.cursor() as cursor:
-            cursor.execute(qry)
-            # fetching all data of the query 'qry'
-            qryResult = cursor.fetchall()
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+    #----- FUNCTIONS THAT HANDLE TOPICS -----------------------------------------
+
+
+    """
+    * getTopics()
+    *
+    * returns all data from topics within the specified forum
+    *
+    * NOTE: only used by PERSEUS (not used by LEO)
+    *
+    * @param integer $forumID  forum id number
+    """
+
+    def getTopic(self, forumid):
+
+        # Building the SQL query
+        qry = "SELECT topicId,url,title,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+        qry += "profileId,DATE_FORMAT(lastDate,'%e-%b-%Y') AS last,numViews "
+        qry += "FROM taggy_topics "
+        qry += "WHERE forumId="+forumid+" "
+        qry += "ORDER BY lastDate DESC"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+
+    """
+    * getTopicCreator()
+    *
+    * returns the name of the creator of the specified topic
+    *
+    * NOTE: only used by PERSEUS (not used by LEO)
+    *
+    * @param integer $topicID  topic id number
+    """
+
+
+    def getTopicCreator(self, topicid):
+
+        # Building the SQL query
+        qry =  "SELECT userName "
+        qry += "FROM taggy_topics, taggy_profiles "
+        qry += "WHERE topicID="+topicid+" "
+        qry += "AND taggy_topics.profileId = taggy_profiles.profileId "
+        qry += "ORDER BY topicID"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+  #----- FUNCTIONS THAT HANDLE POSTS ------------------------------------------
+
+    """
+    * getPosts()
+    *
+    * returns data from posts within the specified topic within the specified forum
+    *
+    * NOTE: difference between PERSEUS and LEO versions is that PERSEUS has topics and profiles,
+    * and LEO does not
+    *
+    * @param integer $forumID  forum id number
+    * @param integer $topicID  topic id number (only used by PERSEUS; not used by LEO)
+    """
+
+    def getPosts(self, forumid, topicid='', postState=''):
+
+        # Building the SQL query
+        if(DBName = "perseus"):
+            qry =  "SELECT postId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry += "profileId,postState,content "
+            qry += "FROM taggy_posts "
+            qry += "WHERE forumId="+forumid+" AND topicId="+topicid+" "
+
+            if(postState):
+                qry += "AND postState='"+postState+"'"
+            qry += "ORDER BY creationDate"
+        else:
+            qry =  "SELECT postID,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry += "postState,content "
+            qry += "FROM taggy_posts "
+            qry += "WHERE forumId="+forumid+" "
+
+            if(postState):
+                qry += "AND postState='"+postState+"'"
+            qry += "ORDER BY creationDate"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+    """
+    * getPost()
+    *
+    * returns data for specified post---but only if:
+    * postState='PARSED' (posts that are ready to be annotated), or
+    * postState='ANNOTATED' (posts that are ready to be adjudicated), or
+    * postState='ADJUDICATED' (posts that have been annotated and adjudicated)
+    *
+    * NOTE: difference between PERSEUS and LEO versions is that PERSEUS has topics and profiles,
+    * and LEO does not
+    *
+    * @param integer $postID  post id number
+    """
+    def getPost(self, postid):
+
+        # Building the SQL query
+        if (DBName = "perseus"):
+            qry =  "SELECT postId,forumId,topicId,"
+            qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry += "profileId,postState,content "
+            qry += "FROM taggy_posts "
+            qry += "WHERE postID="+postid+" "
+            qry += "AND (postState='PARSED' OR "
+            qry +=      "postState='ANNOTATED' OR "
+            qry +=      "postState='ADJUDICATED')"
+        else:
+            qry =  "SELECT postId,forumId,"
+            qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry += "postState,content "
+            qry += "FROM taggy_posts "
+            qry += "WHERE postId="+postid+" "
+            qry += "AND (postState='PARSED' OR "
+            qry +=      "postState='ANNOTATED' OR "
+            qry +=      "postState='ADJUDICATED')"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
 
         # return the data
         return qryResult
