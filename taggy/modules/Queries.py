@@ -401,3 +401,25 @@ class Queries:
 
         # return the data
         return qryResult
+
+
+    """
+    * getPostState()
+    *
+    * returns the post state as a string
+    *
+    * @param integer $postID  post id number
+    """
+
+    def getPostState(self, postid):
+
+        # Building the SQL query
+        qry =  "SELECT postState "
+        qry += "FROM taggy_posts "
+        qry += "WHERE postID="+postid+" "
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
