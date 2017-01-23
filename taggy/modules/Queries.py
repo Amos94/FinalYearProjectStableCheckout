@@ -686,3 +686,26 @@ class Queries:
     * @param integer $postID    post id number
     * @param integer $parseTool value to set post to
     """
+
+    def updateParseTool(self, postid, parsetool, poststate):
+
+        # Building the SQL query
+        qry =  "UPDATE taggy_posts "
+        qry += "SET postState='"+poststate+"', "
+
+
+        if(parsetool == ""):
+            qry += " parseTool=NULL, "
+
+        else:
+            qry += " parseTool='"+parsetool+"', "
+
+        qry += " dateReviewed=now() "
+        qry += "WHERE postId="+postid
+
+        
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
