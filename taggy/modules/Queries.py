@@ -1,3 +1,6 @@
+import random
+
+import MySQLdb
 from django.db.models import Q as Q
 from taggy.models import Annotators as Annotators
 from taggy.models import Posts as Posts
@@ -17,6 +20,15 @@ class Queries:
             cursor.execute(qry)
             # fetching all data of the query 'qry'
             qryResult = cursor.fetchall()
+        return qryResult
+
+    #gets just one
+    def getOne(self,qry):
+        # execution of the query 'qry'
+        with connection.cursor() as cursor:
+            cursor.execute(qry)
+            # fetching all data of the query 'qry'
+            qryResult = cursor.fetchone()
         return qryResult
 
 
@@ -515,3 +527,162 @@ class Queries:
 
         # return the data
         return qryResult
+
+
+    """
+    * getPostAnnotation()
+    *
+    * returns the post's comments, number of sentences tagged, percentDone (specific to
+    * annotator)
+    *
+    * @param integer $postID  post id number
+    * @param integer $annotatorID  annotator id number
+    """
+
+    def getPostAnnotation(self, postid, annotatorid):
+
+        #get the annotators for the post or annotator
+        # Building the SQL query
+        qry =  "SELECT comment, numSentencesTagged, (numSentencesTagged/numSentencesInPost) as percentDone, postAnnotatorState "
+        qry += "FROM taggy_posts_annotators "
+        qry += "WHERE ((postId="+postid+") AND (annotatorId="+annotatorid+")) "
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        #Create if none exists
+
+        if(not qryResult):
+            insertQry =  "INSERT INTO taggy_posts_annotators (annotatorId, postId, numSentencesInPost, comment, numSentencesTagged, lastUpdated) "
+            insertQry += "SELECT "+annotatorid+" as annotatorId, "+postid+" as postId, "
+            insertQry += "count(sentenceId) as numSentencesInPost, " # count sentences in the post
+            insertQry += "'' as comment, 0 as numSentencesTagged, NOW() as lastUpdated " # default values (move into Table Definition?)
+            insertQry += "FROM sentences WHERE (postId="+postid+") "
+
+            insertStatus = self.getData(insertQry)
+
+            if(insertStatus):
+                qryResult = self.getData(qry)
+
+
+        # return the data
+        return qryResult
+
+
+    """
+    * updatePostAnnotation()
+    *
+    * updates the number of tagged sentences, and (optionally) the
+    * postAnnotation's comments, and/or a new postAnnotationState
+    *
+    *
+    * @param integer $postID  post id number
+    * @param integer $annotatorID  annotator id number
+    * @param string $unescaped_comment  post annotation's comment (optional)
+    * @param string $state new post annotation state (optionall)
+    """
+
+    def updatePostAnnotation(self, postid, annotatorid, unescaped_comment = None, state = None):
+
+        # Building the SQL query
+        qry =  "UPDATE taggy_posts_annotators  "
+        qry += "SET numSentencesTagged = ( "
+        qry +=      "SELECT count(DISTINCT sentenceId) "
+        qry +=      "FROM taggy_sentences_tags "
+        qry +=      "WHERE (postId = "+postid+") AND (annotatorId = "+annotatorid+")) "
+
+        if(unescaped_comment != None):
+            escaped_comment = MySQLdb.escape_string(unescaped_comment)
+            qry += ", comment = '"+escaped_comment+"' "
+
+        if(state != None):
+            state = MySQLdb.escape_string(state)
+            qry += ", postAnnotatorState = '"+state+"' "
+        qry += "WHERE ((postId="+postid+") AND (annotatorId="+annotatorid+")) "
+
+        updateStatus = self.getData(qry)
+
+        if(state != None and updateStatus):
+            self.updatePostState(postid)
+
+        return updateStatus
+
+
+    """
+    * updatePostState()
+    *
+    * updates the postState field in the posts table
+    *
+    * @param integer $postID  post id number
+    * @param integer $postState  state to set post to *optional*, if left out
+    *                            postState is based upon PostAnnotation states
+    """
+
+    def updatePostState(self, postid, postState = None):
+
+        if(postState != None):
+            newPostState = None  # initially no change
+        else:
+            #update post state
+            #get old post state
+            result = self.getData("SELECT postState FROM taggy_posts WHERE postId="+postid)
+            row = self.getOne(result)
+            oldPostState = row['postState']
+
+            #Check if PostState is able to be updated based on postAnnotatorStates
+            if(oldPostState in ["PARSED", "ANNOTATED", "ADJUDICATED"]):
+                # Get counts of postAnnotatorStates
+                cntSQL =  "SELECT postAnnotatorState, count(*) AS n "
+                cntSQL += "FROM taggy_posts_annotators "
+                cntSQL += "WHERE (postId = '"+postid+"')  "
+                cntSQL += "GROUP BY postAnnotatorState"
+
+                result = self.getData(cntSQL)
+
+                numStates = []
+
+                #Build a map of postAnnotatorState => n
+                while(row == self.getOne(result)):
+                    numStates[row["postAnnotatorState"]] = row["n"]
+
+
+                #check for a new PostState based on postAnnotatorStates
+                if(('ADJUDICATED' in numStates) and (numStates['ADJUDICATED'] > 0)):
+                    # Post is ADJUDICATED if any postAnnotatorStates are set to 'ADJUDICATED'
+                    newPostState = 'ADJUDICATED'
+
+                elif(('DONE' in numStates) and (numStates['DONE'] > 1)):
+                    # post is ANNOTATED if any postAnnotatorStates are set to 'DONE'
+                    newPostState = 'ANNOTATED'
+
+                elif(('IN_PROGRESS' in numStates) and (numStates['IN_PROGRESS'] > 1)):
+                    #post is PARSED if any postAnnotatorStates are set to 'IN_PROGRESS'
+                    newPostState = 'PARSED'
+
+                # otherwise, make no changes to postState
+                # else postState is INITIAL', 'SELECTED', 'REPARSE'
+        if(newPostState != None):
+            qry =  "UPDATE taggy_posts "
+            qry += "SET postState='"+newPostState+"' "
+            qry += "WHERE postID="+postid
+
+            updateStatus = self.getData(qry)
+
+            return updateStatus
+
+        return True
+
+
+
+
+    """
+    * updateParseTool()
+    *
+    * updates the parseTool and postState fields in the posts table.
+    *
+    * NOTE that if the parseTool argument is empty (""), then parseTool
+    * will be set to NULL and postState is set to 'REPARSE'.
+    *
+    * @param integer $postID    post id number
+    * @param integer $parseTool value to set post to
+    """
