@@ -423,3 +423,95 @@ class Queries:
 
         # return the data
         return qryResult
+
+    """
+    * getPostParseInfo()
+    *
+    * returns data for specified post that relates to the parse history
+    *
+    * @param integer $postID  post id number
+    """
+
+    def getPostParseInfo(self, postid):
+
+        # Building the SQL query
+        qry =  "SELECT postState,DATE_FORMAT(dateReviewed,'%e-%b-%Y') AS reviewed,"
+        qry += "DATE_FORMAT(dateParsed,'%e-%b-%Y') AS parsed,"
+        qry += "parseHistory,parseVersion,parseTool "
+        qry += "FROM taggy_posts "
+        qry += "WHERE postID="+postid
+
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+    """
+    * getPostAtRandom()
+    *
+    * returns all data for a randomly selected post (takes a while to run because posts table is big)
+    * NOTE: ONLY RETURNS POSTS WHERE postState='PARSED' (posts that are ready to be annotated)
+    *
+    * NOTE: difference between PERSEUS and LEO versions is that PERSEUS has topics and profiles,
+    * and LEO does not
+    """
+
+    def getPostAtRandom(self):
+
+        # Building the SQL query
+        qry = "SELECT COUNT(*) as num FROM taggy_posts"
+
+        # creating a random number between 0 and num
+        number = self.getData(qry)['num']
+        rnd = random.uniform(0, number-1)
+        randomNumber = int(rnd)
+
+        # execution of the query 'qry'
+        qry = "" #just want to make sure qry is empty, even though, in if-else statement, qry will get another value
+        if(DBName == "perseus"):
+            qry =  "SELECT postId,forumId,topicId,"
+            qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry += "profileID,postState,content "
+            qry += "FROM taggy_posts "
+            qry += "WHERE postState='PARSED' "
+            qry += "LIMIT 1 OFFSET "+randomNumber
+        else:
+            qry =  "SELECT postId,forumId,"
+            qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry += "postState,content "
+            qry += "FROM taggy_posts "
+            qry += "WHERE postState='PARSED' "
+            qry += "LIMIT 1 OFFSET "+randomNumber
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+    """
+    * getPostCreator()
+    *
+    * returns all the name of the creator of the specified post
+    *
+    * NOTE: only used by PERSEUS (not used by LEO)
+    *
+    * @param integer $postID  post id number
+    """
+
+    def getPostCreator(self, postid):
+
+        # Building the SQL query
+        qry =  "SELECT userName "
+        qry += "FROM taggy_posts, taggy_profiles "
+        qry += "WHERE postId="+postid+" "
+        qry += "AND taggy_posts.profileId=taggy_profiles.profileID"
+
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
