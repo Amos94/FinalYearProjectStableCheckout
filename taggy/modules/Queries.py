@@ -703,9 +703,95 @@ class Queries:
         qry += " dateReviewed=now() "
         qry += "WHERE postId="+postid
 
-        
+
         # execution of the query 'qry'
         qryResult = self.getData(qry)
 
         # return the data
         return qryResult
+
+
+
+#----- FUNCTIONS THAT HANDLE TAGS -------------------------------------------
+
+    """
+    * getTags()
+    *
+    * returns data from tags table
+    *
+    * NOTE: the differences between PERSEUS and LEO versions are that
+    * perseus has provideOrRequest column; leo does not
+    *
+    * @param char $option  fetch option: 'P' for provide, 'R' for request, '' for all
+    * (only used by perseus)
+    *
+    """
+    def getTags(self, option):
+
+        # Building the SQL query
+        if($DBName == "perseus" ):
+            qry =  "SELECT tagId,tagName,tagDescription,provideOrRequest "
+            qry += "FROM taggy_tags "
+
+            if(option != ''):
+                qry += "WHERE provideOrRequest='"+option+"' "
+
+            qry += "ORDER BY tagName,provideOrRequest"
+
+        else:
+            qry =  "SELECT tagID,tagName,tagDescription "
+            qry += "FROM taggy_tags "
+            qry += "ORDER BY tagName"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+    """
+    * getTagNamesAnd2ids()
+    *
+    * returns list of tag names and 2 ID numbers corresponding to each tag, from the tags table
+    *
+    * NOTE: for PERSEUS, there are two entries in the database table
+    * for each named tag (i.e., provides or requests), so in that case,
+    * this function will return 2 different IDs in each row.
+    * For LEO, this function will return the same ID twice in each row.
+    """
+    def getTagNamesAnd2ids(self):
+        qry =  "SELECT tagName, MIN(tagID) AS tagID1, MAX(tagID) AS tagID2 "
+        qry += "FROM taggy_tags "
+        qry += "GROUP BY tagName "
+        qry += "ORDER BY tagName"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+    """
+    * getTagIDs()
+    *
+    * returns tagIDs from tags table
+    *
+    * NOTE: for PERSEUS, there are two entries in the database table
+    * for each named tag (i.e., provides or requests), so in that case,
+    * this function will return multiple (2) rows.
+    *
+    """
+    def getTagIds(self, tagName):
+
+        # Building the SQL query
+        qry = "SELECT tagId FROM taggy_tags where tagName='"+tagName+"'"
+
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+#----- FUNCTIONS THAT HANDLE SENTENCES --------------------------------------
