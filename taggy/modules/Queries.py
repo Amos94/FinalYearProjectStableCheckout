@@ -1065,3 +1065,116 @@ class Queries:
 
         # return the data
         return qryResult
+
+
+    """
+    * getSetMeta()
+    *
+    * returns meta-data about a set from sets table
+    *
+    * @param integer $setID  set id number
+    """
+    def getSetMeta(self, setid):
+
+        # Building the SQL query 'qry'
+        qry = "SELECT setId,name,description "
+        qry += "FROM taggy_sets "
+        qry += "WHERE setId="+setid+" "
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+    """
+    * getPostsInSet()
+    *
+    * returns data from posts within the specified set
+    *
+    * NOTE: difference between PERSEUS and LEO versions is that PERSEUS has topics and profiles,
+    * and LEO does not
+    *
+    * @param integer $setID  set id number
+    """
+    def getPostsInSet(self, setid, postState=''):
+
+        #Building the SQL query 'qry'
+        if(DBName == "perseus"):
+            qry =  "SELECT taggy_posts.postId, taggy_forumId, taggy_topicId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry += "profileId, postState, content "
+            qry += "FROM taggy_posts, taggy_posts_sets "
+            qry += "WHERE taggy_posts_sets.setId="+setid+" "
+            qry += "AND taggy+posts_sets.postId = taggy_posts.postId "
+            if(postState):
+                qry += " AND postState='"+postState+"' "
+            qry += "ORDER BY taggy_posts.postID ASC"
+        else:
+            qry = "SELECT taggy_posts.postId, forumId, DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry += "postState,content "
+            qry += "FROM taggy_posts, taggy_posts_sets "
+            qry += "WHERE taggy_posts_sets.setId="+setid
+            qry += " AND taggy_posts_sets.postId = taggy_posts.postId "
+            if(postState):
+                qry += " AND postState='"+postState+"' "
+            qry += "ORDER BY taggy_posts.postId ASC"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+    """
+    * getProgressInSet()
+    *
+    * returns number of posts annotated grouped by annotators
+    *
+    * @param integer $setID  set id number
+    """
+    def getProgressInSet(self, setid):
+
+        # Building the SQL query 'qry'
+        qry =  "SELECT taggy_annotators.username, taggy_annotators.annotatorId, "
+        qry += "COUNT(distinct taggy_sentences_tags.postId) as numPosts "
+        qry += "FROM taggy_sentences_tags JOIN(taggy_posts_sets,annotators) "
+        qry += "WHERE ( (taggy_sentences_tags.postId = taggy_posts_sets.postId) "
+        qry += "    AND (taggy_posts_sets.setId = " +setid+ ") "
+        qry += "    AND (taggy_annotators.annotatorId = taggy_sentences_tags.annotatorId) ) "
+        qry += "GROUP BY annotatorId"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+    """
+    * getAnnotatorsProgressInSet()
+    *
+    * returns number of posts annotated grouped by annotators
+    *
+    * @param string $annotatorID
+    * @param integer $setID set id number
+    """
+    def getAnnotatorsProgressInSet(self, annotatorid, setid):
+
+        # Building the SQL query 'qry'
+        qry =  "SELECT taggy_annotators.username, taggy_annotators.annotatorId, "
+        qry += "COUNT(distinct taggy_sentences_tags.postId) as numPosts "
+        qry += "FROM taggy_sentences_tags JOIN(taggy_posts_sets,annotators) "
+        qry += "WHERE ( (taggy_sentences_tags.postId = taggy_posts_sets.postId) "
+        qry += "    AND (taggy_posts_sets.setId = " + setid + ") "
+        qry += "    AND (taggy_sentences_tags.annotatorId = " + annotatorid + ") "
+        qry += "    AND (taggy_annotators.annotatorId = taggy_sentences_tags.annotatorId) ) "
+        qry += "GROUP BY annotatorId"
+
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
