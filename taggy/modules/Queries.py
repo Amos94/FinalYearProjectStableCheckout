@@ -948,3 +948,29 @@ class Queries:
 
         #return status
         return status
+
+
+    """
+    * deleteSentenceTag()
+    *
+    * deletes a row in the sentences_tags table
+    *
+    * @param integer $sentenceID   sentence id number to insert
+    * @param integer $tagID        tag id number to insert
+    * @param integer $postID       post id number to insert
+    * @param integer $annotatorID  annotator id number to insert
+    """
+    def deleteSentenceTag(self,sentenceid, tagid, postid, annotatorid):
+
+        # Building the SQL query 'qry'
+        qry =  "DELETE FROM taggy_sentences_tags "
+        qry += "WHERE ((sentenceId = "+sentenceid+") "
+        qry += "AND (tagId = "+tagid+") "
+        qry += "AND (postId = "+postid+") "
+        qry += "AND (annotatorId = "+annotatorid+"))"
+
+        # execution of the query 'qry'
+        status = self.getData(qry)
+
+        #return status
+        return status
