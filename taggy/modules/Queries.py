@@ -1044,4 +1044,24 @@ class Queries:
         # return the data
         return qryResult
 
-    
+
+    """
+    * getSet()
+    *
+    * returns all data for specified set
+    *
+    *   @param integer $setID  set id number
+    """
+    def getSet(self, setid):
+
+        #Building the SQL query 'qry'
+        qry =  "SELECT postId "
+        qry += "FROM taggy_posts_sets "
+        qry += "WHERE setId = "+setid+" "
+        qry += "ORDER BY postId"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
