@@ -974,3 +974,74 @@ class Queries:
 
         #return status
         return status
+
+
+#----- FUNCTIONS THAT HANDLE SETS -----
+
+    """
+    * getSets()
+    *
+    * returns data from sets table
+    *
+    """
+    def getSets(self):
+
+        #Building the SQL query 'qry'
+        qry =  "SELECT setId,name,description,username AS creator "
+        qry += "FROM taggy_sets, taggy_annotators "
+        qry += "WHERE taggy_annotators.annotatorId = taggy_sets.creatorId "
+        qry += "ORDER BY setId"
+
+        #execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+    """
+    * getSetsByCreator()
+    *
+    * returns data from sets table created by person specified in argument
+    *
+    """
+    def getSetsByCreator(self, creatorid):
+
+        #Building the SQL query 'qry'
+        qry =  "SELECT setId,name,description,username AS creator "
+        qry += "FROM taggy_sets, taggy_annotators "
+        qry += "WHERE creatorId="+creatorid+" "
+        qry += "AND taggy_annotators.annotatorId=taggy_sets.creatorId "
+        qry += "ORDER BY setId"
+
+        #execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+    """
+    * getSetsByAnnotatorID()
+    *
+    * gets collection of Sets by annotatorID
+    *
+    * @param string $annotatorID
+    * @return array resultSet of Sets
+    """
+    def getSetsByAnnotatorId(self, annotatorid):
+
+        # Building the SQL query 'qry'
+        qry = "SELECT sets.setId, sets.name, sets.description "
+        qry += "FROM taggy_sets JOIN taggy_annotators_sets "
+        qry += "WHERE (annotatorId = '"+annotatorid+"') "
+        qry += "AND (taggy_sets.setId = taggy_annotators_sets.setId) "
+        qry += "ORDER BY taggy_sets.setId"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+    
