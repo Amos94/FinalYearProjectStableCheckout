@@ -1178,3 +1178,204 @@ class Queries:
 
         # return the data
         return qryResult
+
+
+    """
+    * insertSet()
+    *
+    * @param string $setname name of set
+    """
+    def insertSet(self, setname, setdescription, creatorid):
+
+        # Building the SQL query 'qry'
+        qry =  "INSERT INTO taggy_sets (name, description, creatorId) "
+        qry += "VALUES ('"+setname+"','"+setdescription+"',"+creatorid+")"
+
+        # execution of the query 'qry'
+        status = self.getData(qry)
+
+        # return the data
+        return status
+
+
+
+    """
+    * updateSet()
+    *
+    * NOTE: the differences between PERSEUS and LEO versions are:
+    *  in PERSEUS, posts.postState=='INIITAL' is changed to 'SELECTED' when added to set
+    *  in LEO, posts.postState=='PARSED' and is not changed when added to set
+    *
+    * BUT!! need to make sure that a post (in LEO) is not added to more than one set
+    *
+    """
+    def updateSet(self, setid, setposts):
+
+        # Building the SQL query 'qry'
+        if(DBName == "perseus" ):
+            qry =  "UPDATE taggy_posts, taggy_posts_sets "
+            qry += "SET postState='INITIAL' "
+            qry += "WHERE taggy_posts_sets.setId="+setid
+            qry += " AND taggy_posts_sets.postId = taggy_posts.postId"
+
+            # execution of the query 'qry'
+            status = self.getData(qry)
+
+        qry = "DELETE FROM taggy_posts_sets WHERE setId=" + setid
+        # execution of the query 'qry'
+        status = self.getData(qry)
+
+        tok = setposts.split(" \n\t")
+
+        while(tok != False):
+            status = False
+            qry = "SELECT COUNT(*) as count FROM taggy_posts WHERE postId="+tok+" AND (postState='INITIAL' OR postState='PARSED')"
+
+            result = self.getData(qry)
+            if(result):
+                row = self.getData(result)
+                if(row['count'] > 0):
+                    qry = "SELECT COUNT(*) as count FROM taggy_posts_sets WHERE postId="+tok
+                    result = self.getData(qry)
+
+                    if(result):
+                        row = self.getData(result)
+                        if(row['count'] == 0 ):
+                            qry =  "INSERT INTO taggy_posts_sets (setId,postId) "
+                            qry += "VALUES ("+setid+","+tok+")"
+
+                            status = self.getData(qry)
+
+                            if(status):
+                                if(DBName == "perseus" ):
+                                    qry = "UPDATE taggy_posts SET postState='SELECTED' WHERE postId="+tok
+                                    status = self.getData(qry)
+
+            if(status):
+                print("post verified and inserted: ["+tok+"]<br />")
+            else:
+                print("post NOT verified and NOT inserted: [" + tok + "]<br />")
+
+            tok = self.split(" \n\t")
+
+
+
+    """
+    * deleteSet()
+    *
+    * the only "fatal" error is if there  is nothing to delete from the 'sets' table.
+    * because it is possible to have a set without any posts or annotations.
+    * so we can fail in trying to delete from 'posts_sets' and 'annotators_sets' tables,
+    * but not need to generate an error.
+    *
+    * @param string $setid ID number of set to delete
+    *
+    """
+    def deleteSet(self, setid):
+        qry = "DELETE FROM taggy_annotators_sets WHERE setId="+setid+" "
+        self.getData(qry)
+
+        qry = "DELETE FROM taggy_posts_sets WHERE setId=" + setid + " "
+        self.getData(qry)
+
+        qry = "DELETE FROM taggy_sets WHERE setId=" + setid + " "
+        status = self.getData(qry)
+
+        return status
+
+
+
+#----- FUNCTIONS THAT HANDLE ANNOTATORS_SETS --------------------------------
+
+    """
+    * getAnnotatorsSets()
+    *
+    * returns data from annotators_sets table
+    *
+    * @param integer $setID  set id number
+    """
+    def getAnnotatorsSets(self,setid=''):
+
+        #Building the SQL query qry
+        qry =  "SELECT annotatorId, setId "
+        qry += "FROM taggy_annotators_sets "
+
+        if(setid):
+            qry += "WHERE setId='"+setid+"' "
+
+        qry += "ORDER BY  setId, annotatorId"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+
+
+    """
+    * insertAnnotatorsSets()
+    *
+    * inserts a new annotator-set relation into annotators_sets
+    *
+    * @param integer $annotatorID  annotator id number
+    * @param integer $setID  set id number
+    """
+
+    def insertAnnotatorsSets(self, annotatorid, setid):
+
+        #Building the SQL query qry
+        qry =  "INSERT INTO  taggy_annotators_sets (annotatorId, setId) "
+        qry += "VALUES ('"+annotatorid+"','"+setid+"')"
+
+        # execution of the query 'qry'
+        status = self.getData(qry)
+
+        # return the data
+        return status
+
+
+    """
+    * deleteAnnotatorsSets()
+    *
+    * deletes all annotator-set relations
+    *
+    * @param integer $annotatorID  annotator id number
+    * @param integer $setID  set id number
+    """
+    def deleteAnnotatorsSets(self, annotatorid, setid):
+
+        #Building the SQL query qry
+        qry =  "DELETE FROM taggy_annotators_sets "
+        qry += "WHERE (annotaotrId='("+annotatorid+")' AND (setId='"+setid+"'))"
+
+        # execution of the query 'qry'
+        status = self.getData(qry)
+
+        # return the data
+        return status
+
+
+    """
+    * checkSetAnnotatorAssignment()
+    *
+    * checks that set is assigned to annotator
+    *
+    * @param string $setID
+    * @param string $annotatorID
+    * @return true or false
+    """
+    def checkSetAnnotatorAssignment(self, setid, annotatorid):
+
+        # Building the SQL query qry
+        qry =  "SELECT* "
+        qry += "FROM taggy_annotators_sets "
+        qry += "WHERE setId = "+setid
+        qry += "AND annotatorId = "+annotatorid
+
+        with connection.cursor() as cursor:
+            if(cursor.rowcount(qry) == 0):
+                toReturn = False
+            else:
+                toReturn = True
+
+        return toReturn

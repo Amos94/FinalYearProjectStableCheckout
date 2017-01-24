@@ -28,19 +28,31 @@
       <file leaf-file-name="Queries.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="777">
-              <caret line="1179" column="24" lean-forward="false" selection-start-line="1179" selection-start-column="24" selection-end-line="1179" selection-end-column="24" />
+            <state relative-caret-position="845">
+              <caret line="1380" column="23" lean-forward="false" selection-start-line="1380" selection-start-column="23" selection-end-line="1380" selection-end-column="23" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <marker date="1485298234583" expanded="true" signature="5144:5198" ph="INSERT INTO annotators" />
-                <marker date="1485298234583" expanded="true" signature="13538:13577" ph="SELECT COUNT... taggy_posts" />
-                <marker date="1485298234583" expanded="true" signature="16123:16241" ph="INSERT INTO taggy_posts_annotators... " />
-                <marker date="1485298234583" expanded="true" signature="18783:18830" ph="SELECT postS... taggy_posts" />
-                <marker date="1485298234583" expanded="true" signature="23835:23891" ph="SELECT tagId... taggy_tags" />
-                <marker date="1485298234583" expanded="true" signature="25847:25881" ph="SELECT * FRO... taggy_sentences_tags" />
-                <marker date="1485298234583" expanded="true" signature="26557:26605" ph="SELECT COUNT... taggy_sentences_tags" />
-                <marker date="1485298234583" expanded="true" signature="28475:28555" ph="INSERT INTO taggy_sentences_tags... " />
-                <marker date="1485298234583" expanded="true" signature="29243:29275" ph="DELETE FROM " />
+                <marker date="1485301356564" expanded="true" signature="5144:5198" ph="INSERT INTO annotators" />
+                <marker date="1485301356564" expanded="true" signature="13538:13577" ph="SELECT COUNT... taggy_posts" />
+                <marker date="1485301356564" expanded="true" signature="16123:16241" ph="INSERT INTO taggy_posts_annotators... " />
+                <marker date="1485301356564" expanded="true" signature="18783:18830" ph="SELECT postS... taggy_posts" />
+                <marker date="1485301356564" expanded="true" signature="23835:23891" ph="SELECT tagId... taggy_tags" />
+                <marker date="1485301356564" expanded="true" signature="25847:25881" ph="SELECT * FRO... taggy_sentences_tags" />
+                <marker date="1485301356564" expanded="true" signature="26557:26605" ph="SELECT COUNT... taggy_sentences_tags" />
+                <marker date="1485301356564" expanded="true" signature="28475:28555" ph="INSERT INTO taggy_sentences_tags... " />
+                <marker date="1485301356564" expanded="true" signature="29243:29275" ph="DELETE FROM " />
+                <marker date="1485301356564" expanded="true" signature="36014:36067" ph="INSERT INTO taggy_sets... " />
+                <marker date="1485301356564" expanded="true" signature="37090:37131" ph="DELETE FROM " />
+                <marker date="1485301356564" expanded="true" signature="37330:37385" ph="SELECT COUNT... " />
+                <marker date="1485301356564" expanded="true" signature="37330:37440" ph="SELECT COUNT... " />
+                <marker date="1485301356564" expanded="true" signature="37614:37674" ph="SELECT COUNT... " />
+                <marker date="1485301356564" expanded="true" signature="37895:37938" ph="INSERT INTO taggy_posts_sets... " />
+                <marker date="1485301356564" expanded="true" signature="38203:38260" ph="UPDATE taggy... " />
+                <marker date="1485301356564" expanded="true" signature="39010:39056" ph="DELETE FROM " />
+                <marker date="1485301356564" expanded="true" signature="39110:39151" ph="DELETE FROM " />
+                <marker date="1485301356564" expanded="true" signature="39209:39244" ph="DELETE FROM " />
+                <marker date="1485301356564" expanded="true" signature="40285:40340" ph="INSERT INTO taggy_annotators_sets" />
+                <marker date="1485301356564" expanded="true" signature="40831:40864" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -412,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485283205255</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="More on Queries">
+      <created>1485298253092</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1485298253092</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -425,18 +444,18 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -468,34 +487,58 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1485298234583" expanded="true" signature="5144:5198" ph="INSERT INTO annotators" />
-            <marker date="1485298234583" expanded="true" signature="13538:13577" ph="SELECT COUNT... taggy_posts" />
-            <marker date="1485298234583" expanded="true" signature="16123:16241" ph="INSERT INTO taggy_posts_annotators... " />
-            <marker date="1485298234583" expanded="true" signature="18783:18830" ph="SELECT postS... taggy_posts" />
-            <marker date="1485298234583" expanded="true" signature="23835:23891" ph="SELECT tagId... taggy_tags" />
-            <marker date="1485298234583" expanded="true" signature="25847:25881" ph="SELECT * FRO... taggy_sentences_tags" />
-            <marker date="1485298234583" expanded="true" signature="26557:26605" ph="SELECT COUNT... taggy_sentences_tags" />
-            <marker date="1485298234583" expanded="true" signature="28475:28555" ph="INSERT INTO taggy_sentences_tags... " />
-            <marker date="1485298234583" expanded="true" signature="29243:29275" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="5144:5198" ph="INSERT INTO annotators" />
+            <marker date="1485301356564" expanded="true" signature="13538:13577" ph="SELECT COUNT... taggy_posts" />
+            <marker date="1485301356564" expanded="true" signature="16123:16241" ph="INSERT INTO taggy_posts_annotators... " />
+            <marker date="1485301356564" expanded="true" signature="18783:18830" ph="SELECT postS... taggy_posts" />
+            <marker date="1485301356564" expanded="true" signature="23835:23891" ph="SELECT tagId... taggy_tags" />
+            <marker date="1485301356564" expanded="true" signature="25847:25881" ph="SELECT * FRO... taggy_sentences_tags" />
+            <marker date="1485301356564" expanded="true" signature="26557:26605" ph="SELECT COUNT... taggy_sentences_tags" />
+            <marker date="1485301356564" expanded="true" signature="28475:28555" ph="INSERT INTO taggy_sentences_tags... " />
+            <marker date="1485301356564" expanded="true" signature="29243:29275" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="36014:36067" ph="INSERT INTO taggy_sets... " />
+            <marker date="1485301356564" expanded="true" signature="37090:37131" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="37330:37385" ph="SELECT COUNT... " />
+            <marker date="1485301356564" expanded="true" signature="37330:37440" ph="SELECT COUNT... " />
+            <marker date="1485301356564" expanded="true" signature="37614:37674" ph="SELECT COUNT... " />
+            <marker date="1485301356564" expanded="true" signature="37895:37938" ph="INSERT INTO taggy_posts_sets... " />
+            <marker date="1485301356564" expanded="true" signature="38203:38260" ph="UPDATE taggy... " />
+            <marker date="1485301356564" expanded="true" signature="39010:39056" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="39110:39151" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="39209:39244" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="40285:40340" ph="INSERT INTO taggy_annotators_sets" />
+            <marker date="1485301356564" expanded="true" signature="40831:40864" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="1179" column="24" lean-forward="false" selection-start-line="1179" selection-start-column="24" selection-end-line="1179" selection-end-column="24" />
+        <state relative-caret-position="845">
+          <caret line="1380" column="23" lean-forward="false" selection-start-line="1380" selection-start-column="23" selection-end-line="1380" selection-end-column="23" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1485298234583" expanded="true" signature="5144:5198" ph="INSERT INTO annotators" />
-            <marker date="1485298234583" expanded="true" signature="13538:13577" ph="SELECT COUNT... taggy_posts" />
-            <marker date="1485298234583" expanded="true" signature="16123:16241" ph="INSERT INTO taggy_posts_annotators... " />
-            <marker date="1485298234583" expanded="true" signature="18783:18830" ph="SELECT postS... taggy_posts" />
-            <marker date="1485298234583" expanded="true" signature="23835:23891" ph="SELECT tagId... taggy_tags" />
-            <marker date="1485298234583" expanded="true" signature="25847:25881" ph="SELECT * FRO... taggy_sentences_tags" />
-            <marker date="1485298234583" expanded="true" signature="26557:26605" ph="SELECT COUNT... taggy_sentences_tags" />
-            <marker date="1485298234583" expanded="true" signature="28475:28555" ph="INSERT INTO taggy_sentences_tags... " />
-            <marker date="1485298234583" expanded="true" signature="29243:29275" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="5144:5198" ph="INSERT INTO annotators" />
+            <marker date="1485301356564" expanded="true" signature="13538:13577" ph="SELECT COUNT... taggy_posts" />
+            <marker date="1485301356564" expanded="true" signature="16123:16241" ph="INSERT INTO taggy_posts_annotators... " />
+            <marker date="1485301356564" expanded="true" signature="18783:18830" ph="SELECT postS... taggy_posts" />
+            <marker date="1485301356564" expanded="true" signature="23835:23891" ph="SELECT tagId... taggy_tags" />
+            <marker date="1485301356564" expanded="true" signature="25847:25881" ph="SELECT * FRO... taggy_sentences_tags" />
+            <marker date="1485301356564" expanded="true" signature="26557:26605" ph="SELECT COUNT... taggy_sentences_tags" />
+            <marker date="1485301356564" expanded="true" signature="28475:28555" ph="INSERT INTO taggy_sentences_tags... " />
+            <marker date="1485301356564" expanded="true" signature="29243:29275" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="36014:36067" ph="INSERT INTO taggy_sets... " />
+            <marker date="1485301356564" expanded="true" signature="37090:37131" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="37330:37385" ph="SELECT COUNT... " />
+            <marker date="1485301356564" expanded="true" signature="37330:37440" ph="SELECT COUNT... " />
+            <marker date="1485301356564" expanded="true" signature="37614:37674" ph="SELECT COUNT... " />
+            <marker date="1485301356564" expanded="true" signature="37895:37938" ph="INSERT INTO taggy_posts_sets... " />
+            <marker date="1485301356564" expanded="true" signature="38203:38260" ph="UPDATE taggy... " />
+            <marker date="1485301356564" expanded="true" signature="39010:39056" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="39110:39151" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="39209:39244" ph="DELETE FROM " />
+            <marker date="1485301356564" expanded="true" signature="40285:40340" ph="INSERT INTO taggy_annotators_sets" />
+            <marker date="1485301356564" expanded="true" signature="40831:40864" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
