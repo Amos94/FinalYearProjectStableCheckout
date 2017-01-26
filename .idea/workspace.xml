@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/Queries.py" afterPath="$PROJECT_DIR$/taggy/modules/Queries.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py" afterPath="$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/post/Post.py" afterPath="$PROJECT_DIR$/taggy/modules/post/Post.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -40,8 +39,8 @@
       <file leaf-file-name="Post.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/modules/post/Post.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="845">
-              <caret line="57" column="11" lean-forward="true" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
+            <state relative-caret-position="680">
+              <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -50,8 +49,8 @@
       <file leaf-file-name="AnnotatedPost.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="57" column="11" lean-forward="true" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
+            <state relative-caret-position="794">
+              <caret line="133" column="7" lean-forward="true" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -117,8 +116,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/taggy/modules/Queries.py" />
-        <option value="$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py" />
         <option value="$PROJECT_DIR$/taggy/modules/post/Post.py" />
+        <option value="$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py" />
       </list>
     </option>
   </component>
@@ -619,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485301382521</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Post - finished.&#10;Solved bugs in -  Queries&#10;AnnotatedPost - started&#10;">
+      <created>1485455126421</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1485455126421</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -662,7 +668,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="More on Queries" />
-    <option name="LAST_COMMIT_MESSAGE" value="More on Queries" />
+    <MESSAGE value="Post - finished.&#10;Solved bugs in -  Queries&#10;AnnotatedPost - started&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Post - finished.&#10;Solved bugs in -  Queries&#10;AnnotatedPost - started&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -823,14 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/modules/post/Post.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="845">
-          <caret line="57" column="11" lean-forward="true" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-22666">
@@ -861,10 +860,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/modules/post/Post.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="57" column="11" lean-forward="true" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
+        <state relative-caret-position="794">
+          <caret line="133" column="7" lean-forward="true" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
