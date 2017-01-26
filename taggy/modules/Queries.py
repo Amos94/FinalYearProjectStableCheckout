@@ -1,6 +1,6 @@
 import random
 
-import MySQLdb
+#import MySQLdb
 from django.db.models import Q as Q
 from taggy.models import Annotators as Annotators
 from taggy.models import Posts as Posts
