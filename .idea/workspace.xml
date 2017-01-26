@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py" afterPath="$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/post/Post.py" afterPath="$PROJECT_DIR$/taggy/modules/post/Post.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,8 +47,8 @@
       <file leaf-file-name="AnnotatedPost.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="794">
-              <caret line="133" column="7" lean-forward="true" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
+            <state relative-caret-position="267">
+              <caret line="102" column="0" lean-forward="true" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -625,14 +623,21 @@
       <option name="project" value="LOCAL" />
       <updated>1485455126421</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="changed the private variables to public variables&#10;AnnotatedPost - finished&#10;">
+      <created>1485465136432</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1485465136432</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19296375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19296375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -669,7 +674,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="More on Queries" />
     <MESSAGE value="Post - finished.&#10;Solved bugs in -  Queries&#10;AnnotatedPost - started&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Post - finished.&#10;Solved bugs in -  Queries&#10;AnnotatedPost - started&#10;" />
+    <MESSAGE value="changed the private variables to public variables&#10;AnnotatedPost - finished&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed the private variables to public variables&#10;AnnotatedPost - finished&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -870,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="794">
-          <caret line="133" column="7" lean-forward="true" selection-start-line="133" selection-start-column="7" selection-end-line="133" selection-end-column="7" />
+        <state relative-caret-position="267">
+          <caret line="102" column="0" lean-forward="true" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
