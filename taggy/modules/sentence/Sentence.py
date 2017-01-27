@@ -4,55 +4,76 @@ class Sentence():
     *
     * @var int
     """
-    __postId = 0
+    postId = 0
 
     """
     * id of sentence
     *
     * @var int
     """
-    __sentenceID = 0
+    sentenceID = 0
 
     """
     * display ready text of sentence
     *
     * @var string
     """
-    __sentence = ""
+    sentence = ""
 
     """
     * number of paragraph which sentence belongs to (count starts with 1)
     *
     * @var int
     """
-    __paragraphInPost = 0
+    paragraphInPost = 0
 
     """
     * number of sentence within paragraph (count starts with 1)
     *
     * @var int
     """
-    __sentenceInParagraph = 0
+    sentenceInParagraph = 0
 
 
     def __init__(self, postId, sentenceId, sentence, paragraphInPost, sentenceInParagraph):
-        self.__postId = postId
-        self.__sentenceID = sentenceId
-        self.__sentence = sentence
-        self.__paragraphInPost = paragraphInPost
-        self.__sentenceInParagraph = sentenceInParagraph
+        self.postId = postId
+        self.sentenceID = sentenceId
+        self.sentence = sentence
+        self.paragraphInPost = paragraphInPost
+        self.sentenceInParagraph = sentenceInParagraph
 
     def getPostId(self):
-        return self.__postId
+        return self.postId
 
     def getSentenceId(self):
-        return self.__sentenceID
+        return self.sentenceID
 
     def getSentence(self):
-        return self.__sentence
+        return self.sentence
 
     def getParagraphInPost(self):
-        return self.__paragraphInPost
+        return self.paragraphInPost
 
     def getSentenceInParagraph(self):
-        return self.__sentenceInParagraph
+        return self.sentenceInParagraph
+
+
+
+    """
+    * renders the sentence as an HTML table row (i.e. a <tr>)
+    *
+    * @param array $tagLookup a tag lookup table, an associated array of Tag objects
+    * indexed by their tag id
+    * @return void
+    """
+    def render_as_row(self):
+        print("<tr id='s"+ self.sentenceID +"' class='sentenceRow'>")
+        print("<td align=\"right\" valign=\"middle\">"+self.paragraphInPost+"."+self.sentenceInParagraph+"</td>")
+        print("<td align=\"left\" valign=\"middle\">"+self.sentence+"</td>")
+
+        self.render_tag_columns()
+
+        print("</tr>\n")
+
+    def render_tag_columns(self):
+        return
