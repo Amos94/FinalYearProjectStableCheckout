@@ -11,6 +11,9 @@ class Queries:
 
 
 
+    def __init__(self):
+        DBName = 'test'
+
     #THIS FUNCTION IS FOR CODE OPTIMIZATION AS IS USED TO RETRIEVE DATA FROM A QUERY
     #ALL FUNCTIONS BELOW THIS FUNCTION, WILL USE getData()
     #Instead of repeating the code inside getData(), better just call the function.

@@ -58,6 +58,7 @@ class AnnotatedPost(Post):
         Post.__init__(queryObject, postId)
 
 
+
     """
     * addSentence()
     *
