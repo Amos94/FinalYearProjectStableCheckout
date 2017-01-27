@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/modules/sentence/AnnotatedSentence.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/modules/sentence/AdjudicatedSentence.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -38,8 +38,8 @@
       <file leaf-file-name="Post.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/modules/post/Post.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+            <state relative-caret-position="51">
+              <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -48,11 +48,9 @@
       <file leaf-file-name="AnnotatedPost.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="36" lean-forward="true" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -60,7 +58,7 @@
       <file leaf-file-name="AdjudicatedPost.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/modules/post/AdjudicatedPost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
+            <state relative-caret-position="2108">
               <caret line="124" column="36" lean-forward="true" selection-start-line="124" selection-start-column="36" selection-end-line="124" selection-end-column="36" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
@@ -79,11 +77,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnnotatedSentence.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AnnotatedSentence.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/modules/sentence/AnnotatedSentence.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdjudicatedSentence.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/taggy/modules/sentence/AdjudicatedSentence.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -165,6 +173,7 @@
         <option value="$PROJECT_DIR$/taggy/modules/post/AdjudicatedPost.py" />
         <option value="$PROJECT_DIR$/taggy/modules/sentence/Sentence.py" />
         <option value="$PROJECT_DIR$/taggy/modules/sentence/AnnotatedSentence.py" />
+        <option value="$PROJECT_DIR$/taggy/modules/sentence/AdjudicatedSentence.py" />
       </list>
     </option>
   </component>
@@ -707,7 +716,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485530235155</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="AnnotatedSentence - added and questions about args in constructor">
+      <created>1485531537307</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1485531537307</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -756,7 +772,8 @@
     <MESSAGE value="Adjudicated Post added" />
     <MESSAGE value="Adjudicated Post - finished" />
     <MESSAGE value="Sentence - finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sentence - finished" />
+    <MESSAGE value="AnnotatedSentence - added and questions about args in constructor" />
+    <option name="LAST_COMMIT_MESSAGE" value="AnnotatedSentence - added and questions about args in constructor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -783,9 +800,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -974,47 +989,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FYP/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/modules/post/Post.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/modules/post/Set.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/modules/post/AdjudicatedPost.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="124" column="36" lean-forward="true" selection-start-line="124" selection-start-column="36" selection-end-line="124" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1057,10 +1036,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FYP/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/modules/post/Post.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/modules/post/AnnotatedPost.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="36" lean-forward="true" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/modules/post/AdjudicatedPost.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2108">
+          <caret line="124" column="36" lean-forward="true" selection-start-line="124" selection-start-column="36" selection-end-line="124" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/modules/sentence/AnnotatedSentence.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/modules/sentence/AdjudicatedSentence.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
