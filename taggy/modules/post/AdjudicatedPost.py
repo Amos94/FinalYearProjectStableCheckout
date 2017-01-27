@@ -1,4 +1,4 @@
-from taggy.modules import Queries
+from taggy.modules.Queries import Queries
 from taggy.modules.post.AnnotatedPost import AnnotatedPost
 
 """
@@ -24,7 +24,6 @@ class AdjudicatedPost(AnnotatedPost):
     """
     def __init__(self, qryObject, postId, annotator):
 
-        qryObject = Queries
 
 
 
@@ -33,7 +32,7 @@ class AdjudicatedPost(AnnotatedPost):
 
         #  Get all Annotators that have annotated this post
         # retrieve sentences for Post from DB
-        results = qryObject.Queries.getAnnotatorsProgressByPost(postId)
+        results = qryObject.getAnnotatorsProgressByPost(postId)
 
         for r in results:
             if(r['annotatorId'] != annotator.id):

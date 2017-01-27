@@ -37,7 +37,6 @@ def AnnotatedSentence(Sentence):
     * @return void
     """
     def retrieve_tags(self, qryObject, a):
-        qryObject = Queries
 
         results = qryObject.getSentenceTags(self.postId, self.sentenceId, a.id)
 
