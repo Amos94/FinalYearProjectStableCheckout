@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/modules/tag/TagLookUpTable.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/tag/Tag.py" afterPath="$PROJECT_DIR$/taggy/modules/tag/Tag.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,11 +45,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tag.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Tag.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/modules/tag/Tag.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="680">
               <caret line="40" column="52" lean-forward="true" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TagLookUpTable.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/taggy/modules/tag/TagLookUpTable.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -63,16 +73,6 @@
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sentence.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taggy/modules/sentence/Sentence.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="78" column="14" lean-forward="true" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -119,7 +119,7 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1485565695548" expanded="true" signature="67449:67466" ph="..." />
+                <marker date="1485565771616" expanded="true" signature="68002:68019" ph="..." />
               </folding>
             </state>
           </provider>
@@ -187,6 +187,7 @@
         <option value="$PROJECT_DIR$/taggy/modules/sentence/AdjudicatedSentence.py" />
         <option value="$PROJECT_DIR$/taggy/modules/post/Set.py" />
         <option value="$PROJECT_DIR$/taggy/modules/tag/Tag.py" />
+        <option value="$PROJECT_DIR$/taggy/modules/tag/TagLookUpTable.py" />
       </list>
     </option>
   </component>
@@ -753,7 +754,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485564952423</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Tag - ERRORS IN render_as_div function and strange POVIDES_CODE and REQUEST_CODE usage.">
+      <created>1485565767331</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1485565767331</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -807,7 +815,8 @@
     <MESSAGE value="AdjudicatedSentence - finished" />
     <MESSAGE value="Set finished" />
     <MESSAGE value="Tag - added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tag - added" />
+    <MESSAGE value="Tag - ERRORS IN render_as_div function and strange POVIDES_CODE and REQUEST_CODE usage." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tag - ERRORS IN render_as_div function and strange POVIDES_CODE and REQUEST_CODE usage." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1131,7 +1140,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1485565695548" expanded="true" signature="67449:67466" ph="..." />
+            <marker date="1485565771616" expanded="true" signature="68002:68019" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1148,6 +1157,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="40" column="52" lean-forward="true" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/modules/tag/TagLookUpTable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
