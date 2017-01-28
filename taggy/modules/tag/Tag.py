@@ -12,6 +12,6 @@ class Tag:
         self.provideOrRequest = provideOrRequest
         self.enum = enum
 
-    def __toString():
+    def __toString(self):
         return self.name + "_" + self.provideOrRequest
 
