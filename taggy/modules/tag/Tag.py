@@ -1,4 +1,5 @@
-
+PROVIDES_CODE = 'P'
+REQUEST_CODE = 'R'
 class Tag:
 
     tagId = 0
@@ -19,9 +20,9 @@ class Tag:
         print("[" + self.name + "(" + self.provideOrRequest+ ")]")
 
     def render_as_div(self, is_tagBtn = False, is_editable = True ):
-        //
+
         # CODE TO BE REVIEWED BECAUSE OF STRANGE ? "" :
-        //
+
 
         if(is_tagBtn):
             kind = 'tagBtn'
