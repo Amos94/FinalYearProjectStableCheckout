@@ -31,7 +31,7 @@ class Annotator:
         self.id = aID
         results = qryObject.getAnnotators('', self.id)
 
-        if(results.count() != 1)
+        if(results.count() != 1):
             raise Exception('AnnotatorID ' + aID + ' does not exist.' )
 
         for row in results:
