@@ -126,7 +126,7 @@ class Profiles(models.Model):
     stage = models.CharField(max_length=10)
     lymph = models.CharField(max_length=10)
     posLymphNodes = models.CharField(max_length=10)
-    tumorSIze = models.CharField(max_length=20)
+    tumorSize = models.CharField(max_length=20)
     tumorGrade = models.CharField(max_length=30)
     hormoneReceptor = models.CharField(max_length=100)
     herStatus = models.CharField(max_length=100)

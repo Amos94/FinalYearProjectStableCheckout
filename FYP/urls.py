@@ -19,5 +19,5 @@ from taggy.views import index as index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', index, name="index"),
+    url(r'^$', index, name="index"),
 ]
