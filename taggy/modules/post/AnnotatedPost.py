@@ -2,6 +2,7 @@ from taggy.modules.post.Post import Post
 #import MySQLdb
 from django.db import connection
 
+from taggy.modules.sentence.AnnotatedSentence import AnnotatedSentence
 
 """
 * AnnotatedPost Class

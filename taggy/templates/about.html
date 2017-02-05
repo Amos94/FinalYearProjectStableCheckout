@@ -1,10 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>TAGGY| {{ pagename }}</title>
+    <title>Taggy | {{ pageName }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body style="background-color: #e9ebee">
+    <header>
+        <nav class="navbar navbar-fixed-top" style="background-color: #4c70ba">
+        <div class="container-fixed">
+    <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" style="font-family: 'Raleway';font-size: 40px;"><font color="white"><strong>T.A.G.G.Y.</strong></font></a>
+            </div>
+
+
+            <div class="col-sm-3 col-md-3 pull-right">
+
+          <form class="navbar-form" role="search">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search" name="q">
+                  <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+              </div>
+          </form>
+
+      </div>
+
+
+
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+         <p class="bg-warning text-center" style="margin-top:5%;">Welcome to <font color='#d12b07'>about</font> page. This page is a 'how to use' guide for the <font color='#d12b07'>T.A.G.G.Y. project</font>.</p>
+    </header>
+
+    <div class="jumbotron text-center col-md-10 col-md-offset-1">
+      <h2 class="text-center">About</h2>
+        <hr/>
+        <br /><br />
+      <p class="warning"><b>Tags</b></p>
+      <br />
+      <p class="text-left">When tagging a sentence, identify the main focus of the sentence. You can select one or several tags. There are 11 tags, described below:</p>
+      <ul class="text-left">
+    <li><b><font color='#d12b07'>PERS</font></b> represents any <b>personal information</b> provided or
+      requested by the post author. Personal information is defined as <b>anything
+      not clinical</b>. For instance:
+      <ul>
+        <li>"I am 32 years old"  [This would be tagged as PERS/provide]
+        <li>"Where you born in the States?" [This would be tagged as PERS/request]
+        <li>"I love Twinkies!"   [This would be tagged as PERS/provide]
+        <li>"My sister lives nearby" [This would be tagged as PERS/provide]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>FIND</font></b> represents any <b>health finding, sign, symptom or side
+        effect</b>, related to cancer or any other health condition. For instance:
+      <ul>
+        <li>"My fingers are swollen and hurt" [This would be tagged as FIND/provide]
+        <li>"Did anyone else get nausea?" [This would be tagged as FIND/request]
+        <li>"She lost weight on that treatment" [This would be tagged as
+        FIND/provide]
+        <li>"I feel dizzy" [This would be tagged as FIND/provide]
+        <li>"If the headaches get too severe, you can always take some Tylenol"
+        [This would be tagged as FIND/provide]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>TEST</font></b> represents any discussion of <b>diagnostic procedure</b>, such
+      as mammograms or genetic testing. Select this tag when the sentence is about
+      the procedure itself, rather than the results of the procedure. For instance:
+      <ul>
+      <li>"Should I get a genetic test if my mom had breast cancer too?" [This
+      would be tagged as TEST/request]
+      <li>"What are the risks of the biopsy?" [This would be tagged as
+      TEST/request]
+      <li>"I remember having to do a mammogram after breast reconstruction" [This
+      would be tagged as TEST/provide]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>DIAG</font></b> represents any discussion of <b>diagnoses, measurements, and
+        results of tests</b> related to cancer or any other health condition. This
+        tag is different from tag FIND, because DIAG relates to actual clinical
+        diagnoses, whereas FIND relates to symptoms. DIAG is also different from
+        TEST, because it relates to the results of a test rather than the test
+        itself. For instance:
+      <ul>
+        <li>"My blood pressure is good (120/80)" [This would be tagged as
+        DIAG/provide]
+        <li>"The tumor size is 2cm" [This would be tagged as DIAG/provide]
+        <li>"Does anyone have arthritis?" [This would be tagged as DIAG/request]
+        <li>"The nurse said I probably have edema" [This would be tagged as
+          DIAG/provide]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>TREA</font></b> represents any discussion of <b>treatments, including
+        procedures, medications and therapeutic devices</b>. For instance:
+      <ul>
+        <li>"Do you take any steroid?" [This would be tagged as TREA/request]
+        <li>"I am on AC" [This would be tagged as TREA/provide]
+        <li>"I had a bilateral mastectomy" [This would be tagged as TREA/provide]
+        <li>"Where should I install my port-a-cath?" [This would be tagged as
+        TREA/request]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>HSYS</font></b> represents any discussion of health systems and institutions,
+      including, <b>doctors, practices, nurses, hospitals, and insurance
+      companies</b>. For instance:
+      <ul>
+      <li>"I am not in love with my onc" [This would be tagged as HSYS/provide]
+      <li>"Cigna doesn't reimburse the bra!" [This would be tagged as HSYS/provide]
+      <li>"What do you think of the new health reforms?" [This would be tagged as
+      HSYS/request]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>DAIL</font></b> represents any discussion related to <b>daily cancer-related
+        experience</b>. For instance:
+      <ul>
+        <li>"Install your port on the right, this way your car seat belt won't bug
+        you" [This would be tagged as DAIL/provide]
+        <li>"Which shampoo do you use?" [This would be tagged as DAIL/request]
+        <li>"Heat pads helped me a great deal" [This would be tagged as
+        DAIL/provide]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>NUTR</font></b> represents any discussion related to <b>nutrition</b>. For
+      instance:
+      <ul>
+        <li>"Ginger helps for vomiting" [This would be tagged as NUTR/provide]
+        <li>"I cant digest fish oil" [This would be tagged as NUTR/provide]
+        <li>"What is a healthy sugar substitute?" [This would be tagged as
+        NUTR/request]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>ALTR</font></b> represents any discussion related to <b>alternative and
+        integrative medicine</b>. For instance:
+      <ul>
+        <li>"Acupuncture is helpful" [This would be tagged as ALTR/provide]
+        <li>"Did massages help with lymphedema?" [This would be tagged as
+        ALTR/request]
+        <li>"Rosemary oil is supposed to help with memory" [This would be tagged as
+        ALTR/provide]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>RSRC</font></b> represents any discussion or pointer to <b>another post or
+      extrenal resource</b>. For instance:
+      <ul>
+        <li>"The following article was fascinating" [This would be tagged as
+        RSRC/provide]
+        <li>"Anybody seen any study on the subject?" [This would be tagged as
+        RSRC/request]
+        <li>"There was a long thread on that question" [This would be tagged as
+        RSRC/provide]
+      </ul><br>
+
+    <li><b><font color='#d12b07'>MISC</font></b> represents any other miscalleneous topic of discussion, or any
+      sentence which on its own does not provide any information. For
+      instance:
+      <ul>
+        <li>"Feel better!" [This would be tagged as MISC/provide]
+        <li>"I am new so I probably posted this in the wrong board!" [This would be
+        tagged as MISC/provide]
+        <li>"Can someone explain this?" [This would be tagged as MISC/request]
+        <li>"Ha!" [This would be tagged as MISC/provide]
+      </ul><br>
+
+    </ul>
+    </div>
+
+
+<div class="footer navbar-fixed-bottom">
+
+</div>
 
 </body>
 </html>

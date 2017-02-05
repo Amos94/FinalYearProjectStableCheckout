@@ -17,9 +17,14 @@ from django.conf.urls import url
 from django.contrib import admin
 from taggy.views import index as index
 from taggy.views import about as about
+from taggy.views import annotation as annotation
+from taggy.views import adjudication as adjudication
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
     url(r'^about/', about, name="about"),
+    url(r'^annotation/', annotation, name="annotation"),
+    url(r'^adjudication/', adjudication, name="adjudication"),
 ]

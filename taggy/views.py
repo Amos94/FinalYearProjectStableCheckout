@@ -17,10 +17,23 @@ def index(request):
 
 def about(request):
     pageName = "About"
-    user = None
-    sessionId = None
 
-    if(user != 'null' and sessionId != 'null'):
-        context = {"pageName":pageName, "user":user, "sessionId":sessionId}
-    else:
-        context = {"pageName":pageName , "user": 'not an user', "sessionId": 'not a valid session id'}
+    context = {"pageName":pageName}
+
+    return render(request, "about.html", context)
+
+
+def annotation(request):
+    pageName = "Annotation"
+
+    context = {"pageName":pageName}
+
+    return render(request, "annotation.html", context)
+
+
+def adjudication(request):
+    pageName = "Adjudication"
+
+    context = {"pageName":pageName}
+
+    return render(request, "adjudication.html", context)
