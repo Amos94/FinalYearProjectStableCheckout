@@ -14,3 +14,13 @@ def index(request):
         context = {"pageName":pageName , "user": 'not an user', "sessionId": 'not a valid session id'}
 
     return render(request,"index.html",context)
+
+def about(request):
+    pageName = "About"
+    user = None
+    sessionId = None
+
+    if(user != 'null' and sessionId != 'null'):
+        context = {"pageName":pageName, "user":user, "sessionId":sessionId}
+    else:
+        context = {"pageName":pageName , "user": 'not an user', "sessionId": 'not a valid session id'}

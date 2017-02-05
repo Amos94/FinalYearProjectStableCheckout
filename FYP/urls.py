@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from taggy.views import index as index
+from taggy.views import about as about
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
+    url(r'^about/', about, name="about"),
 ]
