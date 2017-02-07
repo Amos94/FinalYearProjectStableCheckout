@@ -11,6 +11,9 @@ class Annotators(models.Model):
     password = models.CharField(max_length=32)
     usertype = models.CharField(max_length=10)
 
+    class Meta:
+        verbose_name_plural = "Annotators"
+
 
 
 
@@ -19,6 +22,9 @@ class Annotators_sets(models.Model):
     setId = models.AutoField(primary_key=True)
     annotatorId = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = "Annotators sets"
+
 
 
 
@@ -26,6 +32,9 @@ class Categories(models.Model):
 
     categoryId = models.AutoField(primary_key=True)
     catName = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "Categories"
 
 
 
@@ -39,6 +48,9 @@ class Check_posts(models.Model):
     profileId = models.IntegerField()
     authorName = models.TextField()
 
+    class Meta:
+        verbose_name_plural = "Check posts"
+
 
 
 
@@ -46,6 +58,9 @@ class Emoticons(models.Model):
 
     emoticonId = models.AutoField(primary_key=True)
     canonicalForm = models.TextField()
+
+    class Meta:
+        verbose_name_plural = "Emoticons"
 
 
 
@@ -55,6 +70,8 @@ class Emoticons_tag(models.Model):
     emoticonId = models.IntegerField()
     rawTag = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = "Emoticons tag"
 
 
 class Forums(models.Model):
@@ -64,6 +81,8 @@ class Forums(models.Model):
     forumDescription = models.CharField(max_length=250)
     categoryId = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = "Forums"
 
 
 
@@ -77,6 +96,8 @@ class Posts(models.Model):
     profileId = models.IntegerField()
     content = models.TextField()
 
+    class Meta:
+        verbose_name_plural = "Posts"
 
 
 
@@ -89,7 +110,8 @@ class Posts_annotators(models.Model):
     numSentencesTagged = models.IntegerField()
     lastUpdated = models.DateTimeField()
 
-
+    class Meta:
+        verbose_name_plural = "Posts annotators"
 
 
 class Posts_emoticons(models.Model):
@@ -98,6 +120,9 @@ class Posts_emoticons(models.Model):
     emoticonId = models.IntegerField()
     tagId = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = "Post emoticons"
+
 
 
 
@@ -105,6 +130,9 @@ class Posts_sets(models.Model):
 
     setId = models.IntegerField()
     postId = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "Posts sets"
 
 
 
@@ -131,6 +159,9 @@ class Profiles(models.Model):
     hormoneReceptor = models.CharField(max_length=100)
     herStatus = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name_plural = "Profiles"
+
 
 
 
@@ -141,6 +172,9 @@ class Sentences(models.Model):
     sentence = models.TextField()
     paragraphInPost = models.IntegerField()
     sentenceInParagraph = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "Sentences"
 
 
 
@@ -154,6 +188,9 @@ class Sentences_tags(models.Model):
     annotatorId = models.IntegerField()
     timestamp = models.DateTimeField()
 
+    class Meta:
+        verbose_name_plural = "Sentences tags"
+
 
 
 
@@ -164,6 +201,9 @@ class Sets(models.Model):
     description = models.TextField()
     creatordId = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = "Sets"
+
 
 
 
@@ -172,6 +212,9 @@ class Signatures(models.Model):
     postId = models.IntegerField()
     profileId = models.IntegerField()
     signatures = models.TextField()
+
+    class Meta:
+        verbose_name_plural = "Signatures"
 
 
 
@@ -183,6 +226,8 @@ class Tags(models.Model):
     tagDescription = models.CharField(max_length=250)
     provideOrRequest = models.CharField(max_length=1)
 
+    class Meta:
+        verbose_name_plural = "Tags"
 
 
 
@@ -196,3 +241,6 @@ class Topics(models.Model):
     lastDate = models.DateTimeField()
     numViews = models.IntegerField()
     forumId = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "Topics"

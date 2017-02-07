@@ -28,3 +28,5 @@ urlpatterns = [
     url(r'^annotation/', annotation, name="annotation"),
     url(r'^adjudication/', adjudication, name="adjudication"),
 ]
+admin.site.site_header = 'T.A.G.G.Y. ADMINISTRATION BOARD'
+admin.site.site_title = 'T.A.G.G.Y.'

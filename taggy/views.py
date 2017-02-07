@@ -9,9 +9,9 @@ def index(request):
     sessionId = 'null'
 
     if(user != 'null' and sessionId != 'null'):
-        context = {"pageName":pageName, "user":user, "sessionId":sessionId}
+        context = {"pageName":pageName, "sessionId":sessionId}
     else:
-        context = {"pageName":pageName , "user": 'not an user', "sessionId": 'not a valid session id'}
+        context = {"pageName":pageName , "sessionId": 'not a valid session id'}
 
     return render(request,"index.html",context)
 
