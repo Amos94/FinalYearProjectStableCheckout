@@ -1382,3 +1382,14 @@ class Queries:
                 toReturn = True
 
         return toReturn
+
+
+
+
+    """
+    get sentences by sentence id
+    """
+    def getSentence(self, sentenceId):
+        qry = "SELECT * FROM taggy_sentneces WHERE sentenceId="+sentenceId
+        results = self.getData(qry)
+        return results
