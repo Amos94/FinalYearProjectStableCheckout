@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/about.html" afterPath="$PROJECT_DIR$/taggy/templates/about.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/adjudication.html" afterPath="$PROJECT_DIR$/taggy/templates/adjudication.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/annotation.html" afterPath="$PROJECT_DIR$/taggy/templates/annotation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/base.html" afterPath="$PROJECT_DIR$/taggy/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/index.html" afterPath="$PROJECT_DIR$/taggy/templates/index.html" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,12 +54,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adjudication.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="adjudication.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taggy/templates/adjudication.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
+            <state relative-caret-position="453">
+              <caret line="114" column="6" selection-start-line="114" selection-start-column="6" selection-end-line="114" selection-end-column="6" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -74,8 +72,9 @@
         <entry file="file://$PROJECT_DIR$/taggy/templates/annotation.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="258">
-              <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
+              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="110" selection-end-column="6" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -95,12 +94,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="42" column="72" selection-start-line="42" selection-start-column="72" selection-end-line="42" selection-end-column="72" />
+            <state relative-caret-position="348">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -233,9 +233,9 @@
         <option value="$PROJECT_DIR$/taggy/utils/SentenceSegmentation.py" />
         <option value="$PROJECT_DIR$/taggy/templates/base.html" />
         <option value="$PROJECT_DIR$/taggy/templates/about.html" />
-        <option value="$PROJECT_DIR$/taggy/templates/adjudication.html" />
-        <option value="$PROJECT_DIR$/taggy/templates/annotation.html" />
         <option value="$PROJECT_DIR$/taggy/templates/index.html" />
+        <option value="$PROJECT_DIR$/taggy/templates/annotation.html" />
+        <option value="$PROJECT_DIR$/taggy/templates/adjudication.html" />
       </list>
     </option>
   </component>
@@ -1045,7 +1045,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486466190852</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="NAVIGATION MENU ADDED">
+      <created>1486474682531</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1486474682531</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1139,7 +1146,8 @@
     <MESSAGE value="More on backend for NLP automatic annotation.&#10;&#10;ADDED: Post segmentation into sentences&#10;ADDED: word segmentation" />
     <MESSAGE value="DIDN'T RENDER ANYTHING WITH BACKEND, BUT I CREATED A LAYOUT TO SHOW HOW IT WILL LOOK LIKE NO FUNCTIONALITIES. YET." />
     <MESSAGE value="ADDED LINK TO TAGGY." />
-    <option name="LAST_COMMIT_MESSAGE" value="ADDED LINK TO TAGGY." />
+    <MESSAGE value="NAVIGATION MENU ADDED" />
+    <option name="LAST_COMMIT_MESSAGE" value="NAVIGATION MENU ADDED" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1476,13 +1484,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/templates/adjudication.html">
+    <entry file="file://$PROJECT_DIR$/taggy/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
+        <state relative-caret-position="348">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1490,20 +1498,23 @@
     <entry file="file://$PROJECT_DIR$/taggy/templates/annotation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
-          <caret line="39" column="72" selection-start-line="39" selection-start-column="72" selection-end-line="39" selection-end-column="72" />
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="110" selection-end-column="6" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/taggy/templates/adjudication.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="42" column="72" selection-start-line="42" selection-start-column="72" selection-end-line="42" selection-end-column="72" />
+        <state relative-caret-position="453">
+          <caret line="114" column="6" selection-start-line="114" selection-start-column="6" selection-end-line="114" selection-end-column="6" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
