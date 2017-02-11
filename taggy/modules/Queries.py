@@ -1,6 +1,7 @@
 import random
 
 #import MySQLdb
+import MySQLdb
 from django.db.models import Q as Q
 from taggy.models import Annotators as Annotators
 from taggy.models import Posts as Posts
@@ -9,10 +10,10 @@ from django.db import connection
 
 class Queries:
 
-
+    DBName = ''
 
     def __init__(self):
-        DBName = 'test'
+        DBName = 'persus'
 
     #THIS FUNCTION IS FOR CODE OPTIMIZATION AS IS USED TO RETRIEVE DATA FROM A QUERY
     #ALL FUNCTIONS BELOW THIS FUNCTION, WILL USE getData()
@@ -238,7 +239,7 @@ class Queries:
 
     def getForums(self):
         # Building the SQL query
-        if(DBName == "perseus"):
+        if(self.DBName == "perseus"):
             qry =  "SELECT forumId, forumName, forumDescription, catName "
             qry += "FROM taggy_forums,taggy_categories "
             qry += "WHERE taggy_forums.categoryId = taggy_categories.categoryId "
@@ -350,7 +351,7 @@ class Queries:
     def getPosts(self, forumid, topicid='', postState=''):
 
         # Building the SQL query
-        if(DBName = "perseus"):
+        if(self.DBName == "perseus"):
             qry =  "SELECT postId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "profileId,postState,content "
             qry += "FROM taggy_posts "
@@ -392,7 +393,7 @@ class Queries:
     def getPost(self, postid):
 
         # Building the SQL query
-        if (DBName = "perseus"):
+        if (self.DBName == "perseus"):
             qry =  "SELECT postId,forumId,topicId,"
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "profileId,postState,content "
@@ -485,7 +486,7 @@ class Queries:
 
         # execution of the query 'qry'
         qry = "" #just want to make sure qry is empty, even though, in if-else statement, qry will get another value
-        if(DBName == "perseus"):
+        if(self.DBName == "perseus"):
             qry =  "SELECT postId,forumId,topicId,"
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "profileID,postState,content "
@@ -732,7 +733,7 @@ class Queries:
     def getTags(self, option):
 
         # Building the SQL query
-        if($DBName == "perseus" ):
+        if(self.DBName == "perseus" ):
             qry =  "SELECT tagId,tagName,tagDescription,provideOrRequest "
             qry += "FROM taggy_tags "
 
@@ -860,7 +861,7 @@ class Queries:
         qry =  "SELECT * FROM taggy_sentences_tags "
         qry += "WHERE sentenceId = "+sentenceid
         qry += " AND postId = "+postid
-        ary += " AND annotatorId = "+annotatorid
+        qry += " AND annotatorId = "+annotatorid
 
         #execution of the query 'qry'
         qryResult = self.getData(qry)
@@ -1104,7 +1105,7 @@ class Queries:
     def getPostsInSet(self, setid, postState=''):
 
         #Building the SQL query 'qry'
-        if(DBName == "perseus"):
+        if(self.DBName == "perseus"):
             qry =  "SELECT taggy_posts.postId, taggy_forumId, taggy_topicId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "profileId, postState, content "
             qry += "FROM taggy_posts, taggy_posts_sets "
@@ -1215,7 +1216,7 @@ class Queries:
     def updateSet(self, setid, setposts):
 
         # Building the SQL query 'qry'
-        if(DBName == "perseus" ):
+        if(self.DBName == "perseus" ):
             qry =  "UPDATE taggy_posts, taggy_posts_sets "
             qry += "SET postState='INITIAL' "
             qry += "WHERE taggy_posts_sets.setId="+setid
@@ -1250,7 +1251,7 @@ class Queries:
                             status = self.getData(qry)
 
                             if(status):
-                                if(DBName == "perseus" ):
+                                if(self.DBName == "perseus" ):
                                     qry = "UPDATE taggy_posts SET postState='SELECTED' WHERE postId="+tok
                                     status = self.getData(qry)
 
