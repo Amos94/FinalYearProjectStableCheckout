@@ -4,21 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/taggy/modules/tag/TagLookUpTable.py" line="0" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FYP/settings.py" afterPath="$PROJECT_DIR$/FYP/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/about.html" afterPath="$PROJECT_DIR$/taggy/templates/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/adjudication.html" afterPath="$PROJECT_DIR$/taggy/templates/adjudication.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/annotation.html" afterPath="$PROJECT_DIR$/taggy/templates/annotation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/base.html" afterPath="$PROJECT_DIR$/taggy/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/create_set.html" afterPath="$PROJECT_DIR$/taggy/templates/create_set.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/delete_set.html" afterPath="$PROJECT_DIR$/taggy/templates/delete_set.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/edit_set.html" afterPath="$PROJECT_DIR$/taggy/templates/edit_set.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/fail.html" afterPath="$PROJECT_DIR$/taggy/templates/fail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/index.html" afterPath="$PROJECT_DIR$/taggy/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/success.html" afterPath="$PROJECT_DIR$/taggy/templates/success.html" />
-    </list>
+    <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="" />
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -119,7 +105,7 @@
       <file leaf-file-name="success.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taggy/templates/success.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
+            <state relative-caret-position="433">
               <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
               <folding />
             </state>
@@ -1078,7 +1064,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487068448644</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Delete Sets menu">
+      <created>1487078138934</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1487078138934</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1094,13 +1087,13 @@
     <frame x="4" y="23" width="1436" height="877" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2374462" sideWeight="0.4935275" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2374462" sideWeight="0.4935275" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32866243" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31082803" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31082803" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20788912" sideWeight="0.50647247" order="2" side_tool="true" content_ui="tabs" />
@@ -1148,7 +1141,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="have to close the proj. Will be back asap" />
     <MESSAGE value="Adjudicated Post added" />
     <MESSAGE value="Adjudicated Post - finished" />
     <MESSAGE value="Sentence - finished" />
@@ -1173,7 +1165,8 @@
     <MESSAGE value="PAGINATION CONCEPT ADDED" />
     <MESSAGE value="Solved errors in Queries" />
     <MESSAGE value="Much progress done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Much progress done" />
+    <MESSAGE value="Delete Sets menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete Sets menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1478,7 +1471,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/success.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
+        <state relative-caret-position="433">
           <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
           <folding />
         </state>
