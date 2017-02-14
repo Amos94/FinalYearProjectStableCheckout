@@ -133,8 +133,31 @@ def deleteSet(request, setid=-1):
     userId = 1
     postCase = 0
 
+    qry = Queries()
+
+    if (request.method == 'GET'):
+
+        if (request.get_full_path() != '/set/delete/'):
+            path = request.get_full_path()
+            setid = path.split('/set/delete/')[1]
+            setid = setid.rstrip('/')
+
+    if (setid == -1):
+        if (userType == "ADMIN_TYPE"):
+            results = qry.getSets()
+        else:
+            results = qry.getSetsByCreator(userId)
+    else:
+        results = qry.getSetMeta(setid)
+        setname = results[1]
+
+
     context = {'pageName': pageName, 'setid': setid, 'results': results, 'postCase': postCase}
-    return render(request, "edit_set.html", context)
+    return render(request, "delete_set.html", context)
+
+
+
+
 
 def successPage(request):
     pageName = "Success"
