@@ -1,4 +1,10 @@
+from django.http import Http404
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import resolve
+from django.utils.six.moves.urllib.parse import urlparse
+from forms import CreateSet, UpdateSet
+from taggy.modules.Queries import Queries
 from taggy.modules.users import User as User
 
 # Create your views here.
@@ -37,3 +43,108 @@ def adjudication(request):
     context = {"pageName":pageName}
 
     return render(request, "adjudication.html", context)
+
+def setCreate(request):
+    pageName = "Create Set"
+    sessionId = 'null'
+    qry = Queries()
+    context = {"pageName": pageName, "sessionId": sessionId}
+    if(request.method == 'POST'):
+        #TO CHANGE THE USER WHEN THE USER ROLE IS READY
+        form = CreateSet(request.POST)
+        if(form.is_valid()):
+            setname = form.cleaned_data['setname']
+            setdescr = form.cleaned_data['setdescr']
+            result = qry.insertSet(setname, setdescr, '1')
+
+            if(result == 1):
+                return HttpResponseRedirect('/success/')
+            else:
+                return HttpResponseRedirect('/fail/')
+
+
+    else:
+        form = CreateSet()
+
+
+    return render(request, "create_set.html", {'form':form})
+
+def editSet(request, setid=-1):
+    pageName = 'Edit Set'
+    userType = "ADMIN_TYPE"
+    userId = 1
+    postCase = 0
+
+    qry = Queries()
+
+    if(request.method == 'GET'):
+
+        if(request.get_full_path() != '/set/edit/'):
+            path = request.get_full_path()
+            setid = path.split('/set/edit/')[1]
+            setid = setid.rstrip('/')
+
+    if(setid == -1):
+        if(userType == "ADMIN_TYPE"):
+            results = qry.getSets()
+        else:
+            results = qry.getSetsByCreator(userId)
+    elif(request.POST.get('updateset')):
+        results = qry.getSetMeta(setid)
+        setname = results[1]
+        qry.updateSet(setid, request.POST.get('updateset'))
+        results = qry.getSet(setid)
+
+        postCase = 1
+    else:
+        results = qry.getSetMeta(setid)
+        setname = results[1]
+        results = qry.getSet(setid)
+        updateset = ""
+        for result in results:
+            updateset = updateset + str(result[0]) + "\n"
+
+        context = {'pageName': pageName, 'setid': setid, 'results': results, 'postCase': postCase,'updateset': updateset}
+
+        if (request.method == 'POST'):
+            # TO CHANGE THE USER WHEN THE USER ROLE IS READY
+            form = UpdateSet(request.POST)
+            if (form.is_valid()):
+                textarea = form.cleaned_data['updateset']
+                print(textarea)
+                result = qry.getSet(setid)
+
+                if (result == 1):
+                    return HttpResponseRedirect('/success/')
+                else:
+                    return HttpResponseRedirect('/fail/')
+
+
+        else:
+            form = UpdateSet()
+
+    context = {'pageName': pageName, 'setid': setid, 'results':results, 'postCase':postCase}
+    return render(request, "edit_set.html", context)
+
+
+def deleteSet(request, setid=-1):
+    pageName = 'Delete Set'
+    userType = "ADMIN_TYPE"
+    userId = 1
+    postCase = 0
+
+    context = {'pageName': pageName, 'setid': setid, 'results': results, 'postCase': postCase}
+    return render(request, "edit_set.html", context)
+
+def successPage(request):
+    pageName = "Success"
+    context = {'pageName': pageName}
+
+    return render(request, "success.html", context)
+
+def failPage(request):
+    pageName = "FAIL"
+    context = {'pageName': pageName}
+
+
+    return render(request, "fail.html", context)

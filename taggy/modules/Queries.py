@@ -3,17 +3,18 @@ import random
 #import MySQLdb
 import MySQLdb
 from django.db.models import Q as Q
-from taggy.models import Annotators as Annotators
+import taggy.models
 from taggy.models import Posts as Posts
 from taggy.models import Posts_annotators as Posts_annotators
 from django.db import connection
+from FYP import settings
 
 class Queries:
 
     DBName = ''
 
     def __init__(self):
-        DBName = 'persus'
+        self.DBName = "perseus"
 
     #THIS FUNCTION IS FOR CODE OPTIMIZATION AS IS USED TO RETRIEVE DATA FROM A QUERY
     #ALL FUNCTIONS BELOW THIS FUNCTION, WILL USE getData()
@@ -29,11 +30,20 @@ class Queries:
     #gets just one
     def getOne(self,qry):
         # execution of the query 'qry'
+
         with connection.cursor() as cursor:
             cursor.execute(qry)
             # fetching all data of the query 'qry'
             qryResult = cursor.fetchone()
         return qryResult
+
+    def insertOrUpdate(self, qry):
+        # execution of the query 'qry'
+        with connection.cursor() as cursor:
+            res = cursor.execute(qry)
+            # fetching all data of the query 'qry'
+
+            return res
 
 
     #----- FUNCTIONS THAT HANDLE ANNOTATORS -------------------------------------
@@ -51,11 +61,11 @@ class Queries:
     def getAnnotators(self, username='', userid=None):
 
         if (username != ''):
-            qryResult = Annotators.objects.filter(username__exact=username)
+            qryResult = taggy.models.Annotators.objects.filter(username__exact=username)
         elif (userid != None):
-            qryResult = Annotators.objects.filter(annotatorId__exact=userid)
+            qryResult = taggy.models.Annotators.objects.filter(annotatorId__exact=userid)
         else:
-            qryResult = Annotators.objects.all()
+            qryResult = taggy.models.Annotators.objects.all()
 
         return qryResult
 
@@ -183,7 +193,7 @@ class Queries:
 
     def insertAnnotator(self,  username, password, usertype='ANNOT_TYPE'):
         # Building the SQL query
-        qry =  "INSERT INTO  annotators (username, password, usertype) "
+        qry =  "INSERT INTO  taggy_annotators (username, password, usertype) "
         qry += "VALUES ('"+username+"','"+password+"','"+usertype+"')"
 
 
@@ -398,7 +408,7 @@ class Queries:
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "profileId,postState,content "
             qry += "FROM taggy_posts "
-            qry += "WHERE postID="+postid+" "
+            qry += "WHERE postID="+str(postid)+" "
             qry += "AND (postState='PARSED' OR "
             qry +=      "postState='ANNOTATED' OR "
             qry +=      "postState='ADJUDICATED')"
@@ -407,7 +417,7 @@ class Queries:
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "postState,content "
             qry += "FROM taggy_posts "
-            qry += "WHERE postId="+postid+" "
+            qry += "WHERE postId="+str(postid)+" "
             qry += "AND (postState='PARSED' OR "
             qry +=      "postState='ANNOTATED' OR "
             qry +=      "postState='ADJUDICATED')"
@@ -993,7 +1003,7 @@ class Queries:
         #Building the SQL query 'qry'
         qry =  "SELECT setId,name,description,username AS creator "
         qry += "FROM taggy_sets, taggy_annotators "
-        qry += "WHERE taggy_annotators.annotatorId = taggy_sets.creatorId "
+        qry += "WHERE taggy_annotators.annotatorId = taggy_sets.creatordId "
         qry += "ORDER BY setId"
 
         #execution of the query 'qry'
@@ -1081,12 +1091,12 @@ class Queries:
     def getSetMeta(self, setid):
 
         # Building the SQL query 'qry'
-        qry = "SELECT setId,name,description "
+        qry = "SELECT setId, name, description "
         qry += "FROM taggy_sets "
-        qry += "WHERE setId="+setid+" "
+        qry += "WHERE setId="+str(setid)+" "
 
         # execution of the query 'qry'
-        qryResult = self.getData(qry)
+        qryResult = self.getOne(qry)
 
         # return the data
         return qryResult
@@ -1192,14 +1202,12 @@ class Queries:
     def insertSet(self, setname, setdescription, creatorid):
 
         # Building the SQL query 'qry'
-        qry =  "INSERT INTO taggy_sets (name, description, creatorId) "
-        qry += "VALUES ('"+setname+"','"+setdescription+"',"+creatorid+")"
+        qry =  "INSERT INTO taggy_sets (name, description, creatordId) "
+        qry += "VALUES ('"+setname+"','"+setdescription+"','"+str(creatorid)+"')"
 
         # execution of the query 'qry'
-        status = self.getData(qry)
-
-        # return the data
-        return status
+        res = self.insertOrUpdate(qry)
+        return res
 
 
 

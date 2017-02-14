@@ -26,6 +26,7 @@
             </div>
                   <div class="col-sm-3 col-md-2 pull-right">
           <form class="navbar-form" role="search">
+              {% csrf_token %}
               <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search" name="q">
                   <div class="input-group-btn">
@@ -50,20 +51,71 @@
             </ul>
         </div>
 
-        <p class="bg-warning text-center" style="margin-top:6.5%;">Hello, <font color='#d12b07'>{{ user }}</font>. Your current user type is: <font color='#d12b07'>{{ userType }}</font>.</p>
+        <p class="bg-warning text-center" style="margin-top:6.5%;">Current user: <font color='#d12b07'>{{ user }}</font>. Your current user type is: <font color='#d12b07'>{{ userType }}</font>.</p>
     </header>
 
-    <div class="jumbotron text-center col-md-6 col-md-offset-3">
-      <h2 class="text-center">Navigation Menu</h2>
-      <ul class="nav nav-pills nav-stacked">
-          <li role="presentation" class="active"><a href="#">Home</a></li>
-          <li role="presentation"><a href="admin">Administration board</a></li>
-          <li role="presentation"><a href="annotation">Annotation</a></li>
-          <li role="presentation"><a href="adjudication">Adjudication</a></li>
-          <li role="presentation"><a href="about">About</a></li>
-      </ul>
-    </div>
+    <div class="jumbotron text-center col-md-10 col-md-offset-1">
+        {% if setid == -1 %}
+            <p>Click on <strong>set id</strong> to edit that set.</p>
+            <br />
+            <p align="left">Sets:</p>
 
+
+        <div class='scrollLongList'>
+            <table class="table table-striped table-hover table-condensed">
+                <tr><th>Set id</th><th>Name</th><th>Description</th></tr>
+
+                {% for result in results %}
+                    <tr align=left>
+                        <td>
+                            <a href="{{ result.0 }}">{{result.0}}</a>
+                        </td>
+                        <td>{{result.1}}</td>
+                        <td>{{result.2}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% elif postCase == 1%}
+            <a href="/set/edit">[go back to list of sets]</a>
+            <p>Set content is now: </p>
+
+            {% for result in results %}
+                    <tr align=left>
+                        <td>
+                            <a href="{{ result.0 }}">{{result.0}}</a>
+                        </td>
+                        <td>{{result.1}}</td>
+                        <td>{{result.2}}</td>
+                    </tr>
+            {% endfor %}
+
+
+        {% else %}
+            <a href="/set/edit">[go back to list of sets]</a>
+            <p>Set content is now: </p>
+            {% for result in results %}
+                    <tr align=left>
+                        <td>
+                            <a href="{{ result.0 }}">{{result.0}}</a>
+                        </td>
+                        <td>{{result.1}}</td>
+                        <td>{{result.2}}</td>
+
+                    </tr>
+            {% endfor %}
+            <form action="/set/edit/{{ setid }}" method="POST">
+            <center>
+                {% csrf_token %}
+                {{ form.updateset }}
+                </br/></br/>
+                <input type="submit" class="btn btn-primary" value="Submit"/>
+            </center>
+            </form>
+        {% endif %}
+        <strong>TO DEBUG</strong><br /><strong>It doesn't update(POST METHOD PROBLEM)</strong><br /><br />
+        DON'T FORGET TO ADD PAGINATION
+    </div>
 
 
 </body>

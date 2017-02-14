@@ -8,6 +8,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+    function redirect(){
+       window.location.href = "/";
+    }
+
+    setTimeout(redirect, 3000); //2000 is equivalent to 2 seconds
+</script>
 </head>
 <body style="background-color: #e9ebee">
     <header>
@@ -22,9 +30,10 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/" style="font-family: 'Raleway';font-size: 40px;"><font color="white"><strong>T.A.G.G.Y.</strong></font></a>
-
             </div>
+
                   <div class="col-sm-3 col-md-2 pull-right">
+
           <form class="navbar-form" role="search">
               <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search" name="q">
@@ -49,19 +58,12 @@
                 <li><a href="/set/edit">Edit sets</a></li>
             </ul>
         </div>
-
         <p class="bg-warning text-center" style="margin-top:6.5%;">Hello, <font color='#d12b07'>{{ user }}</font>. Your current user type is: <font color='#d12b07'>{{ userType }}</font>.</p>
     </header>
 
     <div class="jumbotron text-center col-md-6 col-md-offset-3">
-      <h2 class="text-center">Navigation Menu</h2>
-      <ul class="nav nav-pills nav-stacked">
-          <li role="presentation" class="active"><a href="#">Home</a></li>
-          <li role="presentation"><a href="admin">Administration board</a></li>
-          <li role="presentation"><a href="annotation">Annotation</a></li>
-          <li role="presentation"><a href="adjudication">Adjudication</a></li>
-          <li role="presentation"><a href="about">About</a></li>
-      </ul>
+        <h2 class="text-center"><font color='green'>SUCCESS!</font></h2>
+        <p>Your operation has been completed successfully.</p>
     </div>
 
 

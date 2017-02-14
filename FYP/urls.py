@@ -19,7 +19,10 @@ from taggy.views import index as index
 from taggy.views import about as about
 from taggy.views import annotation as annotation
 from taggy.views import adjudication as adjudication
-
+from taggy.views import setCreate as setCreate
+from taggy.views import successPage as success
+from taggy.views import failPage as fail
+from taggy.views import editSet as editSet
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +30,11 @@ urlpatterns = [
     url(r'^about/', about, name="about"),
     url(r'^annotation/', annotation, name="annotation"),
     url(r'^adjudication/', adjudication, name="adjudication"),
+    url(r'^set/create/', setCreate, name="create_set"),
+    url(r'^set/edit/', editSet, name="edit_set"),
+    url(r'^set/delete/', editSet, name="edit_set"),
+    url(r'success/', success, name="success"),
+    url(r'fail/', fail, name="fail")
 ]
 admin.site.site_header = 'T.A.G.G.Y. ADMINISTRATION BOARD'
 admin.site.site_title = 'T.A.G.G.Y.'
