@@ -29,3 +29,17 @@ class UpdateSet(forms.Form):
             })
 
     updateset = forms.Textarea()
+
+class DeleteSet(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(UpdateSet, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            if (field == 'updateset'):
+                placeholder = 'Set'
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'style': 'width:50%;',
+                'placeholder': placeholder
+            })
+
+    updateset = forms.Textarea()

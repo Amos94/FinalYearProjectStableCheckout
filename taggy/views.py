@@ -135,7 +135,7 @@ def deleteSet(request, setid=-1):
 
     qry = Queries()
 
-    if (request.method == 'GET'):
+    if (request.method == 'GET' or request.method == 'POST'):
 
         if (request.get_full_path() != '/set/delete/'):
             path = request.get_full_path()
@@ -151,13 +151,24 @@ def deleteSet(request, setid=-1):
         results = qry.getSetMeta(setid)
         setname = results[1]
 
+    if (request.method == 'POST'):
+        # TO CHANGE THE USER WHEN THE USER ROLE IS READY
+
+        result = qry.deleteSet(setid)
+        print(result)
+
+        if (result == 1):
+            return HttpResponseRedirect('/success/')
+        else:
+            return HttpResponseRedirect('/fail/')
+
 
     context = {'pageName': pageName, 'setid': setid, 'results': results, 'postCase': postCase}
     return render(request, "delete_set.html", context)
 
 
-
-
+def assignSet(self):
+    print("Assign Set method")
 
 def successPage(request):
     pageName = "Success"

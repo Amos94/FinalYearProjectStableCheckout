@@ -79,19 +79,9 @@
         </div>
 
         {% else %}
-            <a href="/set/delete">[go back to list of sets]</a>
-            <p>Set content is now: </p>
+            <h3><a href="/set/delete">[go back to list of sets]</a></h3>
             <center>
-                <table class="table table-striped" style="width:70%;">
-                    <tr align=left><th>Set id</th><th>Name</th><th>Description</th></tr>
-                        <tr align=left>
-                            <td>
-                                <a href="{{ results.0 }}">{{results.0}}</a>
-                            </td>
-                            <td>{{results.1}}</td>
-                            <td>{{results.2}}</td>
-                        </tr>
-                </table>
+                <h3 class="text-danger">Are you sure you want to DELETE set number: {{ results.0 }}</h3>
             </center>
             <div class="form-inline">
                 <form action="/set/delete/{{ setid }}" method="POST">
@@ -99,13 +89,11 @@
                         {% csrf_token %}
                         </br/></br/>
                         <input type="submit" class="btn btn-danger" value="Delete"/>
-                        <a href="/set/delete"><button class="btn btn-primary">Cancel</button></a><br/>
                     </center>
                 </form>
 
             </div>
         {% endif %}
-        <strong>TO DEBUG</strong><br /><strong>It doesn't update(POST METHOD PROBLEM)</strong><br /><br />
     </div>
 
 

@@ -1071,7 +1071,7 @@ class Queries:
         #Building the SQL query 'qry'
         qry =  "SELECT postId "
         qry += "FROM taggy_posts_sets "
-        qry += "WHERE setId = "+setid+" "
+        qry += "WHERE setId = "+str(setid)+" "
         qry += "ORDER BY postId"
 
         # execution of the query 'qry'
@@ -1284,14 +1284,15 @@ class Queries:
     *
     """
     def deleteSet(self, setid):
-        qry = "DELETE FROM taggy_annotators_sets WHERE setId="+setid+" "
-        self.getData(qry)
 
-        qry = "DELETE FROM taggy_posts_sets WHERE setId=" + setid + " "
-        self.getData(qry)
+        qry = "DELETE FROM taggy_annotators_sets WHERE setId='"+ str(setid) +"' "
+        self.insertOrUpdate(qry)
 
-        qry = "DELETE FROM taggy_sets WHERE setId=" + setid + " "
-        status = self.getData(qry)
+        qry = "DELETE FROM taggy_posts_sets WHERE setId='" + str(setid) + "' "
+        self.insertOrUpdate(qry)
+
+        qry = "DELETE FROM taggy_sets WHERE setId='" + str(setid) + "' "
+        status = self.insertOrUpdate(qry)
 
         return status
 
