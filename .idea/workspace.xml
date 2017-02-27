@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/modules/HelperMethods.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/modules/JsonParser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/templates/assign_set.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/taggy/JsonParser.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/2b4540fd-24e3-44bc-a71a-6e6853a5c056.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/2b4540fd-24e3-44bc-a71a-6e6853a5c056.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FYP/urls.py" afterPath="$PROJECT_DIR$/FYP/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/Queries.py" afterPath="$PROJECT_DIR$/taggy/modules/Queries.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/HelperMethods.py" afterPath="$PROJECT_DIR$/taggy/modules/HelperMethods.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/assign_set.html" afterPath="$PROJECT_DIR$/taggy/templates/assign_set.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/views.py" afterPath="$PROJECT_DIR$/taggy/views.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -26,7 +21,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/FinalYearProject2$JsonParser.coverage" NAME="JsonParser Coverage Results" MODIFIED="1488203807814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy" />
     <SUITE FILE_PATH="coverage/FinalYearProject2$KeyWordsExtractor.coverage" NAME="KeyWordsExtractor Coverage Results" MODIFIED="1485825982832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy/utils" />
-    <SUITE FILE_PATH="coverage/FinalYearProject2$manage.coverage" NAME="manage Coverage Results" MODIFIED="1488215606046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FinalYearProject2$manage.coverage" NAME="manage Coverage Results" MODIFIED="1488217462491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PROIECT DE LICENTA$manage.coverage" NAME="manage Coverage Results" MODIFIED="1486475489618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FinalYearProject2$HelperMethods.coverage" NAME="HelperMethods Coverage Results" MODIFIED="1488215610036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy/modules" />
     <SUITE FILE_PATH="coverage/FinalYearProject2$dbtest.coverage" NAME="dbtest Coverage Results" MODIFIED="1486858622421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy" />
@@ -55,94 +50,30 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="175" column="0" lean-forward="false" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="192">
+              <caret line="49" column="14" lean-forward="false" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HelperMethods.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HelperMethods.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/modules/HelperMethods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+            <state relative-caret-position="184">
+              <caret line="13" column="44" lean-forward="false" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taggy/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Queries.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding>
-                <marker date="1488215571054" expanded="true" signature="5368:5428" ph="INSERT INTO taggy_annotators" />
-                <marker date="1488215571054" expanded="true" signature="13795:13834" ph="SELECT COUNT... taggy_posts" />
-                <marker date="1488215571054" expanded="true" signature="16385:16503" ph="INSERT INTO taggy_posts_annotators... " />
-                <marker date="1488215571054" expanded="true" signature="19045:19092" ph="SELECT postS... taggy_posts" />
-                <marker date="1488215571054" expanded="true" signature="24101:24157" ph="SELECT tagId... taggy_tags" />
-                <marker date="1488215571054" expanded="true" signature="26113:26147" ph="SELECT * FRO... taggy_sentences_tags" />
-                <marker date="1488215571054" expanded="true" signature="26823:26871" ph="SELECT COUNT... taggy_sentences_tags" />
-                <marker date="1488215571054" expanded="true" signature="28741:28821" ph="INSERT INTO taggy_sentences_tags... " />
-                <marker date="1488215571054" expanded="true" signature="29509:29541" ph="DELETE FROM " />
-                <marker date="1488215571054" expanded="true" signature="36297:36351" ph="INSERT INTO taggy_sets... " />
-                <marker date="1488215571054" expanded="true" signature="37360:37401" ph="DELETE FROM " />
-                <marker date="1488215571054" expanded="true" signature="37600:37710" ph="SELECT COUNT... " />
-                <marker date="1488215571054" expanded="true" signature="37884:37944" ph="SELECT COUNT... " />
-                <marker date="1488215571054" expanded="true" signature="38165:38208" ph="INSERT INTO taggy_posts_sets... " />
-                <marker date="1488215571054" expanded="true" signature="38478:38535" ph="UPDATE taggy... " />
-                <marker date="1488215571054" expanded="true" signature="39286:39350" ph="DELETE FROM " />
-                <marker date="1488215571054" expanded="true" signature="39402:39463" ph="DELETE FROM " />
-                <marker date="1488215571054" expanded="true" signature="39515:39570" ph="DELETE FROM " />
-                <marker date="1488215571054" expanded="true" signature="40605:40660" ph="INSERT INTO taggy_annotators_sets" />
-                <marker date="1488215571054" expanded="true" signature="41151:41184" ph="DELETE FROM " />
-                <marker date="1488215571054" expanded="true" signature="42154:42201" ph="SELECT * FRO... taggy_sentneces" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="delete_set.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taggy/templates/delete_set.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FYP/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="37" column="55" lean-forward="false" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
-              <folding>
-                <element signature="e#637#669#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="assign_set.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="assign_set.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taggy/templates/assign_set.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="59" column="10" lean-forward="true" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="60" selection-end-column="24" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#nav#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -154,12 +85,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FYP/settings.py">
+      <file leaf-file-name="Queries.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="390">
+              <caret line="1005" column="72" lean-forward="false" selection-start-line="1005" selection-start-column="72" selection-end-line="1005" selection-end-column="72" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+                <marker date="1488217340950" expanded="true" signature="5368:5428" ph="INSERT INTO taggy_annotators" />
+                <marker date="1488217340950" expanded="true" signature="13795:13834" ph="SELECT COUNT... taggy_posts" />
+                <marker date="1488217340950" expanded="true" signature="16385:16503" ph="INSERT INTO taggy_posts_annotators... " />
+                <marker date="1488217340950" expanded="true" signature="19045:19092" ph="SELECT postS... taggy_posts" />
+                <marker date="1488217340950" expanded="true" signature="24101:24157" ph="SELECT tagId... taggy_tags" />
+                <marker date="1488217340950" expanded="true" signature="26113:26147" ph="SELECT * FRO... taggy_sentences_tags" />
+                <marker date="1488217340950" expanded="true" signature="26823:26871" ph="SELECT COUNT... taggy_sentences_tags" />
+                <marker date="1488217340950" expanded="true" signature="28741:28821" ph="INSERT INTO taggy_sentences_tags... " />
+                <marker date="1488217340950" expanded="true" signature="29509:29541" ph="DELETE FROM " />
+                <marker date="1488217340950" expanded="true" signature="36297:36351" ph="INSERT INTO taggy_sets... " />
+                <marker date="1488217340950" expanded="true" signature="37360:37401" ph="DELETE FROM " />
+                <marker date="1488217340950" expanded="true" signature="37600:37710" ph="SELECT COUNT... " />
+                <marker date="1488217340950" expanded="true" signature="37884:37944" ph="SELECT COUNT... " />
+                <marker date="1488217340950" expanded="true" signature="38165:38208" ph="INSERT INTO taggy_posts_sets... " />
+                <marker date="1488217340950" expanded="true" signature="38478:38535" ph="UPDATE taggy... " />
+                <marker date="1488217340950" expanded="true" signature="39286:39350" ph="DELETE FROM " />
+                <marker date="1488217340950" expanded="true" signature="39402:39463" ph="DELETE FROM " />
+                <marker date="1488217340950" expanded="true" signature="39515:39570" ph="DELETE FROM " />
+                <marker date="1488217340950" expanded="true" signature="40605:40660" ph="INSERT INTO taggy_annotators_sets" />
+                <marker date="1488217340950" expanded="true" signature="41151:41184" ph="DELETE FROM " />
+                <marker date="1488217340950" expanded="true" signature="42154:42201" ph="SELECT * FRO... taggy_sentneces" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -249,11 +203,11 @@
         <option value="$PROJECT_DIR$/taggy/templates/delete_set.html" />
         <option value="$PROJECT_DIR$/taggy/JsonParser.py" />
         <option value="$PROJECT_DIR$/taggy/modules/JsonParser.py" />
-        <option value="$PROJECT_DIR$/taggy/templates/assign_set.html" />
         <option value="$PROJECT_DIR$/FYP/urls.py" />
-        <option value="$PROJECT_DIR$/taggy/modules/Queries.py" />
         <option value="$PROJECT_DIR$/taggy/modules/HelperMethods.py" />
+        <option value="$PROJECT_DIR$/taggy/modules/Queries.py" />
         <option value="$PROJECT_DIR$/taggy/views.py" />
+        <option value="$PROJECT_DIR$/taggy/templates/assign_set.html" />
       </list>
     </option>
   </component>
@@ -1121,7 +1075,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488052175972</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="changes">
+      <created>1488216267317</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1488216267317</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1191,7 +1152,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Adjudicated Post - finished" />
     <MESSAGE value="Sentence - finished" />
     <MESSAGE value="AnnotatedSentence - added and questions about args in constructor" />
     <MESSAGE value="AnnotatedSentence - finished&#10;AdjudicatedSentence - added" />
@@ -1216,7 +1176,8 @@
     <MESSAGE value="Much progress done" />
     <MESSAGE value="Delete Sets menu" />
     <MESSAGE value="BACK. MUST FIND ANOTHER METHOD TO MAKE THE LOGIN AND USERS." />
-    <option name="LAST_COMMIT_MESSAGE" value="BACK. MUST FIND ANOTHER METHOD TO MAKE THE LOGIN AND USERS." />
+    <MESSAGE value="changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1481,36 +1442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <marker date="1488215571054" expanded="true" signature="5368:5428" ph="INSERT INTO taggy_annotators" />
-            <marker date="1488215571054" expanded="true" signature="13795:13834" ph="SELECT COUNT... taggy_posts" />
-            <marker date="1488215571054" expanded="true" signature="16385:16503" ph="INSERT INTO taggy_posts_annotators... " />
-            <marker date="1488215571054" expanded="true" signature="19045:19092" ph="SELECT postS... taggy_posts" />
-            <marker date="1488215571054" expanded="true" signature="24101:24157" ph="SELECT tagId... taggy_tags" />
-            <marker date="1488215571054" expanded="true" signature="26113:26147" ph="SELECT * FRO... taggy_sentences_tags" />
-            <marker date="1488215571054" expanded="true" signature="26823:26871" ph="SELECT COUNT... taggy_sentences_tags" />
-            <marker date="1488215571054" expanded="true" signature="28741:28821" ph="INSERT INTO taggy_sentences_tags... " />
-            <marker date="1488215571054" expanded="true" signature="29509:29541" ph="DELETE FROM " />
-            <marker date="1488215571054" expanded="true" signature="36297:36351" ph="INSERT INTO taggy_sets... " />
-            <marker date="1488215571054" expanded="true" signature="37360:37401" ph="DELETE FROM " />
-            <marker date="1488215571054" expanded="true" signature="37600:37710" ph="SELECT COUNT... " />
-            <marker date="1488215571054" expanded="true" signature="37884:37944" ph="SELECT COUNT... " />
-            <marker date="1488215571054" expanded="true" signature="38165:38208" ph="INSERT INTO taggy_posts_sets... " />
-            <marker date="1488215571054" expanded="true" signature="38478:38535" ph="UPDATE taggy... " />
-            <marker date="1488215571054" expanded="true" signature="39286:39350" ph="DELETE FROM " />
-            <marker date="1488215571054" expanded="true" signature="39402:39463" ph="DELETE FROM " />
-            <marker date="1488215571054" expanded="true" signature="39515:39570" ph="DELETE FROM " />
-            <marker date="1488215571054" expanded="true" signature="40605:40660" ph="INSERT INTO taggy_annotators_sets" />
-            <marker date="1488215571054" expanded="true" signature="41151:41184" ph="DELETE FROM " />
-            <marker date="1488215571054" expanded="true" signature="42154:42201" ph="SELECT * FRO... taggy_sentneces" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/delete_set.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-136">
@@ -1519,12 +1450,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FYP/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="37" column="55" lean-forward="false" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
           <folding>
-            <element signature="e#637#669#0" expanded="true" />
+            <element signature="e#637#669#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1537,20 +1478,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/models.py">
+    <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        <state relative-caret-position="390">
+          <caret line="1005" column="72" lean-forward="false" selection-start-line="1005" selection-start-column="72" selection-end-line="1005" selection-end-column="72" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1488217340950" expanded="true" signature="5368:5428" ph="INSERT INTO taggy_annotators" />
+            <marker date="1488217340950" expanded="true" signature="13795:13834" ph="SELECT COUNT... taggy_posts" />
+            <marker date="1488217340950" expanded="true" signature="16385:16503" ph="INSERT INTO taggy_posts_annotators... " />
+            <marker date="1488217340950" expanded="true" signature="19045:19092" ph="SELECT postS... taggy_posts" />
+            <marker date="1488217340950" expanded="true" signature="24101:24157" ph="SELECT tagId... taggy_tags" />
+            <marker date="1488217340950" expanded="true" signature="26113:26147" ph="SELECT * FRO... taggy_sentences_tags" />
+            <marker date="1488217340950" expanded="true" signature="26823:26871" ph="SELECT COUNT... taggy_sentences_tags" />
+            <marker date="1488217340950" expanded="true" signature="28741:28821" ph="INSERT INTO taggy_sentences_tags... " />
+            <marker date="1488217340950" expanded="true" signature="29509:29541" ph="DELETE FROM " />
+            <marker date="1488217340950" expanded="true" signature="36297:36351" ph="INSERT INTO taggy_sets... " />
+            <marker date="1488217340950" expanded="true" signature="37360:37401" ph="DELETE FROM " />
+            <marker date="1488217340950" expanded="true" signature="37600:37710" ph="SELECT COUNT... " />
+            <marker date="1488217340950" expanded="true" signature="37884:37944" ph="SELECT COUNT... " />
+            <marker date="1488217340950" expanded="true" signature="38165:38208" ph="INSERT INTO taggy_posts_sets... " />
+            <marker date="1488217340950" expanded="true" signature="38478:38535" ph="UPDATE taggy... " />
+            <marker date="1488217340950" expanded="true" signature="39286:39350" ph="DELETE FROM " />
+            <marker date="1488217340950" expanded="true" signature="39402:39463" ph="DELETE FROM " />
+            <marker date="1488217340950" expanded="true" signature="39515:39570" ph="DELETE FROM " />
+            <marker date="1488217340950" expanded="true" signature="40605:40660" ph="INSERT INTO taggy_annotators_sets" />
+            <marker date="1488217340950" expanded="true" signature="41151:41184" ph="DELETE FROM " />
+            <marker date="1488217340950" expanded="true" signature="42154:42201" ph="SELECT * FRO... taggy_sentneces" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="49" column="14" lean-forward="false" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/modules/HelperMethods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="13" column="44" lean-forward="false" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/assign_set.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="59" column="10" lean-forward="true" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="60" selection-end-column="24" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#nav#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1558,22 +1538,6 @@
             <element signature="n#style#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="175" column="0" lean-forward="false" selection-start-line="175" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/modules/HelperMethods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>

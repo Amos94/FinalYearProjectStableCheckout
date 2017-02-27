@@ -6,9 +6,9 @@ from django.utils.six.moves.urllib.parse import urlparse
 from forms import CreateSet, UpdateSet
 from taggy.modules.Queries import Queries
 from taggy.modules.users import User as User
+from taggy.modules.HelperMethods import HelperMethods
 
 # Create your views here.
-
 def index(request):
     pageName = "index"
     user = 'null'
@@ -47,6 +47,7 @@ def adjudication(request):
 def setCreate(request):
     pageName = "Create Set"
     sessionId = 'null'
+    userid = 0
     qry = Queries()
     context = {"pageName": pageName, "sessionId": sessionId}
     if(request.method == 'POST'):
@@ -55,7 +56,7 @@ def setCreate(request):
         if(form.is_valid()):
             setname = form.cleaned_data['setname']
             setdescr = form.cleaned_data['setdescr']
-            result = qry.insertSet(setname, setdescr, '1')
+            result = qry.insertSet(setname, setdescr, userid)
 
             if(result == 1):
                 return HttpResponseRedirect('/success/')
@@ -171,11 +172,13 @@ def assignSet(request):
     print("Assign Set method")
     pageName = 'Assign Set'
 
-    qry = Queries
+    qry = Queries()
+    helper = HelperMethods()
+
     results = qry.getSets()
+    annotators = helper.annotators_lookup()
 
-
-    context = {'pageName': pageName, "results":results}
+    context = {'pageName': pageName, "results":results, "annotators":annotators}
     return render(request, "assign_set.html", context)
 
 

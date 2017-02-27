@@ -6,17 +6,14 @@ class HelperMethods():
 
     ####
     #SET ASSIGN HELPER METHODS
-    def annotators_lookup(self, qryObject):
-
-        """
-
-        :type qryObject: Queries
-        """
+    def annotators_lookup(self):
+        qryObject = Queries()
         a = []
         annotators_results = qryObject.getAnnotators()
 
         for annotator in annotators_results:
-            a[annotator['annotatorId']] = {'name':annotator['username'], 'type':annotator['usertype']}
+            a.insert(annotator[0], {'name':annotator[1], 'type':annotator[3]})
+
 
         return a
 
@@ -25,9 +22,9 @@ class HelperMethods():
 
         annotators_results = qryObjdect.getAnnotatorsSets(setId)
         for annotator in annotators_results:
-            typeClass = "annotator" + self.ucfirst(annotators[annotator['annotatorID']]['type'])
-            divs += " <div id='a"+ annotators['annotatorID']+"' class='annotatorInstance annotator "+typeClass+"'>"
-            divs += annotators[annotator['annotatorID']]['name']
+            typeClass = "annotator" + self.ucfirst(annotators[annotator[0]][3])
+            divs += " <div id='a"+ annotators[0]+"' class='annotatorInstance annotator "+typeClass+"'>"
+            divs += annotators[annotator[0]][1]
             divs += "</div> "
 
 
