@@ -167,8 +167,17 @@ def deleteSet(request, setid=-1):
     return render(request, "delete_set.html", context)
 
 
-def assignSet(self):
+def assignSet(request):
     print("Assign Set method")
+    pageName = 'Assign Set'
+
+    qry = Queries
+    results = qry.getSets()
+
+
+    context = {'pageName': pageName, "results":results}
+    return render(request, "assign_set.html", context)
+
 
 def successPage(request):
     pageName = "Success"

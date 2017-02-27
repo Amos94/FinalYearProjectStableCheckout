@@ -3,9 +3,7 @@ import random
 #import MySQLdb
 import MySQLdb
 from django.db.models import Q as Q
-import taggy.models
-from taggy.models import Posts as Posts
-from taggy.models import Posts_annotators as Posts_annotators
+
 from django.db import connection
 from FYP import settings
 
@@ -59,14 +57,16 @@ class Queries:
    * @param text $userid  (alternatively) query by annotatorID argument
     """
     def getAnnotators(self, username='', userid=None):
+        qry = 'SELECT annotatorId,username,password,usertype '
+        qry += 'FROM taggy_annotators '
 
         if (username != ''):
-            qryResult = taggy.models.Annotators.objects.filter(username__exact=username)
+            qry += "WHERE username='"+username+"'"
         elif (userid != None):
-            qryResult = taggy.models.Annotators.objects.filter(annotatorId__exact=userid)
-        else:
-            qryResult = taggy.models.Annotators.objects.all()
+            qry += "WHERE annotatorId='"+userid+"'"
 
+
+        qryResult = self.getData(qry)
         return qryResult
 
 
@@ -85,12 +85,12 @@ class Queries:
     def getAnnotatorsForPost(self, postid):
 
         #Building the SQL query
-        qry =  "SELECT TAGGY_posts_annotators.annotatorId, TAGGY_annotators.username "
-        qry += "FROM TAGGY_post_annotators, TAGGY_annotators "
+        qry =  "SELECT taggy_posts_annotators.annotatorId, taggy_annotators.username "
+        qry += "FROM taggy_post_annotators, TAGGY_annotators "
         qry += "WHERE postId='"+postid+"' "
-        qry += "AND TAGGY_annotators.usertype='ANNOT_TYPE' "
-        qry += "AND TAGGY_posts_annotators.annotatorId = TAGGY_annotators.annotatorId "
-        qry += "ORDER BY TAGGY_posts_annotators.annotatorId"
+        qry += "AND taggy_annotators.usertype='ANNOT_TYPE' "
+        qry += "AND taggy_posts_annotators.annotatorId = taggy_annotators.annotatorId "
+        qry += "ORDER BY taggy_posts_annotators.annotatorId"
 
         #execution of the query 'qry'
         qryResult = self.getData(qry)
