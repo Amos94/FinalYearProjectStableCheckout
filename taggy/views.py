@@ -190,6 +190,45 @@ def assignSet(request):
     return render(request, "assign_set.html", context)
 
 
+
+def browseSet(request, setId=None, postId=None):
+    pageName = 'Browse'
+    userType = 'admin'
+    userId = 0
+    dbname = 'perseus'
+    qryObject = Queries()
+    Results = []
+
+    print(int(request.GET['s']))
+    print(int(request.GET['p']))
+
+    if(int(request.GET['s']) != None):
+        setId = int(request.GET['s'])
+    else:
+        setId = -1
+
+
+    if (int(request.GET['p']) != None):
+        setId = int(request.GET['p'])
+    else:
+        setId = -1
+
+    if(setId == -1):
+        if(userType == 'admin'):
+            results = qryObject.getSets()
+        else:
+            results = qryObject.getSetsByCreator(userId)
+    elif(postId == -1):
+        results = qryObject.getPostsInSet(setId)
+    else:
+        results = qryObject.getSentences(postId)
+
+    context = {'pageName': pageName, "results": results}
+    return render(request, "browse_set.html", context)
+
+
+
+
 def successPage(request):
     pageName = "Success"
     context = {'pageName': pageName}

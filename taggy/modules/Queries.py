@@ -822,7 +822,7 @@ class Queries:
         #Building the SQL query 'qry'
         qry =  "SELECT postId,sentenceId,sentence,paragraphInPost,sentenceInParagraph "
         qry += "FROM taggy_sentences "
-        qry += "WHERE postId="+postid+" "
+        qry += "WHERE postId="+str(postid)+" "
         qry += "ORDER BY paragraphInPost,sentenceInParagraph"
 
         # execution of the query 'qry'
@@ -844,7 +844,7 @@ class Queries:
         # Building the SQL query 'qry'
         qry =  "SELECT sentences.postId,sentenceId,sentence,paragraphInPost,sentenceInParagraph "
         qry += "FROM taggy_sentences,taggy_posts_sets "
-        qry += "WHERE setId="+setid+" "
+        qry += "WHERE setId="+str(setid)+" "
         qry += "AND posts_sets.postId=sentences.postId "
         qry += "ORDER BY postId,sentenceId,paragraphInPost,sentenceInParagraph"
 
