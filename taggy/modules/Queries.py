@@ -1314,7 +1314,7 @@ class Queries:
         qry += "FROM taggy_annotators_sets "
 
         if(setid):
-            qry += "WHERE setId='"+setid+"' "
+            qry += "WHERE setId='"+str(setid)+"' "
 
         qry += "ORDER BY  setId, annotatorId"
 

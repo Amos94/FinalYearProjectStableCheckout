@@ -174,11 +174,24 @@ def assignSet(request):
 
     qry = Queries()
     helper = HelperMethods()
+    annotators_divs = []
 
     results = qry.getSets()
     annotators = helper.annotators_lookup()
+    annotatorsSets = []
 
-    context = {'pageName': pageName, "results":results, "annotators":annotators}
+    for result in results:
+        annotatorsSets = qry.getAnnotatorsSets(result[0])
+
+        for a in annotatorsSets:
+            print(str(a[1]) + " SI "+ str(result[0]))
+            if(a[1] == results[0]):
+                print('TRUE')
+                annotators_divs.append(helper.annotatorssets_divs(annotators,result[0]))
+                print(annotators_divs)
+                print('TRUE')
+
+    context = {'pageName': pageName, "results":results, "annotators":annotators, "annotatorsSets_divs":annotators_divs}
     return render(request, "assign_set.html", context)
 
 
