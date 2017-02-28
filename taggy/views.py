@@ -229,12 +229,34 @@ def browseSet(request, setId=None, postId=None):
 
 
 
-def tagSet(request):
+def tagSet(request, setId=None):
 
     pageName = 'Tag Set'
+    userType = 'admin'
+    userId = 0
+    i=0
+    qryObject = Queries()
+    results = []
+    annsts = []
 
 
-    context = {'pageName': pageName}
+    if(request.GET['s'] != None):
+        setId = request.GET['s']
+    else:
+        setId = str(-1)
+
+    if(setId == str(-1)):
+        if(userType == 'admin'):
+            results = qryObject.getSets()
+        else:
+            results = qryObject.getSetsByAnnotatorId(userId)
+    else:
+        results = qryObject.getPostsInSet(setId)
+        for result in results:
+            annsts.insert(qryObject.getPostAnnotatorsAndStates(result['postId']))
+
+
+    context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i}
     return render(request, "tag_set.html", context)
 
 

@@ -1046,9 +1046,9 @@ class Queries:
     def getSetsByAnnotatorId(self, annotatorid):
 
         # Building the SQL query 'qry'
-        qry = "SELECT sets.setId, sets.name, sets.description "
+        qry = "SELECT taggy_sets.setId, taggy_sets.name, taggy_sets.description "
         qry += "FROM taggy_sets JOIN taggy_annotators_sets "
-        qry += "WHERE (annotatorId = '"+annotatorid+"') "
+        qry += "WHERE (annotatorId = '"+str(annotatorid)+"') "
         qry += "AND (taggy_sets.setId = taggy_annotators_sets.setId) "
         qry += "ORDER BY taggy_sets.setId"
 
@@ -1116,22 +1116,22 @@ class Queries:
 
         #Building the SQL query 'qry'
         if(self.DBName == "perseus"):
-            qry =  "SELECT taggy_posts.postId, taggy_forumId, taggy_topicId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry =  "SELECT taggy_posts.postId, forumId, topicId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "profileId, postState, content "
             qry += "FROM taggy_posts, taggy_posts_sets "
-            qry += "WHERE taggy_posts_sets.setId="+setid+" "
-            qry += "AND taggy+posts_sets.postId = taggy_posts.postId "
+            qry += "WHERE taggy_posts_sets.setId="+str(setid)+" "
+            qry += "AND taggy_posts_sets.postId = taggy_posts.postId "
             if(postState):
-                qry += " AND postState='"+postState+"' "
+                qry += " AND postState='"+str(postState)+"' "
             qry += "ORDER BY taggy_posts.postID ASC"
         else:
             qry = "SELECT taggy_posts.postId, forumId, DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "postState,content "
             qry += "FROM taggy_posts, taggy_posts_sets "
-            qry += "WHERE taggy_posts_sets.setId="+setid
+            qry += "WHERE taggy_posts_sets.setId="+str(setid)
             qry += " AND taggy_posts_sets.postId = taggy_posts.postId "
             if(postState):
-                qry += " AND postState='"+postState+"' "
+                qry += " AND postState='"+str(postState)+"' "
             qry += "ORDER BY taggy_posts.postId ASC"
 
         # execution of the query 'qry'
