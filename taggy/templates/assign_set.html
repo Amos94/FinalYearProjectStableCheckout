@@ -70,7 +70,9 @@
                             <td>{{ result.2 }}</td>
                             <td class="annotatorsSets">
                                 {% for annotatorSetDiv in annotatorsSets_divs %}
-                                        {% autoescape off %}{{ annotatorSetDiv }}{% endautoescape %}
+                                    {% if annotatorSetDiv.result == result.0 %}
+                                        {% autoescape off %}{{ annotatorSetDiv.div }}{% endautoescape %}
+                                    {% endif %}
                                 {% endfor %}
                             </td>
                         </tr>
