@@ -229,6 +229,23 @@ def browseSet(request, setId=None, postId=None):
 
 
 
+def tagSet(request):
+
+    pageName = 'Tag Set'
+
+
+    context = {'pageName': pageName}
+    return render(request, "tag_set.html", context)
+
+
+def adjudicateSet(request):
+
+    pageName = 'Adjudicate Set'
+
+
+    context = {'pageName': pageName}
+    return render(request, "adjudicate_set.html", context)
+
 def successPage(request):
     pageName = "Success"
     context = {'pageName': pageName}

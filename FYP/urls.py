@@ -26,6 +26,8 @@ from taggy.views import editSet as editSet
 from taggy.views import deleteSet as deleteSet
 from taggy.views import assignSet as assignSet
 from taggy.views import browseSet as browseSet
+from taggy.views import tagSet as tagSet
+from taggy.views import adjudicateSet as adjudicateSet
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -38,6 +40,8 @@ urlpatterns = [
     url(r'^set/delete/', deleteSet, name="delete_set"),
     url(r'^set/assign/', assignSet, name="assign_set"),
     url(r'^set/browse/', browseSet ,name="browse_set"),
+    url(r'^set/tag/', tagSet, name='tag_set'),
+    url(r'^set/adjudicate/', adjudicateSet, name='adjudicate_set'),
     url(r'success/', success, name="success"),
     url(r'fail/', fail, name="fail")
 ]
