@@ -77,6 +77,17 @@
                             </td>
                         </tr>
                     {% endfor %}
+                </table>
+            </div>
+
+            <div id='annotators'>
+                {% for annotator in annotators %}
+                    {% if annotator.type != "inactive" %}
+                        <div id='a{{ annotator.id }}' class='bg-success annotatorBtn annotator active'> {{ annotator.name }} </div>
+                    {% else %}
+                         <div id='a{{ annotator.id }}' class='bg-danger annotatorBtn annotator inactive'> {{ annotator.name }} </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </center>
     </div>

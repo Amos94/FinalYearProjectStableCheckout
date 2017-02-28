@@ -12,7 +12,7 @@ class HelperMethods():
         annotators_results = qryObject.getAnnotators()
 
         for annotator in annotators_results:
-            a.insert(annotator[0], {'name':annotator[1], 'type':annotator[3]})
+            a.insert(annotator[0], {'id':annotator[0],'name':annotator[1], 'type':annotator[3]})
 
 
         return a
