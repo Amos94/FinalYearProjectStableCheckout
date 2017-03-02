@@ -333,9 +333,9 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT userName "
         qry += "FROM taggy_topics, taggy_profiles "
-        qry += "WHERE topicID="+topicid+" "
+        qry += "WHERE topicId="+topicid+" "
         qry += "AND taggy_topics.profileId = taggy_profiles.profileId "
-        qry += "ORDER BY topicID"
+        qry += "ORDER BY topicId"
 
         # execution of the query 'qry'
         qryResult = self.getData(qry)
@@ -371,7 +371,7 @@ class Queries:
                 qry += "AND postState='"+postState+"'"
             qry += "ORDER BY creationDate"
         else:
-            qry =  "SELECT postID,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
+            qry =  "SELECT postId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "postState,content "
             qry += "FROM taggy_posts "
             qry += "WHERE forumId="+forumid+" "
@@ -408,7 +408,7 @@ class Queries:
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "profileId,postState,content "
             qry += "FROM taggy_posts "
-            qry += "WHERE postID="+str(postid)+" "
+            qry += "WHERE postId="+str(postid)+" "
             qry += "AND (postState='PARSED' OR "
             qry +=      "postState='ANNOTATED' OR "
             qry +=      "postState='ADJUDICATED')"
@@ -442,7 +442,7 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT postState "
         qry += "FROM taggy_posts "
-        qry += "WHERE postID="+postid+" "
+        qry += "WHERE postId="+postid+" "
 
         # execution of the query 'qry'
         qryResult = self.getData(qry)
@@ -465,7 +465,7 @@ class Queries:
         qry += "DATE_FORMAT(dateParsed,'%e-%b-%Y') AS parsed,"
         qry += "parseHistory,parseVersion,parseTool "
         qry += "FROM taggy_posts "
-        qry += "WHERE postID="+postid
+        qry += "WHERE postId="+postid
 
 
         # execution of the query 'qry'
@@ -499,7 +499,7 @@ class Queries:
         if(self.DBName == "perseus"):
             qry =  "SELECT postId,forumId,topicId,"
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
-            qry += "profileID,postState,content "
+            qry += "profileId,postState,content "
             qry += "FROM taggy_posts "
             qry += "WHERE postState='PARSED' "
             qry += "LIMIT 1 OFFSET "+randomNumber
@@ -533,7 +533,7 @@ class Queries:
         qry =  "SELECT userName "
         qry += "FROM taggy_posts, taggy_profiles "
         qry += "WHERE postId="+postid+" "
-        qry += "AND taggy_posts.profileId=taggy_profiles.profileID"
+        qry += "AND taggy_posts.profileId=taggy_profiles.profileId"
 
 
         # execution of the query 'qry'
@@ -678,7 +678,7 @@ class Queries:
         if(newPostState != None):
             qry =  "UPDATE taggy_posts "
             qry += "SET postState='"+newPostState+"' "
-            qry += "WHERE postID="+postid
+            qry += "WHERE postId="+postid
 
             updateStatus = self.getData(qry)
 
@@ -753,7 +753,7 @@ class Queries:
             qry += "ORDER BY tagName,provideOrRequest"
 
         else:
-            qry =  "SELECT tagID,tagName,tagDescription "
+            qry =  "SELECT tagId,tagName,tagDescription "
             qry += "FROM taggy_tags "
             qry += "ORDER BY tagName"
 
@@ -775,7 +775,7 @@ class Queries:
     * For LEO, this function will return the same ID twice in each row.
     """
     def getTagNamesAnd2ids(self):
-        qry =  "SELECT tagName, MIN(tagID) AS tagID1, MAX(tagID) AS tagID2 "
+        qry =  "SELECT tagName, MIN(tagId) AS tagId1, MAX(tagId) AS tagId2 "
         qry += "FROM taggy_tags "
         qry += "GROUP BY tagName "
         qry += "ORDER BY tagName"
@@ -921,7 +921,7 @@ class Queries:
         qry += "FROM taggy_sentences_tags "
         qry += "WHERE (postId = "+postid+") "
 
-        qry += " AND (annotatorID IN ("
+        qry += " AND (annotatorId IN ("
         for a in annotatorids:
             qry += a + ","
 
@@ -1123,7 +1123,7 @@ class Queries:
             qry += "AND taggy_posts_sets.postId = taggy_posts.postId "
             if(postState):
                 qry += " AND postState='"+str(postState)+"' "
-            qry += "ORDER BY taggy_posts.postID ASC"
+            qry += "ORDER BY taggy_posts.postId ASC"
         else:
             qry = "SELECT taggy_posts.postId, forumId, DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "postState,content "

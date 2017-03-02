@@ -65,29 +65,43 @@
                     <tr><th>Set Id</th><th>Name</th><th>Description</th><th>Start tagging</th></tr>
                     {% for result in results %}
                         <tr>
-                            <td><a href="/set/tag/?s={{ result.0 }}">View set {{ result.0 }}</a></td>
-                            <td>{{ result.1 }}</td>
-                            <td>{{ result.2 }}</td>
-                            <td><a href="/post/tag/?&setId={{ result.0 }}">Start tagging set "{{ result.0 }}"</a></td>
+                            <td valign=top align=left><a href="/set/tag/?s={{ result.0 }}">View set {{ result.0 }}</a></td>
+                            <td valign=top align=left>{{ result.1 }}</td>
+                            <td valign=top align=left>{{ result.2 }}</td>
+                            <td valign=top align=left><a href="/post/tag/?setId={{ result.0 }}">Start tagging set "{{ result.0 }}"</a></td>
                         </tr>
                     {% endfor %}
                 </table>
             </div>
         {% else %}
-            <a href="/set/tag/?&s=-1">[go back to list of sets]</a>
+            <a href="/set/tag/?s=-1">[go back to list of sets]</a>
             <p><i>posts in set "{{ setid }}":</i><br /></p>
             <div class='scrollLongList'>
-                <table class="table table-striped table-hover table-condensed">
-                    <tr><th></th><th>postID</th><th>post state</th><th>forumID-topicID</th><th>opening content</th></tr>
+                <table class="table table-striped table-hover table-condensed text-left">
+                    <tr><th></th><th>Post id</th><th>Post state</th><th>Forum Id - Topic Id</th><th>Opening content</th></tr>
                     {% for result in results%}
                         <tr>
-                            <td valign=top align=right>
-                                {{ i }}
+                            <td valign=top align=left>
+                                {{ forloop.counter }}
                             </td>
-                            <td valign=top align=right>
-                                {% if results.postState == 'initial' %}
+                            <td valign=top align=left>
+                                {% if result.postState == 'INITIAL' or result.postState == 'SELECTED' or result.postState == 'REPARSE'%}
+                                    {{ result.postId }}
+
+                                {% else %}
+                                    <a href="/post/tag/?postId={{result.postId}}&setId={{ setid }}">"{{ result.postId }}"</a>
+
                                 {% endif %}
+
                             </td>
+                            <td>
+                                {{ result.postState }}
+                                {% for a in annsts%}
+                                    {{ a.username }}: {{ a.postAnnotatorState }}
+                                {% endfor %}
+                            </td>
+                            <td valign=top align=left>{{ result.forumId }} - {{ result.topicId }}</td>
+                            <td valign=top align=left>{{ result.content|striptags }}</td>
                         </tr>
                     {% endfor %}
                 </table>

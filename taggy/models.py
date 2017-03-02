@@ -95,6 +95,13 @@ class Posts(models.Model):
     creationDate = models.DateTimeField()
     profileId = models.IntegerField()
     content = models.TextField()
+    postState = models.TextField(default='INITIAL')
+    dateReviewed = models.DateTimeField()
+    dateParsed = models.DateTimeField()
+    parseVersion = models.IntegerField(default=0)
+    parseTool = models.TextField()
+    parseHistory = models.TextField()
+
 
     class Meta:
         verbose_name_plural = "Posts"
