@@ -260,12 +260,32 @@ def tagSet(request, setId=None):
     return render(request, "tag_set.html", context)
 
 
-def adjudicateSet(request):
+def adjudicateSet(request, setId=None):
 
     pageName = 'Adjudicate Set'
+    userType = 'admin'
+    userId = 0
+    i=0
+    qryObject = Queries()
+    results = []
+    annsts = []
 
+    if (request.GET['s'] != None):
+        setId = request.GET['s']
+    else:
+        setId = str(-1)
 
-    context = {'pageName': pageName}
+    if(setId == -1):
+        if(userType == 'admin'):
+            results = qryObject.getSets()
+        else:
+            results = qryObject.getSetsByAnnotatorId(userId)
+    else:
+        results = qryObject.getPostsinSet(setId)
+        for result in results:
+            annsts.insert(qryObject.getPostAnnotatorsAndStates(result['postId']))
+
+    context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i}
     return render(request, "adjudicate_set.html", context)
 
 def successPage(request):
