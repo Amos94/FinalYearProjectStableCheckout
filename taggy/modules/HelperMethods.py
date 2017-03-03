@@ -19,8 +19,10 @@ class HelperMethods():
 
     def annotatorssets_divs(self, annotators, setId):
         divs = ""
+        print(annotators)
         qryObject = Queries()
         annotators_results = qryObject.getAnnotatorsSets(setId)
+        print(annotators_results)
         for annotator in annotators_results:
             typeClass = "annotator" + self.ucfirst(annotators[annotator[0]]['type'])
             divs += " <div id='a"+ str(annotator[0])+"' class='annotatorInstance annotator "+typeClass+"' setId='"+str(setId)+"'>"

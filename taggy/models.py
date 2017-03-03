@@ -9,7 +9,7 @@ class Annotators(models.Model):
     annotatorId = models.AutoField(primary_key=True)
     username = models.CharField(max_length=25)
     password = models.CharField(max_length=32)
-    usertype = models.CharField(max_length=10)
+    usertype = models.CharField(max_length=15)
 
     class Meta:
         verbose_name_plural = "Annotators"
@@ -19,7 +19,7 @@ class Annotators(models.Model):
 
 class Annotators_sets(models.Model):
 
-    setId = models.AutoField(primary_key=True)
+    setId = models.IntegerField()
     annotatorId = models.IntegerField()
 
     class Meta:
@@ -76,7 +76,7 @@ class Emoticons_tag(models.Model):
 
 class Forums(models.Model):
 
-    forumId = models.IntegerField()
+    forumId = models.IntegerField(primary_key=True)
     forumName = models.CharField(max_length=100)
     forumDescription = models.CharField(max_length=250)
     categoryId = models.IntegerField()
@@ -96,10 +96,10 @@ class Posts(models.Model):
     profileId = models.IntegerField()
     content = models.TextField()
     postState = models.TextField(default='INITIAL')
-    dateReviewed = models.DateTimeField()
+    dateReviewed = models.DateTimeField(default=None)
     dateParsed = models.DateTimeField()
     parseVersion = models.IntegerField(default=0)
-    parseTool = models.TextField()
+    parseTool = models.TextField(default=None)
     parseHistory = models.TextField()
 
 
@@ -116,7 +116,7 @@ class Posts_annotators(models.Model):
     comment = models.TextField()
     numSentencesTagged = models.IntegerField()
     lastUpdated = models.DateTimeField()
-
+    postAnnotatorState = models.CharField(max_length=12, default='IN_PROGRESS')
     class Meta:
         verbose_name_plural = "Posts annotators"
 
@@ -146,25 +146,25 @@ class Posts_sets(models.Model):
 
 class Profiles(models.Model):
 
-    profileId = models.IntegerField()
-    userName = models.CharField(max_length=50)
-    memberSince = models.DateField()
-    lastLogin = models.DateField()
-    location = models.CharField(max_length=100)
-    dob = models.DateField()
-    occupation = models.CharField(max_length=150)
-    biography = models.TextField()
-    diagnosis = models.CharField(max_length=100)
-    diagnosed = models.DateField()
-    recurrent = models.CharField(max_length=150)
-    metastatic = models.CharField(max_length=10)
-    stage = models.CharField(max_length=10)
-    lymph = models.CharField(max_length=10)
-    posLymphNodes = models.CharField(max_length=10)
-    tumorSize = models.CharField(max_length=20)
-    tumorGrade = models.CharField(max_length=30)
-    hormoneReceptor = models.CharField(max_length=100)
-    herStatus = models.CharField(max_length=100)
+    profileId = models.IntegerField(primary_key=True)
+    userName = models.CharField(max_length=50, default=None)
+    memberSince = models.DateField(default=None)
+    lastLogin = models.DateField(default=None)
+    location = models.CharField(max_length=100, default=None)
+    dob = models.DateField(default=None)
+    occupation = models.CharField(max_length=150, default=None)
+    biography = models.TextField(default=None)
+    diagnosis = models.CharField(max_length=100, default=None)
+    diagnosed = models.DateField(default=None)
+    recurrent = models.CharField(max_length=150, default=None)
+    metastatic = models.CharField(max_length=10, default=None)
+    stage = models.CharField(max_length=10, default=None)
+    lymph = models.CharField(max_length=10, default=None)
+    posLymphNodes = models.CharField(max_length=10, default=None)
+    tumorSize = models.CharField(max_length=20, default=None)
+    tumorGrade = models.CharField(max_length=30, default=None)
+    hormoneReceptor = models.CharField(max_length=100, default=None)
+    herStatus = models.CharField(max_length=100, default=None)
 
     class Meta:
         verbose_name_plural = "Profiles"
@@ -240,7 +240,7 @@ class Tags(models.Model):
 
 class Topics(models.Model):
 
-    topicId = models.IntegerField()
+    topicId = models.IntegerField(primary_key=True)
     url = models.CharField(max_length=25)
     title = models.CharField(max_length=150)
     creationDate = models.DateTimeField()
