@@ -170,7 +170,7 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT username, postAnnotatorState"
         qry += "FROM taggy_annotators, taggy_posts_annotators "
-        qry += "WHERE postId='"+postid+"' "
+        qry += "WHERE postId='"+str(postid)+"' "
         qry += "AND taggy_posts_annotators.annotatorId = taggy_annotators.annotatorId"
 
 

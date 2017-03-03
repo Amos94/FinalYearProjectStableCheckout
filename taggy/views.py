@@ -253,7 +253,7 @@ def tagSet(request, setId=None):
     else:
         results = qryObject.getPostsInSet(setId)
         for result in results:
-            annsts.insert(qryObject.getPostAnnotatorsAndStates(result['postId']))
+            annsts.insert(qryObject.getPostAnnotatorsAndStates(result[0]))
 
 
     context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i}
@@ -281,9 +281,9 @@ def adjudicateSet(request, setId=None):
         else:
             results = qryObject.getSetsByAnnotatorId(userId)
     else:
-        results = qryObject.getPostsinSet(setId)
+        results = qryObject.getPostsInSet(setId)
         for result in results:
-            annsts.insert(qryObject.getPostAnnotatorsAndStates(result['postId']))
+            annsts.insert(qryObject.getPostAnnotatorsAndStates(result[0]))
 
     context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i}
     return render(request, "adjudicate_set.html", context)
