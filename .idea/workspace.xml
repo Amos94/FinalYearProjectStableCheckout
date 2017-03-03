@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/views.py" afterPath="$PROJECT_DIR$/taggy/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/adjudicate_set.html" afterPath="$PROJECT_DIR$/taggy/templates/adjudicate_set.html" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +45,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
@@ -57,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adjudicate_set.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="adjudicate_set.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taggy/templates/adjudicate_set.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            <state relative-caret-position="-31">
+              <caret line="87" column="108" lean-forward="false" selection-start-line="87" selection-start-column="108" selection-end-line="87" selection-end-column="108" />
               <folding />
             </state>
           </provider>
@@ -70,8 +70,8 @@
       <file leaf-file-name="tag_set.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/templates/tag_set.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-94">
-              <caret line="70" column="53" lean-forward="false" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
+            <state relative-caret-position="272">
+              <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -112,8 +112,8 @@
       <file leaf-file-name="Queries.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="1114" column="31" lean-forward="true" selection-start-line="1114" selection-start-column="31" selection-end-line="1114" selection-end-column="31" />
+            <state relative-caret-position="220">
+              <caret line="995" column="15" lean-forward="false" selection-start-line="995" selection-start-column="6" selection-end-line="995" selection-end-column="15" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <marker date="1488409176554" expanded="true" signature="5368:5428" ph="INSERT INTO taggy_annotators" />
@@ -187,12 +187,13 @@
       <find>getSetMe</find>
       <find>deleteSet</find>
       <find>delete</find>
-      <find>getSets()</find>
       <find>setId</find>
       <find>getPostsInSet</find>
       <find>getSetsByAnnotatorId</find>
       <find>&amp;set</find>
       <find>ID</find>
+      <find>getSet()</find>
+      <find>getSets()</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -243,13 +244,13 @@
         <option value="$PROJECT_DIR$/taggy/modules/JsonParser.py" />
         <option value="$PROJECT_DIR$/taggy/templates/assign_set.html" />
         <option value="$PROJECT_DIR$/taggy/templates/browse_set.html" />
-        <option value="$PROJECT_DIR$/taggy/templates/adjudicate_set.html" />
         <option value="$PROJECT_DIR$/FYP/urls.py" />
         <option value="$PROJECT_DIR$/taggy/modules/Queries.py" />
         <option value="$PROJECT_DIR$/taggy/templates/tag_set.html" />
         <option value="$PROJECT_DIR$/taggy/models.py" />
         <option value="$PROJECT_DIR$/taggy/modules/HelperMethods.py" />
         <option value="$PROJECT_DIR$/taggy/views.py" />
+        <option value="$PROJECT_DIR$/taggy/templates/adjudicate_set.html" />
       </list>
     </option>
   </component>
@@ -857,13 +858,6 @@
       <option name="presentableId" value="Default" />
       <updated>1485172765307</updated>
     </task>
-    <task id="LOCAL-00006" summary="More on Queries">
-      <created>1485254596879</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1485254596879</updated>
-    </task>
     <task id="LOCAL-00007" summary="More on Queries">
       <created>1485283205255</created>
       <option name="number" value="00007" />
@@ -1200,7 +1194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488505739429</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="ADJUDICATE SET VIEW - ALMOST DONE [MIGHT HAVE ERRORS]">
+      <created>1488553179167</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1488553179167</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1270,7 +1271,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Kappa - added and finished&#10;" />
     <MESSAGE value="SentenceSegmentation module - added" />
     <MESSAGE value="Added more external libraries for the project." />
     <MESSAGE value="KeyWordsExtractor - added" />
@@ -1295,7 +1295,8 @@
     <MESSAGE value="TAG SET - continued&#10;" />
     <MESSAGE value="TAG SET - DONE&#10;" />
     <MESSAGE value="ADJUDICATE SET STARTED" />
-    <option name="LAST_COMMIT_MESSAGE" value="ADJUDICATE SET STARTED" />
+    <MESSAGE value="ADJUDICATE SET VIEW - ALMOST DONE [MIGHT HAVE ERRORS]" />
+    <option name="LAST_COMMIT_MESSAGE" value="ADJUDICATE SET VIEW - ALMOST DONE [MIGHT HAVE ERRORS]" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1574,14 +1575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/templates/delete_set.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="65" column="12" lean-forward="false" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/MySQLdb/connections.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -1598,14 +1591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/templates/tag_set.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-94">
-          <caret line="70" column="53" lean-forward="false" selection-start-line="70" selection-start-column="53" selection-end-line="70" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
@@ -1614,10 +1599,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="287" column="94" lean-forward="true" selection-start-line="287" selection-start-column="94" selection-end-line="287" selection-end-column="94" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="1114" column="31" lean-forward="true" selection-start-line="1114" selection-start-column="31" selection-end-line="1114" selection-end-column="31" />
+        <state relative-caret-position="220">
+          <caret line="995" column="15" lean-forward="false" selection-start-line="995" selection-start-column="6" selection-end-line="995" selection-end-column="15" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <marker date="1488409176554" expanded="true" signature="5368:5428" ph="INSERT INTO taggy_annotators" />
@@ -1645,6 +1640,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/modules/HelperMethods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FYP/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1655,29 +1658,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/modules/HelperMethods.py">
+    <entry file="file://$PROJECT_DIR$/taggy/templates/delete_set.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+          <caret line="65" column="12" lean-forward="false" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/templates/tag_set.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/adjudicate_set.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        <state relative-caret-position="-31">
+          <caret line="87" column="108" lean-forward="false" selection-start-line="87" selection-start-column="108" selection-end-line="87" selection-end-column="108" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="287" column="94" lean-forward="true" selection-start-line="287" selection-start-column="94" selection-end-line="287" selection-end-column="94" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
