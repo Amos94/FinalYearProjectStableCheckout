@@ -1,4 +1,5 @@
 from taggy.modules.Queries import Queries
+from taggy.modules.Annotator import Annotator
 from taggy.modules.sentence.Sentence import Sentence
 
 def AnnotatedSentence(Sentence):
@@ -20,6 +21,10 @@ def AnnotatedSentence(Sentence):
     """
     def __init__(self, qryObject, lookup, annotator, args):
 
+        """
+
+        :type annotator: Annotator
+        """
         self.lookup = lookup
         self.annotator = annotator
 

@@ -78,30 +78,30 @@
             <p><i>posts in set "{{ setid }}":</i><br /></p>
             <div class='scrollLongList'>
                 <table class="table table-striped table-hover table-condensed text-left">
-                    <tr><th></th><th>Post id</th><th>Post state</th><th>Forum Id - Topic Id</th><th>Opening content</th></tr>
+                    <tr><th>#</th><th>Post id</th><th>Post state</th><th>Forum Id - Topic Id</th><th>Opening content</th></tr>
                     {% for result in results%}
                         <tr>
                             <td valign=top align=left>
                                 {{ forloop.counter }}
                             </td>
                             <td valign=top align=left>
-                                {% if result.postState == 'INITIAL' or result.postState == 'SELECTED' or result.postState == 'REPARSE'%}
-                                    {{ result.postId }}
+                                {% if result.5 == 'INITIAL' or result.5 == 'SELECTED' or result.5 == 'REPARSE'%}
+                                    {{ result.0 }}
 
                                 {% else %}
-                                    <a href="/post/tag/?postId={{result.postId}}&setId={{ setid }}">"{{ result.postId }}"</a>
+                                    <a href="/post/tag/?postId={{result.0}}&setId={{ setid }}">"{{ result.0}}"</a>
 
                                 {% endif %}
 
                             </td>
                             <td>
-                                {{ result.postState }}
-                                {% for a in annsts%}
-                                    {{ a.username }}: {{ a.postAnnotatorState }}
-                                {% endfor %}
+                                {{ result.5 }}
+                                <!--{% for a in annsts%}
+                                   {{ a.0 }}: {{ a.1 }}
+                                {% endfor %}-->
                             </td>
-                            <td valign=top align=left>{{ result.forumId }} - {{ result.topicId }}</td>
-                            <td valign=top align=left>{{ result.content|striptags }}</td>
+                            <td valign=top align=left>{{ result.1 }} - {{ result.2 }}</td>
+                            <td valign=top align=left>{{ result.6|striptags }}</td>
                         </tr>
                     {% endfor %}
                 </table>

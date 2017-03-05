@@ -1,5 +1,7 @@
+from taggy.modules.Annotator import Annotator
 from taggy.modules.Queries import Queries
 from taggy.modules.post.AnnotatedPost import AnnotatedPost
+from taggy.modules.sentence.AdjudicatedSentence import AdjudicatedSentence
 
 """
  * AdjusdicatedPost Class

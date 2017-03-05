@@ -1,3 +1,4 @@
+from taggy.modules.Annotator import Annotator
 from taggy.modules.post.Post import Post
 #import MySQLdb
 from django.db import connection
@@ -48,6 +49,11 @@ class AnnotatedPost(Post):
     """
     def __init__(self, queryObject, postId = -1, annotator):
 
+
+        """
+
+        :type annotator: Annotator
+        """
         self.lookup = TagLookUpTable(queryObject)
         self.annotator = annotator
 

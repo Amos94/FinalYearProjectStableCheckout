@@ -132,11 +132,13 @@ class Set():
     * @return void
     """
 
-    def get_set( self, qryObject, setId, annotatorId = '' ):
+    def get_set( self, setId, annotatorId = '' ):
         """
 
+        :rtype: Set
         :type qryObject: Queries
         """
+        qryObject = Queries()
         if(annotatorId):
             if(not(qryObject.checkSetAnnotatorAssignment( setId, annotatorId ))):
                 raise Exception( 'SetID ' +setId + ' not associated with Annotator: ' +annotatorId )

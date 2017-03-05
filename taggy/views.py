@@ -4,9 +4,14 @@ from django.shortcuts import render
 from django.urls import resolve
 from django.utils.six.moves.urllib.parse import urlparse
 from forms import CreateSet, UpdateSet
+from taggy.modules.Annotator import Annotator
 from taggy.modules.Queries import Queries
+from taggy.modules.post.AdjudicatedPost import AdjudicatedPost
+from taggy.modules.post.AnnotatedPost import AnnotatedPost
+from taggy.modules.post.Post import Post
 from taggy.modules.users import User as User
 from taggy.modules.HelperMethods import HelperMethods
+from taggy.modules.post import Set as Set
 
 # Create your views here.
 def index(request):
@@ -233,7 +238,7 @@ def tagSet(request, setId=None):
 
     pageName = 'Tag Set'
     userType = 'admin'
-    userId = 0
+    userId = 6
     i=0
     qryObject = Queries()
     results = []
@@ -253,7 +258,7 @@ def tagSet(request, setId=None):
     else:
         results = qryObject.getPostsInSet(setId)
         for result in results:
-            annsts.insert(qryObject.getPostAnnotatorsAndStates(result[0]))
+            annsts.append(qryObject.getPostAnnotatorsAndStates(result[0]))
 
 
     context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i}
@@ -287,6 +292,64 @@ def adjudicateSet(request, setId=None):
 
     context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i}
     return render(request, "adjudicate_set.html", context)
+
+
+
+def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
+
+    pageName = 'Tag Post'
+    pageTitle = ''
+    userType = 'admin'
+    userId = 0
+    set = Set()
+    qryObject = Queries()
+
+    if (request.GET['setId'] != None):
+        setId = request.GET['setId']
+    else:
+        setId = str(-1)
+
+    if (request.GET['postId'] != None):
+        postId = request.GET['postId']
+    else:
+        postId = str(-1)
+
+    if (request.GET['adjudicationFlag'] == 'true'):
+        adjudicationFlag = 'true'
+    else:
+        postId = 'false'
+
+    if(setId == '-1'):
+        a_set = set.get_set(setId, userId)
+        if(a_set != None):
+            if(postId != '-1'):
+                postId = a_set.firstPostId()
+        else:
+            a_set = None
+
+
+    if(userId != None):
+        annotator = Annotator(qryObject, userId)
+        if(annotator.canAdjudicate() and adjudicationFlag == 'true'):
+            a_post = AdjudicatedPost(qryObject, postId, annotator)
+        else:
+            a_post = AnnotatedPost(qryObject, postId, annotator)
+    else:
+        a_post = Post(qryObject, postId)
+
+    if(adjudicationFlag == 'true'):
+        pageTitle = 'ADJUDICATE POST: '+postId+ ' '
+    else:
+        pageTitle = 'TAG POST: '+postId+' '
+
+    #TO BE ADDED
+    display_nav_tagpost(a_set, a_post, adjudicationFlag)
+
+
+
+
+    context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle}
+    return render(request, "tag_post.html", context)
 
 def successPage(request):
     pageName = "Success"

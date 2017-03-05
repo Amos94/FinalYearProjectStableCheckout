@@ -168,7 +168,7 @@ class Queries:
 
     def getPostAnnotatorsAndStates(self, postid):
         # Building the SQL query
-        qry =  "SELECT username, postAnnotatorState"
+        qry =  "SELECT username, postAnnotatorState "
         qry += "FROM taggy_annotators, taggy_posts_annotators "
         qry += "WHERE postId='"+str(postid)+"' "
         qry += "AND taggy_posts_annotators.annotatorId = taggy_annotators.annotatorId"
