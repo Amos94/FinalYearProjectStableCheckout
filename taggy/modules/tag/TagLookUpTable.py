@@ -21,23 +21,27 @@ class TagLook:
     * @return array an assoc. array of Tag objected indexed by their id as int
     """
 
-    def __init__(self, qryObject):
+    def __init__(self):
         """
 
         :type qryObject: Queries
         """
+        qryObject = Queries()
         self.tags_lookup = []
         results = qryObject.getTags(PROVIDES_CODE)
         enumerate_tags = 0
         for row in results:
             enumerate_tags = enumerate_tags + 1
-            self.tags_lookup[row['tagId']] = Tag( row['tagId'], row['tagName'], row['provideOrRequest'], enumerate_tags )
+            #tagId = 0
+            #tagName = 1
+            #provideOrRequest = 3
+            self.tags_lookup.insert(row[0], Tag( row[0], row[1], row[3], enumerate_tags ))
 
         results = qryObject.getTags(REQUEST_CODE)
         enumerate_tags = 0
         for row in results:
             enumerate_tags = enumerate_tags + 1
-            self.tags_lookup[row['tagId']] = Tag( row['tagId'], row['tagName'], row['provideOrRequest'], enumerate_tags )
+            self.tags_lookup.insert(row[0], Tag( row[0], row[1], row[3], enumerate_tags ))
 
 
 
@@ -53,12 +57,6 @@ class TagLook:
         return self.tags_lookup[tagId]
 
 
-    """
-    * render()
-    *
-    * renders in HTML a series of tags аs clickable divs
-    *
-    """
     def render(self):
         tags_provides = filter(self.tags_lookup, PROVIDES_CODE)
 

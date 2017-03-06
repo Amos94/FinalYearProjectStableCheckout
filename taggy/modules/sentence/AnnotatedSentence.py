@@ -62,7 +62,7 @@ def AnnotatedSentence(Sentence):
     def render_tag_columns(self):
         print("<td class='tagsSentence'>")
 
-        for(t in self.tags[self.annotator.id]):
+        for t in self.tags[self.annotator.id]:
             t.render_as_div()
 
         print("</td>")

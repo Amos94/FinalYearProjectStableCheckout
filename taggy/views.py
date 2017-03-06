@@ -11,7 +11,7 @@ from taggy.modules.post.AnnotatedPost import AnnotatedPost
 from taggy.modules.post.Post import Post
 from taggy.modules.users import User as User
 from taggy.modules.HelperMethods import HelperMethods
-from taggy.modules.post import Set as Set
+from taggy.modules.post.Set import Set
 
 # Create your views here.
 def index(request):
@@ -300,14 +300,18 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     pageName = 'Tag Post'
     pageTitle = ''
     userType = 'admin'
-    userId = 0
-    set = Set()
+    userId = 8
+    a_set = None
+    a_post = None
     qryObject = Queries()
+
 
     if (request.GET['setId'] != None):
         setId = request.GET['setId']
     else:
         setId = str(-1)
+
+    set = Set(setId)
 
     if (request.GET['postId'] != None):
         postId = request.GET['postId']
@@ -323,7 +327,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
         a_set = set.get_set(setId, userId)
         if(a_set != None):
             if(postId != '-1'):
-                postId = a_set.firstPostId()
+                postId = a_set.firstPostID()
         else:
             a_set = None
 
@@ -331,11 +335,11 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     if(userId != None):
         annotator = Annotator(qryObject, userId)
         if(annotator.canAdjudicate() and adjudicationFlag == 'true'):
-            a_post = AdjudicatedPost(qryObject, postId, annotator)
+            a_post = AdjudicatedPost(postId, annotator)
         else:
-            a_post = AnnotatedPost(qryObject, postId, annotator)
+            a_post = AnnotatedPost(postId, annotator)
     else:
-        a_post = Post(qryObject, postId)
+        a_post = Post(postId)
 
     if(adjudicationFlag == 'true'):
         pageTitle = 'ADJUDICATE POST: '+postId+ ' '
@@ -343,7 +347,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
         pageTitle = 'TAG POST: '+postId+' '
 
     #TO BE ADDED
-    display_nav_tagpost(a_set, a_post, adjudicationFlag)
+    #display_nav_tagpost(a_set, a_post, adjudicationFlag)
 
 
 

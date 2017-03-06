@@ -9,7 +9,7 @@ class Post():
     topicId = 0
     sentences = []
 
-    def __init__(self, qryObject, postId = -1):
+    def __init__(self, postId = -1):
 
         qryObject = Queries()
 

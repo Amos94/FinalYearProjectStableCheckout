@@ -36,38 +36,30 @@ class Set():
     * @param string $qryObject
     * @param string $id setID
     """
-    def __init__(self, qryObject, id):
+    def __init__(self, id):
         """
 
         :type qryObject: Queries
         """
+        qryObject = Queries()
         self.setId = id
-
         meta_results = qryObject.getSetMeta(id)
 
-        if(meta_results.count() == 0):
+
+        if(meta_results == None):
             raise Exception('SetID ' + id + ' does not exist')
 
-        with connection.cursor() as cursor:
-            cursor.execute(meta_results)
-            # fetching all data of the query 'qry'
-            meta_row = cursor.fetchall()
+        self.name = meta_results[1]#name
+        self.description = meta_results[2]#description
 
-            self.name = meta_row['name']
-            self.description = meta_row['description']
 
         #QueryDB for PostIDs
         posts_results = qryObject.getSet(id)
-        if(posts_results.count() == 0):
+        if(posts_results == None):
             raise Exception('SetID ' + id + ' is empty')
 
-        with connection.cursor() as cursor:
-            cursor.execute(posts_results)
-            # fetching all data of the query 'qry'
-            row = cursor.fetchall()
-
-        for r in row:
-            self.post_ids.append(r['postId'])
+        for r in posts_results:
+            self.post_ids.append(r[0])#postId
 
 
     """

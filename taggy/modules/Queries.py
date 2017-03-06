@@ -63,7 +63,7 @@ class Queries:
         if (username != ''):
             qry += "WHERE username='"+username+"'"
         elif (userid != None):
-            qry += "WHERE annotatorId='"+userid+"'"
+            qry += "WHERE annotatorId='"+str(userid)+"'"
 
 
         qryResult = self.getData(qry)
@@ -559,7 +559,7 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT comment, numSentencesTagged, (numSentencesTagged/numSentencesInPost) as percentDone, postAnnotatorState "
         qry += "FROM taggy_posts_annotators "
-        qry += "WHERE ((postId="+postid+") AND (annotatorId="+annotatorid+")) "
+        qry += "WHERE ((postId="+str(postid)+") AND (annotatorId="+str(annotatorid)+")) "
 
         # execution of the query 'qry'
         qryResult = self.getData(qry)

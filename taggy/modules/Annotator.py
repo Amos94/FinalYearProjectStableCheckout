@@ -31,12 +31,12 @@ class Annotator:
         self.id = aID
         results = qryObject.getAnnotators('', self.id)
 
-        if(results.count() != 1):
+        if(results == None):
             raise Exception('AnnotatorID ' + aID + ' does not exist.' )
 
         for row in results:
-            username = row['username']
-            usertype = row['usertype']
+            username = row[1]#username
+            usertype = row[3]#usertype
 
     """
     * am I an 'admin' user?

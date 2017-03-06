@@ -1,9 +1,11 @@
 from taggy.modules.Annotator import Annotator
+from taggy.modules.Queries import Queries
 from taggy.modules.post.Post import Post
 #import MySQLdb
 from django.db import connection
-
+from taggy.modules.tag.TagLookUpTable import TagLook
 from taggy.modules.sentence.AnnotatedSentence import AnnotatedSentence
+
 
 """
 * AnnotatedPost Class
@@ -47,22 +49,26 @@ class AnnotatedPost(Post):
     * @param Queries $qryObject the DB Queries object
     * @param int $pID id of Post
     """
-    def __init__(self, queryObject, postId = -1, annotator):
+    def __init__(self, postId = -1, annotator=None):
 
 
         """
 
         :type annotator: Annotator
         """
-        self.lookup = TagLookUpTable(queryObject)
+        queryObject = Queries()
+        self.lookup = TagLook()
         self.annotator = annotator
 
-        # Get current PostState and Comment
-        postAnnotation = self.execQuery(queryObject.getPostAnnotation(postId, annotator.getId()))
-        self.annotator_states[annotator.getId()] = postAnnotation['postAnnotatorState']
-        self.comments[annotator.getId()] = postAnnotation['comment']
 
-        Post.__init__(queryObject, postId)
+        # Get current PostState and Comment
+
+        postAnnotation = queryObject.getPostAnnotation(postId, annotator.id)
+
+        self.annotator_states.insert(self.annotator.id , postAnnotation[3])  #postAnnotatorState
+        self.comments.insert(self.annotator.id , postAnnotation[0])  #comment
+
+        Post.__init__(postId)
 
 
 
