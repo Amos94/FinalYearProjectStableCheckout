@@ -23,14 +23,18 @@ class HelperMethods():
         qryObject = Queries()
         annotators_results = qryObject.getAnnotatorsSets(setId)
         print(annotators_results)
-        for a in annotators:
-            print(a)
-        for annotator in annotators_results:
 
-            typeClass = "annotator" + self.ucfirst(annotators[annotator[0]]['type'])#type
-            divs += " <div id='a"+ str(annotator[0])+"' class='annotatorInstance annotator "+typeClass+"' setId='"+str(setId)+"'>"
-            divs += annotators[annotator[0]]['name']
-            divs += "</div> "
+        i=0
+        for annotator in annotators_results:
+            #annotators[annotator[0]]['type']
+            print(i)
+            if(i == annotator[0]):
+                print(annotators[i]['type'])
+                typeClass = "annotator" + self.ucfirst(annotators[i]['type'])#type
+                divs += " <div id='a"+ str(i)+"' class='annotatorInstance annotator "+typeClass+"' setId='"+str(setId)+"'>"
+                divs += annotators[i]['name']#name
+                divs += "</div> "
+            i = i+1
         return divs
 
 

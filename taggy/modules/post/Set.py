@@ -47,7 +47,7 @@ class Set():
 
 
         if(meta_results == None):
-            raise Exception('SetID ' + id + ' does not exist')
+            raise Exception('SetID ' + str(id) + ' does not exist')
 
         self.name = meta_results[1]#name
         self.description = meta_results[2]#description
@@ -56,7 +56,7 @@ class Set():
         #QueryDB for PostIDs
         posts_results = qryObject.getSet(id)
         if(posts_results == None):
-            raise Exception('SetID ' + id + ' is empty')
+            raise Exception('SetID ' + str(id) + ' is empty')
 
         for r in posts_results:
             self.post_ids.append(r[0])#postId
