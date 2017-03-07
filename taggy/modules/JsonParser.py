@@ -50,5 +50,7 @@ class JsonPostsParser():
 
 
 a = JsonPostsParser()
-
-print(a.loadPostsJSON(' { "name":"John", "age":31, "city":"New York" }'))
+b = file('data.json')
+load = b.read()
+print(load)
+print(a.loadPostsJSON(str(load)))

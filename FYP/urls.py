@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 from taggy.views import index as index
 from taggy.views import about as about
 from taggy.views import annotation as annotation
@@ -29,6 +31,8 @@ from taggy.views import browseSet as browseSet
 from taggy.views import tagSet as tagSet
 from taggy.views import adjudicateSet as adjudicateSet
 from taggy.views import tagPost as tagPost
+from django.conf.urls.static import static
+from FYP import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -47,5 +51,6 @@ urlpatterns = [
     url(r'success/', success, name="success"),
     url(r'fail/', fail, name="fail")
 ]
+
 admin.site.site_header = 'T.A.G.G.Y. ADMINISTRATION BOARD'
 admin.site.site_title = 'T.A.G.G.Y.'

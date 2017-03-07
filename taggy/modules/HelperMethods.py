@@ -113,10 +113,12 @@ class HelperMethods():
                     toReturn += '<a href="/post/tag/?setId=' + set.setId + '&postId=' + nextPostId + '&adjudicateFlag=false>[tag NEXT post in sett]</a> '
 
         elif(post):
+            toReturn += '<center>'
             toReturn += '<form action="/post/tag/?method="get">'
-            toReturn += '[tag post id: <input type="text" name="postId" />'
-            toReturn += '<input type="submit" value="Submit" /> ]'
+            toReturn += '<h4>tag post id:</h4> <input type="text" name="postId" class="form-control" style="width:20%" span1/>'
+            toReturn += '<span class="input-group-btn"><input type="submit" value="Submit" class="btn btn-primary span1"/> </span>'
             toReturn += '</form>'
+            toReturn += '</center>'
 
         return toReturn
 

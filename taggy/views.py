@@ -353,11 +353,11 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 
     postTableRnd = a_post.render_as_table()
 
-    a_post.render_finalize_button()
-    a_post.render_posts_annotation()
-    a_post.render_available_tags()
+    a = a_post.render_finalize_button()
+    b = a_post.render_posts_annotation()
+    c = a_post.render_available_tags()
 
-    context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableRnd':postTableRnd}
+    context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableRnd':postTableRnd, 'a':a, 'b':b, 'c':c}
     return render(request, "tag_post.html", context)
 
 def successPage(request):

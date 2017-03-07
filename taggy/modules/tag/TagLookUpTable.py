@@ -59,9 +59,9 @@ class TagLook:
 
     def render(self):
         toReturn = ''
-        tags_provides = filter(self.tags_lookup, PROVIDES_CODE)
+        tags_provides = filter(lambda k:PROVIDES_CODE in self.tags_lookup, self.tags_lookup)
 
-        tags_requests = filter(self.tags_lookup, REQUEST_CODE)
+        tags_requests = filter(lambda k:REQUEST_CODE in self.tags_lookup, self.tags_lookup)
 
         toReturn += "<div id='tags'><br>"
         toReturn += "<p></p><br>"

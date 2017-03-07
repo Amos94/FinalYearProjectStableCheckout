@@ -76,8 +76,8 @@ class Post():
 
     def render_metadata(self):
         toReturn = ''
-        toReturn +="<table>"
-        toReturn +="<tr><th>post id</th><th>topic id</th><th>forum id</th><th>creator</th><th>creationDate</th></tr>"
+        toReturn +="<table class='table table-striped table-hover table-condensed'>"
+        toReturn +="<tr><th>Post id</th><th>Topic id</th><th>Forum id</th><th>creator</th><th>CreationDate</th></tr>"
         toReturn +="<tr>"
         toReturn +="<td>"+self.getPostId()+"</td>"
         toReturn +="<td>"+self.getTopicId()+"</td>"
@@ -102,7 +102,7 @@ class Post():
         toReturn = ''
         toReturn +="<p>"
         toReturn +="<div id='post'><br/>"
-        toReturn +="<table id='p"+str(self.getPostId())+"' class='postTbl' width='100%' cellspacing=5>"
+        toReturn +="<table id='p"+str(self.getPostId())+"' class='postTbl table table-striped table-hover table-condensed' width='100%'>"
 
         self.render_table_header()
 

@@ -1,0 +1,8 @@
+done - set_creation -screate
+done - delete_set -sdelete
+almost done - edit_set -sedit
+almost done - tag_set -stag
+almost done(error) - adjudicate-set -sadjudicate
+error(list index out of range) - set_assign - sassign
+?almost done = browse_set -sbrowse
+almost done - tag_post

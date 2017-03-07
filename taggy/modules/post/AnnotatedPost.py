@@ -133,7 +133,7 @@ class AnnotatedPost(Post):
         toReturn +="<i>"
         toReturn +="Comments:"
         toReturn +="</i><br>"
-        toReturn +="<textarea id='annotatorsComment'><br>"
+        toReturn +="<textarea id='annotatorsComment' class='form-control'><br>"
         toReturn += self.comments[0]#self.annotator.id
         toReturn +="</textarea><br>"
         toReturn +="<div id='annotatorsCommentSave' class='postBtn saveCommentsBtn '>SAVE COMMENTS</div>"
