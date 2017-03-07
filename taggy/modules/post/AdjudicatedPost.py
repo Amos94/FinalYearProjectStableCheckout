@@ -24,10 +24,9 @@ class AdjudicatedPost(AnnotatedPost):
     * @param Queries $qryObject the DB Queries object
     * @param int $pID id of Post
     """
-    def __init__(self, qryObject, postId, annotator):
+    def __init__(self, postId, annotator):
 
-
-
+        qryObject = Queries()
 
         if(postId < 0):
             raise Exception("PostId "+postId+" is not valid!")
@@ -44,7 +43,7 @@ class AdjudicatedPost(AnnotatedPost):
                 self.comments[r['annotatorId']] = ""+postAnnotation['comment']
 
 
-        AnnotatedPost.__init__(qryObject, postId, annotator)
+        AnnotatedPost.__init__(self, postId, annotator)
 
 
 
@@ -62,8 +61,9 @@ class AdjudicatedPost(AnnotatedPost):
     * are added in display order.  No sorting is done prior to display.
     *
     """
-    def addSentence(self, qryObject, args):
-        self.sentences.append(AdjudicatedSentence( qryObject,
+    def addSentence(self, args):
+        qryObject = Queries()
+        self.sentences.append(AdjudicatedSentence(
                                                     self.annotatorStates[self.annotator.id],
                                                     self.lookup,
                                                     self.annotator,
@@ -74,11 +74,13 @@ class AdjudicatedPost(AnnotatedPost):
 
 
     def render_table_header(self):
-        print("<tr><th width='5%'></th><th width='65%'>sentence</th>")
+        toReturn = ''
+        toReturn += "<tr><th width='5%'></th><th width='65%'>sentence</th>"
         for a in self.others:
-            print("<th class='"+self.annotatorStates[a.id] +"'>tags ("+a.username+")</th>")
-        print("<th class='"+ self.annotatorStates[self.annotator.id] +"'>tags (adjudicated)</th>")
-        print("</tr>")
+            toReturn += "<th class='"+self.annotatorStates[a.id] +"'>tags ("+a.username+")</th>"
+        toReturn += "<th class='"+ self.annotatorStates[self.annotator.id] +"'>tags (adjudicated)</th>"
+        toReturn += "</tr>"
+        return toReturn
 
 
 
@@ -88,7 +90,9 @@ class AdjudicatedPost(AnnotatedPost):
     * renders HTML for appropriated finalize button
     *
     """
-    def render_finalize_button(self,qryObject):
+    def render_finalize_button(self):
+        qryObject = Queries()
+        toReturn = ''
         if((self.annotatorStates[self.annotator.id] == 'DONE') or (self.annotatorStates[self.annotator.id] == 'ADJUDICATED')):
             finalizeHiddenCls = "initiallyHidden"
             unfinalizeHiddenCls = ""
@@ -101,8 +105,9 @@ class AdjudicatedPost(AnnotatedPost):
         else:
             finalizedDisabledCls = "finalizedEnabled"
 
-        print("<div id='finalize' class='postBtn finalizePostBtn adjudicatorPostBtn "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div>\n")
-        print("<div id='unfinalize' class='postBtn finalizePostBtn adjudicatorPostBtn "+unfinalizeHiddenCls+" "+unfinalizedDisabledCls+"'>--DONE--</div>\n")
+        toReturn += "<div id='finalize' class='postBtn finalizePostBtn adjudicatorPostBtn "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br>"
+        toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn adjudicatorPostBtn "+unfinalizeHiddenCls+" "+unfinalizedDisabledCls+"'>--DONE--</div><br>"
+        return toReturn
 
     """
     * render_posts_annotation()
@@ -112,23 +117,25 @@ class AdjudicatedPost(AnnotatedPost):
     * @param Queries $qryObject a DB Queries object
     * @return void
     """
-    def render_posts_annotation(self, qryObject):
-        self.render_posts_annotation(qryObject)
-
-        print("<b><span id='othersCommentsLabel'>Other Annotators Comments: <span id='othersCommentsDisplay'>show/hide</span></span></b>")
-        print("<div id='othersComments'>\n")
-        print("<table>\n")
+    def render_posts_annotation(self):
+        qryObject = Queries()
+        self.render_posts_annotation()
+        toReturn = ''
+        toReturn += "<b><span id='othersCommentsLabel'>Other Annotators Comments: <span id='othersCommentsDisplay'>show/hide</span></span></b>"
+        toReturn += "<div id='othersComments'><br>"
+        toReturn += "<table><br>"
 
         for a in self.others:
-            print("<tr>")
-            print("<td class='"+ self.annotatorStates[a.id] +"'>"+a.username+"</td>")
+            toReturn += "<tr>"
+            toReturn += "<td class='"+ self.annotatorStates[a.id] +"'>"+a.username+"</td>"
 
             if(self.comments[a.id]):
-                print("<td>" + self.comments[a.id] + "</td>")
+                toReturn += "<td>" + self.comments[a.id] + "</td>"
             else:
-                print("<td><i>no comments</i></td>")
+                toReturn += "<td><i>no comments</i></td>"
 
-            print("</tr>\n")
+            toReturn += "</tr><br>"
 
-        print("</table>\n")
-        print("</div>\n")
+        toReturn += "</table><br>"
+        toReturn += "</div><br>"
+        return toReturn

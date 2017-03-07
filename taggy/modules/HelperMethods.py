@@ -71,3 +71,54 @@ class HelperMethods():
     #     return progress
     # END OF  SET BROWSE HELPER METHODS
     ####
+
+    ####
+    #TAG POST HELPER METHODS
+
+
+
+    def display_nav_tagpost(self, set, post, adjudicateFlag):
+        toReturn = ''
+        if(set):
+            if(adjudicateFlag == 'true'):
+                toReturn += '<a href="/set/adjudicate/?s=-1">[go back to list of sets]</a> '
+                toReturn +='<a href="/set/adjudicate./?s='+set.setId+'>[go back to set '+set.setId+']</a> '
+
+                prevPostId = set.getPrevPostId(post.postId)
+                if(prevPostId < 0):
+                    toReturn +='[ <i>at BEGINNING of set</i> ] '
+                else:
+                    toReturn +='<a href="/post/tag/?setId='+set.setId+'&postId='+prevPostId+'&adjudicateFlag=true>[adjudicate PREVIOUS post in set]</a> '
+
+                nextPostId = set.getNextPostId(post.postId)
+                if(nextPostId < 0):
+                    toReturn += "[ <i>at END of set</i> ] "
+                else:
+                    toReturn += '<a href="/post/tag/?setId='+set.setId+'&postId='+nextPostId+'&adjudicateFlag=true>[adjudicate NEXT post in set]</a> '
+
+            else:
+                toReturn += '<a href="/set/adjudicate/?s=-1">[go back to list of sets]</a> '
+                toReturn += '<a href="/set/adjudicate./?s=' + set.setId + '>[go back to set ' + set.setId + ']</a> '
+
+                prevPostId = set.getPrevPostId(post.postId)
+                if (prevPostId < 0):
+                    toReturn += '[ <i>at BEGINNING of set</i> ] '
+                else:
+                    toReturn += '<a href="/post/tag/?setId=' + set.setId + '&postId=' + prevPostId + '&adjudicateFlag=false>[tag PREVIOUS post in set]</a> '
+
+                nextPostId = set.getNextPostId(post.postId)
+                if (nextPostId < 0):
+                    toReturn += "[ <i>at END of set</i> ] "
+                else:
+                    toReturn += '<a href="/post/tag/?setId=' + set.setId + '&postId=' + nextPostId + '&adjudicateFlag=false>[tag NEXT post in sett]</a> '
+
+        elif(post):
+            toReturn += '<form action="/post/tag/?method="get">'
+            toReturn += '[tag post id: <input type="text" name="postId" />'
+            toReturn += '<input type="submit" value="Submit" /> ]'
+            toReturn += '</form>'
+
+        return toReturn
+
+    # END OF  TAG POST HELPER METHODS
+    ####

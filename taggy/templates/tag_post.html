@@ -6,5 +6,38 @@
 </head>
 <body>
 SetID:{{ setid }}; PostID:{{ postid }}
+{% autoescape off %}{{ display_nav_tagpost }}{% endautoescape %}
+</div> <!-- div#menu -->
+  <b><span id='instructionsDisplayLabel'>INSTRUCTIONS: <span id='instructionsDisplay'>show/hide</span></span></b>
+  <div id='instructions'>
+    <p>
+    The text in the white table below is written by a patient in an online discussion
+    forum about breast cancer. Your task is to label each sentence in the post with
+    one or several tags, so that each sentence\'s tag(s) represent the best the topics
+    discussed in the sentence, in the context of the post.
+    </p>
+
+    <p>
+    There are 11 possible tags listed below the post in two rows.
+    In addition to selecting tags for a sentence, you have to determine for each tag,
+    whether the author of the post is Requesting (top row of tags) or Providing
+    (bottom row) the information.  Click <a href="EX.html" target="_blank">here</a>
+    for examples of sentences and tags (opens in a new tab).
+    </p>
+
+    <p>
+    Below the post sentences (you may have to scroll down in the posts table) is a
+    comment text box for you to leave any additional comments about the post.  To edit
+    the comments click on the box below the "Comments" title and edit the text.  Click
+    on "Save" when you are done editing the comments.
+    </p>
+
+    <p>
+    When you are satisfied with the tags you selected, click "tag another post"
+    to tag the next post in your posts set.
+    </p>
+    </div> <!-- div#instructions -->
+    <p></p>
+{% autoescape off %}{{ postTableRnd }}{% endautoescape %}
 </body>
 </html>

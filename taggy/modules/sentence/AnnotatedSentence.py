@@ -19,18 +19,19 @@ def AnnotatedSentence(Sentence):
     * Constructor of Sentence Object
     *
     """
-    def __init__(self, qryObject, lookup, annotator, args):
+    def __init__(self, lookup, annotator, args=None):
 
         """
 
         :type annotator: Annotator
         """
+        qryObject = Queries()
         self.lookup = lookup
         self.annotator = annotator
 
-        Sentence.__init__(args)
+        Sentence.__init__(self, args)
 
-        self.tags[annotator.id] = self.retrieve_tags(qryObject, annotator)
+        self.tags[annotator.id] = self.retrieve_tags(annotator)
 
 
 
@@ -41,7 +42,8 @@ def AnnotatedSentence(Sentence):
     * @param int $annotatorID id for annotator
     * @return void
     """
-    def retrieve_tags(self, qryObject, a):
+    def retrieve_tags(self, a):
+        qryObject = Queries()
 
         results = qryObject.getSentenceTags(self.postId, self.sentenceId, a.id)
 
@@ -60,9 +62,11 @@ def AnnotatedSentence(Sentence):
     * @return void
     """
     def render_tag_columns(self):
-        print("<td class='tagsSentence'>")
+        toReturn = ''
+        toReturn += "<td class='tagsSentence'>"
 
         for t in self.tags[self.annotator.id]:
             t.render_as_div()
 
-        print("</td>")
+        toReturn = "</td>"
+        return toReturn

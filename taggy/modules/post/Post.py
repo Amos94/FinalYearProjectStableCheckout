@@ -1,10 +1,11 @@
-import taggy.modules.Queries as Queries
+from taggy.modules.Queries import Queries
+from taggy.modules.sentence.Sentence import Sentence
 
 
 class Post():
 
     postId = 0
-    postError = 0
+    postError = ''
     forumId = 0
     topicId = 0
     sentences = []
@@ -19,24 +20,24 @@ class Post():
         else:
             results = qryObject.getPost(postId)
 
-        if(results.count != 1):
+        if(results == None):
             self.postId = postId
-            self.postError = 'PostID ' + postId + ' does not exist or is not ready to be annotated.'
+            self.postError = 'PostID ' + str(postId) + ' does not exist or is not ready to be annotated.'
 
         else:
-            rows = results.fetchall()
 
-            for row in rows:
-                self.postId = row['postID']
-                self.forumId = row['forumID']
-                self.topicId = row['topicID']
-                self.postState = row['postState']
+
+            for row in results:
+                self.postId = row[0]#['postID']
+                self.forumId = row[1]#['forumID']
+                self.topicId = row[2]#['topicID']
+                self.postState = row[5]#['postState']
 
             results = qryObject.getSentences(self.postId)
-            rows = results.fetchall()
 
-            for row in rows:
-                self.addSentence(qryObject, row)
+
+            for row in results:
+                self.addSentence(row[2])
 
             self.postError = None
 
@@ -58,7 +59,7 @@ class Post():
     def getSentences(self):
         return self.sentences
 
-    def addSentence(self, qryObkect, args):
+    def addSentence(self, args):
         self.sentences.append(args)
 
     """
@@ -69,20 +70,26 @@ class Post():
     * @return void
     """
     def renderHeadline(self):
-        print("<i>post "+self.getPostId()+" in topic "+self.getTopicId()+" in forum "+self.getForumId()+":</i><br />")
+        toReturn = ''
+        toReturn += "<i>post "+self.getPostId()+" in topic "+self.getTopicId()+" in forum "+self.getForumId()+":</i><br />"
+        return toReturn
 
     def render_metadata(self):
-        print("<table>")
-        print("<tr><th>post id</th><th>topic id</th><th>forum id</th><th>creator</th><th>creationDate</th></tr>")
-        print("<tr>")
-        print("<td>"+self.getPostId()+"</td>")
-        print("<td>"+self.getTopicId()+"</td>")
-        print("<td>"+self.getForumId()+"</td>")
-        print("</tr>")
-        print("</table>")
+        toReturn = ''
+        toReturn +="<table>"
+        toReturn +="<tr><th>post id</th><th>topic id</th><th>forum id</th><th>creator</th><th>creationDate</th></tr>"
+        toReturn +="<tr>"
+        toReturn +="<td>"+self.getPostId()+"</td>"
+        toReturn +="<td>"+self.getTopicId()+"</td>"
+        toReturn +="<td>"+self.getForumId()+"</td>"
+        toReturn +="</tr>"
+        toReturn +="</table>"
+        return toReturn
 
     def render_table_header(self):
-        print("<tr><th width='5%'></th><th width='95%'>sentence</th></tr>")
+        toReturn = ''
+        toReturn +="<tr><th width='5%'></th><th width='95%'>sentence</th></tr>"
+        return toReturn
 
     """
     * render_as_table()
@@ -92,14 +99,19 @@ class Post():
     * @return void
     """
     def render_as_table(self):
-        print("<p>")
-        print("<div id='post'>\n")
-        print("<table id='p"+self.getPostId()+"' class='postTbl' width='100%' cellspacing=5>")
+        toReturn = ''
+        toReturn +="<p>"
+        toReturn +="<div id='post'><br/>"
+        toReturn +="<table id='p"+str(self.getPostId())+"' class='postTbl' width='100%' cellspacing=5>"
 
         self.render_table_header()
 
-        for s in self.getSentences():
-            print(s.render_as_row()+"\n")
+        qryObject = Queries()
+        results = qryObject.getSentences(self.postId)
+        for s in results:
+            a = Sentence(s[0], s[1], s[2], s[3], s[4])
+            toReturn += a.render_as_row()+"<br/>"
 
-        print("</table>")
-        print("</div> <!-- div#post -->\n")
+        toReturn +="</table>"
+        toReturn +="</div> <!-- div#post --><br/>"
+        return toReturn

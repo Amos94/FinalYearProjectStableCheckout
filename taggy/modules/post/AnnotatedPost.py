@@ -50,7 +50,7 @@ class AnnotatedPost(Post):
     * @param int $pID id of Post
     """
     def __init__(self, postId = -1, annotator=None):
-
+        Post.__init__(self, int(postId))
 
         """
 
@@ -64,11 +64,12 @@ class AnnotatedPost(Post):
         # Get current PostState and Comment
 
         postAnnotation = queryObject.getPostAnnotation(postId, annotator.id)
+        print(postAnnotation)
+        for r in postAnnotation:
+            self.annotator_states.insert(self.annotator.id , r[3])  #postAnnotatorState
+            self.comments.insert(self.annotator.id , r[0])  #comment
 
-        self.annotator_states.insert(self.annotator.id , postAnnotation[3])  #postAnnotatorState
-        self.comments.insert(self.annotator.id , postAnnotation[0])  #comment
 
-        Post.__init__(postId)
 
 
 
@@ -80,12 +81,15 @@ class AnnotatedPost(Post):
     *
     * @return void
     """
-    def addSentence(self, qryObject, args):
-        self.sentences.append(AnnotatedSentence( qryObject, self.lookup, self.annotator, args ))
+    def addSentences(self, args):
+        a = AnnotatedSentence(self.lookup, self.annotator, args)
+        self.sentences.append(a)
 
 
     def render_table_header(self):
-        print("<tr><th width='5%'></th><th width='65%'>sentence</th><th width='30%'>tags</th></tr>")
+        toReturn = ''
+        toReturn += "<tr><th width='5%'></th><th width='65%'>sentence</th><th width='30%'>tags</th></tr>"
+        return toReturn
 
     """
     * render_finalize_button()
@@ -93,9 +97,11 @@ class AnnotatedPost(Post):
     * renders HTML for appropriated finalize button
     *
     """
-    def render_finalize_button(self, qryObject):
-
-        if(self.annotator_states[self.annotator.id] == 'DONE' or self.annotator_states[self.annotator.id] == 'ADJUDICATED'):
+    def render_finalize_button(self):
+        qryObject = Queries()
+        toReturn = ''
+        #annotator_states[self.annotator.id]
+        if(self.annotator_states[0] == 'DONE' or self.annotator_states[0] == 'ADJUDICATED'):
             finalizeHiddenCls = "initiallyHidden"
             unfinalizeHiddenCls = ""
         else:
@@ -107,13 +113,10 @@ class AnnotatedPost(Post):
         else:
             finalizedDisabledCls = "finalizedEnabled"
 
-        print( "<div id='finalize' class='postBtn finalizePostBtn "+
-          finalizeHiddenCls+" "+
-          +finalizedDisabledCls+"'>FINALIZE</div>\n")
+        toReturn += "<div id='finalize' class='postBtn finalizePostBtn "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br/>"
 
-        print("<div id='unfinalize' class='postBtn finalizePostBtn "+
-          unfinalizeHiddenCls+" "+
-          finalizedDisabledCls+"'>--DONE--</div>\n")
+        toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn "+unfinalizeHiddenCls+" "+finalizedDisabledCls+"'>--DONE--</div><br>"
+        return toReturn
 
     """
     * render_posts_annotation()
@@ -123,17 +126,20 @@ class AnnotatedPost(Post):
     * @param Queries $qryObject a DB Queries object
     * @return void
     """
-    def render_posts_annotation(self, qryObject):
-        print("<div id='annotatorsCommentContainer'>\n")
-        print("<i>")
-        print("Comments:")
-        print("</i>\n")
-        print("<textarea id='annotatorsComment'>\n")
-        print( self.comments[self.annotator.id])
-        print("</textarea>\n")
-        print("<div id='annotatorsCommentSave' class='postBtn saveCommentsBtn '>SAVE COMMENTS</div>")
-        print("</div>\n")
-        print("<p></p>\n")
+    def render_posts_annotation(self):
+        qryObject = Queries()
+        toReturn = ''
+        toReturn +="<div id='annotatorsCommentContainer'><br>"
+        toReturn +="<i>"
+        toReturn +="Comments:"
+        toReturn +="</i><br>"
+        toReturn +="<textarea id='annotatorsComment'><br>"
+        toReturn += self.comments[0]#self.annotator.id
+        toReturn +="</textarea><br>"
+        toReturn +="<div id='annotatorsCommentSave' class='postBtn saveCommentsBtn '>SAVE COMMENTS</div>"
+        toReturn +="</div><br>"
+        toReturn +="<p></p><br>"
+        return toReturn
 
     """
     * render_available_tags()

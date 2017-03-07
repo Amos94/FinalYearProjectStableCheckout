@@ -568,10 +568,10 @@ class Queries:
 
         if(not qryResult):
             insertQry =  "INSERT INTO taggy_posts_annotators (annotatorId, postId, numSentencesInPost, comment, numSentencesTagged, lastUpdated) "
-            insertQry += "SELECT "+annotatorid+" as annotatorId, "+postid+" as postId, "
+            insertQry += "SELECT "+str(annotatorid)+" as annotatorId, "+str(postid)+" as postId, "
             insertQry += "count(sentenceId) as numSentencesInPost, " # count sentences in the post
             insertQry += "'' as comment, 0 as numSentencesTagged, NOW() as lastUpdated " # default values (move into Table Definition?)
-            insertQry += "FROM sentences WHERE (postId="+postid+") "
+            insertQry += "FROM taggy_sentences WHERE (postId="+str(postid)+") "
 
             insertStatus = self.getData(insertQry)
 

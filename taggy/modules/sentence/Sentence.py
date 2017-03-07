@@ -67,13 +67,15 @@ class Sentence():
     * @return void
     """
     def render_as_row(self):
-        print("<tr id='s"+ self.sentenceID +"' class='sentenceRow'>")
-        print("<td align=\"right\" valign=\"middle\">"+self.paragraphInPost+"."+self.sentenceInParagraph+"</td>")
-        print("<td align=\"left\" valign=\"middle\">"+self.sentence+"</td>")
+        toReturn = ''
+        toReturn += '<tr id="s'+ str(self.sentenceID) +'" class="sentenceRow">'
+        toReturn += '<td align="right" valign="middle">'+str(self.paragraphInPost)+"."+str(self.sentenceInParagraph)+'</td>'
+        toReturn += '<td align="left" valign="middle">'+self.sentence+'</td>'
 
         self.render_tag_columns()
 
-        print("</tr>\n")
+        toReturn += "</tr><br>"
+        return toReturn
 
     def render_tag_columns(self):
         return

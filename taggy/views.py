@@ -299,11 +299,12 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 
     pageName = 'Tag Post'
     pageTitle = ''
-    userType = 'admin'
-    userId = 8
+    userType = 'admin_test'
+    userId = 7
     a_set = None
     a_post = None
     qryObject = Queries()
+    helper = HelperMethods()
 
 
     if (request.GET['setId'] != None):
@@ -311,7 +312,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     else:
         setId = str(-1)
 
-    set = Set(setId)
+    set = Set(int(setId))
 
     if (request.GET['postId'] != None):
         postId = request.GET['postId']
@@ -321,10 +322,10 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     if (request.GET['adjudicationFlag'] == 'true'):
         adjudicationFlag = 'true'
     else:
-        postId = 'false'
+        adjudicationFlag = 'false'
 
     if(setId == '-1'):
-        a_set = set.get_set(setId, userId)
+        a_set = set.get_set(int(setId), userId)
         if(a_set != None):
             if(postId != '-1'):
                 postId = a_set.firstPostID()
@@ -335,24 +336,28 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     if(userId != None):
         annotator = Annotator(qryObject, userId)
         if(annotator.canAdjudicate() and adjudicationFlag == 'true'):
-            a_post = AdjudicatedPost(postId, annotator)
+            a_post = AdjudicatedPost(int(postId), annotator)
         else:
-            a_post = AnnotatedPost(postId, annotator)
+            a_post = AnnotatedPost(int(postId), annotator)
     else:
-        a_post = Post(postId)
+        a_post = Post(int(postId))
+
 
     if(adjudicationFlag == 'true'):
         pageTitle = 'ADJUDICATE POST: '+postId+ ' '
     else:
         pageTitle = 'TAG POST: '+postId+' '
 
-    #TO BE ADDED
-    #display_nav_tagpost(a_set, a_post, adjudicationFlag)
 
+    dnt = helper.display_nav_tagpost(a_set, a_post, adjudicationFlag)
 
+    postTableRnd = a_post.render_as_table()
 
+    a_post.render_finalize_button()
+    a_post.render_posts_annotation()
+    a_post.render_available_tags()
 
-    context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle}
+    context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableRnd':postTableRnd}
     return render(request, "tag_post.html", context)
 
 def successPage(request):

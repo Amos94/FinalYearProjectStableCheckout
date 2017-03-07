@@ -58,24 +58,26 @@ class TagLook:
 
 
     def render(self):
+        toReturn = ''
         tags_provides = filter(self.tags_lookup, PROVIDES_CODE)
 
         tags_requests = filter(self.tags_lookup, REQUEST_CODE)
 
-        print("<div id='tags'>\n")
-        print("<p></p>\n")
-        print("<div class='tagBtns'>")
-        print("<div class='tagHeader'>PROVIDES:</div>\n")
+        toReturn += "<div id='tags'><br>"
+        toReturn += "<p></p><br>"
+        toReturn += "<div class='tagBtns'>"
+        toReturn += "<div class='tagHeader'>PROVIDES:</div><br>"
 
         for t in tags_provides:
             t.render_as_div(True)
 
-        print("<br style='clear:both' />\n")
-        print("<div class='tagHeader'>REQUESTS:</div>\n")
+        toReturn += "<br style='clear:both' /><br>"
+        toReturn += "<div class='tagHeader'>REQUESTS:</div><br>"
 
         for t in tags_requests:
             t.render_as_div(True)
 
-        print("<br style='clear:both' />\n")
-        print("</div>\n")
-        print("</div>\n")
+        toReturn += "<br style='clear:both' /><br>"
+        toReturn += "</div><br>"
+        toReturn += "</div><br>"
+        return toReturn
