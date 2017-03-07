@@ -68,7 +68,7 @@
                             <td valign=top align=left><a href="/set/tag/?s={{ result.0 }}">View set {{ result.0 }}</a></td>
                             <td valign=top align=left>{{ result.1 }}</td>
                             <td valign=top align=left>{{ result.2 }}</td>
-                            <td valign=top align=left><a href="/post/tag/?setId={{ result.0 }}">Start tagging set "{{ result.0 }}"</a></td>
+                            <td valign=top align=left><a href="/post/tag/?setId={{ result.0 }}&postId=-1&adjudicationFlag={{ adjudicationFlag }}">Start tagging set "{{ result.0 }}"</a></td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -89,7 +89,7 @@
                                     {{ result.0 }}
 
                                 {% else %}
-                                    <a href="/post/tag/?postId={{result.0}}&setId={{ setid }}">"{{ result.0}}"</a>
+                                    <a href="/post/tag/?postId={{result.0}}&setId={{ setid }}&adjudicationFlag={{ adjudicationFlag }}">"{{ result.0}}"</a>
 
                                 {% endif %}
 

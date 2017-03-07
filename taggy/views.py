@@ -244,6 +244,9 @@ def tagSet(request, setId=None):
     results = []
     annsts = []
 
+    adjudicationFlag = 'false'
+    if(userType=='admin' or userType=='adjud'):
+        adjudicationFlag = 'true'
 
     if(request.GET['s'] != None):
         setId = request.GET['s']
@@ -261,7 +264,7 @@ def tagSet(request, setId=None):
             annsts.append(qryObject.getPostAnnotatorsAndStates(result[0]))
 
 
-    context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i}
+    context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i,'adjudicationFlag':adjudicationFlag}
     return render(request, "tag_set.html", context)
 
 
@@ -274,6 +277,7 @@ def adjudicateSet(request, setId=None):
     qryObject = Queries()
     results = []
     annsts = []
+    adjudicationFlag = 'false'
 
     if (request.GET['s'] != None):
         setId = request.GET['s']
@@ -290,7 +294,7 @@ def adjudicateSet(request, setId=None):
         for result in results:
             annsts.insert(qryObject.getPostAnnotatorsAndStates(result[0]))
 
-    context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i}
+    context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i, 'adjudicationFlag':adjudicationFlag}
     return render(request, "adjudicate_set.html", context)
 
 

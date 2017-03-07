@@ -490,8 +490,10 @@ class Queries:
         qry = "SELECT COUNT(*) as num FROM taggy_posts"
 
         # creating a random number between 0 and num
-        number = self.getData(qry)['num']
-        rnd = random.uniform(0, number-1)
+        number = self.getData(qry)[0]
+        for i in number:
+            a=i
+        rnd = random.uniform(0, a-1)
         randomNumber = int(rnd)
 
         # execution of the query 'qry'
@@ -502,14 +504,14 @@ class Queries:
             qry += "profileId,postState,content "
             qry += "FROM taggy_posts "
             qry += "WHERE postState='PARSED' "
-            qry += "LIMIT 1 OFFSET "+randomNumber
+            qry += "LIMIT 1 OFFSET "+str(randomNumber)
         else:
             qry =  "SELECT postId,forumId,"
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "postState,content "
             qry += "FROM taggy_posts "
             qry += "WHERE postState='PARSED' "
-            qry += "LIMIT 1 OFFSET "+randomNumber
+            qry += "LIMIT 1 OFFSET "+str(randomNumber)
 
         # execution of the query 'qry'
         qryResult = self.getData(qry)

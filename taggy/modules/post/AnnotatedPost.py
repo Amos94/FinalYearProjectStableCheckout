@@ -60,11 +60,13 @@ class AnnotatedPost(Post):
         self.lookup = TagLook()
         self.annotator = annotator
 
-
+        for i in range(0,self.annotator.id):
+            self.annotator_states.insert(i, ' ')
+            self.comments.insert(i, ' ')
         # Get current PostState and Comment
 
         postAnnotation = queryObject.getPostAnnotation(postId, annotator.id)
-        print(postAnnotation)
+        print(self.annotator.id)
         for r in postAnnotation:
             self.annotator_states.insert(self.annotator.id , r[3])  #postAnnotatorState
             self.comments.insert(self.annotator.id , r[0])  #comment
@@ -101,7 +103,11 @@ class AnnotatedPost(Post):
         qryObject = Queries()
         toReturn = ''
         #annotator_states[self.annotator.id]
-        if(self.annotator_states[0] == 'DONE' or self.annotator_states[0] == 'ADJUDICATED'):
+        print('printing annotator States')
+        print(self.annotator_states)
+        for a in self.annotator_states:
+            print(a)
+        if(self.annotator_states[self.annotator.id] == 'DONE' or self.annotator_states[self.annotator.id] == 'ADJUDICATED'):
             finalizeHiddenCls = "initiallyHidden"
             unfinalizeHiddenCls = ""
         else:
@@ -113,9 +119,9 @@ class AnnotatedPost(Post):
         else:
             finalizedDisabledCls = "finalizedEnabled"
 
-        toReturn += "<div id='finalize' class='postBtn finalizePostBtn "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br/>"
+        toReturn += "<div id='finalize' class='postBtn finalizePostBtn"+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br/>"
 
-        toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn "+unfinalizeHiddenCls+" "+finalizedDisabledCls+"'>--DONE--</div><br>"
+        toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn"+unfinalizeHiddenCls+" "+finalizedDisabledCls+"'>--DONE--</div><br>"
         return toReturn
 
     """
@@ -134,7 +140,7 @@ class AnnotatedPost(Post):
         toReturn +="Comments:"
         toReturn +="</i><br>"
         toReturn +="<textarea id='annotatorsComment' class='form-control'><br>"
-        toReturn += self.comments[0]#self.annotator.id
+        toReturn += self.comments[self.annotator.id]#self.annotator.id
         toReturn +="</textarea><br>"
         toReturn +="<div id='annotatorsCommentSave' class='postBtn saveCommentsBtn '>SAVE COMMENTS</div>"
         toReturn +="</div><br>"
