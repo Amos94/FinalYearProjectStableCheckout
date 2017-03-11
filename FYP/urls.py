@@ -31,6 +31,8 @@ from taggy.views import browseSet as browseSet
 from taggy.views import tagSet as tagSet
 from taggy.views import adjudicateSet as adjudicateSet
 from taggy.views import tagPost as tagPost
+from taggy.views import reviewSet as reviewSet
+from taggy.views import reviewParse as reviewParse
 from django.conf.urls.static import static
 from FYP import settings
 
@@ -42,6 +44,8 @@ urlpatterns = [
     url(r'^adjudication/', adjudication, name="adjudication"),
     url(r'^set/create/', setCreate, name="create_set"),
     url(r'^set/edit/', editSet, name="edit_set"),
+    url(r'^set/review/', reviewSet, name="review_set"),
+    url(r'^review/parse/', reviewParse, name="review_parse"),
     url(r'^set/delete/', deleteSet, name="delete_set"),
     url(r'^set/assign/', assignSet, name="assign_set"),
     url(r'^set/browse/', browseSet ,name="browse_set"),

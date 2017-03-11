@@ -97,6 +97,8 @@ def editSet(request, setid=-1):
             results = qry.getSetsByCreator(userId)
     elif(request.POST.get('updateset')):
         results = qry.getSetMeta(setid)
+        for result in results:
+            print('NAME SETMETA: ' + results[1])
         setname = results[1]
         qry.updateSet(setid, request.POST.get('updateset'))
         results = qry.getSet(setid)
@@ -104,6 +106,8 @@ def editSet(request, setid=-1):
         postCase = 1
     else:
         results = qry.getSetMeta(setid)
+        for result in results:
+            print('NAME SETMETA: ' + results[1])
         setname = results[1]
         results = qry.getSet(setid)
         updateset = ""
@@ -333,6 +337,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
         if(a_set != None):
             if(postId != '-1'):
                 postId = a_set.firstPostID()
+                print('POST ID: '+ str(postId))
         else:
             a_set = None
 
@@ -363,6 +368,155 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 
     context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableRnd':postTableRnd, 'a':a, 'b':b, 'c':c}
     return render(request, "tag_post.html", context)
+
+
+def reviewSet(request, setId=None):
+    pageName = 'Review set'
+    userType = 'admin_test'
+    userId = 7
+    qryObject = Queries()
+    results = []
+
+    if (request.GET['s'] != None):
+        setId = request.GET['s']
+    else:
+        setId = str(-1)
+
+    if(setId == '-1'):
+        results = qryObject.getSets()
+    else:
+        results = qryObject.getPostsInSet(setId)
+
+    context = {'pageName':pageName, 'setid':setId, 'results':results}
+    return render(request, "review_set.html", context)
+
+
+def reviewParse(request, setId=None, postId=None):
+    pageName = 'Review set'
+    userType = 'admin'
+    userId = 7
+    user = 'amos'
+    a_set = None
+    a_post = None
+    set = None
+    prevPostId = None
+    qryObject = Queries()
+    results = []
+
+
+    if(userType == 'admin'):
+        if (request.GET['s'] != None):
+            setId = request.GET['s']
+        elif(request.POST['s'] != None):
+            setId = request.POST['s']
+        else:
+            setId = '-1'
+
+        set = Set(int(setId))
+
+        if(request.GET['p'] != None):
+            postId = request.GET['p']
+        elif(request.POST['p'] != None):
+            postId = request.POST['p']
+        else:
+            postId = '-1'
+
+        a_set = set.get_set(setId, userId)
+        prevPostId = a_set.getPrevPostId(int(postId))
+
+        #PARSE REVIEW POST METHOD
+        parseHtml = ''
+        if(request.POST['review']):
+            parseHtml += "<br /><i>processing review---</i><br /><br />"
+            parseHtml +="&nbsp;&nbsp; post " + postId + " in set " + setId + ": &nbsp; [ "
+            if(request.Post['review'] == 'accept'):
+                status = qryObject.updateParseTool(postId, '', 'PARSED')
+                parseHtml += "<font color=#009900>" + request.Post['review'] + "</font>"
+            else:
+                status = qryObject.updateParseTool(postId, request.POST['review'], 'REPARSE')
+                parseHtml += "<font color=#990000>reparse using: " + request.Post['review'] + "</font>"
+            parseHtml += " ]<br /><br />"
+            parseHtml += "<i>database has been updated.</i><br />"
+        else:
+            parseHtml = ''
+            parseHtml += "<font color=#0000ff><b>results of most recent parse---&gt;</b></font><br />"
+            parseHtml += "<i>sentences found in post "+postId+" in set "+setId+":</i><br />"
+
+            results = qryObject.getSentences( postId )
+
+            parseHtml += "<div class='scrollHalfList'>"
+            parseHtml += "<table border=0 cellspacing=3 cellpadding=3>"
+            parseHtml += "<tr><th>sentenceID</th><th>paragraphInPost</th><th>sentenceInParagraph</th><th>sentence</th></tr>"
+            for result in results:
+                parseHtml += "<tr>"
+                parseHtml += "<td valign=top align=right>"+result['sentenceID']+"</td>"
+                parseHtml += "<td valign=top align=center>"+result['paragraphInPost']+"</td>"
+                parseHtml += "<td valign=top align=center>"+result['sentenceInParagraph']+"</td>"
+                parseHtml += "<td valign=top align=left>"+result['sentence']+"</td>"
+                parseHtml += "</tr>"
+            parseHtml += "</table>"
+            parseHtml += "</div>"
+
+            parseHtml += "<font color=#0000ff><b>information about this post---&gt;</b></font><br />"
+            results = qryObject.getPostParseInfo( postId )
+            result = results[0]
+
+            parseHtml += "<table>"
+            parseHtml += "<tr>"
+            parseHtml += "<td align=right><i>post state: </i></td>"
+            if (( result['postState'] == 'INITIAL' ) or ( result['postState'] == 'SELECTED' ) or ( result['postState'] == 'REPARSE' )):
+                parseHtml += "<td align=left bgcolor=#aaffaa>"+result['postState']+"</td>"
+            else:
+                parseHtml += "<td align=left><font color=#cc0000>"+result['postState']+"</font></td>"
+
+            parseHtml += "</tr>"
+            parseHtml += "<tr>"
+            parseHtml += "<td align=right><i>last reviewed:</i></td>"
+            parseHtml += "<td align=left>"
+            if ( result['reviewed'] == '' ):
+                parseHtml += "not reviewed yet</td>"
+            else:
+                parseHtml += result['reviewed']+"</td>"
+
+            parseHtml += "</tr>"
+            if ( result['parseTool'] ):
+                parseHtml += "<tr>"
+                parseHtml += "<td align=right><i>parse tool:</i></td>"
+                parseHtml += "<td align=left>"+result['parseTool']+"</td>"
+                parseHtml += "</tr>"
+
+            parseHtml += "<tr>"
+            parseHtml += "<td align=right><i>parse version:</i></td>"
+            parseHtml += "<td align=left>"+ result['parseVersion']+"</td>"
+            parseHtml += "</tr>"
+            parseHtml += "<tr>"
+            parseHtml += "<td align=right><i>last parsed:</i></td>"
+            parseHtml += "<td align=left>"+ result['parsed']+"</td>"
+            parseHtml += "</tr>"
+            parseHtml += "<tr>"
+            parseHtml += "<td align=right><i>parse history:</td>"
+            parseHtml += "<td align=left>"+ result['parseHistory']+"</td>"
+            parseHtml += "</tr>"
+            parseHtml += "</table>"
+            parseHtml += "<p>"
+
+            if (( result['postState'] == 'INITIAL' ) or ( result['postState'] == 'SELECTED' ) or ( result['postState'] == 'REPARSE' )):
+                parseHtml += "<form action=\"reviewparse.php?"+"\" method=\"post\">"
+                parseHtml += "<input type=\"hidden\" name=\"userid\" value=\""+ userId+"\"/>"
+                parseHtml += "<input type=\"hidden\" name=\"username\" value=\""+user+"\"/>"
+                parseHtml += "<input type=\"hidden\" name=\"usertype\" value=\""+userType+"\"/>"
+                parseHtml += "<input type=\"hidden\" name=\"setid\" value=\""+setId+"\"/>"
+                parseHtml += "<input type=\"hidden\" name=\"postid\" value=\""+postId+"\"/>"
+                parseHtml += "<font color=#0000ff><b>Is the post parsed okay?</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                parseHtml += "<select name=\"review\">"
+                parseHtml += "<option value=\"accept\">Yes! Accept the parse </option>"
+
+                for p in parseTools:
+
+    context = {'pageName': pageName, 'setid':setId, 'postid':postId, 'parseHtml': parseHtml}
+
+    return render(request, 'review_parse.html', context)
+
 
 def successPage(request):
     pageName = "Success"

@@ -102,9 +102,11 @@ class Set():
     """
     def getPrevPostId(self, postId):
 
+        i=0
         for a in self.post_ids:
-            if (self.post_ids[a] == postId):
-                pos = a
+            if (self.post_ids[i] == postId):
+                pos = i
+            i = i+1
 
         if (pos == False):
             return
@@ -132,6 +134,6 @@ class Set():
         """
         qryObject = Queries()
         if(annotatorId):
-            if(not(qryObject.checkSetAnnotatorAssignment( setId, annotatorId ))):
+            if(qryObject.checkSetAnnotatorAssignment( setId, annotatorId ) == False):
                 raise Exception( 'SetID ' +setId + ' not associated with Annotator: ' +annotatorId )
-        return Set(qryObject, setId)
+        return Set(setId)

@@ -1384,14 +1384,14 @@ class Queries:
         # Building the SQL query qry
         qry =  "SELECT* "
         qry += "FROM taggy_annotators_sets "
-        qry += "WHERE setId = "+setid
-        qry += "AND annotatorId = "+annotatorid
+        qry += "WHERE setId = "+str(setid)
+        qry += " AND annotatorId = "+str(annotatorid)
 
-        with connection.cursor() as cursor:
-            if(cursor.rowcount(qry) == 0):
-                toReturn = False
-            else:
-                toReturn = True
+        results = self.getData(qry)
+        if(results == None):
+            toReturn = False
+        else:
+            toReturn = True
 
         return toReturn
 

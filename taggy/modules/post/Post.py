@@ -9,6 +9,7 @@ class Post():
     forumId = 0
     topicId = 0
     sentences = []
+    postState = ''
 
     def __init__(self, postId = -1):
 
@@ -61,6 +62,9 @@ class Post():
 
     def addSentence(self, args):
         self.sentences.append(args)
+
+    def getPostState(self):
+        return self.postState
 
     """
     * render_headline()

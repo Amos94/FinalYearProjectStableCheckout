@@ -43,6 +43,8 @@ class AnnotatedPost(Post):
     """
     comments = []
 
+    postState = ''
+
     """
     * Constructor of AnnotatedPost object
     *
@@ -51,6 +53,8 @@ class AnnotatedPost(Post):
     """
     def __init__(self, postId = -1, annotator=None):
         Post.__init__(self, int(postId))
+        post = Post(int(postId))
+        self.postState = post.getPostState()
 
         """
 
