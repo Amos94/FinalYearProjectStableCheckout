@@ -12,7 +12,7 @@ from taggy.modules.post.Post import Post
 from taggy.modules.users import User as User
 from taggy.modules.HelperMethods import HelperMethods
 from taggy.modules.post.Set import Set
-
+import taggy.modules.ChosenKappa as chosenKappa
 # Create your views here.
 def index(request):
     pageName = "index"
@@ -535,6 +535,17 @@ def reviewParse(request, setId=None, postId=None):
 
     return render(request, 'review_parse.html', context)
 
+
+#TO FINISH IT AFTER CHOSENKAPPA
+def setKappa(request):
+    pageName = 'setKappa'
+    annotator1 = 10
+    annotator2 = 8
+
+
+
+    context = {'pageName': pageName}
+    return render(request, 'kappa_set.html', context)
 
 def successPage(request):
     pageName = "Success"

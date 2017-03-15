@@ -33,6 +33,7 @@ from taggy.views import adjudicateSet as adjudicateSet
 from taggy.views import tagPost as tagPost
 from taggy.views import reviewSet as reviewSet
 from taggy.views import reviewParse as reviewParse
+from taggy.views import setKappa as setKappa
 from django.conf.urls.static import static
 from FYP import settings
 
@@ -49,7 +50,8 @@ urlpatterns = [
     url(r'^set/delete/', deleteSet, name="delete_set"),
     url(r'^set/assign/', assignSet, name="assign_set"),
     url(r'^set/browse/', browseSet ,name="browse_set"),
-    url(r'^set/tag/', tagSet, name='tag_set'),
+    url(r'^set/tag/',tagSet, name='tag_set'),
+    url(r'^set/kappa/', setKappa, name='kappa_set'),
     url(r'^set/adjudicate/', adjudicateSet, name='adjudicate_set'),
     url(r'^post/tag/', tagPost, name='tag_post'),
     url(r'success/', success, name="success"),
