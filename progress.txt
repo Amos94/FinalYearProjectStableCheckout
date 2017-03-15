@@ -9,3 +9,4 @@ error(list index out of range) - set_assign - sassign
 ?almost done = browse_set -sbrowse
 almost done - tag_post
 started - setKappa - setkappa => TO FINISH IT AFTER CHOSENKAPPA
+almost done - chosenKappa (MIGHT BE ERRORS)
