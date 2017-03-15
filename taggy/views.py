@@ -402,6 +402,7 @@ def reviewParse(request, setId=None, postId=None):
     prevPostId = None
     qryObject = Queries()
     results = []
+    parseTools = ['nltk-v0.9.9', 'opennlp-v1.4.3', 'manually' ]
 
 
     if(userType == 'admin'):
@@ -426,81 +427,89 @@ def reviewParse(request, setId=None, postId=None):
 
         #PARSE REVIEW POST METHOD
         parseHtml = ''
-        if(request.POST['review']):
-            parseHtml += "<br /><i>processing review---</i><br /><br />"
-            parseHtml +="&nbsp;&nbsp; post " + postId + " in set " + setId + ": &nbsp; [ "
-            if(request.Post['review'] == 'accept'):
-                status = qryObject.updateParseTool(postId, '', 'PARSED')
-                parseHtml += "<font color=#009900>" + request.Post['review'] + "</font>"
-            else:
-                status = qryObject.updateParseTool(postId, request.POST['review'], 'REPARSE')
-                parseHtml += "<font color=#990000>reparse using: " + request.Post['review'] + "</font>"
-            parseHtml += " ]<br /><br />"
-            parseHtml += "<i>database has been updated.</i><br />"
+
+        if(request.method == 'POST'):
+            if(request.POST['review']):
+                parseHtml += "<br /><i>processing review</i><br /><br />"
+                parseHtml +="&nbsp;&nbsp; post " + postId + " in set " + setId + ": &nbsp; [ "
+                if(request.Post['review'] == 'accept'):
+                    status = qryObject.updateParseTool(postId, '', 'PARSED')
+                    parseHtml += "<font color=#009900>" + request.Post['review'] + "</font>"
+                else:
+                    status = qryObject.updateParseTool(postId, request.POST['review'], 'REPARSE')
+                    parseHtml += "<font color=#990000>reparse using: " + request.Post['review'] + "</font>"
+                parseHtml += " ]<br /><br />"
+                parseHtml += "<i>database has been updated.</i><br />"
         else:
             parseHtml = ''
-            parseHtml += "<font color=#0000ff><b>results of most recent parse---&gt;</b></font><br />"
+            parseHtml += "<br/><b>results of most recent parse:</b><br />"
             parseHtml += "<i>sentences found in post "+postId+" in set "+setId+":</i><br />"
 
             results = qryObject.getSentences( postId )
 
             parseHtml += "<div class='scrollHalfList'>"
-            parseHtml += "<table border=0 cellspacing=3 cellpadding=3>"
+            parseHtml += "<table class='table table-striped table-hover table-condensed'>"
             parseHtml += "<tr><th>sentenceID</th><th>paragraphInPost</th><th>sentenceInParagraph</th><th>sentence</th></tr>"
             for result in results:
                 parseHtml += "<tr>"
-                parseHtml += "<td valign=top align=right>"+result['sentenceID']+"</td>"
-                parseHtml += "<td valign=top align=center>"+result['paragraphInPost']+"</td>"
-                parseHtml += "<td valign=top align=center>"+result['sentenceInParagraph']+"</td>"
-                parseHtml += "<td valign=top align=left>"+result['sentence']+"</td>"
+                parseHtml += "<td valign=top align=right>"+str(result[1])+"</td>"#sentenceID
+                parseHtml += "<td valign=top align=center>"+str(result[3])+"</td>"#paragraphInPost
+                parseHtml += "<td valign=top align=center>"+str(result[4])+"</td>"#sentenceInParagraph
+                parseHtml += "<td valign=top align=left>"+str(result[2])+"</td>"#sentence
                 parseHtml += "</tr>"
             parseHtml += "</table>"
             parseHtml += "</div>"
 
-            parseHtml += "<font color=#0000ff><b>information about this post---&gt;</b></font><br />"
+            parseHtml += "<b>information about this post:</b><br />"
             results = qryObject.getPostParseInfo( postId )
             result = results[0]
 
-            parseHtml += "<table>"
-            parseHtml += "<tr>"
+            parseHtml += "<table class='table text-center'>"
+            parseHtml += "<tr class='info'>"
             parseHtml += "<td align=right><i>post state: </i></td>"
-            if (( result['postState'] == 'INITIAL' ) or ( result['postState'] == 'SELECTED' ) or ( result['postState'] == 'REPARSE' )):
+            #result[0] = 'postState'
+            if (( result[0] == 'INITIAL' ) or ( result[0] == 'SELECTED' ) or ( result[0] == 'REPARSE' )):
                 parseHtml += "<td align=left bgcolor=#aaffaa>"+result['postState']+"</td>"
             else:
-                parseHtml += "<td align=left><font color=#cc0000>"+result['postState']+"</font></td>"
+                parseHtml += "<td align=left><font color=#cc0000>"+result[0]+"</font></td>"
 
             parseHtml += "</tr>"
-            parseHtml += "<tr>"
+            parseHtml += "<tr class='info'>"
             parseHtml += "<td align=right><i>last reviewed:</i></td>"
             parseHtml += "<td align=left>"
-            if ( result['reviewed'] == '' ):
+            #result[1] = 'reviewed'
+            if ( result[1] == '' ):
                 parseHtml += "not reviewed yet</td>"
             else:
-                parseHtml += result['reviewed']+"</td>"
+                parseHtml += result[1]+"</td>"
 
             parseHtml += "</tr>"
-            if ( result['parseTool'] ):
-                parseHtml += "<tr>"
+            #result[5] = 'parseTool'
+            if ( result[5] ):
+                parseHtml += "<tr class='info'>"
                 parseHtml += "<td align=right><i>parse tool:</i></td>"
-                parseHtml += "<td align=left>"+result['parseTool']+"</td>"
+                parseHtml += "<td align=left>"+result[5]+"</td>"
                 parseHtml += "</tr>"
 
-            parseHtml += "<tr>"
+            parseHtml += "<tr class='info'>"
             parseHtml += "<td align=right><i>parse version:</i></td>"
-            parseHtml += "<td align=left>"+ result['parseVersion']+"</td>"
+            #result[] = 'parseVersion'
+            parseHtml += "<td align=left>"+ str(result[4])+"</td>"
             parseHtml += "</tr>"
-            parseHtml += "<tr>"
+            parseHtml += "<tr class='info'>"
             parseHtml += "<td align=right><i>last parsed:</i></td>"
-            parseHtml += "<td align=left>"+ result['parsed']+"</td>"
+            # result[] = 'parsed'
+            parseHtml += "<td align=left>"+ result[2]+"</td>"
             parseHtml += "</tr>"
-            parseHtml += "<tr>"
+            parseHtml += "<tr class='info'>"
             parseHtml += "<td align=right><i>parse history:</td>"
-            parseHtml += "<td align=left>"+ result['parseHistory']+"</td>"
+            #result[] = 'parseHistory'
+            parseHtml += "<td align=left>"+ result[3]+"</td>"
             parseHtml += "</tr>"
             parseHtml += "</table>"
             parseHtml += "<p>"
-
-            if (( result['postState'] == 'INITIAL' ) or ( result['postState'] == 'SELECTED' ) or ( result['postState'] == 'REPARSE' )):
+            #result[0] = poststate
+            if (( result[0] == 'INITIAL' ) or ( result[0] == 'SELECTED' ) or ( result[0] == 'REPARSE' )):
                 parseHtml += "<form action=\"reviewparse.php?"+"\" method=\"post\">"
                 parseHtml += "<input type=\"hidden\" name=\"userid\" value=\""+ userId+"\"/>"
                 parseHtml += "<input type=\"hidden\" name=\"username\" value=\""+user+"\"/>"
@@ -512,6 +521,15 @@ def reviewParse(request, setId=None, postId=None):
                 parseHtml += "<option value=\"accept\">Yes! Accept the parse </option>"
 
                 for p in parseTools:
+                    # result[0] = poststate
+                    # result[5] = parsetool
+                    if(result[0] == 'REPARSE' and result[5] == p):
+                        parseHtml += "<option value=\"" + p + "\" selected=\"selected\">No! Reparse using: "+ p +"</option>"
+                    else:
+                        parseHtml += "<option value=\"" + p + "\">No! Reparse using: "+ p +"</option>"
+                parseHtml += "</select>"
+                parseHtml += "<input type=\"submit\" name=\"submit\" />"
+                parseHtml += "</form>"
 
     context = {'pageName': pageName, 'setid':setId, 'postid':postId, 'parseHtml': parseHtml}
 

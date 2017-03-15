@@ -101,7 +101,8 @@
                             </td>
                             <td>{{result.5}}</td>
                             <td>{{ result.1 }}-{{ result.2 }}</td>
-                            <td>{{ result.6 }}</td>
+                            <td>{% autoescape off %}{{ result.6 }}{% endautoescape %}
+                            </td>
 
                         </tr>
                     {% endfor %}

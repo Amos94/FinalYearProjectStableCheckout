@@ -1,5 +1,7 @@
 done - set_creation -screate
 done - delete_set -sdelete
+done-review_set
+done-review_parse
 almost done - edit_set -sedit
 almost done - tag_set -stag
 almost done(error) - adjudicate-set -sadjudicate
