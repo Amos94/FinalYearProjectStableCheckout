@@ -1,18 +1,16 @@
-from django.http import Http404
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import resolve
-from django.utils.six.moves.urllib.parse import urlparse
+
 from forms import CreateSet, UpdateSet
 from taggy.modules.Annotator import Annotator
+from taggy.modules.HelperMethods import HelperMethods
 from taggy.modules.Queries import Queries
 from taggy.modules.post.AdjudicatedPost import AdjudicatedPost
 from taggy.modules.post.AnnotatedPost import AnnotatedPost
 from taggy.modules.post.Post import Post
-from taggy.modules.users import User as User
-from taggy.modules.HelperMethods import HelperMethods
 from taggy.modules.post.Set import Set
-import taggy.modules.ChosenKappa as chosenKappa
+
+
 # Create your views here.
 def index(request):
     pageName = "index"
@@ -534,15 +532,6 @@ def reviewParse(request, setId=None, postId=None):
     context = {'pageName': pageName, 'setid':setId, 'postid':postId, 'parseHtml': parseHtml}
 
     return render(request, 'review_parse.html', context)
-
-
-#TO FINISH IT AFTER CHOSENKAPPA
-def setKappa(request):
-    pageName = 'setKappa'
-    annotator1 = 10
-    annotator2 = 8
-
-
 
     context = {'pageName': pageName}
     return render(request, 'kappa_set.html', context)

@@ -51,7 +51,6 @@ urlpatterns = [
     url(r'^set/assign/', assignSet, name="assign_set"),
     url(r'^set/browse/', browseSet ,name="browse_set"),
     url(r'^set/tag/',tagSet, name='tag_set'),
-    url(r'^set/kappa/', setKappa, name='kappa_set'),
     url(r'^set/adjudicate/', adjudicateSet, name='adjudicate_set'),
     url(r'^post/tag/', tagPost, name='tag_post'),
     url(r'success/', success, name="success"),
