@@ -4,6 +4,8 @@ from django.shortcuts import render
 from forms import CreateSet, UpdateSet
 from taggy.modules.Annotator import Annotator
 from taggy.modules.HelperMethods import HelperMethods
+from taggy.modules.Kappa.ChosenKappa import ChosenKappa
+from taggy.modules.Kappa.PostKappaDetails import PostKappaDetails
 from taggy.modules.Queries import Queries
 from taggy.modules.post.AdjudicatedPost import AdjudicatedPost
 from taggy.modules.post.AnnotatedPost import AnnotatedPost
@@ -533,8 +535,98 @@ def reviewParse(request, setId=None, postId=None):
 
     return render(request, 'review_parse.html', context)
 
-    context = {'pageName': pageName}
-    return render(request, 'kappa_set.html', context)
+def postKappaDetails(request):
+    pageName = "Post Kappa Details"
+    q = Queries()
+    s = Set()
+    a_set = None
+    annotator = None
+    a_post = None
+    a = []
+    b = []
+    obj1 = []
+    obj2 = []
+    pkd = PostKappaDetails()
+    errorMsg = ''
+    k = ChosenKappa()
+
+    try:
+        if(request.GET['s']):
+            a_set = s.get_set(request.GET['s'], request.GET['p'])
+
+            if(request.GET['p']):
+                postId = a_set.firstPostID()
+        else:
+            a_set = None
+
+        if(not request.GET['p']):
+            raise Exception('No PostID available.', 'No PostID available.')
+
+        if(request.GET['a']):
+            annotator = Annotator(request.GET['a'])
+
+            if(annotator.canAdjudicate() and request.GET['adjudicateFlag'] == 'true'):
+                a_post = AdjudicatedPost(request.GET['p'],annotator)
+            else:
+                a_post = AnnotatedPost(request.GET['p'], annotator)
+        else:
+            a_post = Post(request.GET['p'])
+        if(a_post.postError()):
+            errorMsg += "'<p style='color:red'><i>" + str(a_post.postError()) + "</i><p>"
+    except:
+        errorMsg += "ERROR"
+
+    page_title = "Post "+request.GET['p']
+
+    query = "SELECT P.annotatorID, username FROM taggy_posts_annotators P INNER JOIN annotators A ON P.annotatorID = A.annotatorID WHERE postID = "+request.GET['p']+" AND usertype = 'annotator';"
+    a = q.getData(query)
+    if(len(a) == 2):
+        obj1 = a[0]
+        annotator1 = obj1[0]
+        name1 = obj1[1]
+
+        obj2 = a[1]
+        annotator2 = obj2[0]
+        name2 = obj2[1]
+
+    query = "SELECT COUNT(DISTINCT S1.sentenceID) FROM taggy_sentences_tags S1 INNER JOIN (SELECT sentenceID FROM taggy_sentences_tags WHERE annotatorID = "+str(annotator2)+" AND postID = "+request.GET['p']+") S2 ON S1.sentenceID = S2.sentenceID WHERE S1.annotatorID = "+str(annotator1)+" AND postID = "+request.GET['p']+";"
+    b = q.getData(query)
+    totalSentences = b[0]
+
+    query = "SELECT DISTINCT tagName FROM tags"
+    tags = q.getData(query)
+    sum = 0
+    sum2 = 0
+    count = 0
+    table = "<br />"
+    for tag in tags:
+        tagIDs = tag[0]
+        results = k.countsByPost(annotator1, annotator2, tagIDs, request.GET['p'])
+        neither = k.totalSentences - (results[0] + results[1] + results[2])
+        ck = k.cohensKappa(results[0], results[1], results[2], neither)
+        if(results[0] > 0 or results[1] > 0 or results[2] > 0):
+            sum2 += ck
+            count += 1
+        sum += ck
+        table += "<b>Cohen's Kappa for "+tag[0]
+        table += " : "+ck+"</b><br /><br /><table border='1'><tr><td colspan='2' rowspan='2'></td><th colspan='2'>"+name1
+        table += "</th></tr><tr><th width='75'>Tag "+tag[0]
+        table += "</th><th width='75'>&not Tag "+tag[0]
+        table += "</th></tr><tr><th rowspan='2'>"+name2
+        table += "</th><th align='right'>Tag "+tag[0]
+        table += "</th><td align='right'>"+results[2]
+        table += "</td><td align='right'>"+results[1]
+        table += "</td></tr><tr><th align='right'>&not Tag "+tag[0]
+        table += "</th><td align='right'>"+results[0]
+        table += "</td><td align='right'>"+neither
+        table += "</td></tr></table><br /><br />"
+    average = sum / 11
+    average2 = sum2 / count
+
+    nav_tagpost = pkd.display_nav_tagpost(a_set, a_post, request.GET['adjudicateFlag'])
+
+    context = {'pageName':pageName, 'pageTitle':page_title, 'average':average, 'average2':average2, 'table':table, 'nav_tagpost':nav_tagpost}
+    return render(request, 'postKappaDetails.html', context)
 
 def successPage(request):
     pageName = "Success"
