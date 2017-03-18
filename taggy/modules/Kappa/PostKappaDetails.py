@@ -6,6 +6,9 @@ class PostKappaDetails():
         parseHtml = ''
         parseHtml += "<p></p>"
 
+        print(set.setId)
+
+
         if(set):
             if(adjudicateFlag == 'true'):
                 parseHtml += "<a href=\"/set/adjudicate/?s=-1\">[go back to list of sets]</a> "
@@ -13,9 +16,9 @@ class PostKappaDetails():
             else:
                 parseHtml += "<a href=\"/set/tag/?s=-1\">[go back to list of sets]</a>"
                 parseHtml += "<a href=\"/set/tag/?s="+str(set.setId)+"\">[go back to set "+str(set.setId)+"]</a> "
-            parseHtml += "<a href='/tag/post/?&setId="+str(set.setId)+"&postId="+str(post.postId)+"&adjudicateFlag=true'>[go back to post "+str(post.postId)+"]</a> "
+            parseHtml += "<a href='/tag/post/?&setId="+str(set.setId)+"&postId="+str(post.getPostId())+"&adjudicateFlag=true'>[go back to post "+str(post.getPostId())+"]</a> "
         elif(post):
-            parseHtml += "<a href='/tag/post/?&setId="+str(set.setId)+"&postId="+str(post.postId)+"&adjudicateFlag=true'>[go back to post "+str(post.postId)+"]</a> "
+            parseHtml += "<a href='/tag/post/?&setId="+str(set.setId)+"&postId="+str(post.getPostId())+"&adjudicateFlag=true'>[go back to post "+str(post.getPostId())+"]</a> "
             parseHtml += "<form action=\"/tag/post/ method=\"GET\">"
             parseHtml += "[tag post id: <input type=\"text\" name=\"postID\" />"
             parseHtml += "<input type=\"submit\" value=\"Submit\" /> ]"

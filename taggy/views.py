@@ -538,7 +538,7 @@ def reviewParse(request, setId=None, postId=None):
 def postKappaDetails(request):
     pageName = "Post Kappa Details"
     q = Queries()
-    s = Set()
+
     a_set = None
     annotator = None
     a_post = None
@@ -552,6 +552,7 @@ def postKappaDetails(request):
 
     try:
         if(request.GET['s']):
+            s = Set(request.GET['s'])
             a_set = s.get_set(request.GET['s'], request.GET['p'])
 
             if(request.GET['p']):
@@ -564,7 +565,8 @@ def postKappaDetails(request):
 
         if(request.GET['a']):
             annotator = Annotator(request.GET['a'])
-
+            print('annotator')
+            print(annotator)
             if(annotator.canAdjudicate() and request.GET['adjudicateFlag'] == 'true'):
                 a_post = AdjudicatedPost(request.GET['p'],annotator)
             else:
@@ -578,22 +580,26 @@ def postKappaDetails(request):
 
     page_title = "Post "+request.GET['p']
 
-    query = "SELECT P.annotatorID, username FROM taggy_posts_annotators P INNER JOIN annotators A ON P.annotatorID = A.annotatorID WHERE postID = "+request.GET['p']+" AND usertype = 'annotator';"
+    query = "SELECT P.annotatorId, username FROM taggy_posts_annotators P INNER JOIN taggy_annotators A ON P.annotatorId = A.annotatorId WHERE postId = "+request.GET['p']+" AND usertype = 'annotator';"
     a = q.getData(query)
-    if(len(a) == 2):
-        obj1 = a[0]
-        annotator1 = obj1[0]
-        name1 = obj1[1]
 
-        obj2 = a[1]
-        annotator2 = obj2[0]
-        name2 = obj2[1]
+    if(len(a) != 2):
+        print("The annotators number !=2. Number of annotators: " + str(len(a)))
+    obj1 = a[0]
+    annotator1 = obj1[0]
+    name1 = obj1[1]
 
-    query = "SELECT COUNT(DISTINCT S1.sentenceID) FROM taggy_sentences_tags S1 INNER JOIN (SELECT sentenceID FROM taggy_sentences_tags WHERE annotatorID = "+str(annotator2)+" AND postID = "+request.GET['p']+") S2 ON S1.sentenceID = S2.sentenceID WHERE S1.annotatorID = "+str(annotator1)+" AND postID = "+request.GET['p']+";"
+    obj2 = a[1]
+    annotator2 = obj2[0]
+    name2 = obj2[1]
+
+    query = "SELECT COUNT(DISTINCT S1.sentenceId) FROM taggy_sentences_tags S1 INNER JOIN (SELECT sentenceId FROM taggy_sentences_tags WHERE annotatorId = "+str(annotator2)+" AND postId = "+request.GET['p']+") S2 ON S1.sentenceId = S2.sentenceId WHERE S1.annotatorId = "+str(annotator1)+" AND postId = "+request.GET['p']+";"
     b = q.getData(query)
-    totalSentences = b[0]
+    ts = b[0]
+    totalSentences = ts[0]
 
-    query = "SELECT DISTINCT tagName FROM tags"
+
+    query = "SELECT DISTINCT tagName FROM taggy_tags"
     tags = q.getData(query)
     sum = 0
     sum2 = 0
@@ -601,28 +607,30 @@ def postKappaDetails(request):
     table = "<br />"
     for tag in tags:
         tagIDs = tag[0]
-        results = k.countsByPost(annotator1, annotator2, tagIDs, request.GET['p'])
-        neither = k.totalSentences - (results[0] + results[1] + results[2])
-        ck = k.cohensKappa(results[0], results[1], results[2], neither)
+
+        results = k.countsByPost(annotator1, annotator2, tags, request.GET['p'])
+        neither = totalSentences - (results[0] + results[1] + results[2])
+        ck = k.chosenKappa(results[0], results[1], results[2], neither)
         if(results[0] > 0 or results[1] > 0 or results[2] > 0):
-            sum2 += ck
-            count += 1
+            sum2 = sum2 + ck
+            count = count + 1
         sum += ck
         table += "<b>Cohen's Kappa for "+tag[0]
-        table += " : "+ck+"</b><br /><br /><table border='1'><tr><td colspan='2' rowspan='2'></td><th colspan='2'>"+name1
+        table += " : "+str(ck)+"</b><br /><br /><table border='1'><tr><td colspan='2' rowspan='2'></td><th colspan='2'>"+name1
         table += "</th></tr><tr><th width='75'>Tag "+tag[0]
         table += "</th><th width='75'>&not Tag "+tag[0]
         table += "</th></tr><tr><th rowspan='2'>"+name2
         table += "</th><th align='right'>Tag "+tag[0]
-        table += "</th><td align='right'>"+results[2]
-        table += "</td><td align='right'>"+results[1]
+        table += "</th><td align='right'>"+str(results[2])
+        table += "</td><td align='right'>"+str(results[1])
         table += "</td></tr><tr><th align='right'>&not Tag "+tag[0]
-        table += "</th><td align='right'>"+results[0]
-        table += "</td><td align='right'>"+neither
+        table += "</th><td align='right'>"+str(results[0])
+        table += "</td><td align='right'>"+str(neither)
         table += "</td></tr></table><br /><br />"
     average = sum / 11
-    average2 = sum2 / count
-
+    if(count != 0):
+        average2 = sum2 / count
+    print(a_post)
     nav_tagpost = pkd.display_nav_tagpost(a_set, a_post, request.GET['adjudicateFlag'])
 
     context = {'pageName':pageName, 'pageTitle':page_title, 'average':average, 'average2':average2, 'table':table, 'nav_tagpost':nav_tagpost}

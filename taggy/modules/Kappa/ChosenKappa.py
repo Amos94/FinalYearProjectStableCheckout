@@ -12,6 +12,14 @@ class ChosenKappa():
         print('ChosenKappa')
 
     def countsByPost(self, ann1, ann2, tagIds, postId):
+
+        tags = '('
+
+        for tagId in tagIds:
+            tags += "'"+str(tagId[0]) + "', "
+        tags = tags[:-2]
+        tags += ")"
+
         masterSQL = ''
         masterSQL += "SELECT DISTINCT S1.sentenceId "
         masterSQL += "FROM taggy_sentences_tags S1 "
@@ -20,11 +28,11 @@ class ChosenKappa():
         masterSQL += "ON S1.sentenceId = S2.sentenceId "
         masterSQL += "WHERE S1.annotatorId = "+str(ann1)
         masterSQL += " "
-        masterSQL += "AND S1.tagId IN "+str(tagIds)
+        masterSQL += "AND S1.tagId IN "+tags
         masterSQL += " "
         masterSQL += "AND S1.postId = "+str(postId)
         masterSQL += " "
-        masterSQL += "ORDER BY S1.sentenceId;"
+        masterSQL += "ORDER BY S1.sentenceId"
 
 
         slaveSQL = ''
@@ -35,11 +43,11 @@ class ChosenKappa():
         slaveSQL += "ON S1.sentenceId = S2.sentenceId "
         slaveSQL += "WHERE S1.annotatorId = "+str(ann2)
         slaveSQL += " "
-        slaveSQL += "AND S1.tagId IN "+str(tagIds)
+        slaveSQL += "AND S1.tagId IN "+tags
         slaveSQL += " "
         slaveSQL += "AND S1.postId = "+str(postId)
         slaveSQL += " "
-        slaveSQL += "ORDER BY S1.sentenceId;"
+        slaveSQL += "ORDER BY S1.sentenceId"
 
         return self.counts(masterSQL, slaveSQL)
 
