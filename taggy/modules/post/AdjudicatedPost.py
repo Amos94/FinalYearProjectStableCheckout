@@ -104,6 +104,7 @@ class AdjudicatedPost(AnnotatedPost):
             finalizedDisabledCls = "finalizedDisabled"
         else:
             finalizedDisabledCls = "finalizedEnabled"
+        unfinalizedDisabledCls=''
 
         toReturn += "<div id='finalize' class='postBtn finalizePostBtn adjudicatorPostBtn "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br>"
         toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn adjudicatorPostBtn "+unfinalizeHiddenCls+" "+unfinalizedDisabledCls+"'>--DONE--</div><br>"

@@ -105,7 +105,7 @@ class Post():
     def render_as_table(self):
         toReturn = ''
         toReturn +="<p>"
-        toReturn +="<div id='post'><br/>"
+        toReturn +="<div id='post'>"
         toReturn +="<table id='p"+str(self.getPostId())+"' class='postTbl table table-striped table-hover table-condensed' width='100%'>"
 
         self.render_table_header()
@@ -114,8 +114,8 @@ class Post():
         results = qryObject.getSentences(self.postId)
         for s in results:
             a = Sentence(s[0], s[1], s[2], s[3], s[4])
-            toReturn += a.render_as_row()+"<br/>"
+            toReturn += a.render_as_row()
 
         toReturn +="</table>"
-        toReturn +="</div> <!-- div#post --><br/>"
+        toReturn +="</div> <!-- div#post -->"
         return toReturn

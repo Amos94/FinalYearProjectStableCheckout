@@ -37,6 +37,7 @@ class TagLook:
             #provideOrRequest = 3
             self.tags_lookup.insert(row[0], Tag( row[0], row[1], row[3], enumerate_tags ))
 
+
         results = qryObject.getTags(REQUEST_CODE)
         enumerate_tags = 0
         for row in results:
@@ -69,13 +70,13 @@ class TagLook:
         toReturn += "<div class='tagHeader'>PROVIDES:</div><br>"
 
         for t in tags_provides:
-            t.render_as_div(True)
+            toReturn += t.render_as_div(True)
 
         toReturn += "<br style='clear:both' /><br>"
         toReturn += "<div class='tagHeader'>REQUESTS:</div><br>"
 
         for t in tags_requests:
-            t.render_as_div(True)
+            toReturn += t.render_as_div(True)
 
         toReturn += "<br style='clear:both' /><br>"
         toReturn += "</div><br>"

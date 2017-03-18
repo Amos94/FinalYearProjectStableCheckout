@@ -296,6 +296,7 @@ def adjudicateSet(request, setId=None):
     else:
         results = qryObject.getPostsInSet(setId)
         for result in results:
+            print(result[0])
             annsts.insert(qryObject.getPostAnnotatorsAndStates(result[0]))
 
     context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i, 'adjudicationFlag':adjudicationFlag}
@@ -343,7 +344,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 
 
     if(userId != None):
-        annotator = Annotator(qryObject, userId)
+        annotator = Annotator(userId)
         if(annotator.canAdjudicate() and adjudicationFlag == 'true'):
             a_post = AdjudicatedPost(int(postId), annotator)
         else:
@@ -359,14 +360,14 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 
 
     dnt = helper.display_nav_tagpost(a_set, a_post, adjudicationFlag)
-
+    postTableHeader = a_post.render_table_header()
     postTableRnd = a_post.render_as_table()
 
     a = a_post.render_finalize_button()
     b = a_post.render_posts_annotation()
     c = a_post.render_available_tags()
 
-    context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableRnd':postTableRnd, 'a':a, 'b':b, 'c':c}
+    context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableHeader':postTableHeader,'postTableRnd':postTableRnd, 'a':a, 'b':b, 'c':c}
     return render(request, "tag_post.html", context)
 
 
@@ -567,6 +568,7 @@ def postKappaDetails(request):
             annotator = Annotator(request.GET['a'])
             print('annotator')
             print(annotator)
+            print('annotator ' + str(annotator.canAdjudicate()))
             if(annotator.canAdjudicate() and request.GET['adjudicateFlag'] == 'true'):
                 a_post = AdjudicatedPost(request.GET['p'],annotator)
             else:
@@ -628,9 +630,10 @@ def postKappaDetails(request):
         table += "</td><td align='right'>"+str(neither)
         table += "</td></tr></table><br /><br />"
     average = sum / 11
+    average2 = 0
     if(count != 0):
         average2 = sum2 / count
-    print(a_post)
+
     nav_tagpost = pkd.display_nav_tagpost(a_set, a_post, request.GET['adjudicateFlag'])
 
     context = {'pageName':pageName, 'pageTitle':page_title, 'average':average, 'average2':average2, 'table':table, 'nav_tagpost':nav_tagpost}

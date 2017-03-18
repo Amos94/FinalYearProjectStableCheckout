@@ -13,7 +13,7 @@ class Tag:
         self.provideOrRequest = provideOrRequest
         self.enum = enum
 
-    def __toString(self):
+    def toString(self):
         return self.name + "_" + self.provideOrRequest
 
     def render_in_table(self):

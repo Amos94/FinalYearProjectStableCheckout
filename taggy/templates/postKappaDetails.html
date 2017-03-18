@@ -65,7 +65,7 @@
         <div id=\"header-left\">Cohen's Kappa : "{{ pageTitle }}</div>
         <div id=\"header-right\">DBNAME | version VERSION"</div>
         <div id="content">
-            {{ nav_tagpost }}
+            {% autoescape off %}{{ nav_tagpost }}{% endautoescape %}
             <br />Average Kappa = {{ average }}
             <br />Average Kappa (Annotated tags only) = {{ average2 }}
         </div>

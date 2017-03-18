@@ -23,12 +23,13 @@ class Annotator:
     """
     usertype = ""
 
-    def __init__(self, qryObject, aID):
+    def __init__(self, aID):
         """
 
         :type qryObject: Queries
         """
-        self.id = aID
+        qryObject = Queries()
+        self.id = int(aID)
         results = qryObject.getAnnotators('', self.id)
 
         if(results == None):
@@ -38,13 +39,15 @@ class Annotator:
             username = row[1]#username
             usertype = row[3]#usertype
 
+            print('usertype= '+ usertype)
+
     """
     * am I an 'admin' user?
     *
     * @return bool true if admin
     """
     def isAdmin(self):
-        return (self.usertype == "ADMIN_TYPE")
+        return (self.usertype == "admin")
 
     """
     * am I an 'adjudicator' user?
@@ -52,4 +55,14 @@ class Annotator:
     * @return bool true if Annotator can Adjudicate
     """
     def canAdjudicate(self):
-        return(self.usertype == "ADJUD_TYPE" or self.usertype == "ADMIN_TYPE")
+        toReturn = False
+
+        print self.usertype
+
+        if(self.usertype == 'adjudicator'):
+            toReturn = True
+
+        if(self.usertype == 'admin'):
+            toReturn = True
+
+        return toReturn

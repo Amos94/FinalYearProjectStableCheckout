@@ -107,10 +107,7 @@ class AnnotatedPost(Post):
         qryObject = Queries()
         toReturn = ''
         #annotator_states[self.annotator.id]
-        print('printing annotator States')
-        print(self.annotator_states)
-        for a in self.annotator_states:
-            print(a)
+
         if(self.annotator_states[self.annotator.id] == 'DONE' or self.annotator_states[self.annotator.id] == 'ADJUDICATED'):
             finalizeHiddenCls = "initiallyHidden"
             unfinalizeHiddenCls = ""

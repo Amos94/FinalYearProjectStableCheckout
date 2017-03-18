@@ -91,7 +91,7 @@
                             </td>
                             <td valign=top align=left>
                                 {% if result.postState == 'ANNOTATED' or result.postState == 'ADJUDICATED'%}
-                                    <a href="/post/tag/?postId={{result.postId}}&setId={{ setid }}&adjudicate=1">"{{ result.postId }}"</a>
+                                    <a href="/post/tag/?postId={{result.postId}}&setId={{ setid }}&adjudicateFlag=true">"{{ result.postId }}"</a>
 
                                 {% else %}
                                     {{ result.postId }}
