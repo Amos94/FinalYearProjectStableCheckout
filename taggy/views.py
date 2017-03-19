@@ -7,6 +7,9 @@ from taggy.modules.HelperMethods import HelperMethods
 from taggy.modules.Kappa.ChosenKappa import ChosenKappa
 from taggy.modules.Kappa.PostKappaDetails import PostKappaDetails
 from taggy.modules.Queries import Queries
+from taggy.modules.actions.AnnotationAction import AnnotationAction
+from taggy.modules.actions.SetAction import SetAction
+from taggy.modules.actions.TagAction import TagAction
 from taggy.modules.post.AdjudicatedPost import AdjudicatedPost
 from taggy.modules.post.AnnotatedPost import AnnotatedPost
 from taggy.modules.post.Post import Post
@@ -638,6 +641,49 @@ def postKappaDetails(request):
 
     context = {'pageName':pageName, 'pageTitle':page_title, 'average':average, 'average2':average2, 'table':table, 'nav_tagpost':nav_tagpost}
     return render(request, 'postKappaDetails.html', context)
+
+def tagAction(request):
+    ta = TagAction()
+    annotatorId = 0#annotator who is making the action
+    array = []#POST args
+    if(request.method == 'POST'):
+
+        array.insert('action',request.POST['action'])
+        array.insert('sentenceId', request.POST['sentenceId'])
+        array.insert('tagId', request.POST['tagId'])
+        array.insert('postId', request.POST['postId'])
+
+        if(request.POST['action'] == 'INSERT'):
+            ta.insertSentenceTagToDb(annotatorId, array)
+        elif(request.POST['action'] == 'DELETE'):
+            ta.detleteSentenceTagFromDb(annotatorId, array)
+
+    return request
+
+def annotationAction(request):
+    array = []
+    annotatorId = 0  # annotator who is making the action
+    aa = AnnotationAction()
+    array.insert('postId', request.POST['postId'])
+    array.insert('comment', request.POST['comment'])
+    array.insert('state', request.POST['state'])
+
+
+    aa.updateAnnotatorsTable(array, annotatorId)
+
+    return request
+
+def setAction(request):
+    array = []
+    annotatorId = 0
+    sa = SetAction()
+
+    array.insert('setId', request.POST['setId'])
+    array.insert('action', request.POST['action'])
+
+    sa.action(annotatorId, array)
+
+    return request
 
 def successPage(request):
     pageName = "Success"
