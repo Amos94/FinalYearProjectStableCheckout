@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
+from django.template.backends import django
+from django.middleware import csrf
 from forms import CreateSet, UpdateSet
 from taggy.modules.Annotator import Annotator
 from taggy.modules.HelperMethods import HelperMethods
@@ -473,9 +474,9 @@ def reviewParse(request, setId=None, postId=None):
             parseHtml += "<td align=right><i>post state: </i></td>"
             #result[0] = 'postState'
             if (( result[0] == 'INITIAL' ) or ( result[0] == 'SELECTED' ) or ( result[0] == 'REPARSE' )):
-                parseHtml += "<td align=left bgcolor=#aaffaa>"+result['postState']+"</td>"
+                parseHtml += "<td align=left bgcolor=#aaffaa>"+str(result[0])+"</td>"
             else:
-                parseHtml += "<td align=left><font color=#cc0000>"+result[0]+"</font></td>"
+                parseHtml += "<td align=left><font color=#cc0000>"+str(result[0])+"</font></td>"
 
             parseHtml += "</tr>"
             parseHtml += "<tr class='info'>"
@@ -514,13 +515,14 @@ def reviewParse(request, setId=None, postId=None):
             parseHtml += "<p>"
             #result[0] = poststate
             if (( result[0] == 'INITIAL' ) or ( result[0] == 'SELECTED' ) or ( result[0] == 'REPARSE' )):
-                parseHtml += "<form action=\"reviewparse.php?"+"\" method=\"post\">"
-                parseHtml += "<input type=\"hidden\" name=\"userid\" value=\""+ userId+"\"/>"
+                parseHtml += "<form action=\"/review/parse"+"\" method=\"post\">"
+
+                parseHtml += "<input type=\"hidden\" name=\"userid\" value=\""+ str(userId)+"\"/>"
                 parseHtml += "<input type=\"hidden\" name=\"username\" value=\""+user+"\"/>"
                 parseHtml += "<input type=\"hidden\" name=\"usertype\" value=\""+userType+"\"/>"
-                parseHtml += "<input type=\"hidden\" name=\"setid\" value=\""+setId+"\"/>"
-                parseHtml += "<input type=\"hidden\" name=\"postid\" value=\""+postId+"\"/>"
-                parseHtml += "<font color=#0000ff><b>Is the post parsed okay?</b></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                parseHtml += "<input type=\"hidden\" name=\"setid\" value=\""+str(setId)+"\"/>"
+                parseHtml += "<input type=\"hidden\" name=\"postid\" value=\""+str(postId)+"\"/>"
+                parseHtml += "<b>Is the post parsed okay?</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 parseHtml += "<select name=\"review\">"
                 parseHtml += "<option value=\"accept\">Yes! Accept the parse </option>"
 
