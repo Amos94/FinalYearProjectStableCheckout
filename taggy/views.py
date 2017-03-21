@@ -2,7 +2,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.template.backends import django
 from django.middleware import csrf
-from forms import CreateSet, UpdateSet
+from django.views.decorators.csrf import csrf_exempt
+
+from forms import CreateSet, UpdateSet, ChooseTag
 from taggy.modules.Annotator import Annotator
 from taggy.modules.HelperMethods import HelperMethods
 from taggy.modules.Kappa.ChosenKappa import ChosenKappa
@@ -110,8 +112,7 @@ def editSet(request, setid=-1):
         postCase = 1
     else:
         results = qry.getSetMeta(setid)
-        for result in results:
-            print('NAME SETMETA: ' + results[1])
+
         setname = results[1]
         results = qry.getSet(setid)
         updateset = ""
@@ -307,13 +308,13 @@ def adjudicateSet(request, setId=None):
     return render(request, "adjudicate_set.html", context)
 
 
-
+@csrf_exempt
 def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 
     pageName = 'Tag Post'
     pageTitle = ''
     userType = 'admin_test'
-    userId = 7
+    userId = 11
     a_set = None
     a_post = None
     qryObject = Queries()
@@ -363,18 +364,27 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
         pageTitle = 'TAG POST: '+postId+' '
 
 
+
+    if request.method == 'POST':
+        print('worked')
+        return HttpResponseRedirect('/thanks/')
+
     dnt = helper.display_nav_tagpost(a_set, a_post, adjudicationFlag)
     postTableHeader = a_post.render_table_header()
-    postTableRnd = a_post.render_as_table()
+    postTableRnd = a_post.render_as_table(adjudicationFlag, annotator.id)
 
     a = a_post.render_finalize_button()
     b = a_post.render_posts_annotation()
     c = a_post.render_available_tags()
+    print(a)
+    print(b)
+    print(c)
+
 
     context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableHeader':postTableHeader,'postTableRnd':postTableRnd, 'a':a, 'b':b, 'c':c}
     return render(request, "tag_post.html", context)
 
-
+@csrf_exempt
 def reviewSet(request, setId=None):
     pageName = 'Review set'
     userType = 'admin_test'
@@ -395,7 +405,7 @@ def reviewSet(request, setId=None):
     context = {'pageName':pageName, 'setid':setId, 'results':results}
     return render(request, "review_set.html", context)
 
-
+@csrf_exempt
 def reviewParse(request, setId=None, postId=None):
     pageName = 'Review set'
     userType = 'admin'
@@ -460,7 +470,7 @@ def reviewParse(request, setId=None, postId=None):
                 parseHtml += "<td valign=top align=right>"+str(result[1])+"</td>"#sentenceID
                 parseHtml += "<td valign=top align=center>"+str(result[3])+"</td>"#paragraphInPost
                 parseHtml += "<td valign=top align=center>"+str(result[4])+"</td>"#sentenceInParagraph
-                parseHtml += "<td valign=top align=left>"+str(result[2])+"</td>"#sentence
+                parseHtml += "<td valign=top align=left>"+result[2]+"</td>"#sentence
                 parseHtml += "</tr>"
             parseHtml += "</table>"
             parseHtml += "</div>"
@@ -541,6 +551,9 @@ def reviewParse(request, setId=None, postId=None):
 
     return render(request, 'review_parse.html', context)
 
+
+
+@csrf_exempt
 def postKappaDetails(request):
     pageName = "Post Kappa Details"
     q = Queries()
@@ -644,6 +657,7 @@ def postKappaDetails(request):
     context = {'pageName':pageName, 'pageTitle':page_title, 'average':average, 'average2':average2, 'table':table, 'nav_tagpost':nav_tagpost}
     return render(request, 'postKappaDetails.html', context)
 
+@csrf_exempt
 def tagAction(request):
     ta = TagAction()
     annotatorId = 0#annotator who is making the action
@@ -659,9 +673,11 @@ def tagAction(request):
             ta.insertSentenceTagToDb(annotatorId, array)
         elif(request.POST['action'] == 'DELETE'):
             ta.detleteSentenceTagFromDb(annotatorId, array)
+    context = {}
+    return render(request, 'tag_action.html', context)
 
-    return request
 
+@csrf_exempt
 def annotationAction(request):
     array = []
     annotatorId = 0  # annotator who is making the action
@@ -675,6 +691,8 @@ def annotationAction(request):
 
     return request
 
+
+@csrf_exempt
 def setAction(request):
     array = []
     annotatorId = 0
@@ -686,6 +704,8 @@ def setAction(request):
     sa.action(annotatorId, array)
 
     return request
+
+
 
 def successPage(request):
     pageName = "Success"

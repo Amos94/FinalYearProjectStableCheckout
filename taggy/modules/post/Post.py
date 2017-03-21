@@ -92,7 +92,7 @@ class Post():
 
     def render_table_header(self):
         toReturn = ''
-        toReturn +="<tr><th width='5%'></th><th width='95%'>sentence</th></tr>"
+        toReturn +="<tr><th>#</th><th>Sentence</th><th>Tag - Provide/ Request</th></tr>"
         return toReturn
 
     """
@@ -102,19 +102,19 @@ class Post():
     *
     * @return void
     """
-    def render_as_table(self):
+    def render_as_table(self, adjudicationFlag, annotatorId):
         toReturn = ''
         toReturn +="<p>"
         toReturn +="<div id='post'>"
         toReturn +="<table id='p"+str(self.getPostId())+"' class='postTbl table table-striped table-hover table-condensed' width='100%'>"
 
-        self.render_table_header()
+        toReturn += self.render_table_header()
 
         qryObject = Queries()
         results = qryObject.getSentences(self.postId)
         for s in results:
             a = Sentence(s[0], s[1], s[2], s[3], s[4])
-            toReturn += a.render_as_row()
+            toReturn += a.render_as_row(self.getPostId(),s[1],annotatorId, adjudicationFlag)
 
         toReturn +="</table>"
         toReturn +="</div> <!-- div#post -->"

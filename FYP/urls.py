@@ -34,6 +34,7 @@ from taggy.views import tagPost as tagPost
 from taggy.views import reviewSet as reviewSet
 from taggy.views import reviewParse as reviewParse
 from taggy.views import postKappaDetails
+from taggy.views import tagAction
 from django.conf.urls.static import static
 from FYP import settings
 
@@ -51,6 +52,7 @@ urlpatterns = [
     url(r'^set/assign/', assignSet, name="assign_set"),
     url(r'^set/browse/', browseSet ,name="browse_set"),
     url(r'^set/tag/',tagSet, name='tag_set'),
+    url(r'^action/tag/', tagAction, name='tag_action'),
     url(r'^postkappadetails/', postKappaDetails, name='postKappaDetails'),
     url(r'^set/adjudicate/', adjudicateSet, name='adjudicate_set'),
     url(r'^post/tag/', tagPost, name='tag_post'),

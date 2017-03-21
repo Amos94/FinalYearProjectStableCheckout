@@ -36,10 +36,9 @@ class Annotator:
             raise Exception('AnnotatorID ' + aID + ' does not exist.' )
 
         for row in results:
-            username = row[1]#username
-            usertype = row[3]#usertype
+            self.username = row[1]#username
+            self.usertype = row[3]#usertype
 
-            print('usertype= '+ usertype)
 
     """
     * am I an 'admin' user?
@@ -57,7 +56,7 @@ class Annotator:
     def canAdjudicate(self):
         toReturn = False
 
-        print self.usertype
+
 
         if(self.usertype == 'adjudicator'):
             toReturn = True

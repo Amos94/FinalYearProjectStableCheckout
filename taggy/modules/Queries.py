@@ -86,9 +86,9 @@ class Queries:
 
         #Building the SQL query
         qry =  "SELECT taggy_posts_annotators.annotatorId, taggy_annotators.username "
-        qry += "FROM taggy_post_annotators, TAGGY_annotators "
-        qry += "WHERE postId='"+postid+"' "
-        qry += "AND taggy_annotators.usertype='ANNOT_TYPE' "
+        qry += "FROM taggy_posts_annotators, TAGGY_annotators "
+        qry += "WHERE postId='"+str(postid)+"' "
+        qry += "AND taggy_annotators.usertype='annotator' "
         qry += "AND taggy_posts_annotators.annotatorId = taggy_annotators.annotatorId "
         qry += "ORDER BY taggy_posts_annotators.annotatorId"
 
@@ -146,7 +146,7 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT annotatorId,(numSentencesInPost / numSentencesInPost) as progress, lastUpdated, postAnnotatorState as state "
         qry += "FROM taggy_posts_annotators "
-        qry += "WHERE postId='"+postId+"' "
+        qry += "WHERE postId='"+str(postId)+"' "
 
         if(state):
             qry += "AND postAnnotatorState='"+state+"'"
@@ -871,9 +871,9 @@ class Queries:
 
         #Building the SQL query 'qry'
         qry =  "SELECT * FROM taggy_sentences_tags "
-        qry += "WHERE sentenceId = "+sentenceid
-        qry += " AND postId = "+postid
-        qry += " AND annotatorId = "+annotatorid
+        qry += "WHERE sentenceId = "+str(sentenceid)
+        qry += " AND postId = "+str(postid)
+        qry += " AND annotatorId = "+str(annotatorid)
 
         #execution of the query 'qry'
         qryResult = self.getData(qry)
@@ -881,6 +881,41 @@ class Queries:
         # return the data
         return qryResult
 
+    """
+    * getTag()
+    *
+    * gets row(s) of sentences_tags for a sentence, and particular annotator
+    *
+    * @param integer $postID       post id
+    * @param integer $sentenceID   sentence id
+    * @param integer $annotatorID  annotator id
+    """
+    def getTag(self, tagId):
+        qry =  "SELECT * FROM taggy_tags "
+        qry += "WHERE tagId = "+str(tagId)
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
+    """
+    * getTag()
+    *
+    * gets row(s) of sentences_tags for a sentence, and particular annotator
+    *
+    * @param integer $postID       post id
+    * @param integer $sentenceID   sentence id
+    * @param integer $annotatorID  annotator id
+    """
+    def getTagAndPOR(self):
+        qry =  "SELECT tagId, tagName, provideOrRequest FROM taggy_tags "
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
     """
     * getSentenceTagCount()
     *

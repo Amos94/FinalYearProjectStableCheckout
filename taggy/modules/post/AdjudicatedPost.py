@@ -17,6 +17,8 @@ class AdjudicatedPost(AnnotatedPost):
     * Other Annotators
     """
     others = []
+    annotatorStates = []
+    comments = []
 
     """
     * Constructor of AdjudicatedPost object
@@ -25,22 +27,30 @@ class AdjudicatedPost(AnnotatedPost):
     * @param int $pID id of Post
     """
     def __init__(self, postId, annotator):
+        # self.others = []
+        # self.annotatorStates = []
+        # self.comments = []
 
         qryObject = Queries()
 
-        if(postId < 0):
+        if(int(postId) < 0):
             raise Exception("PostId "+postId+" is not valid!")
 
         #  Get all Annotators that have annotated this post
         # retrieve sentences for Post from DB
         results = qryObject.getAnnotatorsProgressByPost(postId)
 
+        self.annotatorStates = [None]*100
+        self.comments = [None]*100
+
         for r in results:
-            if(r['annotatorId'] != annotator.id):
-                self.others.append(Annotator( qryObject, r['annotatorId'] ))
-                postAnnotation = qryObject.Queries.getPostAnnotation(postId, r['annotatorId'])
-                self.annotatorStates[r['annotatorId']] = ""+postAnnotation['postAnnotatorState']
-                self.comments[r['annotatorId']] = ""+postAnnotation['comment']
+            if(int(r[0]) != annotator.id):
+                i = int(r[0])
+                self.others.append(Annotator( r[0] ))
+                postAnnotation = qryObject.getPostAnnotation(postId, r[0])
+                self.annotatorStates[i] = postAnnotation[3]
+                self.comments[i] = postAnnotation[1]
+
 
 
         AnnotatedPost.__init__(self, postId, annotator)
@@ -106,8 +116,8 @@ class AdjudicatedPost(AnnotatedPost):
             finalizedDisabledCls = "finalizedEnabled"
         unfinalizedDisabledCls=''
 
-        toReturn += "<div id='finalize' class='postBtn finalizePostBtn adjudicatorPostBtn "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br>"
-        toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn adjudicatorPostBtn "+unfinalizeHiddenCls+" "+unfinalizedDisabledCls+"'>--DONE--</div><br>"
+        toReturn += "<div id='finalize' class='postBtn finalizePostBtn adjudicatorPostBtn btn-primary "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br>"
+        toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn adjudicatorPostBtn btn-primary "+unfinalizeHiddenCls+" "+unfinalizedDisabledCls+"'>--DONE--</div><br>"
         return toReturn
 
     """
@@ -120,7 +130,7 @@ class AdjudicatedPost(AnnotatedPost):
     """
     def render_posts_annotation(self):
         qryObject = Queries()
-        self.render_posts_annotation()
+
         toReturn = ''
         toReturn += "<b><span id='othersCommentsLabel'>Other Annotators Comments: <span id='othersCommentsDisplay'>show/hide</span></span></b>"
         toReturn += "<div id='othersComments'><br>"

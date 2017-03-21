@@ -1,5 +1,8 @@
 from django import forms
 
+from taggy.modules.Queries import Queries
+
+
 class CreateSet(forms.Form):
     def __init__(self, *args, **kwargs):
         super(CreateSet, self).__init__(*args, **kwargs)
@@ -43,3 +46,15 @@ class DeleteSet(forms.Form):
             })
 
     updateset = forms.Textarea()
+
+class ChooseTag(forms.Form):
+    CHOICES = {}
+    qryObject = Queries()
+    results = []
+    results = qryObject.getTagAndPOR()
+    for result in results:
+        CHOICES[result[0]] = (result[1], result[2])
+
+    field = forms.ChoiceField(choices=CHOICES, required=True, label='Choose Tag')
+    def __init__(self, *args, **kwargs):
+        super(ChooseTag, self).__init__(*args, **kwargs)

@@ -94,7 +94,7 @@ class AnnotatedPost(Post):
 
     def render_table_header(self):
         toReturn = ''
-        toReturn += "<tr><th width='5%'></th><th width='65%'>sentence</th><th width='30%'>tags</th></tr>"
+        toReturn += "<tr><th>#</th><th>Sentence</th><th>Tags</th></tr>"
         return toReturn
 
     """
@@ -157,6 +157,7 @@ class AnnotatedPost(Post):
     """
     def render_available_tags(self):
         self.lookup.render()
+
 
     """
     MYSQL QUERY EXECUTER CLASS

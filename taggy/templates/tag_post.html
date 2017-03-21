@@ -35,8 +35,8 @@
                 <a class="navbar-brand" href="/" style="font-family: 'Raleway';font-size: 40px;"><font color="white"><strong>T.A.G.G.Y.</strong></font></a>
 
             </div>
-                  <div class="col-sm-3 col-md-2 pull-right">
-          <form class="navbar-form" role="search">
+            <div class="col-sm-3 col-md-2 pull-right">
+            <form class="navbar-form" role="search">
               {% csrf_token %}
               <div class="input-group">
                   <input type="text" class="form-control" placeholder="Search" name="q">
@@ -105,7 +105,6 @@
             </p>
             </div> <!-- div#instructions -->
             <p></p>
-        {% autoescape off %}{{ postTableHeader }}{% endautoescape %}
         {% autoescape off %}{{ postTableRnd }}{% endautoescape %}
         {% autoescape off %}{{ a }}{% endautoescape %}
         {% autoescape off %}{{ b }}{% endautoescape %}
