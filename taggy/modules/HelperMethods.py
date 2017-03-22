@@ -54,6 +54,7 @@ class HelperMethods():
     def renderAnnotationProgress(self, setId):
         qryObject = Queries()
         annotator_results = []
+
         posts = qryObject.getSet(setId)
         counter = 0
         for post in posts:

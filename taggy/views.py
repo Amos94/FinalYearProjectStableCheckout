@@ -247,18 +247,27 @@ def browseSet(request, setId=None, postId=None):
     if(not postId):
         postId = -1
 
+    h = HelperMethods()
+    rAnnotationProgress = []
 
     if(setId == -1):
         if(userType == 'admin'):
             results = qryObject.getSets()
+            for result in results:
+                rAnnotationProgress.append(h.renderAnnotationProgress(result[0]))
         else:
             results = qryObject.getSetsByCreator(userId)
+            for result in results:
+                rAnnotationProgress.append(h.renderAnnotationProgress(result[0]))
     elif(postId == -1):
         results = qryObject.getPostsInSet(setId)
     else:
         results = qryObject.getSentences(postId)
 
-    context = {'pageName': pageName, 'dbName':dbname, "results": results, 'setId':setId, 'postId': postId}
+    rAnnotationProgress.reverse()
+
+
+    context = {'pageName': pageName, 'dbName':dbname, "results": results, 'setId':setId, 'postId': postId, 'rAnnotationProgress':rAnnotationProgress}
     return render(request, "browse_set.html", context)
 
 

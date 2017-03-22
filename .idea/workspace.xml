@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/FYP.iml" afterPath="$PROJECT_DIR$/.idea/FYP.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/2b4540fd-24e3-44bc-a71a-6e6853a5c056.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/2b4540fd-24e3-44bc-a71a-6e6853a5c056.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/HelperMethods.py" afterPath="$PROJECT_DIR$/taggy/modules/HelperMethods.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/Queries.py" afterPath="$PROJECT_DIR$/taggy/modules/Queries.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/browse_set.html" afterPath="$PROJECT_DIR$/taggy/templates/browse_set.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/index.html" afterPath="$PROJECT_DIR$/taggy/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/views.py" afterPath="$PROJECT_DIR$/taggy/views.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,16 +24,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/FinalYearProject2$manage.coverage" NAME="manage Coverage Results" MODIFIED="1490090441262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/FinalYearProject2$dbtest.coverage" NAME="dbtest Coverage Results" MODIFIED="1486858622421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy" />
-    <SUITE FILE_PATH="coverage/FinalYearProject2$settings.coverage" NAME="settings Coverage Results" MODIFIED="1486857724067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FYP" />
-    <SUITE FILE_PATH="coverage/FinalYearProject2$KeyWordsExtractor.coverage" NAME="KeyWordsExtractor Coverage Results" MODIFIED="1485825982832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy/utils" />
-    <SUITE FILE_PATH="coverage/PROIECT DE LICENTA FTW$manage.coverage" NAME="manage Coverage Results" MODIFIED="1490182303325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FinalYearProject2$JsonParser.coverage" NAME="JsonParser Coverage Results" MODIFIED="1488203807814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy" />
-    <SUITE FILE_PATH="coverage/PROIECT DE LICENTA$manage.coverage" NAME="manage Coverage Results" MODIFIED="1486475489618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FinalYearProject2$JsonParser__1_.coverage" NAME="JsonParser (1) Coverage Results" MODIFIED="1488856299391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy/modules" />
     <SUITE FILE_PATH="coverage/FinalYearProject2$ChosenKappa.coverage" NAME="ChosenKappa Coverage Results" MODIFIED="1489618203125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy/modules" />
+    <SUITE FILE_PATH="coverage/FinalYearProject2$KeyWordsExtractor.coverage" NAME="KeyWordsExtractor Coverage Results" MODIFIED="1485825982832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy/utils" />
+    <SUITE FILE_PATH="coverage/FinalYearProject2$manage.coverage" NAME="manage Coverage Results" MODIFIED="1490204463633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PROIECT DE LICENTA FTW$manage.coverage" NAME="manage Coverage Results" MODIFIED="1490182303325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PROIECT DE LICENTA$manage.coverage" NAME="manage Coverage Results" MODIFIED="1486475489618" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FinalYearProject2$HelperMethods.coverage" NAME="HelperMethods Coverage Results" MODIFIED="1488215610036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy/modules" />
+    <SUITE FILE_PATH="coverage/FinalYearProject2$dbtest.coverage" NAME="dbtest Coverage Results" MODIFIED="1486858622421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taggy" />
+    <SUITE FILE_PATH="coverage/FinalYearProject2$settings.coverage" NAME="settings Coverage Results" MODIFIED="1486857724067" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FYP" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
@@ -48,27 +55,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taggy/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="256" column="41" lean-forward="false" selection-start-line="256" selection-start-column="28" selection-end-line="256" selection-end-column="41" />
+            <state relative-caret-position="433">
+              <caret line="265" column="0" lean-forward="true" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
-                <marker date="1490179787417" expanded="true" signature="20225:20411" ph="SELECT P.ann... taggy_posts_annotators" />
-                <marker date="1490179787417" expanded="true" signature="20679:20968" ph="SELECT COUNT... taggy_sentences_tags" />
-                <marker date="1490179787417" expanded="true" signature="20757:20854" ph="SELECT sente... taggy_sentences_tags" />
-                <marker date="1490179787417" expanded="true" signature="21072:21111" ph="SELECT DISTI... taggy_tags" />
+                <marker date="1490205780187" expanded="true" signature="20591:20777" ph="SELECT P.ann... taggy_posts_annotators" />
+                <marker date="1490205780187" expanded="true" signature="21045:21334" ph="SELECT COUNT... taggy_sentences_tags" />
+                <marker date="1490205780187" expanded="true" signature="21123:21220" ph="SELECT sente... taggy_sentences_tags" />
+                <marker date="1490205780187" expanded="true" signature="21438:21477" ph="SELECT DISTI... taggy_tags" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="browse_set.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taggy/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="87">
+              <caret line="52" column="41" lean-forward="false" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="browse_set.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/templates/browse_set.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="125" column="47" lean-forward="true" selection-start-line="125" selection-start-column="47" selection-end-line="125" selection-end-column="47" />
+            <state relative-caret-position="189">
+              <caret line="76" column="50" lean-forward="false" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HelperMethods.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taggy/modules/HelperMethods.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -77,32 +104,32 @@
       <file leaf-file-name="Queries.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="815" column="20" lean-forward="false" selection-start-line="815" selection-start-column="6" selection-end-line="815" selection-end-column="20" />
+            <state relative-caret-position="321">
+              <caret line="1245" column="0" lean-forward="true" selection-start-line="1245" selection-start-column="0" selection-end-line="1245" selection-end-column="0" />
               <folding>
-                <marker date="1490102676928" expanded="true" signature="5389:5449" ph="INSERT INTO taggy_annotators" />
-                <marker date="1490102676928" expanded="true" signature="13816:13855" ph="SELECT COUNT... taggy_posts" />
-                <marker date="1490102676928" expanded="true" signature="16458:16576" ph="INSERT INTO taggy_posts_annotators... " />
-                <marker date="1490102676928" expanded="true" signature="19139:19186" ph="SELECT postS... taggy_posts" />
-                <marker date="1490102676928" expanded="true" signature="24195:24251" ph="SELECT tagId... taggy_tags" />
-                <marker date="1490102676928" expanded="true" signature="26607:26641" ph="SELECT * FRO... taggy_sentences_tags" />
-                <marker date="1490102676928" expanded="true" signature="27228:27252" ph="SELECT * FRO... taggy_tags" />
-                <marker date="1490102676928" expanded="true" signature="27730:27785" ph="SELECT tagId... taggy_tags" />
-                <marker date="1490102676928" expanded="true" signature="28325:28373" ph="SELECT COUNT... taggy_sentences_tags" />
-                <marker date="1490102676928" expanded="true" signature="30243:30323" ph="INSERT INTO taggy_sentences_tags... " />
-                <marker date="1490102676928" expanded="true" signature="31011:31043" ph="DELETE FROM " />
-                <marker date="1490102676928" expanded="true" signature="37830:37884" ph="INSERT INTO taggy_sets... " />
-                <marker date="1490102676928" expanded="true" signature="38893:38934" ph="DELETE FROM " />
-                <marker date="1490102676928" expanded="true" signature="39133:39243" ph="SELECT COUNT... " />
-                <marker date="1490102676928" expanded="true" signature="39417:39477" ph="SELECT COUNT... " />
-                <marker date="1490102676928" expanded="true" signature="39698:39741" ph="INSERT INTO taggy_posts_sets... " />
-                <marker date="1490102676928" expanded="true" signature="40011:40068" ph="UPDATE taggy... " />
-                <marker date="1490102676928" expanded="true" signature="40819:40883" ph="DELETE FROM " />
-                <marker date="1490102676928" expanded="true" signature="40935:40996" ph="DELETE FROM " />
-                <marker date="1490102676928" expanded="true" signature="41048:41103" ph="DELETE FROM " />
-                <marker date="1490102676928" expanded="true" signature="42143:42198" ph="INSERT INTO taggy_annotators_sets" />
-                <marker date="1490102676928" expanded="true" signature="42689:42722" ph="DELETE FROM " />
-                <marker date="1490102676928" expanded="true" signature="43669:43716" ph="SELECT * FRO... taggy_sentneces" />
+                <marker date="1490204532538" expanded="true" signature="5389:5449" ph="INSERT INTO taggy_annotators" />
+                <marker date="1490204532538" expanded="true" signature="13816:13855" ph="SELECT COUNT... taggy_posts" />
+                <marker date="1490204532538" expanded="true" signature="16458:16576" ph="INSERT INTO taggy_posts_annotators... " />
+                <marker date="1490204532538" expanded="true" signature="19139:19186" ph="SELECT postS... taggy_posts" />
+                <marker date="1490204532538" expanded="true" signature="24195:24251" ph="SELECT tagId... taggy_tags" />
+                <marker date="1490204532538" expanded="true" signature="26607:26641" ph="SELECT * FRO... taggy_sentences_tags" />
+                <marker date="1490204532538" expanded="true" signature="27228:27252" ph="SELECT * FRO... taggy_tags" />
+                <marker date="1490204532538" expanded="true" signature="27730:27785" ph="SELECT tagId... taggy_tags" />
+                <marker date="1490204532538" expanded="true" signature="28325:28373" ph="SELECT COUNT... taggy_sentences_tags" />
+                <marker date="1490204532538" expanded="true" signature="30243:30323" ph="INSERT INTO taggy_sentences_tags... " />
+                <marker date="1490204532538" expanded="true" signature="31011:31043" ph="DELETE FROM " />
+                <marker date="1490204532538" expanded="true" signature="37846:37900" ph="INSERT INTO taggy_sets... " />
+                <marker date="1490204532538" expanded="true" signature="38909:38950" ph="DELETE FROM " />
+                <marker date="1490204532538" expanded="true" signature="39149:39259" ph="SELECT COUNT... " />
+                <marker date="1490204532538" expanded="true" signature="39433:39493" ph="SELECT COUNT... " />
+                <marker date="1490204532538" expanded="true" signature="39714:39757" ph="INSERT INTO taggy_posts_sets... " />
+                <marker date="1490204532538" expanded="true" signature="40027:40084" ph="UPDATE taggy... " />
+                <marker date="1490204532538" expanded="true" signature="40835:40899" ph="DELETE FROM " />
+                <marker date="1490204532538" expanded="true" signature="40951:41012" ph="DELETE FROM " />
+                <marker date="1490204532538" expanded="true" signature="41064:41119" ph="DELETE FROM " />
+                <marker date="1490204532538" expanded="true" signature="42159:42214" ph="INSERT INTO taggy_annotators_sets" />
+                <marker date="1490204532538" expanded="true" signature="42705:42738" ph="DELETE FROM " />
+                <marker date="1490204532538" expanded="true" signature="43685:43732" ph="SELECT * FRO... taggy_sentneces" />
               </folding>
             </state>
           </provider>
@@ -121,7 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>/post/tag</find>
       <find>tag</find>
       <find>render_table_header</find>
       <find>render_table_header()</find>
@@ -151,6 +177,7 @@
       <find>getSetsByCreator</find>
       <find>getPostsInSet</find>
       <find>getSentences()</find>
+      <find>brow</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -178,7 +205,6 @@
         <option value="$PROJECT_DIR$/taggy/templates/create_set.html" />
         <option value="$PROJECT_DIR$/taggy/templates/delete_set.html" />
         <option value="$PROJECT_DIR$/taggy/templates/fail.html" />
-        <option value="$PROJECT_DIR$/taggy/templates/index.html" />
         <option value="$PROJECT_DIR$/taggy/templates/success.html" />
         <option value="$PROJECT_DIR$/taggy/templates/tag_set.html" />
         <option value="$PROJECT_DIR$/taggy/modules/post/Set.py" />
@@ -211,10 +237,11 @@
         <option value="$PROJECT_DIR$/FYP/urls.py" />
         <option value="$PROJECT_DIR$/taggy/templates/tag_action.html" />
         <option value="$PROJECT_DIR$/taggy/modules/sentence/Sentence.py" />
+        <option value="$PROJECT_DIR$/taggy/templates/index.html" />
         <option value="$PROJECT_DIR$/taggy/modules/Queries.py" />
         <option value="$PROJECT_DIR$/taggy/modules/HelperMethods.py" />
-        <option value="$PROJECT_DIR$/taggy/views.py" />
         <option value="$PROJECT_DIR$/taggy/templates/browse_set.html" />
+        <option value="$PROJECT_DIR$/taggy/views.py" />
       </list>
     </option>
   </component>
@@ -227,8 +254,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -264,120 +291,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taggy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taggy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taggy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taggy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taggy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PROIECT DE LICENTA FTW" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FYP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -452,6 +365,70 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taggy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taggy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FinalYearProject2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="taggy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scratches">
         <subPane>
           <PATH>
@@ -482,16 +459,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Amos Madalin Neculau\Desktop\FinalYearProject2\taggy\static" />
+      <recent name="C:\Users\Amos Madalin Neculau\Desktop\FinalYearProject2\taggy\modules\js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Amos Madalin Neculau\Desktop\FinalYearProject2\taggy\modules\Kappa" />
       <recent name="C:\Users\Amos Madalin Neculau\Desktop\FinalYearProject2" />
       <recent name="C:\Users\Amos Madalin Neculau\Desktop\FinalYearProject2\taggy" />
       <recent name="C:\Users\Amos Madalin Neculau\Desktop\FinalYearProject2\taggy\templates\static" />
       <recent name="C:\Users\Amos Madalin Neculau\Desktop\FinalYearProject2\taggy\templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Amos Madalin Neculau\Desktop\FinalYearProject2\taggy\static" />
-      <recent name="C:\Users\Amos Madalin Neculau\Desktop\FinalYearProject2\taggy\modules\js" />
     </key>
   </component>
   <component name="RunManager" selected="Python.manage">
@@ -654,24 +631,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <module name="FYP" />
-      <method />
-    </configuration>
-    <configuration default="true" type="com.chornsby.intellij.plugins.django.MigrationRunConfigurationType" factoryName="Django migration">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="FYP" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -1261,25 +1220,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15458423" sideWeight="0.4935275" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30114567" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15279879" sideWeight="0.4935275" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30099228" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20788912" sideWeight="0.50647247" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39911798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1454,13 +1413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="55" column="99" lean-forward="false" selection-start-line="55" selection-start-column="99" selection-end-line="55" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/kappa_set.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1574,7 +1526,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/mysqldb/connections.py">
+    <entry file="file://C:/Python27/Lib/site-packages/MySQLdb/connections.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
@@ -1669,14 +1621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/modules/HelperMethods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="80" column="23" lean-forward="true" selection-start-line="80" selection-start-column="23" selection-end-line="80" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/tag_action.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1716,57 +1660,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/views.py">
+    <entry file="file://$PROJECT_DIR$/taggy/modules/HelperMethods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="256" column="41" lean-forward="false" selection-start-line="256" selection-start-column="28" selection-end-line="256" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-            <marker date="1490179787417" expanded="true" signature="20225:20411" ph="SELECT P.ann... taggy_posts_annotators" />
-            <marker date="1490179787417" expanded="true" signature="20679:20968" ph="SELECT COUNT... taggy_sentences_tags" />
-            <marker date="1490179787417" expanded="true" signature="20757:20854" ph="SELECT sente... taggy_sentences_tags" />
-            <marker date="1490179787417" expanded="true" signature="21072:21111" ph="SELECT DISTI... taggy_tags" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
+    <entry file="file://$PROJECT_DIR$/taggy/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="815" column="20" lean-forward="false" selection-start-line="815" selection-start-column="6" selection-end-line="815" selection-end-column="20" />
-          <folding>
-            <marker date="1490102676928" expanded="true" signature="5389:5449" ph="INSERT INTO taggy_annotators" />
-            <marker date="1490102676928" expanded="true" signature="13816:13855" ph="SELECT COUNT... taggy_posts" />
-            <marker date="1490102676928" expanded="true" signature="16458:16576" ph="INSERT INTO taggy_posts_annotators... " />
-            <marker date="1490102676928" expanded="true" signature="19139:19186" ph="SELECT postS... taggy_posts" />
-            <marker date="1490102676928" expanded="true" signature="24195:24251" ph="SELECT tagId... taggy_tags" />
-            <marker date="1490102676928" expanded="true" signature="26607:26641" ph="SELECT * FRO... taggy_sentences_tags" />
-            <marker date="1490102676928" expanded="true" signature="27228:27252" ph="SELECT * FRO... taggy_tags" />
-            <marker date="1490102676928" expanded="true" signature="27730:27785" ph="SELECT tagId... taggy_tags" />
-            <marker date="1490102676928" expanded="true" signature="28325:28373" ph="SELECT COUNT... taggy_sentences_tags" />
-            <marker date="1490102676928" expanded="true" signature="30243:30323" ph="INSERT INTO taggy_sentences_tags... " />
-            <marker date="1490102676928" expanded="true" signature="31011:31043" ph="DELETE FROM " />
-            <marker date="1490102676928" expanded="true" signature="37830:37884" ph="INSERT INTO taggy_sets... " />
-            <marker date="1490102676928" expanded="true" signature="38893:38934" ph="DELETE FROM " />
-            <marker date="1490102676928" expanded="true" signature="39133:39243" ph="SELECT COUNT... " />
-            <marker date="1490102676928" expanded="true" signature="39417:39477" ph="SELECT COUNT... " />
-            <marker date="1490102676928" expanded="true" signature="39698:39741" ph="INSERT INTO taggy_posts_sets... " />
-            <marker date="1490102676928" expanded="true" signature="40011:40068" ph="UPDATE taggy... " />
-            <marker date="1490102676928" expanded="true" signature="40819:40883" ph="DELETE FROM " />
-            <marker date="1490102676928" expanded="true" signature="40935:40996" ph="DELETE FROM " />
-            <marker date="1490102676928" expanded="true" signature="41048:41103" ph="DELETE FROM " />
-            <marker date="1490102676928" expanded="true" signature="42143:42198" ph="INSERT INTO taggy_annotators_sets" />
-            <marker date="1490102676928" expanded="true" signature="42689:42722" ph="DELETE FROM " />
-            <marker date="1490102676928" expanded="true" signature="43669:43716" ph="SELECT * FRO... taggy_sentneces" />
-          </folding>
+        <state relative-caret-position="87">
+          <caret line="52" column="41" lean-forward="false" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/browse_set.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="125" column="47" lean-forward="true" selection-start-line="125" selection-start-column="47" selection-end-line="125" selection-end-column="47" />
+        <state relative-caret-position="189">
+          <caret line="76" column="50" lean-forward="false" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="1245" column="0" lean-forward="true" selection-start-line="1245" selection-start-column="0" selection-end-line="1245" selection-end-column="0" />
+          <folding>
+            <marker date="1490204532538" expanded="true" signature="5389:5449" ph="INSERT INTO taggy_annotators" />
+            <marker date="1490204532538" expanded="true" signature="13816:13855" ph="SELECT COUNT... taggy_posts" />
+            <marker date="1490204532538" expanded="true" signature="16458:16576" ph="INSERT INTO taggy_posts_annotators... " />
+            <marker date="1490204532538" expanded="true" signature="19139:19186" ph="SELECT postS... taggy_posts" />
+            <marker date="1490204532538" expanded="true" signature="24195:24251" ph="SELECT tagId... taggy_tags" />
+            <marker date="1490204532538" expanded="true" signature="26607:26641" ph="SELECT * FRO... taggy_sentences_tags" />
+            <marker date="1490204532538" expanded="true" signature="27228:27252" ph="SELECT * FRO... taggy_tags" />
+            <marker date="1490204532538" expanded="true" signature="27730:27785" ph="SELECT tagId... taggy_tags" />
+            <marker date="1490204532538" expanded="true" signature="28325:28373" ph="SELECT COUNT... taggy_sentences_tags" />
+            <marker date="1490204532538" expanded="true" signature="30243:30323" ph="INSERT INTO taggy_sentences_tags... " />
+            <marker date="1490204532538" expanded="true" signature="31011:31043" ph="DELETE FROM " />
+            <marker date="1490204532538" expanded="true" signature="37846:37900" ph="INSERT INTO taggy_sets... " />
+            <marker date="1490204532538" expanded="true" signature="38909:38950" ph="DELETE FROM " />
+            <marker date="1490204532538" expanded="true" signature="39149:39259" ph="SELECT COUNT... " />
+            <marker date="1490204532538" expanded="true" signature="39433:39493" ph="SELECT COUNT... " />
+            <marker date="1490204532538" expanded="true" signature="39714:39757" ph="INSERT INTO taggy_posts_sets... " />
+            <marker date="1490204532538" expanded="true" signature="40027:40084" ph="UPDATE taggy... " />
+            <marker date="1490204532538" expanded="true" signature="40835:40899" ph="DELETE FROM " />
+            <marker date="1490204532538" expanded="true" signature="40951:41012" ph="DELETE FROM " />
+            <marker date="1490204532538" expanded="true" signature="41064:41119" ph="DELETE FROM " />
+            <marker date="1490204532538" expanded="true" signature="42159:42214" ph="INSERT INTO taggy_annotators_sets" />
+            <marker date="1490204532538" expanded="true" signature="42705:42738" ph="DELETE FROM " />
+            <marker date="1490204532538" expanded="true" signature="43685:43732" ph="SELECT * FRO... taggy_sentneces" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="265" column="0" lean-forward="true" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+            <marker date="1490205780187" expanded="true" signature="20591:20777" ph="SELECT P.ann... taggy_posts_annotators" />
+            <marker date="1490205780187" expanded="true" signature="21045:21334" ph="SELECT COUNT... taggy_sentences_tags" />
+            <marker date="1490205780187" expanded="true" signature="21123:21220" ph="SELECT sente... taggy_sentences_tags" />
+            <marker date="1490205780187" expanded="true" signature="21438:21477" ph="SELECT DISTI... taggy_tags" />
+          </folding>
         </state>
       </provider>
     </entry>

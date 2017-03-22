@@ -1233,10 +1233,10 @@ class Queries:
         # Building the SQL query 'qry'
         qry =  "SELECT taggy_annotators.username, taggy_annotators.annotatorId, "
         qry += "COUNT(distinct taggy_sentences_tags.postId) as numPosts "
-        qry += "FROM taggy_sentences_tags JOIN(taggy_posts_sets,annotators) "
+        qry += "FROM taggy_sentences_tags JOIN(taggy_posts_sets,taggy_annotators) "
         qry += "WHERE ( (taggy_sentences_tags.postId = taggy_posts_sets.postId) "
-        qry += "    AND (taggy_posts_sets.setId = " + setid + ") "
-        qry += "    AND (taggy_sentences_tags.annotatorId = " + annotatorid + ") "
+        qry += "    AND (taggy_posts_sets.setId = " + str(setid) + ") "
+        qry += "    AND (taggy_sentences_tags.annotatorId = " + str(annotatorid) + ") "
         qry += "    AND (taggy_annotators.annotatorId = taggy_sentences_tags.annotatorId) ) "
         qry += "GROUP BY annotatorId"
 
