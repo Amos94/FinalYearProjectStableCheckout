@@ -51,31 +51,34 @@ class HelperMethods():
     ####
     #SET BROWSE HELPER METHODS
 
-    # def renderAnnotationProgress(self, setId):
-    #     qryObject = Queries()
-    #     posts = qryObject.getSet(setId)
-    #     counter = 0
-    #     for post in posts:
-    #         counter = counter +1
-    #     total_posts = counter
-    #
-    #     results = qryObject.getAnnotatorsSets(setId)
-    #     counter = 0
-    #     for result in results:
-    #         counter = counter + 1
-    #
-    #     progress = ""
-    #     for result in results:
-    #         annotator_results = qryObject.getAnnotatorsProgressInSet( result[1], setId )
-    #         if (counter) > 0):
-    #             annotator = annotator_results
-    #             progress += annotator[1]+"("+annotator[0]+"/"+total_posts+") "
-    #         else:
-    #             annotator_results = qryObject.getAnnotators(annotator[0])
-    #             annotator = annotator_results
-    #             progress += annotator[1]+"(0/"+ total_posts+") "
-    #
-    #     return progress
+    def renderAnnotationProgress(self, setId):
+        qryObject = Queries()
+        annotator_results = []
+        posts = qryObject.getSet(setId)
+        counter = 0
+        for post in posts:
+            counter = counter +1
+        total_posts = counter
+
+        results = qryObject.getAnnotatorsSets(setId)
+        counter = 0
+        for result in results:
+            counter = counter + 1
+
+        progress = ""
+        for result in results:
+            annotator_results = qryObject.getAnnotatorsProgressInSet( result[1], setId )
+            if (counter > 0):
+                annotator = annotator_results
+                for a in annotator:
+                    progress += str(a[1])+"("+str(a[0])+"/"+str(total_posts)+") "
+            else:
+                annotator_results = qryObject.getAnnotators(annotator[0])
+                annotator = annotator_results
+                for a in annotator:
+                    progress += str(a[1])+"(0/"+ str(total_posts)+") "
+
+        return progress
     # END OF  SET BROWSE HELPER METHODS
     ####
 

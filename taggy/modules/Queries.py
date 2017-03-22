@@ -856,6 +856,23 @@ class Queries:
         # return the data
         return qryResult
 
+    """
+    * getSentencesInSet()
+    *
+    * returns all sentences data for specified setID
+    *
+    * @param integer $setID  set id number
+    """
+    def addPostInSet(self, setid):
+
+        # Building the SQL query 'qry'
+        qry =  "INSERT QRY"
+
+        # execution of the query 'qry'
+        qryResult = self.insertOrUpdate(qry)
+
+        # return the data
+        return qryResult
 #----- FUNCTIONS THAT HANDLE SENTENCE_TAGS ----------------------------------
 
     """

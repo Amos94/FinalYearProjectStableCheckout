@@ -62,7 +62,48 @@
 
     <div class="jumbotron text-center col-md-10 col-md-offset-1">
 
-    [TO COMPLETE THE TEMPLATE]
+    {% if setId == -1 %}
+        <p>Click on <b>set id</b> to show contents of that set.<br /></p>
+        <i>Sets:</i><br />
+        <div class='scrollLongList'>
+            <table class="table table-striped table-hover table-condensed">
+                <tr><th>SetI Id</th><th>Name</th><th>Description</th><th>Creator</th><th>Progress</th></tr>
+                {% for result in results %}
+                    <tr>
+                    <td><a href="/set/browse/?s={{ result.0 }}">{{ result.0 }}</a></td>
+                    <td>{{ result.1 }}</td>
+                    <td>{{ result.2 }}</td>
+                    <td>{{ result.3 }}</td>
+                    <td>RENDERANNOTATIONPROGRESS METHOD TO BE ADDED</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% elif postId == -1 %}
+        <a href="/set/browse/?s=-1">[Go back to list of sets]</a>
+        <p><i>Posts in set "{{ setId }}":</i><br /></p>
+        <div class='scrollLongList'>
+            <table class="table table-striped table-hover table-condensed">
+                {% if dbName == 'perseus' %}
+                    <tr><th>#</th><th>Post Id</th><th>Post State</th><th>Forum Id - Topic Id</th><th>Opening content</th></tr>
+                {% else %}
+                    <tr><th>#</th><th>Post Id</th><th>Post State</th><th>ForumID</th><th>Opening content</th></tr>
+                {% endif%}
+                {% for result in results %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><a href="/set/browse/?s={{ setId }}&p={{ result.0 }}">{{ result.0 }}</a></td>
+                        <td>{{ result.5 }}</td>
+                        <td>{{ result.1 }} - {{ result.2 }}</td>
+                        <td>{% autoescape off %}{{ result.6 }}{% endautoescape %}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    {% else %}
+
+    {% endif%}
 
     </div>
 

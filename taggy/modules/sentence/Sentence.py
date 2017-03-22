@@ -134,7 +134,7 @@ class Sentence():
             for annotator in annotators:
                 if(annotator[0] == annotatorId):
                     tof = True
-            tof = False
+
             if(tof):
                 results = qryObject.getSentenceTags(postId, sententenceId, annotatorId)
                 for result in results:

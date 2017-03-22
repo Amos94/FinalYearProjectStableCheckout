@@ -58,7 +58,7 @@ def adjudication(request):
 def setCreate(request):
     pageName = "Create Set"
     sessionId = 'null'
-    userid = 0
+    userid = 2
     qry = Queries()
     context = {"pageName": pageName, "sessionId": sessionId}
     if(request.method == 'POST'):
@@ -70,6 +70,18 @@ def setCreate(request):
             result = qry.insertSet(setname, setdescr, userid)
 
             if(result == 1):
+                # #JUST ADDED NOW
+                # setId = 0 #must initialize with the id of the newest set created.
+                # results = []
+                # qryObject = Queries()
+                # #NOW ASSIGN POSTS TO SET.(50 new posts/ set, maybe?)
+                # results = qryObject.getPosts()
+                # for result in results:
+                #     if(result[3] != 'INITIAL'):
+                #         #TO CREATE QUERY TO ADD POST IN SET
+                #         qryObject.addPostInSet(setId)
+                #         qryObject.updatePostState(result[0], 'SELECTED')
+
                 return HttpResponseRedirect('/success/')
             else:
                 return HttpResponseRedirect('/fail/')
@@ -211,21 +223,30 @@ def browseSet(request, setId=None, postId=None):
     userId = 0
     dbname = 'perseus'
     qryObject = Queries()
-    Results = []
+    results = []
 
-    print(int(request.GET['s']))
-    print(int(request.GET['p']))
+    try:
+        if(int(request.GET['s']) != None):
+            setId = int(request.GET['s'])
+        else:
+            setId = -1
+    except:
+        pass
 
-    if(int(request.GET['s']) != None):
-        setId = int(request.GET['s'])
-    else:
+    try:
+        if (int(request.GET['p']) != None):
+            postId = int(request.GET['p'])
+        else:
+            postId = -1
+    except:
+        pass
+
+    if(str(setId) == 'None'):
         setId = -1
 
+    if(not postId):
+        postId = -1
 
-    if (int(request.GET['p']) != None):
-        setId = int(request.GET['p'])
-    else:
-        setId = -1
 
     if(setId == -1):
         if(userType == 'admin'):
@@ -237,7 +258,7 @@ def browseSet(request, setId=None, postId=None):
     else:
         results = qryObject.getSentences(postId)
 
-    context = {'pageName': pageName, "results": results}
+    context = {'pageName': pageName, 'dbName':dbname, "results": results, 'setId':setId, 'postId': postId}
     return render(request, "browse_set.html", context)
 
 
@@ -314,7 +335,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     pageName = 'Tag Post'
     pageTitle = ''
     userType = 'admin_test'
-    userId = 11
+    userId = 8
     a_set = None
     a_post = None
     qryObject = Queries()
