@@ -344,29 +344,44 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     pageName = 'Tag Post'
     pageTitle = ''
     userType = 'admin_test'
-    userId = 8
+    userId = 11
     a_set = None
     a_post = None
     qryObject = Queries()
     helper = HelperMethods()
 
+    try:
+        if (request.GET['setId'] != None):
+            setId = request.GET['setId']
+        else:
+            setId = str(-1)
+    except:
+        pass
 
-    if (request.GET['setId'] != None):
-        setId = request.GET['setId']
+    if(setId != None):
+        set = Set(int(setId))
     else:
-        setId = str(-1)
+        setid = '-1'
 
-    set = Set(int(setId))
+    try:
+        if (request.GET['postId'] != None):
+            postId = request.GET['postId']
+        else:
+            postId = str(-1)
+    except:
+        pass
+    if(postId == None):
+        postId = '-1'
 
-    if (request.GET['postId'] != None):
-        postId = request.GET['postId']
-    else:
-        postId = str(-1)
-
-    if (request.GET['adjudicationFlag'] == 'true'):
-        adjudicationFlag = 'true'
-    else:
-        adjudicationFlag = 'false'
+    try:
+        if (request.GET['adjudicationFlag'] == 'true'):
+            adjudicationFlag = 'true'
+        else:
+            adjudicationFlag = 'false'
+    except:
+        pass
+    if(adjudicationFlag == None):
+        adjudicationFlag == 'false'
 
     if(setId == '-1'):
         a_set = set.get_set(int(setId), userId)
