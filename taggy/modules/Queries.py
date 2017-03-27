@@ -1220,6 +1220,14 @@ class Queries:
         # return the data
         return qryResult
 
+    def getAnnotatorName(self, annotatorid):
+        qry = "SELECT username FROM taggy_annotators WHERE annotatorId='"+str(annotatorid)+"'"
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
 
     """
     * getAnnotatorsProgressInSet()

@@ -75,12 +75,11 @@
                             <td>{{ result.1 }}</td>
                             <td>{{ result.2 }}</td>
                             <td class="annotatorsSets">
-                                <!--{% for annotatorSetDiv in annotatorsSets_divs %}
+                                {% for annotatorSetDiv in annotatorsSets_divs %}
                                     {% if annotatorSetDiv.result == result.0 %}
-                                        {% autoescape off %}{{ annotatorSetDiv.div }}{% endautoescape %}
+                                        {% autoescape off %}{{ annotatorSetDiv.div.0.0 }}<br>{% endautoescape %}
                                     {% endif %}
-                                {% endfor %}-->
-                            HERE TO BE DISPLAYED ANNOTATORS FOR THAT SET
+                                {% endfor %}
                             </td>
                             <td class="btn btn-success"><a href="/set/assign-add/?s={{ result.0 }}"><font color="#fffafa">Assign annotator for set {{ result.0 }}</font></a></td>
                         </tr>

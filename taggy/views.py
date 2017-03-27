@@ -313,9 +313,10 @@ def assignSet(request):
 
     for result in results:
         annotatorsSets = qry.getAnnotatorsSets(result[0])
+        print annotatorsSets
 
         for a in annotatorsSets:
-            annotators_divs.append({'result':result[0], 'div':helper.annotatorssets_divs(annotators,result[0])})
+            annotators_divs.append({'result':result[0], 'div':qry.getAnnotatorName(a[0])})
 
     context = {'pageName': pageName, "results":results, "annotators":annotators, "annotatorsSets_divs":annotators_divs}
     return render(request, "assign_set.html", context)
