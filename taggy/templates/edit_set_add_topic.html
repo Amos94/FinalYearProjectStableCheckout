@@ -58,12 +58,18 @@
         </div>
         <p class="bg-warning text-center" style="margin-top:6.5%;">Hello, <font color='#d12b07'>{{ user }}</font>. Your current user type is: <font color='#d12b07'>{{ userType }}</font>.</p>
     </header>
-
-    <div class="jumbotron text-center col-md-6 col-md-offset-3">
-        <p><a href="/set/edit/{{ setid }}">[go back to set {{ setid }}]</a></p>
-        <h2 class="text-center"><font color='green'>SUCCESS!</font></h2>
-        <p>Your operation has been completed successfully.</p>
-    </div>
+    {% if error == True %}
+        <div class="jumbotron text-center col-md-6 col-md-offset-3">
+            <p><a href="/set/edit/{{ setid }}">[go back to set {{ setid }}]</a></p>
+            <h2 class="text-center"><font color='red'>FAIL</font></h2>
+        </div>
+    {% else %}
+        <div class="jumbotron text-center col-md-6 col-md-offset-3">
+            <p><a href="/set/edit/{{ setid }}">[go back to set {{ setid }}]</a></p>
+            <h2 class="text-center"><font color='green'>SUCCESS!</font></h2>
+            <p>Your operation has been completed successfully.</p>
+        </div>
+    {% endif %}
 
 
 

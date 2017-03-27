@@ -1393,10 +1393,10 @@ class Queries:
 
         #Building the SQL query qry
         qry =  "INSERT INTO  taggy_annotators_sets (annotatorId, setId) "
-        qry += "VALUES ('"+annotatorid+"','"+setid+"')"
+        qry += "VALUES ('"+str(annotatorid)+"','"+str(setid)+"')"
 
         # execution of the query 'qry'
-        status = self.getData(qry)
+        status = self.insertOrUpdate(qry)
 
         # return the data
         return status

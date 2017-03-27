@@ -347,7 +347,51 @@ def assignSetAdd(request, setid=-1):
     return render(request,'assign_set_add.html', context)
 
 def assignSetAnnotator(request, setid=-1, annotatorid=-1):
-    return render(request)
+    pageName = 'Assign Set'
+    error = False
+    userType = "admin"
+    userId = 6
+    errorMsg = ''
+    results = []
+    topics = []
+    qryObject = Queries()
+
+    try:
+        if (request.GET['s']):
+            setid = int(request.GET['s'])
+        else:
+            setid = -1
+    except:
+        pass
+
+    try:
+        if (request.GET['a']):
+            annotatorid = int(request.GET['a'])
+        else:
+            annotatorid = -1
+    except:
+        pass
+
+    if (setid != -1 and annotatorid != -1 and userType == 'admin'):
+        # assign annotator to set
+        result = qryObject.insertAnnotatorsSets(annotatorid, setid)
+        if(result != 1):
+            error = True
+            errorMsg = 'The annotator assignment task was unsuccessfull.'
+
+    else:
+        if (userType != 'admin'):
+            error = True
+            errorMsg = 'You have no access to this action, due to you are not an admin.'
+        elif (setid == -1):
+            error = True
+            errorMsg = 'The set id is not valid.'
+        else:
+            error = True
+            errorMsg = 'The annotator id is not valid.'
+
+    context = {'pageName': pageName, 'setid': setid, 'error': error, 'errorMsg': errorMsg}
+    return render(request, 'assign_set_annotator.html', context)
 
 def browseSet(request, setId=None, postId=None):
     pageName = 'Browse'
