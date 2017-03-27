@@ -128,6 +128,21 @@ def editSet(request, setid=-1):
 
         postCase = 1
     else:
+
+        if (request.method == 'POST'):
+            # TO CHANGE THE USER WHEN THE USER ROLE IS READY
+            form = UpdateSet(request.POST)
+            if (form.is_valid()):
+                textarea = form.cleaned_data['updateset']
+                result = qry.getSet(setid)
+
+                if (result == 1):
+                    return HttpResponseRedirect('/success/')
+                else:
+                    return HttpResponseRedirect('/fail/')
+        else:
+            form = UpdateSet()
+
         results = qry.getSetMeta(setid)
 
         setname = results[1]
@@ -136,28 +151,88 @@ def editSet(request, setid=-1):
         for result in results:
             updateset = updateset + str(result[0]) + "\n"
 
-        context = {'pageName': pageName, 'setid': setid, 'results': results, 'postCase': postCase,'updateset': updateset}
-
-        if (request.method == 'POST'):
-            # TO CHANGE THE USER WHEN THE USER ROLE IS READY
-            form = UpdateSet(request.POST)
-            if (form.is_valid()):
-                textarea = form.cleaned_data['updateset']
-                print(textarea)
-                result = qry.getSet(setid)
-
-                if (result == 1):
-                    return HttpResponseRedirect('/success/')
-                else:
-                    return HttpResponseRedirect('/fail/')
+        context = {'pageName': pageName, 'setid': setid, 'results': results, 'postCase': postCase,'updateset': updateset, 'form':form}
 
 
-        else:
-            form = UpdateSet()
 
     context = {'pageName': pageName, 'setid': setid, 'results':results, 'postCase':postCase}
     return render(request, "edit_set.html", context)
 
+def editSetAdd(request, setid = -1):
+    pageName = 'Edit Set'
+    userType = "admin"
+    userId = 2
+    topicIds = []
+    forums = []
+    qryObject = Queries()
+    try:
+        if(request.GET['s']):
+            setid = int(request.GET['s'])
+        else:
+            setid = -1
+    except:
+        pass
+
+    if(setid!=-1):
+        forums = qryObject.getForums()
+        for forum in forums:
+            topicIds = qryObject.getTopic(forum[0])
+    else:
+        errorMsg = 'Set id was not valid'
+
+
+
+    context = {'pageName':pageName, 'topicIds':topicIds, 'setid':setid}
+    return render(request, 'edit_set_add.html', context)
+
+def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
+    pageName = 'Edit Set'
+    userType = "admin"
+    userId = 2
+    results = []
+    topics = []
+    qryObject = Queries()
+
+    try:
+        if(request.GET['s']):
+            setid = int(request.GET['s'])
+        else:
+            setid = -1
+    except:
+        pass
+
+    try:
+        if(request.GET['t']):
+            topicid= int(request.GET['t'])
+        else:
+            topicid = -1
+    except:
+        pass
+
+    try:
+        if(request.GET['f']):
+            forumid= int(request.GET['f'])
+        else:
+            forumid = -1
+    except:
+        pass
+
+    if(setid != -1 and topicid != -1):
+        #add topic to set
+        posts = qryObject.getPosts(forumid, topicid, 'INITIAL')
+        #iterate and add each post to the set
+        for post in posts:
+            --------------------------TO UPDATE THIS ----------------------------------------
+            qryObject.addPostInSet(setid)
+            qryObject.updatePostState(post[0],'SELECTED')
+        #change the state of the post from INITIAL to SELECTED
+                                    TO CHECK IF IT WORKS
+            ------------------------------------------------------------------------------------
+    else:
+        errorMsg = 'Set id or Topic id was not valid'
+
+    context = {'pageName':pageName, 'setid':setid}
+    return render(request, 'edit_set_add_topic.html', context)
 
 def deleteSet(request, setid=-1):
     pageName = 'Delete Set'

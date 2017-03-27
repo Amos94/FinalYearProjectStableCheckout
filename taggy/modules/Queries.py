@@ -304,9 +304,9 @@ class Queries:
 
         # Building the SQL query
         qry = "SELECT topicId,url,title,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
-        qry += "profileId,DATE_FORMAT(lastDate,'%e-%b-%Y') AS last,numViews "
+        qry += "profileId,DATE_FORMAT(lastDate,'%e-%b-%Y') AS last,numViews, forumId "
         qry += "FROM taggy_topics "
-        qry += "WHERE forumId="+forumid+" "
+        qry += "WHERE forumId="+str(forumid)+" "
         qry += "ORDER BY lastDate DESC"
 
         # execution of the query 'qry'
@@ -365,7 +365,7 @@ class Queries:
             qry =  "SELECT postId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "profileId,postState,content "
             qry += "FROM taggy_posts "
-            qry += "WHERE forumId="+forumid+" AND topicId="+topicid+" "
+            qry += "WHERE forumId="+str(forumid)+" AND topicId="+str(topicid)+" "
 
             if(postState):
                 qry += "AND postState='"+postState+"'"
@@ -374,7 +374,7 @@ class Queries:
             qry =  "SELECT postId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
             qry += "postState,content "
             qry += "FROM taggy_posts "
-            qry += "WHERE forumId="+forumid+" "
+            qry += "WHERE forumId="+str(forumid)+" "
 
             if(postState):
                 qry += "AND postState='"+postState+"'"

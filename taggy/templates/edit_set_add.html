@@ -61,62 +61,23 @@
     </header>
 
     <div class="jumbotron text-center col-md-10 col-md-offset-1">
-        {% if setid == -1 %}
-            <p>Click on <strong>set id</strong> to edit that set.</p>
-            <br />
-            <p align="left">Sets:</p>
-
+        <a href="/set/edit/"><p>[go back to edit sets]</p></a>
+        <a href="/set/edit/{{ setid }}"><p>[go back to edit set {{ setid }}]</p></a>
+        <h2>Click on Topic Id to be added in the set</h2>
 
         <div class='scrollLongList'>
-            <table class="table table-striped table-hover table-condensed">
-                <tr><th>Set id</th><th>Name</th><th>Description</th></tr>
-
-                {% for result in results %}
-                    <tr align=left>
-                        <td>
-                            <a href="{{ result.0 }}">{{result.0}}</a>
-                        </td>
-                        <td>{{result.1}}</td>
-                        <td>{{result.2}}</td>
+            <table class="text-left table table-striped table-hover table-condensed">
+                <tr><th>#</th><th>Topic Id</th><th>Forum Id</th><th>Title</th><th>URL</th></tr>
+                {% for topicId in topicIds %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><a href="/set/topic-add/?s={{ setid }}&t={{ topicId.0 }}&f={{ topicId.7 }}">{{ topicId.0 }}</a></td>
+                        <td>{{ topicId.7 }}</td>
+                        <td>{{ topicId.2 }}</td>
+                        <td>{{ topicId.1 }}</td>
                     </tr>
                 {% endfor %}
             </table>
         </div>
-        {% elif postCase == 1%}
-            <a href="/set/edit">[go back to list of sets]</a>
-            <p>Set content is now: </p>
-
-            {% for result in results %}
-                    <tr align=left>
-                        <td>
-                            <a href="{{ result.0 }}">{{result.0}}</a>
-                        </td>
-                        <td>{{result.1}}</td>
-                        <td>{{result.2}}</td>
-                    </tr>
-            {% endfor %}
-
-
-        {% else %}
-            <a href="/set/edit">[go back to list of sets]</a>
-            <p>Set content is now: </p>
-            {% for result in results %}
-                    <tr align=left>
-                        <td>
-                            <a href="{{ result.0 }}">{{result.0}}</a>
-                        </td>
-                        <td>{{result.1}}</td>
-                        <td>{{result.2}}</td>
-
-                    </tr>
-            {% endfor %}
-            <br>
-            <a href="/set/edit-add/?s={{ setid }}"><button class="btn btn-success">Add more posts to set</button></a>
-            <a href="/set/edit-del/?s={{ setid }}"><button class="btn btn-danger">Delete posts from set</button></a>
-        {% endif %}
-
-    </div>
-
-
 </body>
 </html>

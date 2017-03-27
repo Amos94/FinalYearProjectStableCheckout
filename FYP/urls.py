@@ -36,6 +36,8 @@ from taggy.views import reviewParse as reviewParse
 from taggy.views import postKappaDetails
 from taggy.views import tagAction
 from taggy.views import list
+from taggy.views import editSetAdd
+from taggy.views import editSetTopic
 from django.conf.urls.static import static
 from FYP import settings
 
@@ -47,6 +49,8 @@ urlpatterns = [
     url(r'^adjudication/', adjudication, name="adjudication"),
     url(r'^set/create/', setCreate, name="create_set"),
     url(r'^set/edit/', editSet, name="edit_set"),
+    url(r'^set/edit-add/', editSetAdd, name="edit_set_add"),
+    url(r'^set/topic-add/', editSetTopic, name="edit_set_topic"),
     url(r'^set/review/', reviewSet, name="review_set"),
     url(r'^review/parse/', reviewParse, name="review_parse"),
     url(r'^set/delete/', deleteSet, name="delete_set"),
