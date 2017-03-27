@@ -35,6 +35,7 @@ from taggy.views import reviewSet as reviewSet
 from taggy.views import reviewParse as reviewParse
 from taggy.views import postKappaDetails
 from taggy.views import tagAction
+from taggy.views import list
 from django.conf.urls.static import static
 from FYP import settings
 
@@ -53,12 +54,13 @@ urlpatterns = [
     url(r'^set/browse/', browseSet ,name="browse_set"),
     url(r'^set/tag/',tagSet, name='tag_set'),
     url(r'^action/tag/', tagAction, name='tag_action'),
+    url(r'^upload/json/', list, name='list'),
     url(r'^postkappadetails/', postKappaDetails, name='postKappaDetails'),
     url(r'^set/adjudicate/', adjudicateSet, name='adjudicate_set'),
     url(r'^post/tag/', tagPost, name='tag_post'),
     url(r'success/', success, name="success"),
     url(r'fail/', fail, name="fail")
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = 'T.A.G.G.Y. ADMINISTRATION BOARD'
 admin.site.site_title = 'T.A.G.G.Y.'

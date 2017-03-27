@@ -51,10 +51,15 @@ class ChooseTag(forms.Form):
     CHOICES = {}
     qryObject = Queries()
     results = []
-    results = qryObject.getTagAndPOR()
-    for result in results:
-        CHOICES[result[0]] = (result[1], result[2])
+    # results = qryObject.getTagAndPOR()
+    # for result in results:
+    #     CHOICES[result[0]] = (result[1], result[2])
 
     field = forms.ChoiceField(choices=CHOICES, required=True, label='Choose Tag')
     def __init__(self, *args, **kwargs):
         super(ChooseTag, self).__init__(*args, **kwargs)
+
+class DocumentForm(forms.Form):
+    docfile = forms.FileField(
+        label='Select a file'
+)

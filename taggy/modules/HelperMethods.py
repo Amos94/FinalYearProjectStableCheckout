@@ -135,3 +135,10 @@ class HelperMethods():
 
     # END OF  TAG POST HELPER METHODS
     ####
+
+
+    def handle_uploaded_file(f):
+        print('here')
+        with open('C:\\Users\\Amos Madalin Neculau\\Desktop\\FinalYearProject2\\name.txt', 'wb+') as destination:
+            for chunk in f.chunks():
+                destination.write(chunk)

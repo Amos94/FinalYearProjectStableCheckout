@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'FYP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fyp',
+        'NAME': 'fyp2',
         'USER': 'root',
         'PASSWORD': 'Amos.expert94',
         'HOST': 'localhost',
@@ -139,3 +139,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
