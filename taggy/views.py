@@ -101,7 +101,7 @@ def setCreate(request):
 def editSet(request, setid=-1):
     pageName = 'Edit Set'
     userType = "ADMIN_TYPE"
-    userId = 1
+    userId = 6
     postCase = 0
 
     qry = Queries()
@@ -161,7 +161,9 @@ def editSet(request, setid=-1):
 def editSetAdd(request, setid = -1):
     pageName = 'Edit Set'
     userType = "admin"
-    userId = 2
+    userId = 6
+    error = False
+    errorMsg = ''
     topicIds = []
     forums = []
     qryObject = Queries()
@@ -178,17 +180,21 @@ def editSetAdd(request, setid = -1):
         for forum in forums:
             topicIds = qryObject.getTopic(forum[0])
     else:
+        error = True
         errorMsg = 'Set id was not valid'
 
 
 
-    context = {'pageName':pageName, 'topicIds':topicIds, 'setid':setid}
+    context = {'pageName':pageName, 'topicIds':topicIds, 'setid':setid, 'error':error, 'errorMsg':errorMsg}
     return render(request, 'edit_set_add.html', context)
 
 def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
     pageName = 'Edit Set'
+    error = False
     userType = "admin"
-    userId = 2
+    userId = 6
+    errorMsg = ''
+    userType = 'admin'
     results = []
     topics = []
     qryObject = Queries()
@@ -217,27 +223,34 @@ def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
     except:
         pass
 
-    if(setid != -1 and topicid != -1):
-        #add topic to set
+    if(setid != -1 and topicid != -1 and userType == 'admin'):
+        #add topic to set - ADD JUST POSTS THAT HAS THE postState = INITIAL
         posts = qryObject.getPosts(forumid, topicid, 'INITIAL')
         #iterate and add each post to the set
         for post in posts:
-            --------------------------TO UPDATE THIS ----------------------------------------
-            qryObject.addPostInSet(setid)
+
+            qryObject.addPostInSet(setid, post[0])
             qryObject.updatePostState(post[0],'SELECTED')
         #change the state of the post from INITIAL to SELECTED
-                                    TO CHECK IF IT WORKS
-            ------------------------------------------------------------------------------------
-    else:
-        errorMsg = 'Set id or Topic id was not valid'
 
-    context = {'pageName':pageName, 'setid':setid}
+    else:
+        if(userType != 'admin'):
+            error = True
+            errorMsg = 'You have no access to this action, due to you are not an admin.'
+        elif(setid == -1):
+            error = True
+            errorMsg = 'The set id is not valid.'
+        else:
+            error = True
+            errorMsg = 'The topic id is not valid.'
+
+    context = {'pageName':pageName, 'setid':setid, 'error':error, 'errorMsg':errorMsg}
     return render(request, 'edit_set_add_topic.html', context)
 
 def deleteSet(request, setid=-1):
     pageName = 'Delete Set'
     userType = "ADMIN_TYPE"
-    userId = 1
+    userId = 6
     postCase = 0
 
     qry = Queries()

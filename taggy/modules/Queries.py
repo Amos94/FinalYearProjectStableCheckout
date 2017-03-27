@@ -863,10 +863,10 @@ class Queries:
     *
     * @param integer $setID  set id number
     """
-    def addPostInSet(self, setid):
+    def addPostInSet(self, setid, postid):
 
         # Building the SQL query 'qry'
-        qry =  "INSERT QRY"
+        qry =  "INSERT INTO taggy_posts_sets (setId, postId) VALUES( '"+str(setid)+"', '"+str(postid)+"' )"
 
         # execution of the query 'qry'
         qryResult = self.insertOrUpdate(qry)

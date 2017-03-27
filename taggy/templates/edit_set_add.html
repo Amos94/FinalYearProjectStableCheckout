@@ -61,11 +61,15 @@
     </header>
 
     <div class="jumbotron text-center col-md-10 col-md-offset-1">
-        <a href="/set/edit/"><p>[go back to edit sets]</p></a>
-        <a href="/set/edit/{{ setid }}"><p>[go back to edit set {{ setid }}]</p></a>
-        <h2>Click on Topic Id to be added in the set</h2>
 
         <div class='scrollLongList'>
+        {% if error == True %}
+            <a href="/set/edit/"><p>[go back to edit sets]</p></a>
+            <p>{{ errorMsg }}</p>
+        {% else %}
+            <a href="/set/edit/"><p>[go back to edit sets]</p></a>
+            <a href="/set/edit/{{ setid }}"><p>[go back to edit set {{ setid }}]</p></a>
+            <h2>Click on Topic Id to be added in the set</h2>
             <table class="text-left table table-striped table-hover table-condensed">
                 <tr><th>#</th><th>Topic Id</th><th>Forum Id</th><th>Title</th><th>URL</th></tr>
                 {% for topicId in topicIds %}
@@ -78,6 +82,7 @@
                     </tr>
                 {% endfor %}
             </table>
+        {% endif %}
         </div>
 </body>
 </html>
