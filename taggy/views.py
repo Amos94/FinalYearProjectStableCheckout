@@ -229,9 +229,21 @@ def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
         #iterate and add each post to the set
         for post in posts:
 
-            qryObject.addPostInSet(setid, post[0])
-            qryObject.updatePostState(post[0],'SELECTED')
-        #change the state of the post from INITIAL to SELECTED
+            result = qryObject.addPostInSet(setid, post[0])
+            print(result)
+            if(result != 1):
+                error = True
+                errorMsg = 'Could not update the database'
+
+            # change the state of the post from INITIAL to SELECTED
+            result = qryObject.updatePostState(post[0],'SELECTED')
+            print('TO UPDATE updatePostState')
+            print(result)
+            if (result != 1):
+                error = True
+                errorMsg = 'Could not update the database'
+
+
 
     else:
         if(userType != 'admin'):
@@ -308,7 +320,34 @@ def assignSet(request):
     context = {'pageName': pageName, "results":results, "annotators":annotators, "annotatorsSets_divs":annotators_divs}
     return render(request, "assign_set.html", context)
 
+def assignSetAdd(request, setid=-1):
+    pageName = 'Assign Set'
+    userType = "admin"
+    userId = 6
+    error = False
+    errorMsg = ''
+    h = HelperMethods()
+    annotators = []
 
+    try:
+        if(request.GET['s']):
+            setid = int(request.GET['s'])
+        else:
+            setid = -1
+    except:
+        pass
+
+    if(setid!=-1):
+        annotators = h.annotators_lookup()
+    else:
+        error = True
+        errorMsg = 'Set id was not valid'
+
+    context={'pageName':pageName, 'annotators':annotators, 'setid':setid}
+    return render(request,'assign_set_add.html', context)
+
+def assignSetAnnotator(request, setid=-1, annotatorid=-1):
+    return render(request)
 
 def browseSet(request, setId=None, postId=None):
     pageName = 'Browse'

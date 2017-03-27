@@ -14,22 +14,21 @@ class HelperMethods():
         for annotator in annotators_results:
             a.insert(annotator[0], {'id':annotator[0],'name':annotator[1], 'type':annotator[3]})
 
-
         return a
 
     def annotatorssets_divs(self, annotators, setId):
         divs = ""
-        print(annotators)
+        #print(annotators)
         qryObject = Queries()
         annotators_results = qryObject.getAnnotatorsSets(setId)
-        print(annotators_results)
+        #print(annotators_results)
 
         i=0
         for annotator in annotators_results:
             #annotators[annotator[0]]['type']
-            print(i)
-            if(i == annotator[0]):
-                print(annotators[i]['type'])
+            #print(i)
+            if(i == annotator[1]):
+                #print(annotators[i]['type'])
                 typeClass = "annotator" + self.ucfirst(annotators[i]['type'])#type
                 divs += " <div id='a"+ str(i)+"' class='annotatorInstance annotator "+typeClass+"' setId='"+str(setId)+"'>"
                 divs += annotators[i]['name']#name

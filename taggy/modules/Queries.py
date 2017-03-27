@@ -635,7 +635,7 @@ class Queries:
     """
 
     def updatePostState(self, postid, postState = None):
-
+        updateStatus = []
         if(postState != None):
             newPostState = None  # initially no change
         else:
@@ -677,6 +677,7 @@ class Queries:
 
                 # otherwise, make no changes to postState
                 # else postState is INITIAL', 'SELECTED', 'REPARSE'
+
         if(newPostState != None):
             qry =  "UPDATE taggy_posts "
             qry += "SET postState='"+newPostState+"' "
@@ -684,9 +685,9 @@ class Queries:
 
             updateStatus = self.getData(qry)
 
-            return updateStatus
+        return updateStatus
 
-        return True
+        #return True
 
 
 

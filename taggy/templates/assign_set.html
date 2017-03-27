@@ -67,33 +67,28 @@
             <i>Sets:</i><br />
             <div id='setAssignment'>
                 <table class="table table-striped table-hover table-condensed">
-                    <tr><th>setId</th><th>name</th><th>description</th><th>assigned to annotator(s)</th></tr>
+                    <tr><th>setId</th><th>name</th><th>description</th><th>assigned to annotator(s)</th><th>Assign annotator</th></tr>
                     {% for result in results %}
+
                         <tr id="s{{ result.0 }}" class="setRow">
                             <td>{{ result.0 }}</td>
                             <td>{{ result.1 }}</td>
                             <td>{{ result.2 }}</td>
                             <td class="annotatorsSets">
-                                {% for annotatorSetDiv in annotatorsSets_divs %}
+                                <!--{% for annotatorSetDiv in annotatorsSets_divs %}
                                     {% if annotatorSetDiv.result == result.0 %}
                                         {% autoescape off %}{{ annotatorSetDiv.div }}{% endautoescape %}
                                     {% endif %}
-                                {% endfor %}
+                                {% endfor %}-->
+                            HERE TO BE DISPLAYED ANNOTATORS FOR THAT SET
                             </td>
+                            <td class="btn btn-success"><a href="/set/assign-add/?s={{ result.0 }}"><font color="#fffafa">Assign annotator for set {{ result.0 }}</font></a></td>
                         </tr>
+
                     {% endfor %}
                 </table>
             </div>
 
-            <div id='annotators'>
-                {% for annotator in annotators %}
-                    {% if annotator.type != "inactive" %}
-                        <div id='a{{ annotator.id }}' class='bg-success annotatorBtn annotator active'> {{ annotator.name }} </div>
-                    {% else %}
-                         <div id='a{{ annotator.id }}' class='bg-danger annotatorBtn annotator inactive'> {{ annotator.name }} </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
         </center>
     </div>
 

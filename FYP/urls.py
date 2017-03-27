@@ -38,6 +38,8 @@ from taggy.views import tagAction
 from taggy.views import list
 from taggy.views import editSetAdd
 from taggy.views import editSetTopic
+from taggy.views import assignSetAdd
+from taggy.views import assignSetAnnotator
 from django.conf.urls.static import static
 from FYP import settings
 
@@ -51,6 +53,8 @@ urlpatterns = [
     url(r'^set/edit/', editSet, name="edit_set"),
     url(r'^set/edit-add/', editSetAdd, name="edit_set_add"),
     url(r'^set/topic-add/', editSetTopic, name="edit_set_topic"),
+    url(r'^set/assign-add/', assignSetAdd,name="assign_set_add"),
+    url(r'^set/assign-add-annotator/',assignSetAnnotator, name="assign_set_annotator"),
     url(r'^set/review/', reviewSet, name="review_set"),
     url(r'^review/parse/', reviewParse, name="review_parse"),
     url(r'^set/delete/', deleteSet, name="delete_set"),
