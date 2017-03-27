@@ -8,7 +8,6 @@ class SentenceSegmentation:
 
     def __init__(self, qryObject,sentenceId):
         """
-
         :type qryObject: Queries
         """
         self.qryObject = qryObject

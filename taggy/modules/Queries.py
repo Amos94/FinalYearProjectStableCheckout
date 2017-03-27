@@ -1,7 +1,7 @@
 import random
 
 #import MySQLdb
-import MySQLdb
+
 from django.db.models import Q as Q
 
 from django.db import connection
@@ -428,7 +428,18 @@ class Queries:
         # return the data
         return qryResult
 
+    def getPostContent(self, postid):
+        # Building the SQL query
+        qry = "SELECT content "
+        qry += "FROM taggy_posts "
+        qry += "WHERE postId= " + str(postid)+" "
 
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
     """
     * getPostState()
     *
@@ -1455,8 +1466,6 @@ class Queries:
             toReturn = True
 
         return toReturn
-
-
 
 
     """
