@@ -17,6 +17,7 @@ class PostSegmentation:
         #nltk.download()
         self.qryObject = Queries()
         self.postId = postId
+        self.postSegmentation()
 
     #returns an array of sentences
     def postSegmentation(self):
@@ -42,15 +43,14 @@ class PostSegmentation:
     #TO BE ADDED PARAGRAPH IN POST
     def insertSentence(self):
         postInParagraph = 1
-        sentenceInParagraph = 1
+        sentenceInParagraph = 0
         for i in self.sentences:
+
             if("<br />" in i):
                 postInParagraph = postInParagraph + 1
                 sentenceInParagraph = 1
             else:
                 sentenceInParagraph = sentenceInParagraph + 1
             with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO taggy_sentences (postId, sentence, paragraphInPost, sentenceInParagraph) VALUES("+self.postId + ',' + self.sentences[i] + ',' + str(postInParagraph) + ',' + str(sentenceInParagraph)+")")
-
-a = PostSegmentation(32)
-a.insertSentence()
+                qry = "INSERT INTO taggy_sentences (postId, sentence, paragraphInPost, sentenceInParagraph) VALUES("+str(self.postId) + ",'" + i.replace("'","\\'") + "'," + str(postInParagraph) + "," + str(sentenceInParagraph)+")"
+                cursor.execute(qry)
