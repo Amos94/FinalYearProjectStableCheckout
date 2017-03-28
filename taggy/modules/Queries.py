@@ -645,23 +645,24 @@ class Queries:
     *                            postState is based upon PostAnnotation states
     """
 
-    def updatePostState(self, postid, postState = None):
+    def updatePostState(self, postid, postState = ''):
         updateStatus = []
-        if(postState != None):
-            newPostState = None  # initially no change
+        if(postState != ''):
+            newPostState = ''  # initially no change
         else:
             #update post state
             #get old post state
-            result = self.getData("SELECT postState FROM taggy_posts WHERE postId="+postid)
-            row = self.getOne(result)
-            oldPostState = row['postState']
+            result = self.getData("SELECT postState FROM taggy_posts WHERE postId="+str(postid))
+            for r in result:
+                row = r
+            oldPostState = row[0]
 
             #Check if PostState is able to be updated based on postAnnotatorStates
             if(oldPostState in ["PARSED", "ANNOTATED", "ADJUDICATED"]):
                 # Get counts of postAnnotatorStates
                 cntSQL =  "SELECT postAnnotatorState, count(*) AS n "
                 cntSQL += "FROM taggy_posts_annotators "
-                cntSQL += "WHERE (postId = '"+postid+"')  "
+                cntSQL += "WHERE (postId = '"+str(postid)+"')  "
                 cntSQL += "GROUP BY postAnnotatorState"
 
                 result = self.getData(cntSQL)
@@ -669,8 +670,8 @@ class Queries:
                 numStates = []
 
                 #Build a map of postAnnotatorState => n
-                while(row == self.getOne(result)):
-                    numStates[row["postAnnotatorState"]] = row["n"]
+                for row in result:
+                    numStates[row[0]] = row[1]
 
 
                 #check for a new PostState based on postAnnotatorStates
@@ -689,12 +690,13 @@ class Queries:
                 # otherwise, make no changes to postState
                 # else postState is INITIAL', 'SELECTED', 'REPARSE'
 
-        if(newPostState != None):
+        if(newPostState != ''):
             qry =  "UPDATE taggy_posts "
             qry += "SET postState='"+newPostState+"' "
-            qry += "WHERE postId="+postid
+            qry += "WHERE postId="+str(postid)
 
             updateStatus = self.getData(qry)
+
 
         return updateStatus
 
@@ -1273,11 +1275,11 @@ class Queries:
     *
     * @param string $setname name of set
     """
-    def insertSet(self, setname, setdescription, creatorid):
+    def insertSet(self, setname, setdescription, creatorid, domainId):
 
         # Building the SQL query 'qry'
-        qry =  "INSERT INTO taggy_sets (name, description, creatordId) "
-        qry += "VALUES ('"+setname+"','"+setdescription+"','"+str(creatorid)+"')"
+        qry =  "INSERT INTO taggy_sets (name, description, creatordId, domainId) "
+        qry += "VALUES ('"+setname+"','"+setdescription+"','"+str(creatorid)+"','"+str(domainId)+"')"
 
         # execution of the query 'qry'
         res = self.insertOrUpdate(qry)

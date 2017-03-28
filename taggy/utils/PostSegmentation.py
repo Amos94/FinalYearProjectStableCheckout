@@ -54,3 +54,6 @@ class PostSegmentation:
             with connection.cursor() as cursor:
                 qry = "INSERT INTO taggy_sentences (postId, sentence, paragraphInPost, sentenceInParagraph) VALUES("+str(self.postId) + ",'" + i.replace("'","\\'") + "'," + str(postInParagraph) + "," + str(sentenceInParagraph)+")"
                 cursor.execute(qry)
+
+a = PostSegmentation(12)
+print(a.postSegmentation())

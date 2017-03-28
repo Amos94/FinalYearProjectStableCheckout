@@ -1,13 +1,85 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Minimal Django File Upload Example</title>
-    </head>
+<html lang="en">
+<head>
+    <title>Taggy | UPLOAD JSON</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="background-color: #e9ebee">
+    <header>
+        <nav class="navbar navbar-fixed-top" style="background-color: #4c70ba">
+        <div class="container-fixed">
+    <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" style="font-family: 'Raleway';font-size: 40px;"><font color="white"><strong>T.A.G.G.Y.</strong></font></a>
+            </div>
 
-    <body>
+                  <div class="col-sm-3 col-md-2 pull-right">
+
+          <form class="navbar-form" role="search">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search" name="q">
+                  <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+              </div>
+          </form>
+      </div>
+
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+
+        <div class="ui-menubar navbar-fixed-top" style="margin-top: 3.57%">
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="/annotation">Annotation Board</a></li>
+                <li><a href="/adjudication">Adjudication Board</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/set/create">Set creation</a></li>
+                <li><a href="/set/edit">Edit sets</a></li>
+                <li><a href="/set/assign">Assign sets</a></li>
+                <li><a href="/set/delete">Delete sets</a></li>
+                <li><a href="/set/browse/">Browse sets</a></li>
+                <li><a href="/set/tag/?s=-1">Tag sets</a></li>
+                <li><a href="/set/adjudicate/?s=-1">Adjudicate sets</a></li>
+                <li><a href="/post/tag/?setId=-1&postId=-1&adjudicationFlag=true">Tag post</a></li>
+                <li><a href="/set/review/?s=-1">Review Set</a></li>
+                <li><a href="/upload/json/">Upload JSON</a></li>
+                <li><a href="/postkappadetails/?p=49847&adjudicateFlag=true&s=6&a=2">Post Kappa Details</a></li>
+            </ul>
+        </div>
+        <p class="bg-warning text-center" style="margin-top:6.5%;">Hello, <font color='#d12b07'>{{ user }}</font>. Your current user type is: <font color='#d12b07'>{{ userType }}</font>.</p>
+    </header>
+
+    <div class="jumbotron text-center col-md-6 col-md-offset-3">
+    <!-- Upload form. Note enctype attribute! -->
+        <form action="{% url "list" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            {{ form.docfile.label_tag }} {{ form.docfile.help_text }}
+
+
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+
+
+            <input type="submit" value="Upload"/>
+        </form>
         <!-- List of uploaded documents -->
         {% if documents %}
+            <p>List of documents uploaded:</p>
             <ul>
                 {% for document in documents %}
                     <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
@@ -16,21 +88,7 @@
         {% else %}
             <p>No documents.</p>
         {% endif %}
-
-        <!-- Upload form. Note enctype attribute! -->
-        <form action="{% url "list" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <p>{{ form.non_field_errors }}</p>
-
-            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-
-            <p>
-                {{ form.docfile.errors }}
-                {{ form.docfile }}
-            </p>
-
-            <p><input type="submit" value="Upload"/></p>
-        </form>
+    </div>
     </body>
 
 </html>

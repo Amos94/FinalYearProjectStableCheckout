@@ -72,7 +72,7 @@ def setCreate(request):
         if(form.is_valid()):
             setname = form.cleaned_data['setname']
             setdescr = form.cleaned_data['setdescr']
-            result = qry.insertSet(setname, setdescr, userid)
+            result = qry.insertSet(setname, setdescr, userid,1)
 
             if(result == 1):
                 # #JUST ADDED NOW
@@ -234,9 +234,9 @@ def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
             if(result != 1):
                 error = True
                 errorMsg = 'Could not update the database'
-
+            print (post[0])
             # change the state of the post from INITIAL to SELECTED
-            result = qryObject.updatePostState(post[0],'SELECTED')
+            result = qryObject.updatePostState(post[0],'PARSED')
             print('TO UPDATE updatePostState')
             print(result)
             if (result != 1):
@@ -667,12 +667,12 @@ def reviewParse(request, setId=None, postId=None):
             if(request.POST['review']):
                 parseHtml += "<br /><i>processing review</i><br /><br />"
                 parseHtml +="&nbsp;&nbsp; post " + postId + " in set " + setId + ": &nbsp; [ "
-                if(request.Post['review'] == 'accept'):
+                if(request.POST['review'] == 'accept'):
                     status = qryObject.updateParseTool(postId, '', 'PARSED')
-                    parseHtml += "<font color=#009900>" + request.Post['review'] + "</font>"
+                    parseHtml += "<font color=#009900>" + request.POST['review'] + "</font>"
                 else:
                     status = qryObject.updateParseTool(postId, request.POST['review'], 'REPARSE')
-                    parseHtml += "<font color=#990000>reparse using: " + request.Post['review'] + "</font>"
+                    parseHtml += "<font color=#990000>reparse using: " + request.POST['review'] + "</font>"
                 parseHtml += " ]<br /><br />"
                 parseHtml += "<i>database has been updated.</i><br />"
         else:
@@ -716,7 +716,7 @@ def reviewParse(request, setId=None, postId=None):
             if ( result[1] == '' ):
                 parseHtml += "not reviewed yet</td>"
             else:
-                parseHtml += result[1]+"</td>"
+                parseHtml += str(result[1])+"</td>"
 
             parseHtml += "</tr>"
             #result[5] = 'parseTool'
@@ -745,7 +745,7 @@ def reviewParse(request, setId=None, postId=None):
             parseHtml += "<p>"
             #result[0] = poststate
             if (( result[0] == 'INITIAL' ) or ( result[0] == 'SELECTED' ) or ( result[0] == 'REPARSE' )):
-                parseHtml += "<form action=\"/review/parse"+"\" method=\"post\">"
+                parseHtml += "<form action=\"/review/parse/?s="+str(setId)+"&p="+str(postId)+"\" method='POST'>"
 
                 parseHtml += "<input type=\"hidden\" name=\"userid\" value=\""+ str(userId)+"\"/>"
                 parseHtml += "<input type=\"hidden\" name=\"username\" value=\""+user+"\"/>"
