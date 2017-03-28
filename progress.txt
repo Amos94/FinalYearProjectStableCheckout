@@ -2,12 +2,15 @@ done - set_creation -screate
 done - delete_set -sdelete
 done-review_set
 done-review_parse
-almost done - edit_set -sedit
-almost done - tag_set -stag
-almost done(error) - adjudicate-set -sadjudicate
-error(list index out of range) - set_assign - sassign
-?almost done = browse_set -sbrowse
-almost done - tag_post
+done - edit_set
+done - browse_set
+done - set_assign
+done - tag_set
+done - KeyWordExtractor
+done - PostSegmentation (post segmentation into sentences) => TO CONNECT IT WITH JSON
+done - SentenceSegmentation (sentence segmentation into words)
+almost done - tag_post => NEED to make the tag functionalities
+almost done(?error) - adjudicate-set
 almost done - setKappa - setkappa (MIGHT BE ERRORS)
 almost done - chosenKappa (MIGHT BE ERRORS)
 almost done - postKappa (MIGHT BE ERRORS)

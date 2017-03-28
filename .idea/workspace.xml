@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/Queries.py" afterPath="$PROJECT_DIR$/taggy/modules/Queries.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/utils/KeyWordsExtractor.py" afterPath="$PROJECT_DIR$/taggy/utils/KeyWordsExtractor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/utils/SentenceSegmentation.py" afterPath="$PROJECT_DIR$/taggy/utils/SentenceSegmentation.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/progress.txt" afterPath="$PROJECT_DIR$/progress.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/utils/test.txt" afterPath="$PROJECT_DIR$/taggy/utils/test.txt" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -128,7 +127,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostSegmentation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PostSegmentation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/utils/PostSegmentation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="258">
@@ -139,6 +138,26 @@
                 <marker date="1490659499556" expanded="true" signature="1510:1716" ph="INSERT INTO taggy_sentences... " />
                 <marker date="1490659499556" expanded="true" signature="1510:1717" ph="INSERT INTO taggy_sentences... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="progress.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/progress.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taggy/utils/test.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -259,7 +278,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/taggy/templates/success.html" />
         <option value="$PROJECT_DIR$/taggy/templates/tag_set.html" />
         <option value="$PROJECT_DIR$/taggy/modules/post/Set.py" />
         <option value="$PROJECT_DIR$/taggy/templates/review_set.html" />
@@ -268,7 +286,6 @@
         <option value="$PROJECT_DIR$/taggy/modules/Kappa/SetKappa.py" />
         <option value="$PROJECT_DIR$/taggy/modules/Kappa/postKappa.py" />
         <option value="$PROJECT_DIR$/taggy/modules/Kappa/PostKappa.py" />
-        <option value="$PROJECT_DIR$/progress.txt" />
         <option value="$PROJECT_DIR$/taggy/modules/Kappa/ChosenKappa.py" />
         <option value="$PROJECT_DIR$/taggy/templates/adjudicate_set.html" />
         <option value="$PROJECT_DIR$/taggy/modules/tag/Tag.py" />
@@ -310,6 +327,8 @@
         <option value="$PROJECT_DIR$/taggy/modules/Queries.py" />
         <option value="$PROJECT_DIR$/taggy/utils/KeyWordsExtractor.py" />
         <option value="$PROJECT_DIR$/taggy/utils/SentenceSegmentation.py" />
+        <option value="$PROJECT_DIR$/taggy/utils/test.txt" />
+        <option value="$PROJECT_DIR$/progress.txt" />
       </list>
     </option>
   </component>
@@ -976,13 +995,6 @@
       <option name="presentableId" value="Default" />
       <updated>1485172765307</updated>
     </task>
-    <task id="LOCAL-00040" summary="Much progress done">
-      <created>1487068448644</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1487068448644</updated>
-    </task>
     <task id="LOCAL-00041" summary="Delete Sets menu">
       <created>1487078138934</created>
       <option name="number" value="00041" />
@@ -1319,7 +1331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490659535450</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="KeyWordExtractor - DONE&#10;PostSegmentation (post segmentation into sentences) - DONE&#10;SentenceSegmentation (sentence segmentation into words) - DONE">
+      <created>1490683317344</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1490683317345</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1414,7 +1433,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="TAG POSTS - ALMOST DONE" />
     <MESSAGE value="added some JS from DBMI [JUST FOR DEMO; TO BE CHANGED ASAP!]" />
     <MESSAGE value="POST TAGGING/ ADJUDICATION ALMOST DONE&#10;CHANGED THE MENU" />
     <MESSAGE value="MORE PROGRESS.&#10;SET REVIEW&#10;PARSE REVIEW" />
@@ -1439,7 +1457,8 @@
     <MESSAGE value="ASSIGN SET ALMOST DONE!" />
     <MESSAGE value="POST SEGMENTATION INTO SENTENCES ALMOST DONE." />
     <MESSAGE value="POST SEGMENTATION INTO SENTENCES DONE. =&gt; TO ESCAPE HTML TAGS!" />
-    <option name="LAST_COMMIT_MESSAGE" value="POST SEGMENTATION INTO SENTENCES DONE. =&gt; TO ESCAPE HTML TAGS!" />
+    <MESSAGE value="KeyWordExtractor - DONE&#10;PostSegmentation (post segmentation into sentences) - DONE&#10;SentenceSegmentation (sentence segmentation into words) - DONE" />
+    <option name="LAST_COMMIT_MESSAGE" value="KeyWordExtractor - DONE&#10;PostSegmentation (post segmentation into sentences) - DONE&#10;SentenceSegmentation (sentence segmentation into words) - DONE" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1448,20 +1467,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/taggy/modules/actions/SetAction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/templates/review_parse.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/utils/datastructures.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -1746,14 +1751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/utils/post.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="866" lean-forward="false" selection-start-line="0" selection-start-column="866" selection-end-line="0" selection-end-column="866" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FYP/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1844,6 +1841,30 @@
             <marker date="1490659499556" expanded="true" signature="1510:1716" ph="INSERT INTO taggy_sentences... " />
             <marker date="1490659499556" expanded="true" signature="1510:1717" ph="INSERT INTO taggy_sentences... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/utils/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/utils/post.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="866" lean-forward="false" selection-start-line="0" selection-start-column="866" selection-end-line="0" selection-end-column="866" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/progress.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
