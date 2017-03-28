@@ -6,8 +6,6 @@ class PostKappaDetails():
         parseHtml = ''
         parseHtml += "<p></p>"
 
-        print(set.setId)
-        print (post)
 
         if(set):
             if(adjudicateFlag == 'true'):

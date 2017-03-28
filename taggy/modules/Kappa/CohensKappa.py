@@ -7,9 +7,9 @@ from django.db.models import Q as Q
 from django.db import connection
 from FYP import settings
 
-class ChosenKappa():
+class CohensKappa():
     def __init__(self):
-        print('ChosenKappa')
+        print('CohensKappa')
 
     def countsByPost(self, ann1, ann2, tagIds, postId):
 

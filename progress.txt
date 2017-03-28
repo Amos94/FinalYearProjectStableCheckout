@@ -9,6 +9,7 @@ done - tag_set
 done - KeyWordExtractor
 done - PostSegmentation (post segmentation into sentences) => TO CONNECT IT WITH JSON
 done - SentenceSegmentation (sentence segmentation into words)
+DONE  - MODELS UPDATE FOR CORPUS SPLIT PURPOSES
 almost done - tag_post => NEED to make the tag functionalities
 almost done(?error) - adjudicate-set
 almost done - setKappa - setkappa (MIGHT BE ERRORS)
@@ -16,4 +17,9 @@ almost done - chosenKappa (MIGHT BE ERRORS)
 almost done - postKappa (MIGHT BE ERRORS)
 in progress - QUERIES UPDATE FOR CORPUS SPLIT PURPOSES
 in progress - Add admin possibilities to create and edit tag, and tag descriptors for a special corpus
-in progress  - MODELS UPDATE FOR CORPUS SPLIT PURPOSES
+              * module for ADD domain
+              * module for Edit domain
+              * module for Assign domain to an annotator/ adjudicator/ admin
+              * module for creation tags/ domain
+              * module for edit tags/ domain
+in progress - AUTOMATIC ANNOTATION(TAG PREDICTION)

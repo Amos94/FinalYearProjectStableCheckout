@@ -32,6 +32,7 @@ class Categories(models.Model):
 
     categoryId = models.AutoField(primary_key=True)
     catName = models.CharField(max_length=100)
+    domainId = models.IntegerField()
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -80,6 +81,7 @@ class Forums(models.Model):
     forumName = models.CharField(max_length=100)
     forumDescription = models.CharField(max_length=250)
     categoryId = models.IntegerField()
+    domainId = models.IntegerField()
 
     class Meta:
         verbose_name_plural = "Forums"
@@ -101,6 +103,7 @@ class Posts(models.Model):
     parseVersion = models.IntegerField(default=0)
     parseTool = models.TextField(default=None)
     parseHistory = models.TextField()
+    domainId = models.IntegerField()
 
 
     class Meta:
@@ -117,6 +120,7 @@ class Posts_annotators(models.Model):
     numSentencesTagged = models.IntegerField()
     lastUpdated = models.DateTimeField()
     postAnnotatorState = models.CharField(max_length=12, default='IN_PROGRESS')
+
     class Meta:
         verbose_name_plural = "Posts annotators"
 
@@ -179,6 +183,7 @@ class Sentences(models.Model):
     sentence = models.TextField()
     paragraphInPost = models.IntegerField()
     sentenceInParagraph = models.IntegerField()
+    domainId = models.IntegerField()
 
     class Meta:
         verbose_name_plural = "Sentences"
@@ -207,6 +212,7 @@ class Sets(models.Model):
     name = models.CharField(max_length=25)
     description = models.TextField()
     creatordId = models.IntegerField()
+    domainId = models.IntegerField()
 
     class Meta:
         verbose_name_plural = "Sets"
@@ -232,6 +238,7 @@ class Tags(models.Model):
     tagName = models.CharField(max_length=4)
     tagDescription = models.CharField(max_length=250)
     provideOrRequest = models.CharField(max_length=1)
+    domainId = models.IntegerField()
 
     class Meta:
         verbose_name_plural = "Tags"
@@ -248,9 +255,41 @@ class Topics(models.Model):
     lastDate = models.DateTimeField()
     numViews = models.IntegerField()
     forumId = models.IntegerField()
+    domainId = models.IntegerField()
 
     class Meta:
         verbose_name_plural = "Topics"
 
+
+
+class Domains(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name_plural = "Domains/ Corpus"
+
+
+
+class Annotators_domains(models.Model):
+    annotatorId = models.IntegerField()
+    domainId = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "Annotator domains"
+
+
+
+class Tags_keywords(models.Model):
+    tagId = models.IntegerField()
+    keywordsList = models.FileField(upload_to='keywords')
+    domainId = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "Tags keywords"
+
+
+
 class Document(models.Model):
     docfile = models.FileField(upload_to='documents/%Y/%m/%d')
+    class Meta:
+        verbose_name_plural = "JSON Documents"

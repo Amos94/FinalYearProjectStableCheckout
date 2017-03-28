@@ -11,7 +11,7 @@ from taggy.models import Document
 from forms import CreateSet, UpdateSet, ChooseTag, DocumentForm
 from taggy.modules.Annotator import Annotator
 from taggy.modules.HelperMethods import HelperMethods
-from taggy.modules.Kappa.ChosenKappa import ChosenKappa
+from taggy.modules.Kappa.CohensKappa import CohensKappa
 from taggy.modules.Kappa.PostKappaDetails import PostKappaDetails
 from taggy.modules.Queries import Queries
 from taggy.modules.actions.AnnotationAction import AnnotationAction
@@ -520,8 +520,8 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 
     pageName = 'Tag Post'
     pageTitle = ''
-    userType = 'admin_test'
-    userId = 11
+    userType = 'annotator'
+    userId = 6
     a_set = None
     a_post = None
     qryObject = Queries()
@@ -598,9 +598,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     a = a_post.render_finalize_button()
     b = a_post.render_posts_annotation()
     c = a_post.render_available_tags()
-    print(a)
-    print(b)
-    print(c)
+
 
 
     context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableHeader':postTableHeader,'postTableRnd':postTableRnd, 'a':a, 'b':b, 'c':c}
@@ -789,7 +787,7 @@ def postKappaDetails(request):
     obj2 = []
     pkd = PostKappaDetails()
     errorMsg = ''
-    k = ChosenKappa()
+    k = CohensKappa()
 
     try:
         if(request.GET['s']):
@@ -806,9 +804,7 @@ def postKappaDetails(request):
 
         if(request.GET['a']):
             annotator = Annotator(request.GET['a'])
-            print('annotator')
-            print(annotator)
-            print('annotator ' + str(annotator.canAdjudicate()))
+
             if(annotator.canAdjudicate() and request.GET['adjudicateFlag'] == 'true'):
                 a_post = AdjudicatedPost(request.GET['p'],annotator)
             else:

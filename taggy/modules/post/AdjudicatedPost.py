@@ -19,6 +19,7 @@ class AdjudicatedPost(AnnotatedPost):
     others = []
     annotatorStates = []
     comments = []
+    annotator = None
 
     """
     * Constructor of AdjudicatedPost object
@@ -30,6 +31,7 @@ class AdjudicatedPost(AnnotatedPost):
         # self.others = []
         # self.annotatorStates = []
         # self.comments = []
+        self.annotator = annotator
 
         qryObject = Queries()
 
@@ -40,16 +42,17 @@ class AdjudicatedPost(AnnotatedPost):
         # retrieve sentences for Post from DB
         results = qryObject.getAnnotatorsProgressByPost(postId)
 
-        self.annotatorStates = [None]*100
-        self.comments = [None]*100
-
+        self.annotatorStates = ['']*100
+        self.comments = ['']*100
+        self.annotatorid = annotator.id
         for r in results:
             if(int(r[0]) != annotator.id):
                 i = int(r[0])
                 self.others.append(Annotator( r[0] ))
                 postAnnotation = qryObject.getPostAnnotation(postId, r[0])
-                self.annotatorStates[i] = postAnnotation[3]
-                self.comments[i] = postAnnotation[1]
+                for p in postAnnotation:
+                    self.annotatorStates[i] = p[3]
+                    self.comments[i] = p[1]
 
 
 
@@ -61,7 +64,7 @@ class AdjudicatedPost(AnnotatedPost):
         self.comments[self.annotator.id] = '[' + self.annotator.username +':'+self.comments[self.annotator.id] + ']'
 
         for a in self.others:
-            self.comments[self.annotator.id] = '[' + a.username + ':' + self.comments[a.id] + ']'
+            self.comments[self.annotator.id] = '[' + a.username + ':' + str(self.comments[a.id]) + ']'
 
 
     """
@@ -74,10 +77,10 @@ class AdjudicatedPost(AnnotatedPost):
     def addSentence(self, args):
         qryObject = Queries()
         self.sentences.append(AdjudicatedSentence(
-                                                    self.annotatorStates[self.annotator.id],
-                                                    self.lookup,
-                                                    self.annotator,
-                                                    self.others,
+                                                    # self.annotatorStates[self.annotator.id],
+                                                    # self.lookup,
+                                                    # self.annotator,
+                                                    # self.others,
                                                     args)
                               )
 
@@ -116,8 +119,8 @@ class AdjudicatedPost(AnnotatedPost):
             finalizedDisabledCls = "finalizedEnabled"
         unfinalizedDisabledCls=''
 
-        toReturn += "<div id='finalize' class='postBtn finalizePostBtn adjudicatorPostBtn btn-primary "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br>"
-        toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn adjudicatorPostBtn btn-primary "+unfinalizeHiddenCls+" "+unfinalizedDisabledCls+"'>--DONE--</div><br>"
+        toReturn += "<button id='finalize' class='btn btn-primary "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</button><br>"
+        toReturn += "<button id='unfinalize' class='btn btn-primary "+unfinalizeHiddenCls+" "+unfinalizedDisabledCls+"'>--DONE--</button><br>"
         return toReturn
 
     """
@@ -132,8 +135,8 @@ class AdjudicatedPost(AnnotatedPost):
         qryObject = Queries()
 
         toReturn = ''
-        toReturn += "<b><span id='othersCommentsLabel'>Other Annotators Comments: <span id='othersCommentsDisplay'>show/hide</span></span></b>"
-        toReturn += "<div id='othersComments'><br>"
+        toReturn += "<b><span id='othersCommentsLabel'>Other Annotators Comments: <button class='btn btn-primary' id='othersCommentsDisplay'>show/hide</button></span></b>"
+        toReturn += "<div id='othersComments'>"
         toReturn += "<table><br>"
 
         for a in self.others:
@@ -141,7 +144,7 @@ class AdjudicatedPost(AnnotatedPost):
             toReturn += "<td class='"+ self.annotatorStates[a.id] +"'>"+a.username+"</td>"
 
             if(self.comments[a.id]):
-                toReturn += "<td>" + self.comments[a.id] + "</td>"
+                toReturn += "<td>" + str(self.comments[a.id]) + "</td>"
             else:
                 toReturn += "<td><i>no comments</i></td>"
 
