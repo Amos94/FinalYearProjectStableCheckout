@@ -14,3 +14,6 @@ almost done(?error) - adjudicate-set
 almost done - setKappa - setkappa (MIGHT BE ERRORS)
 almost done - chosenKappa (MIGHT BE ERRORS)
 almost done - postKappa (MIGHT BE ERRORS)
+in progress - QUERIES UPDATE FOR CORPUS SPLIT PURPOSES
+in progress - Add admin possibilities to create and edit tag, and tag descriptors for a special corpus
+in progress  - MODELS UPDATE FOR CORPUS SPLIT PURPOSES
