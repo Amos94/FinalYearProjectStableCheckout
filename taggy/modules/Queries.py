@@ -1472,6 +1472,6 @@ class Queries:
     get sentences by sentence id
     """
     def getSentence(self, sentenceId):
-        qry = "SELECT * FROM taggy_sentneces WHERE sentenceId="+sentenceId
+        qry = "SELECT * FROM taggy_sentences WHERE sentenceId="+str(sentenceId)+""
         results = self.getData(qry)
         return results
