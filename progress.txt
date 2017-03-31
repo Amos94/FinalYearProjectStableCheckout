@@ -1,5 +1,5 @@
-done - set_creation -screate
-done - delete_set -sdelete
+done - set_creation
+done - delete_set
 done-review_set
 done-review_parse
 done - edit_set

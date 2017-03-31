@@ -1,7 +1,7 @@
 import random
 
 #import MySQLdb
-
+#import MySQLdb
 from django.db.models import Q as Q
 
 from django.db import connection
@@ -10,9 +10,16 @@ from FYP import settings
 class Queries:
 
     DBName = ''
-
+    domainId = 0
+    #"perseus"
     def __init__(self):
-        self.DBName = "perseus"
+        try:
+            qry = "SELECT name taggy_domains WHERE id = "+str(self.domainId)
+            results = self.getData(qry)
+            for result in results:
+                self.DBName = result[0]
+        except:
+            self.DBName = "perseus"
 
     #THIS FUNCTION IS FOR CODE OPTIMIZATION AS IS USED TO RETRIEVE DATA FROM A QUERY
     #ALL FUNCTIONS BELOW THIS FUNCTION, WILL USE getData()
@@ -250,12 +257,12 @@ class Queries:
     def getForums(self):
         # Building the SQL query
         if(self.DBName == "perseus"):
-            qry =  "SELECT forumId, forumName, forumDescription, catName "
+            qry =  "SELECT forumId, forumName, forumDescription, catName, domainId "
             qry += "FROM taggy_forums,taggy_categories "
             qry += "WHERE taggy_forums.categoryId = taggy_categories.categoryId "
             qry += "ORDER BY forumId"
         else:
-            qry =  "SELECT forumId, forumName, forumDescription "
+            qry =  "SELECT forumId, forumName, forumDescription, domainId "
             qry += "FROM taggy_forums "
             qry += "ORDER BY forumId"
 
@@ -276,8 +283,8 @@ class Queries:
 
     def getForum(self, forumid):
         # Building the SQL query
-        qry =  "SELECT forumName,formDescription,categoryId "
-        qry += "FROM taggy_formus "
+        qry =  "SELECT forumName,formDescription,categoryId, domainId "
+        qry += "FROM taggy_forums "
         qry += "WHERE forumId="+forumid
 
         # execution of the query 'qry'
@@ -304,7 +311,7 @@ class Queries:
 
         # Building the SQL query
         qry = "SELECT topicId,url,title,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
-        qry += "profileId,DATE_FORMAT(lastDate,'%e-%b-%Y') AS last,numViews, forumId "
+        qry += "profileId,DATE_FORMAT(lastDate,'%e-%b-%Y') AS last,numViews, forumId, domainId "
         qry += "FROM taggy_topics "
         qry += "WHERE forumId="+str(forumid)+" "
         qry += "ORDER BY lastDate DESC"
@@ -363,7 +370,7 @@ class Queries:
         # Building the SQL query
         if(self.DBName == "perseus"):
             qry =  "SELECT postId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
-            qry += "profileId,postState,content "
+            qry += "profileId,postState,content, domainId "
             qry += "FROM taggy_posts "
             qry += "WHERE forumId="+str(forumid)+" AND topicId="+str(topicid)+" "
 
@@ -372,7 +379,7 @@ class Queries:
             qry += "ORDER BY creationDate"
         else:
             qry =  "SELECT postId,DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
-            qry += "postState,content "
+            qry += "postState,content, domainId "
             qry += "FROM taggy_posts "
             qry += "WHERE forumId="+str(forumid)+" "
 
@@ -406,7 +413,7 @@ class Queries:
         if (self.DBName == "perseus"):
             qry =  "SELECT postId,forumId,topicId,"
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
-            qry += "profileId,postState,content "
+            qry += "profileId,postState,content, domainId "
             qry += "FROM taggy_posts "
             qry += "WHERE postId="+str(postid)+" "
             qry += "AND (postState='PARSED' OR "
@@ -415,7 +422,7 @@ class Queries:
         else:
             qry =  "SELECT postId,forumId,"
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
-            qry += "postState,content "
+            qry += "postState,content, domainId "
             qry += "FROM taggy_posts "
             qry += "WHERE postId="+str(postid)+" "
             qry += "AND (postState='PARSED' OR "
@@ -512,14 +519,14 @@ class Queries:
         if(self.DBName == "perseus"):
             qry =  "SELECT postId,forumId,topicId,"
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
-            qry += "profileId,postState,content "
+            qry += "profileId,postState,content, domainId "
             qry += "FROM taggy_posts "
             qry += "WHERE postState='PARSED' "
             qry += "LIMIT 1 OFFSET "+str(randomNumber)
         else:
             qry =  "SELECT postId,forumId,"
             qry += "DATE_FORMAT(creationDate,'%e-%b-%Y') AS creation,"
-            qry += "postState,content "
+            qry += "postState,content, domainId "
             qry += "FROM taggy_posts "
             qry += "WHERE postState='PARSED' "
             qry += "LIMIT 1 OFFSET "+str(randomNumber)
@@ -760,7 +767,7 @@ class Queries:
 
         # Building the SQL query
         if(self.DBName == "perseus" ):
-            qry =  "SELECT tagId,tagName,tagDescription,provideOrRequest "
+            qry =  "SELECT tagId,tagName,tagDescription,provideOrRequest, domainId "
             qry += "FROM taggy_tags "
 
             if(option != ''):
@@ -769,7 +776,7 @@ class Queries:
             qry += "ORDER BY tagName,provideOrRequest"
 
         else:
-            qry =  "SELECT tagId,tagName,tagDescription "
+            qry =  "SELECT tagId,tagName,tagDescription, domainId "
             qry += "FROM taggy_tags "
             qry += "ORDER BY tagName"
 
@@ -836,7 +843,7 @@ class Queries:
     def getSentences(self, postid):
 
         #Building the SQL query 'qry'
-        qry =  "SELECT postId,sentenceId,sentence,paragraphInPost,sentenceInParagraph "
+        qry =  "SELECT postId,sentenceId,sentence,paragraphInPost,sentenceInParagraph, domainId "
         qry += "FROM taggy_sentences "
         qry += "WHERE postId="+str(postid)+" "
         qry += "ORDER BY paragraphInPost,sentenceInParagraph"
@@ -858,7 +865,7 @@ class Queries:
     def getSentencesInSet(self, setid):
 
         # Building the SQL query 'qry'
-        qry =  "SELECT sentences.postId,sentenceId,sentence,paragraphInPost,sentenceInParagraph "
+        qry =  "SELECT sentences.postId,sentenceId,sentence,paragraphInPost,sentenceInParagraph, domainId "
         qry += "FROM taggy_sentences,taggy_posts_sets "
         qry += "WHERE setId="+str(setid)+" "
         qry += "AND posts_sets.postId=sentences.postId "
@@ -940,7 +947,7 @@ class Queries:
     * @param integer $annotatorID  annotator id
     """
     def getTagAndPOR(self):
-        qry =  "SELECT tagId, tagName, provideOrRequest FROM taggy_tags "
+        qry =  "SELECT tagId, tagName, provideOrRequest, domainId FROM taggy_tags "
 
         # execution of the query 'qry'
         qryResult = self.getData(qry)
@@ -1069,7 +1076,7 @@ class Queries:
     def getSets(self):
 
         #Building the SQL query 'qry'
-        qry =  "SELECT setId,name,description,username AS creator "
+        qry =  "SELECT setId,name,description,username AS creator, domainId  "
         qry += "FROM taggy_sets, taggy_annotators "
         qry += "WHERE taggy_annotators.annotatorId = taggy_sets.creatordId "
         qry += "ORDER BY setId"
@@ -1090,7 +1097,7 @@ class Queries:
     def getSetsByCreator(self, creatorid):
 
         #Building the SQL query 'qry'
-        qry =  "SELECT setId,name,description,username AS creator "
+        qry =  "SELECT setId,name,description,username AS creator, domainId "
         qry += "FROM taggy_sets, taggy_annotators "
         qry += "WHERE creatorId="+creatorid+" "
         qry += "AND taggy_annotators.annotatorId=taggy_sets.creatorId "
@@ -1114,7 +1121,7 @@ class Queries:
     def getSetsByAnnotatorId(self, annotatorid):
 
         # Building the SQL query 'qry'
-        qry = "SELECT taggy_sets.setId, taggy_sets.name, taggy_sets.description "
+        qry = "SELECT taggy_sets.setId, taggy_sets.name, taggy_sets.description, taggy_sets.domainId "
         qry += "FROM taggy_sets JOIN taggy_annotators_sets "
         qry += "WHERE (annotatorId = '"+str(annotatorid)+"') "
         qry += "AND (taggy_sets.setId = taggy_annotators_sets.setId) "
@@ -1159,7 +1166,7 @@ class Queries:
     def getSetMeta(self, setid):
 
         # Building the SQL query 'qry'
-        qry = "SELECT setId, name, description "
+        qry = "SELECT setId, name, description, domainId "
         qry += "FROM taggy_sets "
         qry += "WHERE setId="+str(setid)+" "
 
@@ -1477,3 +1484,326 @@ class Queries:
         qry = "SELECT * FROM taggy_sentences WHERE sentenceId="+str(sentenceId)+""
         results = self.getData(qry)
         return results
+
+
+
+
+    """
+    QUERIES FOR CORPUS/ DOMAIN
+    """
+
+    """
+    GET ALL DOMAINS
+    """
+    def getDomainsMeta(self):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_domains"
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results
+
+
+    """
+    GET A SPECIFIC DOMAIN BY NAME
+    """
+    def getDomainByName(self, domainName):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_domains WHERE name='"+domainName+"'"
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results
+
+    """
+    GET A SPECIFIC DOMAIN BY ID
+    """
+    def getDomainById(self, domainId):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_domains WHERE id="+str(domainId)
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results
+
+
+    """
+        INSERT NEW DOMAIN
+    """
+    def insertDomain(self,domainName):
+        # Building the SQL query qry
+        qry = "INSERT INTO taggy_domains(name) VALUES('"+str(domainName)+"')"
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    EDIT DOMAIN
+    """
+    def editDomainName(self, domainId, domainName):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_domains SET (name = '"+domainName+"') WHERE id = "+str(domainId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    Assign annotator to a domain
+    """
+    def assignAnnotatorToDomain(self, annotatorId, domainId, isActive=True):
+        # Building the SQL query qry
+        qry = "INSERT INTO taggy_annotators_domains(annotatorId, domainId, isActive) VALUES(" + str(annotatorId) +","+ str(domainId) + ","+ str(isActive) +")"
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    Change the state of an annotator already assigned to a domain to ACTIVE (isActive = 1)
+    """
+    def activateAnnotatorForDomain(self, annotatorId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_annotators_domains SET (isActive = " + str(True) + ") WHERE annotatorId = " + str(annotatorId) +", AND domainId = " + str(domainId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+
+    """
+    Change the state of an annotator already assigned to a domain to INACTIVE (isActive = 0)
+    """
+    def deactivateAnnotatorForDomain(self, annotatorId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_annotators_domains SET (isActive = " + str(False) + ") WHERE annotatorId = " + str(annotatorId) +", AND domainId = " + str(domainId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+
+    """
+    Update domain column of a Category
+    """
+    def updateCategoriesDomain(self, categoryId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_categories SET (domainId = " + str(domainId) + ") WHERE categoryId = " + str(categoryId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    Update domain column of a Forum
+    """
+    def updateForumsDomain(self, forumId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_forums SET (domainId = " + str(domainId) + ") WHERE forumId = " + str(forumId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    Update domain column of a Post
+    """
+    def updatePostsDomain(self, postId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_posts SET (domainId = " + str(domainId) + ") WHERE postId = " + str(postId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+
+    """
+    Update domain column of a Sentence
+    """
+    def updateSentencesDomain(self, sentenceId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_sentences SET (domainId = " + str(domainId) + ") WHERE sentenceId = " + str(sentenceId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    Update domain column of a Set
+    """
+    def updateSetsDomain(self, setId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_sets SET (domainId = " + str(domainId) + ") WHERE setId = " + str(setId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    Update domain column of a TAG
+    """
+    def updateTagsDomain(self, tagId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_tags SET (domainId = " + str(domainId) + ") WHERE tagId = " + str(tagId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    Update domain column of a Topic
+    """
+    def updateTopicsDomain(self, topicId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_topics SET (domainId = " + str(domainId) + ") WHERE topicId = " + str(topicId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    QUERIES FOR KEYWORDS AND PREDICTION
+    """
+
+    """
+    GET ALL KEYWORDS
+    """
+    def getKeywordsMeta(self):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_keywords"
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results
+
+
+    """
+    GET KEYWORDS BY DOMAIN
+    """
+    def getKeywordsByDomain(self, domainId):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_keywords WHERE domainId = "+str(domainId)
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results
+
+    """
+    GET KEYWORDS BY TAG
+    """
+    def getKeywordsByTag(self, tagId):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_keywords WHERE tagId = "+str(tagId)
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results
+
+    """
+    GET DATA BY KEYWORD
+    (BECAUSE A KEYWORD CAN APPEAR FOR MORE TAGS)
+    """
+    def getKeyword(self, keyword):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_keywords WHERE keyword = '"+ keyword +"'"
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results
+
+    """
+    GET DATA BY KEYWORD
+    (BECAUSE A KEYWORD CAN APPEAR FOR MORE TAGS)
+    """
+    def getKeywordById(self, keywordId):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_keywords WHERE id = "+ str(keywordId)
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results
+
+
+    """
+    INSERT NEW KEYWORD
+    """
+    def insertKeyword(self, tagId, domainId, keyword):
+        # Building the SQL query qry
+        qry = "INSERT INTO taggy_keywords(tagId, domainId, keyword) VALUES("+str(tagId)+ ","+str(domainId)+",'"+keyword+"')"
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    DELETE KEYWORD
+    """
+    def deleteKeywordById(self, keywordId):
+
+        # Building the SQL query 'qry'
+        qry =  "DELETE FROM taggy_keywords "
+        qry += "WHERE id = "+str(keywordId)
+
+        # execution of the query 'qry'
+        status = self.getData(qry)
+
+        #return status
+        return status
+
+    """
+    DELETE KEYWORD
+    """
+    def deleteKeywordById(self, keyword):
+
+        # Building the SQL query 'qry'
+        qry =  "DELETE FROM taggy_keywords "
+        qry += "WHERE keyword = '"+keyword+"' "
+
+        # execution of the query 'qry'
+        status = self.getData(qry)
+
+        #return status
+        return status

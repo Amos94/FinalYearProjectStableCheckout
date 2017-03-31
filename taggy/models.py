@@ -273,6 +273,7 @@ class Domains(models.Model):
 class Annotators_domains(models.Model):
     annotatorId = models.IntegerField()
     domainId = models.IntegerField()
+    isActive = models.BooleanField(default=True)
 
     class Meta:
         verbose_name_plural = "Annotator domains"
@@ -281,7 +282,7 @@ class Annotators_domains(models.Model):
 
 class Tags_keywords(models.Model):
     tagId = models.IntegerField()
-    keywordsList = models.FileField(upload_to='keywords')
+    keyword = models.CharField(max_length=250, default=None)
     domainId = models.IntegerField()
 
     class Meta:
