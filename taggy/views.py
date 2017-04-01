@@ -1040,6 +1040,105 @@ def editDomainName(request, domainId = -1):
     return render(request, 'edit_domain_name.html', context)
 
 
+def assignDomain(request):
+
+    pageName = 'Assign Domain'
+
+    qry = Queries()
+    helper = HelperMethods()
+    annotators_divs = []
+
+    results = qry.getDomainsMeta()
+    annotators = helper.annotators_lookup()
+    annotatorsSets = []
+
+    for result in results:
+        annotatorsSets = qry.getAnnotatorsDomains(result[0])
+
+        for a in annotatorsSets:
+            annotators_divs.append({'result':result[0], 'div':qry.getAnnotatorName(a[1])})
+
+    context = {'pageName': pageName, "results":results, "annotators":annotators, "annotatorsSets_divs":annotators_divs}
+    return render(request, "assign_domain.html", context)
+
+
+
+def assignDomainAdd(request, domainId=-1):
+    pageName = 'Assign Set'
+    userType = "admin"
+    userId = 6
+    error = False
+    errorMsg = ''
+    h = HelperMethods()
+    annotators = []
+
+    try:
+        if(request.GET['id']):
+            domainId = int(request.GET['id'])
+        else:
+            domainId = -1
+    except:
+        pass
+
+    if(domainId!=-1):
+        annotators = h.annotators_lookup()
+    else:
+        error = True
+        errorMsg = 'Set id was not valid'
+
+    context={'pageName':pageName, 'annotators':annotators, 'domainId':domainId}
+    return render(request,'assign_domain_add.html', context)
+
+
+def assignDomainAnnotator(request, domainId = -1, annotatorid = -1):
+    pageName = 'Assign Set'
+    error = False
+    userType = "admin"
+    userId = 6
+    errorMsg = ''
+    results = []
+    topics = []
+    qryObject = Queries()
+
+    try:
+        if (request.GET['id']):
+            domainId = int(request.GET['id'])
+        else:
+            domainId = -1
+    except:
+        pass
+
+    try:
+        if (request.GET['a']):
+            annotatorid = int(request.GET['a'])
+        else:
+            annotatorid = -1
+    except:
+        pass
+
+    if (domainId != -1 and annotatorid != -1 and userType == 'admin'):
+        # assign annotator to set
+        result = qryObject.assignAnnotatorToDomain(annotatorid, domainId)
+
+        if(result != 1):
+            error = True
+            errorMsg = 'The annotator assignment task was unsuccessfull.'
+
+    else:
+        if (userType != 'admin'):
+            error = True
+            errorMsg = 'You have no access to this action, due to you are not an admin.'
+        elif (domainId == -1):
+            error = True
+            errorMsg = 'The domain id is not valid.'
+        else:
+            error = True
+            errorMsg = 'The annotator id is not valid.'
+
+    context = {'pageName': pageName, 'domainId': domainId, 'error': error, 'errorMsg': errorMsg}
+    return render(request, 'assign_domain_annotator.html', context)
+
+
 def successPage(request):
     pageName = "Success"
     context = {'pageName': pageName}

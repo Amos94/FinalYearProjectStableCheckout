@@ -20,9 +20,10 @@ almost done - postKappa (MIGHT BE ERRORS)
 in progress - Add admin possibilities to create and edit tag, and tag descriptors for a special corpus
               *[DONE] module for ADD domain
               *[DONE] module for Edit domain(EDIT DOMAIN NAME BECAUSE OF THE COINCIDENCES OF HAVING TWO DOMAINS WITH THE SAME NAME)
-              *[TO DO]  module for Assign domain to an annotator/ adjudicator/ admin
+              *[DONE]  module for Assign domain to an annotator/ adjudicator/ admin
               *[TO DO]  module for creation tags/ domain
               *[TO DO]  module for edit tags/ domain
+
 
 in progress - AUTOMATIC ANNOTATION(TAG PREDICTION)
 

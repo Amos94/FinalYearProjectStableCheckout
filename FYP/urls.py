@@ -45,6 +45,9 @@ from FYP import settings
 from taggy.views import domainCreate
 from taggy.views import domainEdit
 from taggy.views import editDomainName
+from taggy.views import assignDomain
+from taggy.views import assignDomainAdd
+from taggy.views import assignDomainAnnotator
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -71,6 +74,9 @@ urlpatterns = [
     url(r'^domain/create/',domainCreate ,name="create_domain"),
     url(r'^domain/edit/',domainEdit ,name="edit_domain"),
     url(r'^domain/edit-name/',editDomainName ,name="edit_domain_name"),
+    url(r'^domain/assign/', assignDomain, name='assign_domain'),
+    url(r'^domain/assign-add/', assignDomainAdd, name='assign_domain_add'),
+    url(r'^domain/assign-add-annotator/',assignDomainAnnotator, name="assign_domain_annotator"),
     url(r'^post/tag/', tagPost, name='tag_post'),
     url(r'success/', success, name="success"),
     url(r'fail/', fail, name="fail")

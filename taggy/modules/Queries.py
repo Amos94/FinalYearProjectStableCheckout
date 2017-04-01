@@ -1508,6 +1508,20 @@ class Queries:
 
 
     """
+    GET ALL ANNOTATORS OF A SPECIFIC DOMAIN
+    """
+    def getAnnotatorsDomains(self, domainId):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_annotators_domains WHERE domainId = "+str(domainId)
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results
+
+
+    """
     GET A SPECIFIC DOMAIN BY NAME
     """
     def getDomainByName(self, domainName):
