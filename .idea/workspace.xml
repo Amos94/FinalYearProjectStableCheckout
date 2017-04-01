@@ -6,13 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/templates/delete_tag.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/templates/delete_tag_action.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FYP/urls.py" afterPath="$PROJECT_DIR$/FYP/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/progress.txt" afterPath="$PROJECT_DIR$/progress.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/create_tag.html" afterPath="$PROJECT_DIR$/taggy/templates/create_tag.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/views.py" afterPath="$PROJECT_DIR$/taggy/views.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -142,8 +136,8 @@
       <file leaf-file-name="progress.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/progress.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            <state relative-caret-position="153">
+              <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -954,13 +948,6 @@
       <option name="presentableId" value="Default" />
       <updated>1485172765307</updated>
     </task>
-    <task id="LOCAL-00050" summary="SET BROWSE [TEMPLATES TO BE COMPLETED]">
-      <created>1488257481370</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1488257481371</updated>
-    </task>
     <task id="LOCAL-00051" summary="TAG SET - STARTED&#10;ADJUDICATE SET -STARTED">
       <created>1488257935973</created>
       <option name="number" value="00051" />
@@ -1297,7 +1284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491082879325</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="DONE - DELETE TAG">
+      <created>1491084454471</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1491084454471</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1369,7 +1363,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="PostKappaDetails - DONE - MIGHT HAVE ERRORS" />
     <MESSAGE value="PostKappaDetails - DONE - SOLVING BUGS" />
     <MESSAGE value="SOLVING BUGS" />
     <MESSAGE value="ADDED ACTIONS(AJAX) STUFF: SET, ANNOTATION, AND TAG" />
@@ -1394,7 +1387,8 @@
     <MESSAGE value="MORE QUERIES&#10;&#10;STARTED TAG CREATION/ EDIT" />
     <MESSAGE value="MORE QUERIES&#10;" />
     <MESSAGE value="DONE - CREATE TAG" />
-    <option name="LAST_COMMIT_MESSAGE" value="DONE - CREATE TAG" />
+    <MESSAGE value="DONE - DELETE TAG" />
+    <option name="LAST_COMMIT_MESSAGE" value="DONE - DELETE TAG" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1868,8 +1862,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/progress.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        <state relative-caret-position="153">
+          <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
           <folding />
         </state>
       </provider>
