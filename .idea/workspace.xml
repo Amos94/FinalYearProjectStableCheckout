@@ -8,7 +8,6 @@
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/Queries.py" afterPath="$PROJECT_DIR$/taggy/modules/Queries.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/views.py" afterPath="$PROJECT_DIR$/taggy/views.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -190,83 +189,83 @@
       <file leaf-file-name="Queries.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="1909" column="61" lean-forward="false" selection-start-line="1909" selection-start-column="61" selection-end-line="1909" selection-end-column="61" />
+            <state relative-caret-position="390">
+              <caret line="1925" column="48" lean-forward="false" selection-start-line="1925" selection-start-column="48" selection-end-line="1925" selection-end-column="48" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <marker date="1491023372625" expanded="true" signature="5661:5721" ph="INSERT INTO taggy_annotators" />
-                <marker date="1491023372625" expanded="true" signature="14515:14554" ph="SELECT COUNT... taggy_posts" />
-                <marker date="1491023372625" expanded="true" signature="17177:17295" ph="INSERT INTO taggy_posts_annotators... " />
-                <marker date="1491023372625" expanded="true" signature="19877:19924" ph="SELECT postS... taggy_posts" />
-                <marker date="1491023372625" expanded="true" signature="24933:24989" ph="SELECT tagId... taggy_tags" />
-                <marker date="1491023372625" expanded="true" signature="26759:26849" ph="INSERT INTO taggy_posts_sets... " />
-                <marker date="1491023372625" expanded="true" signature="27453:27487" ph="SELECT * FRO... taggy_sentences_tags" />
-                <marker date="1491023372625" expanded="true" signature="28074:28098" ph="SELECT * FRO... taggy_tags" />
-                <marker date="1491023372625" expanded="true" signature="28576:28641" ph="SELECT tagId... taggy_tags" />
-                <marker date="1491023372625" expanded="true" signature="29181:29229" ph="SELECT COUNT... taggy_sentences_tags" />
-                <marker date="1491023372625" expanded="true" signature="31099:31179" ph="INSERT INTO taggy_sentences_tags... " />
-                <marker date="1491023372625" expanded="true" signature="31867:31899" ph="DELETE FROM " />
-                <marker date="1491023372625" expanded="true" signature="37566:37644" ph="SELECT usern... taggy_annotators" />
-                <marker date="1491023372625" expanded="true" signature="39034:39098" ph="INSERT INTO taggy_sets... " />
-                <marker date="1491023372625" expanded="true" signature="40127:40168" ph="DELETE FROM " />
-                <marker date="1491023372625" expanded="true" signature="40367:40477" ph="SELECT COUNT... " />
-                <marker date="1491023372625" expanded="true" signature="40651:40711" ph="SELECT COUNT... " />
-                <marker date="1491023372625" expanded="true" signature="40932:40975" ph="INSERT INTO taggy_posts_sets... " />
-                <marker date="1491023372625" expanded="true" signature="41245:41302" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="42053:42117" ph="DELETE FROM " />
-                <marker date="1491023372625" expanded="true" signature="42169:42230" ph="DELETE FROM " />
-                <marker date="1491023372625" expanded="true" signature="42282:42337" ph="DELETE FROM " />
-                <marker date="1491023372625" expanded="true" signature="43377:43432" ph="INSERT INTO taggy_annotators_sets" />
-                <marker date="1491023372625" expanded="true" signature="43940:43973" ph="DELETE FROM " />
-                <marker date="1491023372625" expanded="true" signature="44918:44965" ph="SELECT * FRO... taggy_sentences" />
-                <marker date="1491023372625" expanded="true" signature="45215:45242" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491023372625" expanded="true" signature="45530:45568" ph="SELECT * FRO... taggy_annotators_domains" />
-                <marker date="1491023372625" expanded="true" signature="45530:45586" ph="SELECT * FRO... taggy_annotators_domains" />
-                <marker date="1491023372625" expanded="true" signature="45875:45915" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491023372625" expanded="true" signature="45875:45930" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491023372625" expanded="true" signature="46198:46235" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491023372625" expanded="true" signature="46198:46237" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491023372625" expanded="true" signature="46512:46551" ph="INSERT INTO taggy_domains... " />
-                <marker date="1491023372625" expanded="true" signature="46512:46573" ph="INSERT INTO taggy_domains... " />
-                <marker date="1491023372625" expanded="true" signature="46843:46875" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="46843:46902" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="46843:46903" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="47229:47306" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491023372625" expanded="true" signature="47229:47330" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491023372625" expanded="true" signature="47229:47351" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491023372625" expanded="true" signature="47229:47371" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491023372625" expanded="true" signature="47229:47372" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491023372625" expanded="true" signature="47729:47814" ph="UPDATE ttagg... " />
-                <marker date="1491023372625" expanded="true" signature="47729:47853" ph="UPDATE ttagg... " />
-                <marker date="1491023372625" expanded="true" signature="47729:47854" ph="UPDATE ttagg... " />
-                <marker date="1491023372625" expanded="true" signature="48233:48359" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="48677:48716" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="48677:48757" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="49066:49139" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="49442:49513" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="49828:49907" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="50071:50100" ph="Update domai... " />
-                <marker date="1491023372625" expanded="true" signature="50210:50279" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="50577:50646" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="50950:51023" ph="UPDATE taggy... " />
-                <marker date="1491023372625" expanded="true" signature="51349:51377" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491023372625" expanded="true" signature="51647:51692" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491023372625" expanded="true" signature="51647:51693" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491023372625" expanded="true" signature="51967:52010" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491023372625" expanded="true" signature="52326:52372" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491023372625" expanded="true" signature="52326:52386" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491023372625" expanded="true" signature="52697:52737" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491023372625" expanded="true" signature="52697:52740" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491023372625" expanded="true" signature="53029:53137" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491023372625" expanded="true" signature="53406:53432" ph="DELETE FROM " />
-                <marker date="1491023372625" expanded="true" signature="53734:53760" ph="DELETE FROM " />
-                <marker date="1491023372625" expanded="true" signature="54094:54214" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491023372625" expanded="true" signature="54094:54236" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491023372625" expanded="true" signature="54094:54254" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491023372625" expanded="true" signature="54094:54255" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491023372625" expanded="true" signature="54500:54537" ph="DELETE FROM " />
-                <marker date="1491023372625" expanded="true" signature="54506:54518" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491023372625" expanded="true" signature="54868:54894" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="5661:5721" ph="INSERT INTO taggy_annotators" />
+                <marker date="1491023612282" expanded="true" signature="14515:14554" ph="SELECT COUNT... taggy_posts" />
+                <marker date="1491023612282" expanded="true" signature="17177:17295" ph="INSERT INTO taggy_posts_annotators... " />
+                <marker date="1491023612282" expanded="true" signature="19877:19924" ph="SELECT postS... taggy_posts" />
+                <marker date="1491023612282" expanded="true" signature="24933:24989" ph="SELECT tagId... taggy_tags" />
+                <marker date="1491023612282" expanded="true" signature="26759:26849" ph="INSERT INTO taggy_posts_sets... " />
+                <marker date="1491023612282" expanded="true" signature="27453:27487" ph="SELECT * FRO... taggy_sentences_tags" />
+                <marker date="1491023612282" expanded="true" signature="28074:28098" ph="SELECT * FRO... taggy_tags" />
+                <marker date="1491023612282" expanded="true" signature="28576:28641" ph="SELECT tagId... taggy_tags" />
+                <marker date="1491023612282" expanded="true" signature="29181:29229" ph="SELECT COUNT... taggy_sentences_tags" />
+                <marker date="1491023612282" expanded="true" signature="31099:31179" ph="INSERT INTO taggy_sentences_tags... " />
+                <marker date="1491023612282" expanded="true" signature="31867:31899" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="37566:37644" ph="SELECT usern... taggy_annotators" />
+                <marker date="1491023612282" expanded="true" signature="39034:39098" ph="INSERT INTO taggy_sets... " />
+                <marker date="1491023612282" expanded="true" signature="40127:40168" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="40367:40477" ph="SELECT COUNT... " />
+                <marker date="1491023612282" expanded="true" signature="40651:40711" ph="SELECT COUNT... " />
+                <marker date="1491023612282" expanded="true" signature="40932:40975" ph="INSERT INTO taggy_posts_sets... " />
+                <marker date="1491023612282" expanded="true" signature="41245:41302" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="42053:42117" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="42169:42230" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="42282:42337" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="43377:43432" ph="INSERT INTO taggy_annotators_sets" />
+                <marker date="1491023612282" expanded="true" signature="43940:43973" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="44918:44965" ph="SELECT * FRO... taggy_sentences" />
+                <marker date="1491023612282" expanded="true" signature="45215:45242" ph="SELECT * FRO... taggy_domains" />
+                <marker date="1491023612282" expanded="true" signature="45530:45568" ph="SELECT * FRO... taggy_annotators_domains" />
+                <marker date="1491023612282" expanded="true" signature="45530:45586" ph="SELECT * FRO... taggy_annotators_domains" />
+                <marker date="1491023612282" expanded="true" signature="45875:45915" ph="SELECT * FRO... taggy_domains" />
+                <marker date="1491023612282" expanded="true" signature="45875:45930" ph="SELECT * FRO... taggy_domains" />
+                <marker date="1491023612282" expanded="true" signature="46198:46235" ph="SELECT * FRO... taggy_domains" />
+                <marker date="1491023612282" expanded="true" signature="46198:46237" ph="SELECT * FRO... taggy_domains" />
+                <marker date="1491023612282" expanded="true" signature="46512:46551" ph="INSERT INTO taggy_domains... " />
+                <marker date="1491023612282" expanded="true" signature="46512:46573" ph="INSERT INTO taggy_domains... " />
+                <marker date="1491023612282" expanded="true" signature="46843:46875" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="46843:46902" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="46843:46903" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="47229:47306" ph="INSERT INTO taggy_annotators_domains... " />
+                <marker date="1491023612282" expanded="true" signature="47229:47330" ph="INSERT INTO taggy_annotators_domains... " />
+                <marker date="1491023612282" expanded="true" signature="47229:47351" ph="INSERT INTO taggy_annotators_domains... " />
+                <marker date="1491023612282" expanded="true" signature="47229:47371" ph="INSERT INTO taggy_annotators_domains... " />
+                <marker date="1491023612282" expanded="true" signature="47229:47372" ph="INSERT INTO taggy_annotators_domains... " />
+                <marker date="1491023612282" expanded="true" signature="47729:47814" ph="UPDATE ttagg... " />
+                <marker date="1491023612282" expanded="true" signature="47729:47853" ph="UPDATE ttagg... " />
+                <marker date="1491023612282" expanded="true" signature="47729:47854" ph="UPDATE ttagg... " />
+                <marker date="1491023612282" expanded="true" signature="48233:48359" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="48677:48716" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="48677:48757" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="49066:49139" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="49442:49513" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="49828:49907" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="50071:50100" ph="Update domai... " />
+                <marker date="1491023612282" expanded="true" signature="50210:50279" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="50577:50646" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="50950:51023" ph="UPDATE taggy... " />
+                <marker date="1491023612282" expanded="true" signature="51349:51377" ph="SELECT * FRO... taggy_keywords" />
+                <marker date="1491023612282" expanded="true" signature="51647:51692" ph="SELECT * FRO... taggy_keywords" />
+                <marker date="1491023612282" expanded="true" signature="51647:51693" ph="SELECT * FRO... taggy_keywords" />
+                <marker date="1491023612282" expanded="true" signature="51967:52010" ph="SELECT * FRO... taggy_keywords" />
+                <marker date="1491023612282" expanded="true" signature="52326:52372" ph="SELECT * FRO... taggy_keywords" />
+                <marker date="1491023612282" expanded="true" signature="52326:52386" ph="SELECT * FRO... taggy_keywords" />
+                <marker date="1491023612282" expanded="true" signature="52697:52737" ph="SELECT * FRO... taggy_keywords" />
+                <marker date="1491023612282" expanded="true" signature="52697:52740" ph="SELECT * FRO... taggy_keywords" />
+                <marker date="1491023612282" expanded="true" signature="53029:53137" ph="INSERT INTO taggy_keywords... " />
+                <marker date="1491023612282" expanded="true" signature="53406:53432" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="53734:53760" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="54094:54214" ph="INSERT INTO taggy_keywords... " />
+                <marker date="1491023612282" expanded="true" signature="54094:54236" ph="INSERT INTO taggy_keywords... " />
+                <marker date="1491023612282" expanded="true" signature="54094:54254" ph="INSERT INTO taggy_keywords... " />
+                <marker date="1491023612282" expanded="true" signature="54094:54255" ph="INSERT INTO taggy_keywords... " />
+                <marker date="1491023612282" expanded="true" signature="54500:54537" ph="DELETE FROM " />
+                <marker date="1491023612282" expanded="true" signature="54506:54518" ph="INSERT INTO taggy_keywords... " />
+                <marker date="1491023612282" expanded="true" signature="54868:54894" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -1003,13 +1002,6 @@
       <option name="presentableId" value="Default" />
       <updated>1485172765307</updated>
     </task>
-    <task id="LOCAL-00047" summary="set assign DONE [I think]">
-      <created>1488253240351</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1488253240351</updated>
-    </task>
     <task id="LOCAL-00048" summary="set browse added">
       <created>1488256620245</created>
       <option name="number" value="00048" />
@@ -1346,7 +1338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491015104880</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="MORE QUERIES&#10;&#10;STARTED TAG CREATION/ EDIT">
+      <created>1491023425274</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1491023425274</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1418,7 +1417,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated progress.txt&#10;PostKappa - ALMOST DONE&#10;SetKappa - ALMOST DONE" />
     <MESSAGE value="PostKappaDetails - STARTED" />
     <MESSAGE value="PostKappaDetails - continued - TO ADD URL" />
     <MESSAGE value="PostKappaDetails - DONE - MIGHT HAVE ERRORS" />
@@ -1443,7 +1441,8 @@
     <MESSAGE value="QUERIES UPDATED FOR DOMAIN&#10;QUERIES UPDATED FOR KEYWORDS&#10;" />
     <MESSAGE value="DONE - CREATE DOMAIN&#10;DONE - EDIT DOMAIN NAME&#10;SOLVED ERRORS IN QUERIES" />
     <MESSAGE value="DONE - ASSIGN ANNOTATOR/ DOMAIN" />
-    <option name="LAST_COMMIT_MESSAGE" value="DONE - ASSIGN ANNOTATOR/ DOMAIN" />
+    <MESSAGE value="MORE QUERIES&#10;&#10;STARTED TAG CREATION/ EDIT" />
+    <option name="LAST_COMMIT_MESSAGE" value="MORE QUERIES&#10;&#10;STARTED TAG CREATION/ EDIT" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1837,83 +1836,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="1909" column="61" lean-forward="false" selection-start-line="1909" selection-start-column="61" selection-end-line="1909" selection-end-column="61" />
+        <state relative-caret-position="390">
+          <caret line="1925" column="48" lean-forward="false" selection-start-line="1925" selection-start-column="48" selection-end-line="1925" selection-end-column="48" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1491023372625" expanded="true" signature="5661:5721" ph="INSERT INTO taggy_annotators" />
-            <marker date="1491023372625" expanded="true" signature="14515:14554" ph="SELECT COUNT... taggy_posts" />
-            <marker date="1491023372625" expanded="true" signature="17177:17295" ph="INSERT INTO taggy_posts_annotators... " />
-            <marker date="1491023372625" expanded="true" signature="19877:19924" ph="SELECT postS... taggy_posts" />
-            <marker date="1491023372625" expanded="true" signature="24933:24989" ph="SELECT tagId... taggy_tags" />
-            <marker date="1491023372625" expanded="true" signature="26759:26849" ph="INSERT INTO taggy_posts_sets... " />
-            <marker date="1491023372625" expanded="true" signature="27453:27487" ph="SELECT * FRO... taggy_sentences_tags" />
-            <marker date="1491023372625" expanded="true" signature="28074:28098" ph="SELECT * FRO... taggy_tags" />
-            <marker date="1491023372625" expanded="true" signature="28576:28641" ph="SELECT tagId... taggy_tags" />
-            <marker date="1491023372625" expanded="true" signature="29181:29229" ph="SELECT COUNT... taggy_sentences_tags" />
-            <marker date="1491023372625" expanded="true" signature="31099:31179" ph="INSERT INTO taggy_sentences_tags... " />
-            <marker date="1491023372625" expanded="true" signature="31867:31899" ph="DELETE FROM " />
-            <marker date="1491023372625" expanded="true" signature="37566:37644" ph="SELECT usern... taggy_annotators" />
-            <marker date="1491023372625" expanded="true" signature="39034:39098" ph="INSERT INTO taggy_sets... " />
-            <marker date="1491023372625" expanded="true" signature="40127:40168" ph="DELETE FROM " />
-            <marker date="1491023372625" expanded="true" signature="40367:40477" ph="SELECT COUNT... " />
-            <marker date="1491023372625" expanded="true" signature="40651:40711" ph="SELECT COUNT... " />
-            <marker date="1491023372625" expanded="true" signature="40932:40975" ph="INSERT INTO taggy_posts_sets... " />
-            <marker date="1491023372625" expanded="true" signature="41245:41302" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="42053:42117" ph="DELETE FROM " />
-            <marker date="1491023372625" expanded="true" signature="42169:42230" ph="DELETE FROM " />
-            <marker date="1491023372625" expanded="true" signature="42282:42337" ph="DELETE FROM " />
-            <marker date="1491023372625" expanded="true" signature="43377:43432" ph="INSERT INTO taggy_annotators_sets" />
-            <marker date="1491023372625" expanded="true" signature="43940:43973" ph="DELETE FROM " />
-            <marker date="1491023372625" expanded="true" signature="44918:44965" ph="SELECT * FRO... taggy_sentences" />
-            <marker date="1491023372625" expanded="true" signature="45215:45242" ph="SELECT * FRO... taggy_domains" />
-            <marker date="1491023372625" expanded="true" signature="45530:45568" ph="SELECT * FRO... taggy_annotators_domains" />
-            <marker date="1491023372625" expanded="true" signature="45530:45586" ph="SELECT * FRO... taggy_annotators_domains" />
-            <marker date="1491023372625" expanded="true" signature="45875:45915" ph="SELECT * FRO... taggy_domains" />
-            <marker date="1491023372625" expanded="true" signature="45875:45930" ph="SELECT * FRO... taggy_domains" />
-            <marker date="1491023372625" expanded="true" signature="46198:46235" ph="SELECT * FRO... taggy_domains" />
-            <marker date="1491023372625" expanded="true" signature="46198:46237" ph="SELECT * FRO... taggy_domains" />
-            <marker date="1491023372625" expanded="true" signature="46512:46551" ph="INSERT INTO taggy_domains... " />
-            <marker date="1491023372625" expanded="true" signature="46512:46573" ph="INSERT INTO taggy_domains... " />
-            <marker date="1491023372625" expanded="true" signature="46843:46875" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="46843:46902" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="46843:46903" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="47229:47306" ph="INSERT INTO taggy_annotators_domains... " />
-            <marker date="1491023372625" expanded="true" signature="47229:47330" ph="INSERT INTO taggy_annotators_domains... " />
-            <marker date="1491023372625" expanded="true" signature="47229:47351" ph="INSERT INTO taggy_annotators_domains... " />
-            <marker date="1491023372625" expanded="true" signature="47229:47371" ph="INSERT INTO taggy_annotators_domains... " />
-            <marker date="1491023372625" expanded="true" signature="47229:47372" ph="INSERT INTO taggy_annotators_domains... " />
-            <marker date="1491023372625" expanded="true" signature="47729:47814" ph="UPDATE ttagg... " />
-            <marker date="1491023372625" expanded="true" signature="47729:47853" ph="UPDATE ttagg... " />
-            <marker date="1491023372625" expanded="true" signature="47729:47854" ph="UPDATE ttagg... " />
-            <marker date="1491023372625" expanded="true" signature="48233:48359" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="48677:48716" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="48677:48757" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="49066:49139" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="49442:49513" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="49828:49907" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="50071:50100" ph="Update domai... " />
-            <marker date="1491023372625" expanded="true" signature="50210:50279" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="50577:50646" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="50950:51023" ph="UPDATE taggy... " />
-            <marker date="1491023372625" expanded="true" signature="51349:51377" ph="SELECT * FRO... taggy_keywords" />
-            <marker date="1491023372625" expanded="true" signature="51647:51692" ph="SELECT * FRO... taggy_keywords" />
-            <marker date="1491023372625" expanded="true" signature="51647:51693" ph="SELECT * FRO... taggy_keywords" />
-            <marker date="1491023372625" expanded="true" signature="51967:52010" ph="SELECT * FRO... taggy_keywords" />
-            <marker date="1491023372625" expanded="true" signature="52326:52372" ph="SELECT * FRO... taggy_keywords" />
-            <marker date="1491023372625" expanded="true" signature="52326:52386" ph="SELECT * FRO... taggy_keywords" />
-            <marker date="1491023372625" expanded="true" signature="52697:52737" ph="SELECT * FRO... taggy_keywords" />
-            <marker date="1491023372625" expanded="true" signature="52697:52740" ph="SELECT * FRO... taggy_keywords" />
-            <marker date="1491023372625" expanded="true" signature="53029:53137" ph="INSERT INTO taggy_keywords... " />
-            <marker date="1491023372625" expanded="true" signature="53406:53432" ph="DELETE FROM " />
-            <marker date="1491023372625" expanded="true" signature="53734:53760" ph="DELETE FROM " />
-            <marker date="1491023372625" expanded="true" signature="54094:54214" ph="INSERT INTO taggy_keywords... " />
-            <marker date="1491023372625" expanded="true" signature="54094:54236" ph="INSERT INTO taggy_keywords... " />
-            <marker date="1491023372625" expanded="true" signature="54094:54254" ph="INSERT INTO taggy_keywords... " />
-            <marker date="1491023372625" expanded="true" signature="54094:54255" ph="INSERT INTO taggy_keywords... " />
-            <marker date="1491023372625" expanded="true" signature="54500:54537" ph="DELETE FROM " />
-            <marker date="1491023372625" expanded="true" signature="54506:54518" ph="INSERT INTO taggy_keywords... " />
-            <marker date="1491023372625" expanded="true" signature="54868:54894" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="5661:5721" ph="INSERT INTO taggy_annotators" />
+            <marker date="1491023612282" expanded="true" signature="14515:14554" ph="SELECT COUNT... taggy_posts" />
+            <marker date="1491023612282" expanded="true" signature="17177:17295" ph="INSERT INTO taggy_posts_annotators... " />
+            <marker date="1491023612282" expanded="true" signature="19877:19924" ph="SELECT postS... taggy_posts" />
+            <marker date="1491023612282" expanded="true" signature="24933:24989" ph="SELECT tagId... taggy_tags" />
+            <marker date="1491023612282" expanded="true" signature="26759:26849" ph="INSERT INTO taggy_posts_sets... " />
+            <marker date="1491023612282" expanded="true" signature="27453:27487" ph="SELECT * FRO... taggy_sentences_tags" />
+            <marker date="1491023612282" expanded="true" signature="28074:28098" ph="SELECT * FRO... taggy_tags" />
+            <marker date="1491023612282" expanded="true" signature="28576:28641" ph="SELECT tagId... taggy_tags" />
+            <marker date="1491023612282" expanded="true" signature="29181:29229" ph="SELECT COUNT... taggy_sentences_tags" />
+            <marker date="1491023612282" expanded="true" signature="31099:31179" ph="INSERT INTO taggy_sentences_tags... " />
+            <marker date="1491023612282" expanded="true" signature="31867:31899" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="37566:37644" ph="SELECT usern... taggy_annotators" />
+            <marker date="1491023612282" expanded="true" signature="39034:39098" ph="INSERT INTO taggy_sets... " />
+            <marker date="1491023612282" expanded="true" signature="40127:40168" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="40367:40477" ph="SELECT COUNT... " />
+            <marker date="1491023612282" expanded="true" signature="40651:40711" ph="SELECT COUNT... " />
+            <marker date="1491023612282" expanded="true" signature="40932:40975" ph="INSERT INTO taggy_posts_sets... " />
+            <marker date="1491023612282" expanded="true" signature="41245:41302" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="42053:42117" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="42169:42230" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="42282:42337" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="43377:43432" ph="INSERT INTO taggy_annotators_sets" />
+            <marker date="1491023612282" expanded="true" signature="43940:43973" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="44918:44965" ph="SELECT * FRO... taggy_sentences" />
+            <marker date="1491023612282" expanded="true" signature="45215:45242" ph="SELECT * FRO... taggy_domains" />
+            <marker date="1491023612282" expanded="true" signature="45530:45568" ph="SELECT * FRO... taggy_annotators_domains" />
+            <marker date="1491023612282" expanded="true" signature="45530:45586" ph="SELECT * FRO... taggy_annotators_domains" />
+            <marker date="1491023612282" expanded="true" signature="45875:45915" ph="SELECT * FRO... taggy_domains" />
+            <marker date="1491023612282" expanded="true" signature="45875:45930" ph="SELECT * FRO... taggy_domains" />
+            <marker date="1491023612282" expanded="true" signature="46198:46235" ph="SELECT * FRO... taggy_domains" />
+            <marker date="1491023612282" expanded="true" signature="46198:46237" ph="SELECT * FRO... taggy_domains" />
+            <marker date="1491023612282" expanded="true" signature="46512:46551" ph="INSERT INTO taggy_domains... " />
+            <marker date="1491023612282" expanded="true" signature="46512:46573" ph="INSERT INTO taggy_domains... " />
+            <marker date="1491023612282" expanded="true" signature="46843:46875" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="46843:46902" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="46843:46903" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="47229:47306" ph="INSERT INTO taggy_annotators_domains... " />
+            <marker date="1491023612282" expanded="true" signature="47229:47330" ph="INSERT INTO taggy_annotators_domains... " />
+            <marker date="1491023612282" expanded="true" signature="47229:47351" ph="INSERT INTO taggy_annotators_domains... " />
+            <marker date="1491023612282" expanded="true" signature="47229:47371" ph="INSERT INTO taggy_annotators_domains... " />
+            <marker date="1491023612282" expanded="true" signature="47229:47372" ph="INSERT INTO taggy_annotators_domains... " />
+            <marker date="1491023612282" expanded="true" signature="47729:47814" ph="UPDATE ttagg... " />
+            <marker date="1491023612282" expanded="true" signature="47729:47853" ph="UPDATE ttagg... " />
+            <marker date="1491023612282" expanded="true" signature="47729:47854" ph="UPDATE ttagg... " />
+            <marker date="1491023612282" expanded="true" signature="48233:48359" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="48677:48716" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="48677:48757" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="49066:49139" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="49442:49513" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="49828:49907" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="50071:50100" ph="Update domai... " />
+            <marker date="1491023612282" expanded="true" signature="50210:50279" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="50577:50646" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="50950:51023" ph="UPDATE taggy... " />
+            <marker date="1491023612282" expanded="true" signature="51349:51377" ph="SELECT * FRO... taggy_keywords" />
+            <marker date="1491023612282" expanded="true" signature="51647:51692" ph="SELECT * FRO... taggy_keywords" />
+            <marker date="1491023612282" expanded="true" signature="51647:51693" ph="SELECT * FRO... taggy_keywords" />
+            <marker date="1491023612282" expanded="true" signature="51967:52010" ph="SELECT * FRO... taggy_keywords" />
+            <marker date="1491023612282" expanded="true" signature="52326:52372" ph="SELECT * FRO... taggy_keywords" />
+            <marker date="1491023612282" expanded="true" signature="52326:52386" ph="SELECT * FRO... taggy_keywords" />
+            <marker date="1491023612282" expanded="true" signature="52697:52737" ph="SELECT * FRO... taggy_keywords" />
+            <marker date="1491023612282" expanded="true" signature="52697:52740" ph="SELECT * FRO... taggy_keywords" />
+            <marker date="1491023612282" expanded="true" signature="53029:53137" ph="INSERT INTO taggy_keywords... " />
+            <marker date="1491023612282" expanded="true" signature="53406:53432" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="53734:53760" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="54094:54214" ph="INSERT INTO taggy_keywords... " />
+            <marker date="1491023612282" expanded="true" signature="54094:54236" ph="INSERT INTO taggy_keywords... " />
+            <marker date="1491023612282" expanded="true" signature="54094:54254" ph="INSERT INTO taggy_keywords... " />
+            <marker date="1491023612282" expanded="true" signature="54094:54255" ph="INSERT INTO taggy_keywords... " />
+            <marker date="1491023612282" expanded="true" signature="54500:54537" ph="DELETE FROM " />
+            <marker date="1491023612282" expanded="true" signature="54506:54518" ph="INSERT INTO taggy_keywords... " />
+            <marker date="1491023612282" expanded="true" signature="54868:54894" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>

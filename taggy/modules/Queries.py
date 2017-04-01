@@ -1871,7 +1871,7 @@ class Queries:
     UPDATE TAG NAME
     """
 
-    def updateTag(self, tagId, tagName):
+    def updateTagName(self, tagId, tagName):
         # Building the SQL query qry
         qry = "UPDATE taggy_tags WHERE tagId = " + str(tagId)
         qry += " SET tagName = '" + tagName + "'"
@@ -1887,7 +1887,7 @@ class Queries:
     UPDATE TAG DESCRIPTION
     """
 
-    def updateTag(self, tagId, tagDescription):
+    def updateTagDescription(self, tagId, tagDescription):
         # Building the SQL query qry
         qry = "UPDATE taggy_tags WHERE tagId = " + str(tagId)
         qry += " SET tagDescription = '" + tagDescription + "'"
@@ -1904,7 +1904,7 @@ class Queries:
     UPDATE TAG provide or request
     """
 
-    def updateTag(self, tagId, provideOrRequest):
+    def updateTagPOR(self, tagId, provideOrRequest):
         # Building the SQL query qry
         qry = "UPDATE taggy_tags WHERE tagId = " + str(tagId)
         qry += " SET provideOrRequest = '" + provideOrRequest + "'"
@@ -1916,3 +1916,18 @@ class Queries:
         # return the data
         return status
 
+    """
+    UPDATE TAG domain
+    """
+
+    def updateTagDomain(self, tagId, domainId):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_tags WHERE tagId = " + str(tagId)
+        qry += " SET domainId = " + str(domainId)
+
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
