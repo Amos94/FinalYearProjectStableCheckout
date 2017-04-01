@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from taggy.models import Document
-from forms import CreateSet, UpdateSet, ChooseTag, DocumentForm, CreateDomain, EditDomain
+from forms import CreateSet, UpdateSet, ChooseTag, DocumentForm, CreateDomain, EditDomain, CreateTag
 from taggy.modules.Annotator import Annotator
 from taggy.modules.HelperMethods import HelperMethods
 from taggy.modules.Kappa.CohensKappa import CohensKappa
@@ -1140,21 +1140,84 @@ def assignDomainAnnotator(request, domainId = -1, annotatorid = -1):
 
 
 
-def createTag(request):
+def createTag(request, tagpor='N/A', domainid=-1):
+    pageName = "Create TAG"
+    sessionId = 'null'
+    userid = 2
+    results = []
+    tags = []
+    domainName = ''
+    qry = Queries()
+
+    try:
+        if(request.method == 'GET'):
+            domainid = request.GET['id']
+        else:
+            domainid = -1
+        #PROVIDE OR REQUEST APPLING JUST TO PERSUS
+        if(domainid == 1):
+            tagpor = request.GET['por']
+        else:
+            tagpor = 'N/A'
+    except:
+        pass
+
+    if(domainid == -1):
+        results = qry.getDomainsMeta()
+    else:
+        results = qry.getDomainById(domainid)
+        tags = qry.getTagsForDomain(domainid)
+        for result in results:
+            domainName = result[1]
+
+
+
+    context = {"pageName": pageName, 'results':results, 'tags':tags, 'domainId':domainid, 'tagpor':tagpor, 'domainName':domainName}
+
+    return render(request, "create_tag.html", context)
+
+
+def createTagAdd(request, tagpor='N/A', tagdomain=-1):
     pageName = "Create TAG"
     sessionId = 'null'
     userid = 2
     qry = Queries()
 
-    if(request.method == 'POST'):
-        #TO CHANGE THE USER WHEN THE USER ROLE IS READY
-        form = CreateSet(request.POST)
-        if(form.is_valid()):
-            setname = form.cleaned_data['setname']
-            setdescr = form.cleaned_data['setdescr']
-            result =
+    try:
+        if(request.method == 'GET'):
+            tagdomain = request.GET['id']
+        else:
+            tagdomain = -1
+        #PROVIDE OR REQUEST APPLING JUST TO PERSUS
+        if(tagdomain == '1'):
+            tagpor = request.GET['por']
+        else:
+            tagpor = 'N/A'
+    except:
+        pass
 
-            if(result == 1):
+
+    if (request.method == 'POST'):
+        # TO CHANGE THE USER WHEN THE USER ROLE IS READY
+        try:
+            if (request.method == 'POST'):
+                tagdomain = request.GET['id']
+            else:
+                tagdomain = -1
+            # PROVIDE OR REQUEST APPLING JUST TO PERSUS
+            if (tagdomain == '1'):
+                tagpor = request.GET['por']
+            else:
+                tagpor = 'N/A'
+        except:
+            pass
+        form = CreateTag(request.POST)
+        if (form.is_valid()):
+            tagname = form.cleaned_data['tagname']
+            tagdescr = form.cleaned_data['tagdescr']
+            result = qry.createTag(tagname, tagdescr, tagpor, tagdomain)
+
+            if (result == 1):
 
                 return HttpResponseRedirect('/success/')
             else:
@@ -1162,11 +1225,11 @@ def createTag(request):
 
 
     else:
-        form = CreateSet()
+        form = CreateTag()
 
-    context = {"pageName": pageName, "form": form}
+    context = {"pageName": pageName, "form": form, 'domainId':tagdomain, 'por':tagpor}
 
-    return render(request, "create_set.html", context)
+    return render(request, "create_tag_add.html", context)
 
 
 def successPage(request):

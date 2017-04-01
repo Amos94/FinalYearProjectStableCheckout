@@ -1931,3 +1931,17 @@ class Queries:
 
         # return the data
         return status
+
+
+    """
+    GET TAGS OF A SPECIFIC DOMAIN
+    """
+    def getTagsForDomain(self, domainid):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_tags WHERE domainId = " + str(domainid)
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results

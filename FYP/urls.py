@@ -48,6 +48,8 @@ from taggy.views import editDomainName
 from taggy.views import assignDomain
 from taggy.views import assignDomainAdd
 from taggy.views import assignDomainAnnotator
+from taggy.views import createTag
+from taggy.views import createTagAdd
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -77,6 +79,8 @@ urlpatterns = [
     url(r'^domain/assign/', assignDomain, name='assign_domain'),
     url(r'^domain/assign-add/', assignDomainAdd, name='assign_domain_add'),
     url(r'^domain/assign-add-annotator/',assignDomainAnnotator, name="assign_domain_annotator"),
+    url(r'^tag/create/', createTag, name="create_tag"),
+    url(r'^tag/create-add/', createTagAdd, name="create_tag_add"),
     url(r'^post/tag/', tagPost, name='tag_post'),
     url(r'success/', success, name="success"),
     url(r'fail/', fail, name="fail")

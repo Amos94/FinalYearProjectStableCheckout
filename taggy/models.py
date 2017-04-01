@@ -235,9 +235,9 @@ class Signatures(models.Model):
 class Tags(models.Model):
 
     tagId = models.AutoField(primary_key=True)
-    tagName = models.CharField(max_length=4)
+    tagName = models.CharField(max_length=25)
     tagDescription = models.CharField(max_length=250)
-    provideOrRequest = models.CharField(max_length=1)
+    provideOrRequest = models.CharField(max_length=5)
     domainId = models.IntegerField()
 
     class Meta:

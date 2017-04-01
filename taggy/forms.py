@@ -79,6 +79,24 @@ class CreateDomain(forms.Form):
     domainname = forms.CharField(label='New domain name')
 
 
+
+class CreateTag(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(CreateTag, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            if (field == 'tagname'):
+                placeholder = 'Tag name'
+            if (field == 'tagdescr'):
+                placeholder = 'Tag description'
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'style':'width:50%;',
+                'placeholder':placeholder
+            })
+    tagname = forms.CharField(label='Tag Name')
+    tagdescr = forms.CharField(label='Tag Description')
+
+
 class EditDomain(forms.Form):
     def __init__(self, *args, **kwargs):
         super(EditDomain, self).__init__(*args, **kwargs)
