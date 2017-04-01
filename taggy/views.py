@@ -1232,6 +1232,75 @@ def createTagAdd(request, tagpor='N/A', tagdomain=-1):
     return render(request, "create_tag_add.html", context)
 
 
+def deleteTag(request, tagpor='N/A', domainid=-1):
+    pageName = "Delete TAG"
+    sessionId = 'null'
+    userid = 2
+    results = []
+    tags = []
+    domainName = ''
+    qry = Queries()
+
+    try:
+        if(request.method == 'GET'):
+            domainid = request.GET['id']
+        else:
+            domainid = -1
+        #PROVIDE OR REQUEST APPLING JUST TO PERSUS
+        if(domainid == 1):
+            tagpor = request.GET['por']
+        else:
+            tagpor = 'N/A'
+    except:
+        pass
+
+    if(domainid == -1):
+        results = qry.getDomainsMeta()
+    else:
+        results = qry.getDomainById(domainid)
+        tags = qry.getTagsForDomain(domainid)
+        for result in results:
+            domainName = result[1]
+
+
+
+    context = {"pageName": pageName, 'results':results, 'tags':tags, 'domainId':domainid, 'tagpor':tagpor, 'domainName':domainName}
+
+    return render(request, "delete_tag.html", context)
+
+
+
+def deleteTagAction(request, tagId=-1):
+    pageName = "Delete TAG"
+    sessionId = 'null'
+    userid = 2
+    error = False
+    errorMsg = ''
+    results = []
+    qry = Queries()
+
+    try:
+        if(request.method == 'GET'):
+            tagId = request.GET['id']
+        else:
+            tagId = -1
+    except:
+        pass
+
+    if(tagId == -1):
+        error = True
+        errorMsg = 'INVALID TAG ID'
+    else:
+        results = qry.deleteTag(tagId)
+
+
+
+    context = {"pageName": pageName, 'results':results, 'error':error, 'errorMsg':errorMsg}
+
+    return render(request, "delete_tag_action.html", context)
+
+
+
 def successPage(request):
     pageName = "Success"
     context = {'pageName': pageName}

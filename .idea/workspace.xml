@@ -6,15 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/migrations/0006_auto_20170401_1945.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/migrations/0007_auto_20170401_1947.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/templates/create_tag.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/templates/create_tag_add.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/templates/delete_tag.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taggy/templates/delete_tag_action.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FYP/urls.py" afterPath="$PROJECT_DIR$/FYP/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/forms.py" afterPath="$PROJECT_DIR$/taggy/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/models.py" afterPath="$PROJECT_DIR$/taggy/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/modules/Queries.py" afterPath="$PROJECT_DIR$/taggy/modules/Queries.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/progress.txt" afterPath="$PROJECT_DIR$/progress.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/templates/create_tag.html" afterPath="$PROJECT_DIR$/taggy/templates/create_tag.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taggy/views.py" afterPath="$PROJECT_DIR$/taggy/views.py" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -99,15 +96,25 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="1197" column="0" lean-forward="true" selection-start-line="1197" selection-start-column="0" selection-end-line="1197" selection-end-column="0" />
+            <state relative-caret-position="274">
+              <caret line="1280" column="0" lean-forward="true" selection-start-line="1280" selection-start-column="0" selection-end-line="1280" selection-end-column="0" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
-                <marker date="1491082764263" expanded="true" signature="25717:25903" ph="SELECT P.ann... taggy_posts_annotators" />
-                <marker date="1491082764263" expanded="true" signature="26171:26460" ph="SELECT COUNT... taggy_sentences_tags" />
-                <marker date="1491082764263" expanded="true" signature="26249:26346" ph="SELECT sente... taggy_sentences_tags" />
-                <marker date="1491082764263" expanded="true" signature="26564:26603" ph="SELECT DISTI... taggy_tags" />
+                <marker date="1491084039650" expanded="true" signature="25717:25903" ph="SELECT P.ann... taggy_posts_annotators" />
+                <marker date="1491084039650" expanded="true" signature="26171:26460" ph="SELECT COUNT... taggy_sentences_tags" />
+                <marker date="1491084039650" expanded="true" signature="26249:26346" ph="SELECT sente... taggy_sentences_tags" />
+                <marker date="1491084039650" expanded="true" signature="26564:26603" ph="SELECT DISTI... taggy_tags" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="delete_tag.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taggy/templates/delete_tag.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="466">
+              <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,18 +122,38 @@
       <file leaf-file-name="create_tag_add.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/taggy/templates/create_tag_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
+            <state relative-caret-position="143">
               <caret line="62" column="65" lean-forward="false" selection-start-line="62" selection-start-column="65" selection-end-line="62" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create_tag.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/taggy/templates/create_tag.html">
+      <file leaf-file-name="delete_tag_action.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taggy/templates/delete_tag_action.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
-              <caret line="130" column="44" lean-forward="false" selection-start-line="130" selection-start-column="44" selection-end-line="130" selection-end-column="44" />
+              <caret line="68" column="70" lean-forward="false" selection-start-line="68" selection-start-column="70" selection-end-line="68" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="progress.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/progress.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_tag.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taggy/templates/create_tag.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="135" column="124" lean-forward="true" selection-start-line="135" selection-start-column="20" selection-end-line="135" selection-end-column="124" />
               <folding />
             </state>
           </provider>
@@ -142,34 +169,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taggy/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FYP/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-69">
-              <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+            <state relative-caret-position="458">
+              <caret line="86" column="69" lean-forward="false" selection-start-line="86" selection-start-column="69" selection-end-line="86" selection-end-column="69" />
               <folding>
                 <element signature="e#637#669#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit_domain.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taggy/templates/edit_domain.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1212">
-              <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -180,92 +187,6 @@
             <state relative-caret-position="478">
               <caret line="239" column="52" lean-forward="false" selection-start-line="239" selection-start-column="52" selection-end-line="239" selection-end-column="52" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Queries.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/taggy/modules/Queries.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-32335">
-              <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <marker date="1491067637114" expanded="true" signature="5661:5721" ph="INSERT INTO taggy_annotators" />
-                <marker date="1491067637114" expanded="true" signature="14515:14554" ph="SELECT COUNT... taggy_posts" />
-                <marker date="1491067637114" expanded="true" signature="17177:17295" ph="INSERT INTO taggy_posts_annotators... " />
-                <marker date="1491067637114" expanded="true" signature="19877:19924" ph="SELECT postS... taggy_posts" />
-                <marker date="1491067637114" expanded="true" signature="24933:24989" ph="SELECT tagId... taggy_tags" />
-                <marker date="1491067637114" expanded="true" signature="26759:26849" ph="INSERT INTO taggy_posts_sets... " />
-                <marker date="1491067637114" expanded="true" signature="27453:27487" ph="SELECT * FRO... taggy_sentences_tags" />
-                <marker date="1491067637114" expanded="true" signature="28074:28098" ph="SELECT * FRO... taggy_tags" />
-                <marker date="1491067637114" expanded="true" signature="28576:28641" ph="SELECT tagId... taggy_tags" />
-                <marker date="1491067637114" expanded="true" signature="29181:29229" ph="SELECT COUNT... taggy_sentences_tags" />
-                <marker date="1491067637114" expanded="true" signature="31099:31179" ph="INSERT INTO taggy_sentences_tags... " />
-                <marker date="1491067637114" expanded="true" signature="31867:31899" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="37566:37644" ph="SELECT usern... taggy_annotators" />
-                <marker date="1491067637114" expanded="true" signature="39034:39098" ph="INSERT INTO taggy_sets... " />
-                <marker date="1491067637114" expanded="true" signature="40127:40168" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="40367:40477" ph="SELECT COUNT... " />
-                <marker date="1491067637114" expanded="true" signature="40651:40711" ph="SELECT COUNT... " />
-                <marker date="1491067637114" expanded="true" signature="40932:40975" ph="INSERT INTO taggy_posts_sets... " />
-                <marker date="1491067637114" expanded="true" signature="41245:41302" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="42053:42117" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="42169:42230" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="42282:42337" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="43377:43432" ph="INSERT INTO taggy_annotators_sets" />
-                <marker date="1491067637114" expanded="true" signature="43940:43973" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="44918:44965" ph="SELECT * FRO... taggy_sentences" />
-                <marker date="1491067637114" expanded="true" signature="45215:45242" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491067637114" expanded="true" signature="45530:45568" ph="SELECT * FRO... taggy_annotators_domains" />
-                <marker date="1491067637114" expanded="true" signature="45530:45586" ph="SELECT * FRO... taggy_annotators_domains" />
-                <marker date="1491067637114" expanded="true" signature="45875:45915" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491067637114" expanded="true" signature="45875:45930" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491067637114" expanded="true" signature="46198:46235" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491067637114" expanded="true" signature="46198:46237" ph="SELECT * FRO... taggy_domains" />
-                <marker date="1491067637114" expanded="true" signature="46512:46551" ph="INSERT INTO taggy_domains... " />
-                <marker date="1491067637114" expanded="true" signature="46512:46573" ph="INSERT INTO taggy_domains... " />
-                <marker date="1491067637114" expanded="true" signature="46843:46875" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="46843:46902" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="46843:46903" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="47229:47306" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491067637114" expanded="true" signature="47229:47330" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491067637114" expanded="true" signature="47229:47351" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491067637114" expanded="true" signature="47229:47371" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491067637114" expanded="true" signature="47229:47372" ph="INSERT INTO taggy_annotators_domains... " />
-                <marker date="1491067637114" expanded="true" signature="47729:47814" ph="UPDATE ttagg... " />
-                <marker date="1491067637114" expanded="true" signature="47729:47853" ph="UPDATE ttagg... " />
-                <marker date="1491067637114" expanded="true" signature="47729:47854" ph="UPDATE ttagg... " />
-                <marker date="1491067637114" expanded="true" signature="48233:48359" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="48677:48716" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="48677:48757" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="49066:49139" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="49442:49513" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="49828:49907" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="50071:50100" ph="Update domai... " />
-                <marker date="1491067637114" expanded="true" signature="50210:50279" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="50577:50646" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="50950:51023" ph="UPDATE taggy... " />
-                <marker date="1491067637114" expanded="true" signature="51349:51377" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491067637114" expanded="true" signature="51647:51692" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491067637114" expanded="true" signature="51647:51693" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491067637114" expanded="true" signature="51967:52010" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491067637114" expanded="true" signature="52326:52372" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491067637114" expanded="true" signature="52326:52386" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491067637114" expanded="true" signature="52697:52737" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491067637114" expanded="true" signature="52697:52740" ph="SELECT * FRO... taggy_keywords" />
-                <marker date="1491067637114" expanded="true" signature="53029:53137" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491067637114" expanded="true" signature="53406:53432" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="53734:53760" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="54094:54214" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491067637114" expanded="true" signature="54094:54236" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491067637114" expanded="true" signature="54094:54254" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491067637114" expanded="true" signature="54094:54255" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491067637114" expanded="true" signature="54500:54537" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="54506:54518" ph="INSERT INTO taggy_keywords... " />
-                <marker date="1491067637114" expanded="true" signature="54868:54894" ph="DELETE FROM " />
-                <marker date="1491067637114" expanded="true" signature="56942:56984" ph="SELECT * FRO... taggy_tags" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -326,8 +247,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/taggy/modules/tag/TagLookUpTable.py" />
-        <option value="$PROJECT_DIR$/taggy/modules/actions/tag.py" />
         <option value="$PROJECT_DIR$/taggy/templates/postKappaDetails.html" />
         <option value="$PROJECT_DIR$/taggy/modules/actions/TagAction.py" />
         <option value="$PROJECT_DIR$/taggy/modules/actions/AnnotationAction.py" />
@@ -369,14 +288,16 @@
         <option value="$PROJECT_DIR$/taggy/templates/assign_domain_add.html" />
         <option value="$PROJECT_DIR$/taggy/templates/assign_domain_annotator.html" />
         <option value="$PROJECT_DIR$/taggy/templates/assign_domain.html" />
-        <option value="$PROJECT_DIR$/progress.txt" />
         <option value="$PROJECT_DIR$/taggy/forms.py" />
         <option value="$PROJECT_DIR$/taggy/modules/Queries.py" />
-        <option value="$PROJECT_DIR$/FYP/urls.py" />
-        <option value="$PROJECT_DIR$/taggy/templates/create_tag.html" />
         <option value="$PROJECT_DIR$/taggy/models.py" />
         <option value="$PROJECT_DIR$/taggy/templates/create_tag_add.html" />
+        <option value="$PROJECT_DIR$/taggy/templates/create_tag.html" />
+        <option value="$PROJECT_DIR$/taggy/templates/delete_tag.html" />
         <option value="$PROJECT_DIR$/taggy/views.py" />
+        <option value="$PROJECT_DIR$/FYP/urls.py" />
+        <option value="$PROJECT_DIR$/taggy/templates/delete_tag_action.html" />
+        <option value="$PROJECT_DIR$/progress.txt" />
       </list>
     </option>
   </component>
@@ -1033,13 +954,6 @@
       <option name="presentableId" value="Default" />
       <updated>1485172765307</updated>
     </task>
-    <task id="LOCAL-00049" summary="set browse added almost finished">
-      <created>1488257377133</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1488257377133</updated>
-    </task>
     <task id="LOCAL-00050" summary="SET BROWSE [TEMPLATES TO BE COMPLETED]">
       <created>1488257481370</created>
       <option name="number" value="00050" />
@@ -1376,7 +1290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491023643116</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="DONE - CREATE TAG">
+      <created>1491082879325</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1491082879325</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1390,9 +1311,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18017058" sideWeight="0.4935275" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18017058" sideWeight="0.4935275" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2954796" sideWeight="0.5021322" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1448,7 +1369,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="PostKappaDetails - continued - TO ADD URL" />
     <MESSAGE value="PostKappaDetails - DONE - MIGHT HAVE ERRORS" />
     <MESSAGE value="PostKappaDetails - DONE - SOLVING BUGS" />
     <MESSAGE value="SOLVING BUGS" />
@@ -1473,7 +1393,8 @@
     <MESSAGE value="DONE - ASSIGN ANNOTATOR/ DOMAIN" />
     <MESSAGE value="MORE QUERIES&#10;&#10;STARTED TAG CREATION/ EDIT" />
     <MESSAGE value="MORE QUERIES&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="MORE QUERIES&#10;" />
+    <MESSAGE value="DONE - CREATE TAG" />
+    <option name="LAST_COMMIT_MESSAGE" value="DONE - CREATE TAG" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1482,20 +1403,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/taggy/templates/adjudicate_set.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/templates/adjudication.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1667,14 +1574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/utils/KeyWordsExtractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -1739,14 +1638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/templates/assign_set_annotator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/assign_domain_annotator.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1759,14 +1650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="381">
           <caret line="76" column="109" lean-forward="true" selection-start-line="76" selection-start-column="109" selection-end-line="76" selection-end-column="109" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/progress.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="52" lean-forward="true" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1871,28 +1754,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FYP/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-69">
-          <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
-          <folding>
-            <element signature="e#637#669#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/taggy/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
           <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="239" column="52" lean-forward="false" selection-start-line="239" selection-start-column="52" selection-end-line="239" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1921,32 +1786,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/views.py">
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="1197" column="0" lean-forward="true" selection-start-line="1197" selection-start-column="0" selection-end-line="1197" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-            <marker date="1491082764263" expanded="true" signature="25717:25903" ph="SELECT P.ann... taggy_posts_annotators" />
-            <marker date="1491082764263" expanded="true" signature="26171:26460" ph="SELECT COUNT... taggy_sentences_tags" />
-            <marker date="1491082764263" expanded="true" signature="26249:26346" ph="SELECT sente... taggy_sentences_tags" />
-            <marker date="1491082764263" expanded="true" signature="26564:26603" ph="SELECT DISTI... taggy_tags" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taggy/templates/create_tag_add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="62" column="65" lean-forward="false" selection-start-line="62" selection-start-column="65" selection-end-line="62" selection-end-column="65" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/taggy/templates/create_tag.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="135" column="124" lean-forward="true" selection-start-line="135" selection-start-column="20" selection-end-line="135" selection-end-column="124" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="239" column="52" lean-forward="false" selection-start-line="239" selection-start-column="52" selection-end-line="239" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FYP/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="86" column="69" lean-forward="false" selection-start-line="86" selection-start-column="69" selection-end-line="86" selection-end-column="69" />
+          <folding>
+            <element signature="e#637#669#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/templates/assign_set_annotator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="492">
+          <caret line="76" column="7" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="77" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/templates/create_tag_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="62" column="65" lean-forward="false" selection-start-line="62" selection-start-column="65" selection-end-line="62" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/templates/delete_tag.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/templates/delete_tag_action.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="130" column="44" lean-forward="false" selection-start-line="130" selection-start-column="44" selection-end-line="130" selection-end-column="44" />
+          <caret line="68" column="70" lean-forward="false" selection-start-line="68" selection-start-column="70" selection-end-line="68" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taggy/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="1280" column="0" lean-forward="true" selection-start-line="1280" selection-start-column="0" selection-end-line="1280" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+            <marker date="1491084039650" expanded="true" signature="25717:25903" ph="SELECT P.ann... taggy_posts_annotators" />
+            <marker date="1491084039650" expanded="true" signature="26171:26460" ph="SELECT COUNT... taggy_sentences_tags" />
+            <marker date="1491084039650" expanded="true" signature="26249:26346" ph="SELECT sente... taggy_sentences_tags" />
+            <marker date="1491084039650" expanded="true" signature="26564:26603" ph="SELECT DISTI... taggy_tags" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/progress.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
           <folding />
         </state>
       </provider>

@@ -21,7 +21,8 @@ in progress - Add admin possibilities to create and edit tag, and tag descriptor
               *[DONE] module for ADD domain
               *[DONE] module for Edit domain(EDIT DOMAIN NAME BECAUSE OF THE COINCIDENCES OF HAVING TWO DOMAINS WITH THE SAME NAME)
               *[DONE]  module for Assign domain to an annotator/ adjudicator/ admin
-              *[TO DO]  module for creation tags/ domain
+              *[DONE]  module for creation tags/ domain
+              *[DONE]  module for deletion tags/ domain
               *[TO DO]  module for edit tags/ domain
 
 
