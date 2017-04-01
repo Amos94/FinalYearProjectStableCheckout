@@ -1139,6 +1139,36 @@ def assignDomainAnnotator(request, domainId = -1, annotatorid = -1):
     return render(request, 'assign_domain_annotator.html', context)
 
 
+
+def createTag(request):
+    pageName = "Create TAG"
+    sessionId = 'null'
+    userid = 2
+    qry = Queries()
+
+    if(request.method == 'POST'):
+        #TO CHANGE THE USER WHEN THE USER ROLE IS READY
+        form = CreateSet(request.POST)
+        if(form.is_valid()):
+            setname = form.cleaned_data['setname']
+            setdescr = form.cleaned_data['setdescr']
+            result =
+
+            if(result == 1):
+
+                return HttpResponseRedirect('/success/')
+            else:
+                return HttpResponseRedirect('/fail/')
+
+
+    else:
+        form = CreateSet()
+
+    context = {"pageName": pageName, "form": form}
+
+    return render(request, "create_set.html", context)
+
+
 def successPage(request):
     pageName = "Success"
     context = {'pageName': pageName}

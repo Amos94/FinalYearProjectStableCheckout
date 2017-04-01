@@ -1822,3 +1822,97 @@ class Queries:
 
         #return status
         return status
+
+    """
+    CREATE TAG
+    """
+    def createTag(self, tagName, tagDescription, provideOrRequest, domainId):
+        # Building the SQL query qry
+        qry = "INSERT INTO taggy_tags(tagName, tagDescription, provideOrRequest, domainId) VALUES('"+tagName+ "','"+tagDescription+"','"+provideOrRequest+"',"+str(domainId)+")"
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+
+    """
+    DELETE
+    """
+    def deleteTag(self, tagId):
+        # Building the SQL query qry
+        qry = "DELETE FROM taggy_tags WHERE tagId = "+str(tagId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    UPDATE TAG
+    """
+    def updateTag(self, tagId, tagName='', tagDescriotion='', provideOrRequest='', domainId=-1):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_tags WHERE tagId = "+str(tagId)
+        qry +=" SET tagName = '"+tagName+"',"
+        qry +=      "tagDescription = '"+tagDescriotion+"', "
+        qry +=      "provideOrRequest = '"+provideOrRequest+", "
+        qry +=      "domainId = "+str(domainId)
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    UPDATE TAG NAME
+    """
+
+    def updateTag(self, tagId, tagName):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_tags WHERE tagId = " + str(tagId)
+        qry += " SET tagName = '" + tagName + "'"
+
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+    """
+    UPDATE TAG DESCRIPTION
+    """
+
+    def updateTag(self, tagId, tagDescription):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_tags WHERE tagId = " + str(tagId)
+        qry += " SET tagDescription = '" + tagDescription + "'"
+
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
+
+    """
+    UPDATE TAG provide or request
+    """
+
+    def updateTag(self, tagId, provideOrRequest):
+        # Building the SQL query qry
+        qry = "UPDATE taggy_tags WHERE tagId = " + str(tagId)
+        qry += " SET provideOrRequest = '" + provideOrRequest + "'"
+
+
+        # execution of the query 'qry'
+        status = self.insertOrUpdate(qry)
+
+        # return the data
+        return status
+
