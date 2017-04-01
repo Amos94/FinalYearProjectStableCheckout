@@ -1,25 +1,30 @@
-done - set_creation
-done - delete_set
-done-review_set
-done-review_parse
-done - edit_set
-done - browse_set
-done - set_assign
-done - tag_set
-done - KeyWordExtractor
-done - PostSegmentation (post segmentation into sentences) => TO CONNECT IT WITH JSON
-done - SentenceSegmentation (sentence segmentation into words)
-DONE  - MODELS UPDATE FOR CORPUS SPLIT PURPOSES
+DONE - set_creation
+DONE - delete_set
+DONE - review_set
+DONE - review_parse
+DONE - edit_set
+DONE - browse_set
+DONE - set_assign
+DONE - tag_set
+DONE - KeyWordExtractor
+DONE - PostSegmentation (post segmentation into sentences) => TO CONNECT IT WITH JSON
+DONE - SentenceSegmentation (sentence segmentation into words)
+DONE - MODELS UPDATE FOR CORPUS SPLIT PURPOSES
+DONE - QUERIES UPDATE FOR CORPUS SPLIT PURPOSES
 almost done - tag_post => NEED to make the tag functionalities
 almost done(?error) - adjudicate-set
 almost done - setKappa - setkappa (MIGHT BE ERRORS)
 almost done - chosenKappa (MIGHT BE ERRORS)
 almost done - postKappa (MIGHT BE ERRORS)
-in progress - QUERIES UPDATE FOR CORPUS SPLIT PURPOSES
+
 in progress - Add admin possibilities to create and edit tag, and tag descriptors for a special corpus
-              * module for ADD domain
-              * module for Edit domain
-              * module for Assign domain to an annotator/ adjudicator/ admin
-              * module for creation tags/ domain
-              * module for edit tags/ domain
+              *[DONE] module for ADD domain
+              *[DONE] module for Edit domain(EDIT DOMAIN NAME BECAUSE OF THE COINCIDENCES OF HAVING TWO DOMAINS WITH THE SAME NAME)
+              *[TO DO]  module for Assign domain to an annotator/ adjudicator/ admin
+              *[TO DO]  module for creation tags/ domain
+              *[TO DO]  module for edit tags/ domain
+
 in progress - AUTOMATIC ANNOTATION(TAG PREDICTION)
+
+TO DO:
+    USER/ LOGIN/ SESSION CONTROL!

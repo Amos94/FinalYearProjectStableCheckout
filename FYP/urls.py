@@ -42,6 +42,9 @@ from taggy.views import assignSetAdd
 from taggy.views import assignSetAnnotator
 from django.conf.urls.static import static
 from FYP import settings
+from taggy.views import domainCreate
+from taggy.views import domainEdit
+from taggy.views import editDomainName
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -65,6 +68,9 @@ urlpatterns = [
     url(r'^upload/json/', list, name='list'),
     url(r'^postkappadetails/', postKappaDetails, name='postKappaDetails'),
     url(r'^set/adjudicate/', adjudicateSet, name='adjudicate_set'),
+    url(r'^domain/create/',domainCreate ,name="create_domain"),
+    url(r'^domain/edit/',domainEdit ,name="edit_domain"),
+    url(r'^domain/edit-name/',editDomainName ,name="edit_domain_name"),
     url(r'^post/tag/', tagPost, name='tag_post'),
     url(r'success/', success, name="success"),
     url(r'fail/', fail, name="fail")

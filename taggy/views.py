@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from taggy.models import Document
-from forms import CreateSet, UpdateSet, ChooseTag, DocumentForm
+from forms import CreateSet, UpdateSet, ChooseTag, DocumentForm, CreateDomain, EditDomain
 from taggy.modules.Annotator import Annotator
 from taggy.modules.HelperMethods import HelperMethods
 from taggy.modules.Kappa.CohensKappa import CohensKappa
@@ -945,6 +945,100 @@ def list(request):
         'list.html',
         {'documents': documents, 'form': form}
 )
+
+
+
+def domainCreate(request):
+    pageName = "Create domain"
+    sessionId = 'null'
+    userid = 2
+    qry = Queries()
+    context = {"pageName": pageName, "sessionId": sessionId}
+    if(request.method == 'POST'):
+        #TO CHANGE THE USER WHEN THE USER ROLE IS READY
+        form = CreateDomain(request.POST)
+        if(form.is_valid()):
+            domainName = form.cleaned_data['domainname']
+
+            result = qry.insertDomain(domainName)
+
+            if(result == 1):
+                return HttpResponseRedirect('/success/')
+            else:
+                return HttpResponseRedirect('/fail/')
+
+
+    else:
+        form = CreateDomain()
+
+
+    return render(request, "create_domain.html", {'form':form})
+
+
+def domainEdit(request, domainId=-1):
+    pageName = "Edit domain"
+    qryObject = Queries()
+    results = []
+    postCase = 0
+
+    try:
+        if(request.method == "GET"):
+            domainId = request.GET['id']
+        else:
+            domainId = -1
+    except:
+        pass
+
+    if(domainId == -1):
+        results = qryObject.getDomainsMeta()
+
+    else:
+        results = qryObject.getDomainById(domainId)
+
+
+
+    context = {'pageName':pageName, 'results':results, 'postCase':postCase, 'domainId':domainId}
+    return render(request, "edit_domain.html", context)
+
+
+
+def editDomainName(request, domainId = -1):
+    pageName = 'Edit Set'
+    userType = "admin"
+    userId = 6
+    results = []
+    qryObject = Queries()
+
+    try:
+        if(request.GET['id']):
+            domainId = int(request.GET['id'])
+        else:
+            domainId = -1
+    except:
+        pass
+
+    if (request.method == 'POST'):
+        # TO CHANGE THE USER WHEN THE USER ROLE IS READY
+        form = EditDomain(request.POST)
+        if (form.is_valid()):
+            domainName = form.cleaned_data['domainname']
+
+            result = qryObject.editDomainName(domainId, domainName)
+
+            if (result == 1):
+                return HttpResponseRedirect('/success/')
+            else:
+                return HttpResponseRedirect('/fail/')
+
+
+    else:
+        form = EditDomain()
+
+
+    context = {'pageName':pageName, 'form': form, 'domainId':domainId}
+
+    return render(request, 'edit_domain_name.html', context)
+
 
 def successPage(request):
     pageName = "Success"

@@ -62,4 +62,32 @@ class ChooseTag(forms.Form):
 class DocumentForm(forms.Form):
     docfile = forms.FileField(
         label='Select a file'
-)
+    )
+
+
+class CreateDomain(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(CreateDomain, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            if (field == 'domainname'):
+                placeholder = 'Domain name'
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'style':'width:50%;',
+                'placeholder':placeholder
+            })
+    domainname = forms.CharField(label='New domain name')
+
+
+class EditDomain(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(EditDomain, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            if (field == 'domainname'):
+                placeholder = 'Domain name'
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'style':'width:50%;',
+                'placeholder':placeholder
+            })
+    domainname = forms.CharField(label='New domain name')

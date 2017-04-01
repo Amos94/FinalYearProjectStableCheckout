@@ -2,6 +2,7 @@ import random
 
 #import MySQLdb
 #import MySQLdb
+import MySQLdb
 from django.db.models import Q as Q
 
 from django.db import connection
@@ -1551,7 +1552,7 @@ class Queries:
     """
     def editDomainName(self, domainId, domainName):
         # Building the SQL query qry
-        qry = "UPDATE taggy_domains SET (name = '"+domainName+"') WHERE id = "+str(domainId)
+        qry = "UPDATE taggy_domains SET name = '"+domainName+"' WHERE id = "+str(domainId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
@@ -1577,7 +1578,7 @@ class Queries:
     """
     def activateAnnotatorForDomain(self, annotatorId, domainId):
         # Building the SQL query qry
-        qry = "UPDATE taggy_annotators_domains SET (isActive = " + str(True) + ") WHERE annotatorId = " + str(annotatorId) +", AND domainId = " + str(domainId)
+        qry = "UPDATE taggy_annotators_domains SET isActive = " + str(True) + " WHERE annotatorId = " + str(annotatorId) +", AND domainId = " + str(domainId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
@@ -1591,7 +1592,7 @@ class Queries:
     """
     def deactivateAnnotatorForDomain(self, annotatorId, domainId):
         # Building the SQL query qry
-        qry = "UPDATE taggy_annotators_domains SET (isActive = " + str(False) + ") WHERE annotatorId = " + str(annotatorId) +", AND domainId = " + str(domainId)
+        qry = "UPDATE taggy_annotators_domains SET isActive = " + str(False) + " WHERE annotatorId = " + str(annotatorId) +", AND domainId = " + str(domainId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
@@ -1605,7 +1606,7 @@ class Queries:
     """
     def updateCategoriesDomain(self, categoryId, domainId):
         # Building the SQL query qry
-        qry = "UPDATE taggy_categories SET (domainId = " + str(domainId) + ") WHERE categoryId = " + str(categoryId)
+        qry = "UPDATE taggy_categories SET domainId = " + str(domainId) + " WHERE categoryId = " + str(categoryId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
@@ -1618,7 +1619,7 @@ class Queries:
     """
     def updateForumsDomain(self, forumId, domainId):
         # Building the SQL query qry
-        qry = "UPDATE taggy_forums SET (domainId = " + str(domainId) + ") WHERE forumId = " + str(forumId)
+        qry = "UPDATE taggy_forums SET domainId = " + str(domainId) + " WHERE forumId = " + str(forumId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
@@ -1631,7 +1632,7 @@ class Queries:
     """
     def updatePostsDomain(self, postId, domainId):
         # Building the SQL query qry
-        qry = "UPDATE taggy_posts SET (domainId = " + str(domainId) + ") WHERE postId = " + str(postId)
+        qry = "UPDATE taggy_posts SET domainId = " + str(domainId) + " WHERE postId = " + str(postId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
@@ -1645,7 +1646,7 @@ class Queries:
     """
     def updateSentencesDomain(self, sentenceId, domainId):
         # Building the SQL query qry
-        qry = "UPDATE taggy_sentences SET (domainId = " + str(domainId) + ") WHERE sentenceId = " + str(sentenceId)
+        qry = "UPDATE taggy_sentences SET domainId = " + str(domainId) + " WHERE sentenceId = " + str(sentenceId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
@@ -1658,7 +1659,7 @@ class Queries:
     """
     def updateSetsDomain(self, setId, domainId):
         # Building the SQL query qry
-        qry = "UPDATE taggy_sets SET (domainId = " + str(domainId) + ") WHERE setId = " + str(setId)
+        qry = "UPDATE taggy_sets SET domainId = " + str(domainId) + " WHERE setId = " + str(setId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
@@ -1671,7 +1672,7 @@ class Queries:
     """
     def updateTagsDomain(self, tagId, domainId):
         # Building the SQL query qry
-        qry = "UPDATE taggy_tags SET (domainId = " + str(domainId) + ") WHERE tagId = " + str(tagId)
+        qry = "UPDATE taggy_tags SET domainId = " + str(domainId) + " WHERE tagId = " + str(tagId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
@@ -1684,7 +1685,7 @@ class Queries:
     """
     def updateTopicsDomain(self, topicId, domainId):
         # Building the SQL query qry
-        qry = "UPDATE taggy_topics SET (domainId = " + str(domainId) + ") WHERE topicId = " + str(topicId)
+        qry = "UPDATE taggy_topics SET domainId = " + str(domainId) + " WHERE topicId = " + str(topicId)
 
         # execution of the query 'qry'
         status = self.insertOrUpdate(qry)
