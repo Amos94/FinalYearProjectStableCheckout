@@ -11,13 +11,7 @@ DONE - PostSegmentation (post segmentation into sentences) => TO CONNECT IT WITH
 DONE - SentenceSegmentation (sentence segmentation into words)
 DONE - MODELS UPDATE FOR CORPUS SPLIT PURPOSES
 DONE - QUERIES UPDATE FOR CORPUS SPLIT PURPOSES
-almost done - tag_post => NEED to make the tag functionalities
-almost done(?error) - adjudicate-set
-almost done - setKappa - setkappa (MIGHT BE ERRORS)
-almost done - chosenKappa (MIGHT BE ERRORS)
-almost done - postKappa (MIGHT BE ERRORS)
-
-in progress - Add admin possibilities to create and edit tag, and tag descriptors for a special corpus
+DONE - Add admin possibilities to create and edit tag, and tag descriptors for a special corpus
               *[DONE] module for ADD domain
               *[DONE] module for Edit domain(EDIT DOMAIN NAME BECAUSE OF THE COINCIDENCES OF HAVING TWO DOMAINS WITH THE SAME NAME)
               *[DONE]  module for Assign domain to an annotator/ adjudicator/ admin
@@ -25,6 +19,11 @@ in progress - Add admin possibilities to create and edit tag, and tag descriptor
               *[DONE]  module for deletion tags/ domain
               *[TO DO]  module for edit tags/ domain
 
+almost done - tag_post => NEED to make the tag functionalities
+almost done(?error) - adjudicate-set
+almost done - setKappa - setkappa (MIGHT BE ERRORS)
+almost done - chosenKappa (MIGHT BE ERRORS)
+almost done - postKappa (MIGHT BE ERRORS)
 
 in progress - AUTOMATIC ANNOTATION(TAG PREDICTION)
 

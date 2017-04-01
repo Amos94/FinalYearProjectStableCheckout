@@ -7,6 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f011b562-00fe-465c-8054-14ecd0f31234" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/progress.txt" afterPath="$PROJECT_DIR$/progress.txt" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -136,8 +137,8 @@
       <file leaf-file-name="progress.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/progress.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
+            <state relative-caret-position="425">
+              <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -948,13 +949,6 @@
       <option name="presentableId" value="Default" />
       <updated>1485172765307</updated>
     </task>
-    <task id="LOCAL-00051" summary="TAG SET - STARTED&#10;ADJUDICATE SET -STARTED">
-      <created>1488257935973</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1488257935973</updated>
-    </task>
     <task id="LOCAL-00052" summary="TAG SET - continued&#10;">
       <created>1488291308488</created>
       <option name="number" value="00052" />
@@ -1291,7 +1285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491084454471</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="DONE - DELETE TAG">
+      <created>1491087941401</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1491087941401</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1862,8 +1863,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/progress.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="57" selection-end-line="9" selection-end-column="57" />
+        <state relative-caret-position="425">
+          <caret line="25" column="41" lean-forward="false" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
           <folding />
         </state>
       </provider>
