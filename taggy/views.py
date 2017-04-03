@@ -136,10 +136,7 @@ def editSet(request, setid=-1):
                 textarea = form.cleaned_data['updateset']
                 result = qry.getSet(setid)
 
-                if (result == 1):
-                    return HttpResponseRedirect('/success/')
-                else:
-                    return HttpResponseRedirect('/fail/')
+                return HttpResponseRedirect('/set/edit/'+str(setid))
         else:
             form = UpdateSet()
 
@@ -174,7 +171,7 @@ def editSetAdd(request, setid = -1):
             setid = -1
     except:
         pass
-
+    print setid
     if(setid!=-1):
         forums = qryObject.getForums()
         for forum in forums:
@@ -239,7 +236,7 @@ def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
             result = qryObject.updatePostState(post[0],'PARSED')
             print('TO UPDATE updatePostState')
             print(result)
-            if (result != 1):
+            if (result):
                 error = True
                 errorMsg = 'Could not update the database'
 

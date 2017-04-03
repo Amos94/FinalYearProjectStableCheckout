@@ -21,9 +21,9 @@ def AdjudicatedSentence(AnnotatedSentence):
     * Constructor of AdjudicatedSentence Object
     *
     """
-    def AdjudicatedSentence(self, qryObject, annotatorState, lookup, annotator, others, args ):
-
-        AnnotatedSentence.__init__(qryObject, lookup, annotator, args)
+    def AdjudicatedSentence(self, annotatorState, lookup, annotator, others, args ):
+        qryObject = Queries()
+        AnnotatedSentence.__init__(lookup, annotator, args)
         self.others = others
         """
         If Adjudicator has no tags for this sentence, create a Union of Tags from all current Annotators

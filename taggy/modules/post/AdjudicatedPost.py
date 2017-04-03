@@ -21,6 +21,7 @@ class AdjudicatedPost(AnnotatedPost):
     comments = []
     annotator = None
 
+
     """
     * Constructor of AdjudicatedPost object
     *
@@ -76,13 +77,7 @@ class AdjudicatedPost(AnnotatedPost):
     """
     def addSentence(self, args):
         qryObject = Queries()
-        self.sentences.append(AdjudicatedSentence(
-                                                    # self.annotatorStates[self.annotator.id],
-                                                    # self.lookup,
-                                                    # self.annotator,
-                                                    # self.others,
-                                                    args)
-                              )
+        self.sentences.append(AdjudicatedSentence(self.annotatorStates[self.annotator.id]))#, self.lookup, self.annotator, self.others, args))
 
 
 
@@ -120,7 +115,7 @@ class AdjudicatedPost(AnnotatedPost):
         unfinalizedDisabledCls=''
 
         toReturn += "<button id='finalize' class='btn btn-primary "+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</button><br>"
-        toReturn += "<button id='unfinalize' class='btn btn-primary "+unfinalizeHiddenCls+" "+unfinalizedDisabledCls+"'>--DONE--</button><br>"
+        toReturn += "<button id='unfinalize' class='btn btn-primary "+unfinalizeHiddenCls+" "+unfinalizedDisabledCls+"'>DONE</button><br>"
         return toReturn
 
     """

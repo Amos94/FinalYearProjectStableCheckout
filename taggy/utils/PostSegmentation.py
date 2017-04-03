@@ -22,7 +22,7 @@ class PostSegmentation:
     #returns an array of sentences
     def postSegmentation(self):
         self.getPostString()
-        text = nltk.corpus.gutenberg.raw('C:\\Users\\amosn\\Desktop\\PROIECT DE LICENTA FTW\\taggy\\utils\\post.txt')
+        text = nltk.corpus.gutenberg.raw('C:\\Users\\Amos Madalin Neculau\\Desktop\\FinalYearProject2\\taggy\\utils\\post.txt')
         self.sentences = nltk.sent_tokenize(text)
         return self.sentences
 
@@ -33,7 +33,7 @@ class PostSegmentation:
         for p in post:
             sentence = p[0]
 
-        with open("C:\\Users\\amosn\\Desktop\\PROIECT DE LICENTA FTW\\taggy\\utils\\post.txt", "w") as postFile:
+        with open("C:\\Users\\Amos Madalin Neculau\\Desktop\\FinalYearProject2\\taggy\\utils\\post.txt", "w") as postFile:
             postFile.write(sentence)
 
         return sentence
@@ -55,5 +55,5 @@ class PostSegmentation:
                 qry = "INSERT INTO taggy_sentences (postId, sentence, paragraphInPost, sentenceInParagraph) VALUES("+str(self.postId) + ",'" + i.replace("'","\\'") + "'," + str(postInParagraph) + "," + str(sentenceInParagraph)+")"
                 cursor.execute(qry)
 
-a = PostSegmentation(12)
+a = PostSegmentation(14)
 print(a.postSegmentation())

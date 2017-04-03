@@ -1,4 +1,4 @@
-from taggy.modules.Kappa.CohensKappa import ChosenKappa
+from taggy.modules.Kappa.CohensKappa import CohensKappa
 import random
 #import MySQLdb
 import MySQLdb

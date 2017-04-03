@@ -12,6 +12,7 @@ class KeyWordsExtractor:
     :param: sentence - int
     """
     def __init__(self, sentenceId):
+
         self.sentenceId = sentenceId
         qry = Queries()
         s=''
@@ -20,6 +21,7 @@ class KeyWordsExtractor:
         for s in sentences:
             self.sentence = s[2]
         self.getKeyWords()
+
 
     """
     getKeyWords

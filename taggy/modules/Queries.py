@@ -258,8 +258,8 @@ class Queries:
     def getForums(self):
         # Building the SQL query
         if(self.DBName == "perseus"):
-            qry =  "SELECT forumId, forumName, forumDescription, catName, domainId "
-            qry += "FROM taggy_forums,taggy_categories "
+            qry =  "SELECT forumId, forumName, forumDescription, catName, taggy_forums.domainId, taggy_categories.domainId "
+            qry += "FROM taggy_forums, taggy_categories "
             qry += "WHERE taggy_forums.categoryId = taggy_categories.categoryId "
             qry += "ORDER BY forumId"
         else:
