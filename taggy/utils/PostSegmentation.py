@@ -2,6 +2,8 @@ import taggy.modules.post.Post
 from taggy.modules.Queries import Queries
 import nltk
 from django.db import connection
+from bs4 import BeautifulSoup
+
 class PostSegmentation:
 
 
@@ -23,7 +25,14 @@ class PostSegmentation:
     def postSegmentation(self):
         self.getPostString()
         text = nltk.corpus.gutenberg.raw('C:\\Users\\Amos Madalin Neculau\\Desktop\\FinalYearProject2\\taggy\\utils\\post.txt')
-        self.sentences = nltk.sent_tokenize(text)
+        for s in text:
+            s.replace('<br>', " \n ")
+            s.replace('<br/>', " \n ")
+            s.replace('<br />', " \n ")
+        soupObj = BeautifulSoup(text)
+        cleanText = soupObj.get_text()
+        self.sentences = nltk.sent_tokenize(cleanText)
+
         return self.sentences
 
     def getPostString(self):
@@ -46,7 +55,7 @@ class PostSegmentation:
         sentenceInParagraph = 0
         for i in self.sentences:
 
-            if("<br />" in i):
+            if(" \n " in i):
                 postInParagraph = postInParagraph + 1
                 sentenceInParagraph = 1
             else:
@@ -55,5 +64,5 @@ class PostSegmentation:
                 qry = "INSERT INTO taggy_sentences (postId, sentence, paragraphInPost, sentenceInParagraph) VALUES("+str(self.postId) + ",'" + i.replace("'","\\'") + "'," + str(postInParagraph) + "," + str(sentenceInParagraph)+")"
                 cursor.execute(qry)
 
-a = PostSegmentation(14)
+a = PostSegmentation(21)
 print(a.postSegmentation())

@@ -20,8 +20,7 @@ DONE - Add admin possibilities to create and edit tag, and tag descriptors for a
               *[DONE]  module for deletion tags/ domain
               *[TO DO]  module for edit tags/ domain
 
-
-TODO - POST AND SET finalization annotation/ adjudication
+TO REVIEW:
 almost done(?error) - adjudicate-set
 almost done - setKappa - setkappa (MIGHT BE ERRORS)
 almost done - chosenKappa (MIGHT BE ERRORS)
@@ -31,3 +30,5 @@ in progress - AUTOMATIC ANNOTATION(TAG PREDICTION)
 
 TODO:
     USER/ LOGIN/ SESSION CONTROL!
+    FINISH THE PARSING TOOL WITH JSON
+    POST AND SET finalization annotation/ adjudication
