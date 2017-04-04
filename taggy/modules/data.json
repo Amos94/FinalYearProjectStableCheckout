@@ -1,10 +1,4 @@
 [
-  {
-    'corpus':"persus",
-    'table':"taggy_post"
-  },
-  {
-    [
       {
         'postId': 1,
         'forumId': 102,
@@ -14005,6 +13999,4 @@
         'parseTool': "nltk-v0.9.9",
         'parseHistory': "{\"1\": \"nltk-v0.9.9\"}"
       }
-    ]
-  }
 ]

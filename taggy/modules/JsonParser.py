@@ -1,12 +1,6 @@
 import json
 #from taggy.modules.Queries import Queries
-"""
-the JSON to be parsed must have the following shape:
-
-[
-for each table, the json will parse data and add/ create/ insert into a db
-]
-"""
+from taggy.modules.Queries import Queries
 
 
 class JsonPostsParser():
@@ -15,42 +9,23 @@ class JsonPostsParser():
     RETURN A JSON OBJECT
     """
     def loadPostsJSON(self, jsonString):
-      jsonObject = json.loads(jsonString)
-
-      return jsonObject
-
-
+        jsonObject = json.loads(jsonString)
+        return jsonObject
 
     def printPostsContent(self, jsonObject):
-      for atribute, value in jsonObject:
-        print(atribute+ " "+ value)
+        for atribute, value in jsonObject:
+            print(atribute+ " "+ value)
 
 
-    def insertPostToDatabase(self, qryObject, jsonObject):
-      for atribute, value in jsonObject:
-        qryObject.insertPost(value)
-    #
-    # """
-    # {
-    # 'posts':['post':[...],'post':[...],....]
-    # }
-    # """
-    # def dumpPostsFromDatabase(self, qry):
-    #
-    #     """
-    #
-    #     :type qry: Queries
-    #     """
-    #     posts = qry.getPosts()
-    #     dump = json.dumps(posts)
-    #
-    #     return dump
-
+    def insertPostToDatabase(self, jsonObject):
+        qryObject = Queries()
+        for atribute, value in jsonObject:
+            qryObject.insertPost()
 
 
 
 a = JsonPostsParser()
-b = file('data.json')
+b = file('C:\\Users\\Amos Madalin Neculau\\Desktop\\FinalYearProject2\\taggy\\modules\\data.json')
 load = b.read()
 print(load)
-print(a.loadPostsJSON(str(load)))
+a.printPostsContent(load)
