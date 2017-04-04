@@ -1,3 +1,5 @@
+from django.views.decorators.csrf import csrf_exempt
+
 from taggy.modules.Annotator import Annotator
 from taggy.modules.Queries import Queries
 from taggy.modules.post.Post import Post
@@ -70,7 +72,7 @@ class AnnotatedPost(Post):
         # Get current PostState and Comment
 
         postAnnotation = queryObject.getPostAnnotation(postId, annotator.id)
-        print(self.annotator.id)
+        #(self.annotator.id)
         for r in postAnnotation:
             self.annotator_states.insert(self.annotator.id , r[3])  #postAnnotatorState
             self.comments.insert(self.annotator.id , r[0])  #comment
@@ -107,18 +109,20 @@ class AnnotatedPost(Post):
         qryObject = Queries()
         toReturn = ''
         #annotator_states[self.annotator.id]
+        try:
+            if(self.annotator_states[self.annotator.id] == 'DONE' or self.annotator_states[self.annotator.id] == 'ADJUDICATED'):
+                finalizeHiddenCls = "initiallyHidden"
+                unfinalizeHiddenCls = ""
+            else:
+                finalizeHiddenCls = ""
+                unfinalizeHiddenCls = "initiallyHidden"
 
-        if(self.annotator_states[self.annotator.id] == 'DONE' or self.annotator_states[self.annotator.id] == 'ADJUDICATED'):
-            finalizeHiddenCls = "initiallyHidden"
-            unfinalizeHiddenCls = ""
-        else:
-            finalizeHiddenCls = ""
-            unfinalizeHiddenCls = "initiallyHidden"
-
-        if(self.postState == 'ADJUDICATED'):
-            finalizedDisabledCls = "finalizedDisabled"
-        else:
-            finalizedDisabledCls = "finalizedEnabled"
+            if(self.postState == 'ADJUDICATED'):
+                finalizedDisabledCls = "finalizedDisabled"
+            else:
+                finalizedDisabledCls = "finalizedEnabled"
+        except:
+            pass
 
         toReturn += "<div id='finalize' class='postBtn finalizePostBtn"+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br/>"
 
@@ -133,6 +137,8 @@ class AnnotatedPost(Post):
     * @param Queries $qryObject a DB Queries object
     * @return void
     """
+
+    @csrf_exempt
     def render_posts_annotation(self):
         qryObject = Queries()
         toReturn = ''

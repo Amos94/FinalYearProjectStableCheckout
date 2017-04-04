@@ -171,7 +171,7 @@ def editSetAdd(request, setid = -1):
             setid = -1
     except:
         pass
-    print setid
+
     if(setid!=-1):
         forums = qryObject.getForums()
         for forum in forums:
@@ -227,15 +227,15 @@ def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
         for post in posts:
 
             result = qryObject.addPostInSet(setid, post[0])
-            print(result)
+            # print(result)
             if(result != 1):
                 error = True
                 errorMsg = 'Could not update the database'
-            print (post[0])
+            # print (post[0])
             # change the state of the post from INITIAL to SELECTED
             result = qryObject.updatePostState(post[0],'PARSED')
-            print('TO UPDATE updatePostState')
-            print(result)
+            # print('TO UPDATE updatePostState')
+            # print(result)
             if (result):
                 error = True
                 errorMsg = 'Could not update the database'
@@ -284,7 +284,7 @@ def deleteSet(request, setid=-1):
         # TO CHANGE THE USER WHEN THE USER ROLE IS READY
 
         result = qry.deleteSet(setid)
-        print(result)
+        #print(result)
 
         if (result == 1):
             return HttpResponseRedirect('/success/')
@@ -297,7 +297,7 @@ def deleteSet(request, setid=-1):
 
 
 def assignSet(request):
-    print("Assign Set method")
+    #print("Assign Set method")
     pageName = 'Assign Set'
 
     qry = Queries()
@@ -310,7 +310,7 @@ def assignSet(request):
 
     for result in results:
         annotatorsSets = qry.getAnnotatorsSets(result[0])
-        print annotatorsSets
+        #print annotatorsSets
 
         for a in annotatorsSets:
             annotators_divs.append({'result':result[0], 'div':qry.getAnnotatorName(a[0])})
@@ -505,7 +505,7 @@ def adjudicateSet(request, setId=None):
     else:
         results = qryObject.getPostsInSet(setId)
         for result in results:
-            print(result[0])
+            #print(result[0])
             annsts.insert(qryObject.getPostAnnotatorsAndStates(result[0]))
 
     context = {'pageName': pageName, 'results':results, 'annsts':annsts, "setid":setId, "i":i, 'adjudicationFlag':adjudicationFlag}
@@ -518,7 +518,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     pageName = 'Tag Post'
     pageTitle = ''
     userType = 'annotator'
-    userId = 6
+    userId = 16
     a_set = None
     a_post = None
     qryObject = Queries()
@@ -562,7 +562,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
         if(a_set != None):
             if(postId != '-1'):
                 postId = a_set.firstPostID()
-                print('POST ID: '+ str(postId))
+                #print('POST ID: '+ str(postId))
         else:
             a_set = None
 
@@ -582,10 +582,21 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     else:
         pageTitle = 'TAG POST: '+postId+' '
 
+    annotatorsOfSet = []
+    assigned = False
+    if(annotator.canAdjudicate() == True):
+        assigned = True
+    try:
+        annotators = qryObject.getAnnotatorsSets(setid)
+        for a in annotators:
+            if(annotator.id == a[0]):
+                assigned = True
+    except:
+        pass
 
 
     if request.method == 'POST':
-        print('worked')
+        #print('worked')
         return HttpResponseRedirect('/thanks/')
 
     dnt = helper.display_nav_tagpost(a_set, a_post, adjudicationFlag)
@@ -596,16 +607,44 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     b = a_post.render_posts_annotation()
     c = a_post.render_available_tags()
 
-
-
-    context = {'pageName': pageName, "setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableHeader':postTableHeader,'postTableRnd':postTableRnd, 'a':a, 'b':b, 'c':c}
+    context = {'pageName': pageName, "assigned":assigned ,"setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableHeader':postTableHeader,'postTableRnd':postTableRnd, 'a':a, 'b':b, 'c':c}
     return render(request, "tag_post.html", context)
+
+@csrf_exempt
+def tagUpdateDb(request):
+    pageName = 'TAG POST'
+    variables = ''
+    array = []
+    qryObject = Queries()
+    error = False
+    errorMsg = ''
+    try:
+        variables = request.POST['taskOption']
+    except:
+        error = True
+        errorMsg = 'The request is not valid'
+        pass
+
+    # 0 = TAGID, 1 = ANNOTATORID, 2 = POSTID, 3 = SENTENCEID
+    array = variables.split()
+
+    try:
+        #annotate the sentence
+        qryObject.insertSentenceTag(array[3], array[0], array[2], array[1])
+    except:
+        error = True
+        errorMsg = 'Could not update the database'
+        pass
+
+    context = {'error':error, 'errorMsg':errorMsg, 'pageName':pageName}
+    return render(request,'tag_post_update.html',context)
+
 
 @csrf_exempt
 def reviewSet(request, setId=None):
     pageName = 'Review set'
     userType = 'admin_test'
-    userId = 7
+    userId = 1
     qryObject = Queries()
     results = []
 
@@ -818,8 +857,8 @@ def postKappaDetails(request):
     query = "SELECT P.annotatorId, username FROM taggy_posts_annotators P INNER JOIN taggy_annotators A ON P.annotatorId = A.annotatorId WHERE postId = "+request.GET['p']+" AND usertype = 'annotator';"
     a = q.getData(query)
 
-    if(len(a) != 2):
-        print("The annotators number !=2. Number of annotators: " + str(len(a)))
+    #if(len(a) != 2):
+        #print("The annotators number !=2. Number of annotators: " + str(len(a)))
     obj1 = a[0]
     annotator1 = obj1[0]
     name1 = obj1[1]

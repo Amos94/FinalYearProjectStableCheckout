@@ -52,6 +52,7 @@ from taggy.views import createTag
 from taggy.views import createTagAdd
 from taggy.views import deleteTag
 from taggy.views import deleteTagAction
+from taggy.views import tagUpdateDb
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -72,6 +73,7 @@ urlpatterns = [
     url(r'^set/browse/', browseSet ,name="browse_set"),
     url(r'^set/tag/',tagSet, name='tag_set'),
     url(r'^action/tag/', tagAction, name='tag_action'),
+    url(r'^tag/update-db/', tagUpdateDb, name='tag_post_update'),
     url(r'^upload/json/', list, name='list'),
     url(r'^postkappadetails/', postKappaDetails, name='postKappaDetails'),
     url(r'^set/adjudicate/', adjudicateSet, name='adjudicate_set'),

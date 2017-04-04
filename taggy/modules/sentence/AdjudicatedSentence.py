@@ -69,18 +69,20 @@ def AdjudicatedSentence(AnnotatedSentence):
 
     #renders <td> columns for tags
     def render_tag_columns(self):
+        toReturn = ''
         for a in self.others:
 
-            print("<td>")
+            toReturn += "<td>"
 
             for t in self.tags[a.id]:
                 t.render_as_div( False,  False)
 
-            print("</td>")
+            toReturn +="</td>"
 
-        print("<td class='tagsSentence'>")
+        toReturn +="<td class='tagsSentence'>"
 
         for t in self.tags[self.annotator.id]:
             t.render_as_div(False)
 
-        print("</td>")
+        toReturn +="</td>"
+        return toReturn

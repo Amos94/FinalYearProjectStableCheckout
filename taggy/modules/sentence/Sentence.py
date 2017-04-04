@@ -1,3 +1,5 @@
+from django.views.decorators.csrf import csrf_exempt
+
 from taggy.modules.Annotator import Annotator
 from taggy.modules.Queries import Queries
 
@@ -70,6 +72,8 @@ class Sentence():
     * indexed by their tag id
     * @return void
     """
+
+    @csrf_exempt
     def render_as_row(self, postId, sentenceId, annotatorId, adjudicationFlag):
 
         toReturn = ''
@@ -83,13 +87,17 @@ class Sentence():
         return toReturn
     #if is Annotated, show the tag
     #else, make annotation possible
+    @csrf_exempt
     def render_tag_columns(self, postId, sententenceId,annotatorId, adjudicationFlag):
         qryObject = Queries()
         toReturn = ''
         results = []
         annotator = Annotator(annotatorId)
-        print(adjudicationFlag)
-        print(annotator.canAdjudicate())
+
+        #doesn't matter if it is setted to true by GET, if annotator cannot adjudicate, then adjudicationFlag = false
+        if(not annotator.canAdjudicate()):
+            adjudicationFlag = 'false'
+
         if(annotator.canAdjudicate() and adjudicationFlag == 'true'):
             #SEE TAGS FROM ALL USERS THAT ANNOTATED THAT SENTENCE
                 annotators = qryObject.getAnnotatorsForPost(postId)
@@ -108,16 +116,16 @@ class Sentence():
             results = []
             results = qryObject.getTagAndPOR()
             toReturn += '<center>'
-            toReturn += '<form action="/" method="post">\n'
-
-            toReturn += '<select class="form-control text-center">'
+            toReturn += '<form action="/tag/update-db/" method="post">\n'
+            toReturn += '<select class="form-control text-center" name="taskOption">'
             for result in results:
                 if (result[2] == 'P'):
-                    toReturn += '<option value="' + str(result[0]) + '">' + str(
-                        result[1]) + " & " + 'PROVIDE' + "</option>"
+                    #TAGID, ANNOTATORID, POSTID, SENTENCEID
+                    toReturn += '<option value="' + "" +str(result[0]) + " "+str(annotatorId) + " "+str(postId)+" "+str(sententenceId)+'">' + str(result[1]) + " & " + 'PROVIDE' + "</option>"
+                elif (result[2] == 'R'):
+                    toReturn += '<option value="' + "" +str(result[0]) + " "+str(annotatorId) + " "+str(postId)+" "+str(sententenceId)+'">' + str(result[1]) + " & " + 'REQUEST' + "</option>"
                 else:
-                    toReturn += '<option value="' + str(result[0]) + '">' + str(
-                        result[1]) + " & " + 'REQUEST' + "</option>"
+                    toReturn += '<option value="' + "" +str(result[0]) + " "+str(annotatorId) + " "+str(postId)+" "+str(sententenceId)+'">' + str(result[1]) +  "</option>"
             toReturn += '</select>'
 
             toReturn += '<input class="btn btn-primary" type="submit" value="Submit" />'
@@ -129,10 +137,16 @@ class Sentence():
             annotators = []
             annotators = qryObject.getAnnotatorsForPost(postId)
 
+            sentenceIsAnnotatedByUser = True
+            afs = []
+            afs = qryObject.getSentenceAnnotator(sententenceId, annotatorId)
+
+            if(not afs):
+                sentenceIsAnnotatedByUser = False
 
             tof = False
             for annotator in annotators:
-                if(annotator[0] == annotatorId):
+                if(annotator[0] == annotatorId and sentenceIsAnnotatedByUser):
                     tof = True
 
             if(tof):
@@ -140,7 +154,10 @@ class Sentence():
                 for result in results:
                     tags = qryObject.getTag(str(result[2]))
                     for tag in tags:
-                        toReturn += tag[1] + " - " + tag[3]
+                        if(tag[4] == 1):
+                            toReturn += tag[1] + "-" + tag[3]
+                        else:
+                            toReturn += tag[1]
             #else annotate
             else:
                 # make a form
@@ -148,14 +165,19 @@ class Sentence():
                 results = []
                 results = qryObject.getTagAndPOR()
                 toReturn += '<center>'
-                toReturn += '<form action="/action/tag/" method="POST">\n'
-
-                toReturn += '<select class="form-control text-center">'
+                toReturn += '<form action="/tag/update-db/" method="post">\n'
+                toReturn += '<select class="form-control text-center" name="taskOption">'
                 for result in results:
-                    if(result[2] == 'P'):
-                        toReturn += '<option value="'+str(result[0])+'">'+str(result[1])+" & "+'PROVIDE'+"</option>"
+                    if (result[2] == 'P'):
+                        # TAGID, ANNOTATORID, POSTID, SENTENCEID
+                        toReturn += '<option value="' + "" + str(result[0]) + " " + str(annotatorId) + " " + str(
+                            postId) + " " + str(sententenceId) + '">' + str(result[1]) + " & " + 'PROVIDE' + "</option>"
+                    elif (result[2] == 'R'):
+                        toReturn += '<option value="' + "" + str(result[0]) + " " + str(annotatorId) + " " + str(
+                            postId) + " " + str(sententenceId) + '">' + str(result[1]) + " & " + 'REQUEST' + "</option>"
                     else:
-                        toReturn += '<option value="' + str(result[0]) + '">' + str(result[1]) + " & " + 'REQUEST' + "</option>"
+                        toReturn += '<option value="' + "" + str(result[0]) + " " + str(annotatorId) + " " + str(
+                            postId) + " " + str(sententenceId) + '">' + str(result[1]) + "</option>"
                 toReturn += '</select>'
 
                 toReturn += '<input class="btn btn-primary" type="submit" value="Submit" />'

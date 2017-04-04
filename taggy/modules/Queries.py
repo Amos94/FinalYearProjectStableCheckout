@@ -1945,3 +1945,17 @@ class Queries:
 
         # return the data
         return results
+
+
+    """
+    GET SENTENCE IF ANNOTATED BY ANNOTATOR
+    """
+    def getSentenceAnnotator(self, sententenceId, annotatorId):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_sentences_tags WHERE sentenceId = " + str(sententenceId) + " AND annotatorId = "+str(annotatorId)
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results

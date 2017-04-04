@@ -1,3 +1,5 @@
+from django.views.decorators.csrf import csrf_exempt
+
 from taggy.modules.Queries import Queries
 
 
@@ -86,7 +88,7 @@ class HelperMethods():
     #TAG POST HELPER METHODS
 
 
-
+    @csrf_exempt
     def display_nav_tagpost(self, set, post, adjudicateFlag):
         toReturn = ''
         if(set):
@@ -124,7 +126,7 @@ class HelperMethods():
 
         elif(post):
             toReturn += '<center>'
-            toReturn += '<form action="/post/tag/?method="get">'
+            toReturn += '<form action="/post/tag/ method="get">'
             toReturn += '<h4>tag post id:</h4> <input type="text" name="postId" class="form-control" style="width:20%" span1/>'
             toReturn += '<span class="input-group-btn"><input type="submit" value="Submit" class="btn btn-primary span1"/> </span>'
             toReturn += '</form>'
@@ -137,7 +139,7 @@ class HelperMethods():
 
 
     def handle_uploaded_file(f):
-        print('here')
+        #print('here')
         with open('C:\\Users\\Amos Madalin Neculau\\Desktop\\FinalYearProject2\\name.txt', 'wb+') as destination:
             for chunk in f.chunks():
                 destination.write(chunk)
