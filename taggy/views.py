@@ -518,7 +518,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     pageName = 'Tag Post'
     pageTitle = ''
     userType = 'annotator'
-    userId = 16
+    userId = 7
     a_set = None
     a_post = None
     qryObject = Queries()
@@ -583,7 +583,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
         pageTitle = 'TAG POST: '+postId+' '
 
     annotatorsOfSet = []
-    assigned = False
+    assigned = True
     if(annotator.canAdjudicate() == True):
         assigned = True
     try:
@@ -613,24 +613,30 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 @csrf_exempt
 def tagUpdateDb(request):
     pageName = 'TAG POST'
-    variables = ''
+    variables = []
     array = []
     qryObject = Queries()
     error = False
     errorMsg = ''
     try:
         variables = request.POST['taskOption']
+        print variables
     except:
         error = True
         errorMsg = 'The request is not valid'
         pass
 
     # 0 = TAGID, 1 = ANNOTATORID, 2 = POSTID, 3 = SENTENCEID
-    array = variables.split()
+    for variable in variables:
+        array = variable.split()
+
+    for a in array:
+        print a
 
     try:
         #annotate the sentence
-        qryObject.insertSentenceTag(array[3], array[0], array[2], array[1])
+        #qryObject.insertSentenceTag(array[3], array[0], array[2], array[1])
+        pass
     except:
         error = True
         errorMsg = 'Could not update the database'

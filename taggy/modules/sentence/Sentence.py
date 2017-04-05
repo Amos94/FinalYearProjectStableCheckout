@@ -117,15 +117,15 @@ class Sentence():
             results = qryObject.getTagAndPOR()
             toReturn += '<center>'
             toReturn += '<form action="/tag/update-db/" method="post">\n'
-            toReturn += '<select class="form-control text-center" name="taskOption">'
+            toReturn += '<select multiple class="form-control text-center" name="taskOption">'
             for result in results:
                 if (result[2] == 'P'):
                     #TAGID, ANNOTATORID, POSTID, SENTENCEID
-                    toReturn += '<option value="' + "" +str(result[0]) + " "+str(annotatorId) + " "+str(postId)+" "+str(sententenceId)+'">' + str(result[1]) + " & " + 'PROVIDE' + "</option>"
+                    toReturn += '<option selected="selected" value="' + "" +str(result[0]) + " "+str(annotatorId) + " "+str(postId)+" "+str(sententenceId)+'">' + str(result[1]) + " & " + 'PROVIDE' + "</option>"
                 elif (result[2] == 'R'):
-                    toReturn += '<option value="' + "" +str(result[0]) + " "+str(annotatorId) + " "+str(postId)+" "+str(sententenceId)+'">' + str(result[1]) + " & " + 'REQUEST' + "</option>"
+                    toReturn += '<option selected="selected" value="' + "" +str(result[0]) + " "+str(annotatorId) + " "+str(postId)+" "+str(sententenceId)+'">' + str(result[1]) + " & " + 'REQUEST' + "</option>"
                 else:
-                    toReturn += '<option value="' + "" +str(result[0]) + " "+str(annotatorId) + " "+str(postId)+" "+str(sententenceId)+'">' + str(result[1]) +  "</option>"
+                    toReturn += '<option selected="selected" value="' + "" +str(result[0]) + " "+str(annotatorId) + " "+str(postId)+" "+str(sententenceId)+'">' + str(result[1]) +  "</option>"
             toReturn += '</select>'
 
             toReturn += '<input class="btn btn-primary" type="submit" value="Submit" />'
@@ -166,17 +166,17 @@ class Sentence():
                 results = qryObject.getTagAndPOR()
                 toReturn += '<center>'
                 toReturn += '<form action="/tag/update-db/" method="post">\n'
-                toReturn += '<select class="form-control text-center" name="taskOption">'
+                toReturn += '<select multiple class="form-control text-center" name="taskOption">'
                 for result in results:
                     if (result[2] == 'P'):
                         # TAGID, ANNOTATORID, POSTID, SENTENCEID
-                        toReturn += '<option value="' + "" + str(result[0]) + " " + str(annotatorId) + " " + str(
+                        toReturn += '<option selected="selected" value="' + "" + str(result[0]) + " " + str(annotatorId) + " " + str(
                             postId) + " " + str(sententenceId) + '">' + str(result[1]) + " & " + 'PROVIDE' + "</option>"
                     elif (result[2] == 'R'):
-                        toReturn += '<option value="' + "" + str(result[0]) + " " + str(annotatorId) + " " + str(
+                        toReturn += '<option selected="selected" value="' + "" + str(result[0]) + " " + str(annotatorId) + " " + str(
                             postId) + " " + str(sententenceId) + '">' + str(result[1]) + " & " + 'REQUEST' + "</option>"
                     else:
-                        toReturn += '<option value="' + "" + str(result[0]) + " " + str(annotatorId) + " " + str(
+                        toReturn += '<option selected="selected" value="' + "" + str(result[0]) + " " + str(annotatorId) + " " + str(
                             postId) + " " + str(sententenceId) + '">' + str(result[1]) + "</option>"
                 toReturn += '</select>'
 

@@ -121,12 +121,13 @@ class AnnotatedPost(Post):
                 finalizedDisabledCls = "finalizedDisabled"
             else:
                 finalizedDisabledCls = "finalizedEnabled"
+
+
+            toReturn += "<div id='finalize' class='postBtn finalizePostBtn"+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br/>"
+
+            toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn"+unfinalizeHiddenCls+" "+finalizedDisabledCls+"'>--DONE--</div><br>"
         except:
             pass
-
-        toReturn += "<div id='finalize' class='postBtn finalizePostBtn"+finalizeHiddenCls+" "+finalizedDisabledCls+"'>FINALIZE</div><br/>"
-
-        toReturn += "<div id='unfinalize' class='postBtn finalizePostBtn"+unfinalizeHiddenCls+" "+finalizedDisabledCls+"'>--DONE--</div><br>"
         return toReturn
 
     """
