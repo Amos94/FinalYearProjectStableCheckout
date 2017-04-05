@@ -645,6 +645,98 @@ def tagUpdateDb(request):
     return render(request,'tag_post_update.html',context)
 
 
+def deletePostTags(request, annotatorid=-1, postid=-1, sentenceid=-1):
+    pageName = 'EDIT POST TAGS'
+    qryObject = Queries()
+    sentence = []
+    sentenceTags = []
+    tags = []
+    tags2 = []
+    allTags = []
+    toRemove = []
+    error = False
+    errorMsg = ''
+
+
+    try:
+        postid = request.GET['post']
+        annotatorid = request.GET['annotator']
+        sentenceid = request.GET['sentence']
+
+    except:
+        error = True
+        errorMsg = 'Invalid link.'
+        pass
+
+
+    try:
+        sentence = qryObject.getSentence(sentenceid)
+        sentenceTags = qryObject.getSentenceTags(postid, sentenceid, annotatorid)
+        allTags = qryObject.getTagAndPOR()
+        for s in sentenceTags:
+            tags.append(qryObject.getTag(s[2]))
+            tags2.append(qryObject.getTag(s[2]))
+        tags.reverse()
+        tags2.reverse()
+
+        # for i in allTags:
+        #     for j in tags:
+        #         a = i[0]
+        #         b = j[0]
+        #
+        #         if(a == b[0]):
+        #             toRemove.append(a)
+        #
+        # for remove in toRemove:
+        #     print(remove)
+        #     allTags.pop(remove)
+
+
+
+    except:
+        error = True
+        errorMsg = 'Could talk to database.'
+        pass
+
+    context = {'error':error, 'errorMsg':errorMsg, 'pageName':pageName, 'sentence':sentence, 'sentenceTags':sentenceTags, 'allTags':allTags, 'tags2':tags2, 'tags':tags, 'annotatorid':annotatorid,'postid':postid, 'sentenceid':sentenceid}
+    return render(request,'post_update_tag.html',context)
+
+
+
+def tagDeleteDb(request, sentenceid=-1, tagid=-1, postid=-1, annotatorid=-1):
+    pageName = 'Delete TAGS'
+    qryObject = Queries()
+    error = False
+    errorMsg = ''
+    result = []
+
+
+    try:
+        tagid = request.GET['tag']
+        postid = request.GET['post']
+        annotatorid = request.GET['annotator']
+        sentenceid = request.GET['sentence']
+
+    except:
+        error = True
+        errorMsg = 'Invalid link.'
+        pass
+
+
+    try:
+        result = qryObject.deleteSentenceTag(sentenceid,tagid,postid,annotatorid)
+    except:
+        error = True
+        errorMsg = 'Could talk to database.'
+        pass
+
+    context = {'error':error, 'errorMsg':errorMsg, 'pageName':pageName}
+    return render(request,'delete_post_tag.html',context)
+
+
+
+
+
 @csrf_exempt
 def reviewSet(request, setId=None):
     pageName = 'Review set'

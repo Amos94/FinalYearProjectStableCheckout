@@ -106,7 +106,7 @@ class Sentence():
                     for result in results:
                         tags = qryObject.getTag(str(result[2]))
                         for tag in tags:
-                            toReturn += tag[1] + " - " + tag[3]
+                            toReturn += tag[1] + " - " + tag[3] + "<br />"
         elif(annotator.canAdjudicate()and adjudicationFlag == 'false'):
             # an adjudicator can annotate as well
             # make a form
@@ -155,9 +155,10 @@ class Sentence():
                     tags = qryObject.getTag(str(result[2]))
                     for tag in tags:
                         if(tag[4] == 1):
-                            toReturn += tag[1] + "-" + tag[3]
+                            toReturn += tag[1] + "-" + tag[3] + "<br />"
                         else:
-                            toReturn += tag[1]
+                            toReturn += tag[1] + "<br />"
+                toReturn += "<a href='/post/update-tag/?sentence="+str(sententenceId)+"&annotator="+str(annotatorId)+"&post="+str(postId)+"'>[EDIT SENTENCE TAGS]</a>"
             #else annotate
             else:
                 # make a form

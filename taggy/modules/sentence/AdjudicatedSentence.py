@@ -62,7 +62,7 @@ def AdjudicatedSentence(AnnotatedSentence):
         t = []
 
         for row in results:
-            t.append(self.lookup.tag(row['tagID']) )
+            t.append(self.lookup.tag(row[2]) )#tagId
 
         return t
 
