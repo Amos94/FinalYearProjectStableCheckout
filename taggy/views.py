@@ -619,8 +619,8 @@ def tagUpdateDb(request):
     error = False
     errorMsg = ''
     try:
-        variables = request.POST['taskOption']
-        print variables
+        variables = request.POST.getlist('taskOption')
+        #print variables
     except:
         error = True
         errorMsg = 'The request is not valid'
@@ -628,14 +628,13 @@ def tagUpdateDb(request):
 
     # 0 = TAGID, 1 = ANNOTATORID, 2 = POSTID, 3 = SENTENCEID
     for variable in variables:
-        array = variable.split()
+        array.append(variable.split())
 
-    for a in array:
-        print a
 
     try:
         #annotate the sentence
-        #qryObject.insertSentenceTag(array[3], array[0], array[2], array[1])
+        for a in array:
+            qryObject.insertSentenceTag(a[3], a[0], a[2], a[1])
         pass
     except:
         error = True
