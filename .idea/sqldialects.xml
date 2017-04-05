@@ -3,5 +3,6 @@
   <component name="SqlDialectMappings">
     <file url="dbSrc:///43a58290/2b4540fd-24e3-44bc-a71a-6e6853a5c056" dialect="MySQL" />
     <file url="dbSrc:///43a58290/f4aa436f-7455-4ec1-affc-e5d86211a73c" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/fyp_structure.sql" dialect="MySQL" />
   </component>
 </project>

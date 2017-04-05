@@ -733,7 +733,7 @@ def tagDeleteDb(request, sentenceid=-1, tagid=-1, postid=-1, annotatorid=-1):
     context = {'error':error, 'errorMsg':errorMsg, 'pageName':pageName}
     return render(request,'delete_post_tag.html',context)
 
-
+#test
 
 
 
