@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
+from taggy.views import importJson
 from taggy.views import index as index
 from taggy.views import about as about
 from taggy.views import annotation as annotation
@@ -55,6 +55,7 @@ from taggy.views import deleteTagAction
 from taggy.views import tagUpdateDb
 from taggy.views import deletePostTags
 from taggy.views import tagDeleteDb
+from taggy.views import parseJson
 import registration.backends.default.urls as registration
 
 urlpatterns = [
@@ -93,6 +94,8 @@ urlpatterns = [
     url(r'^tag/delete/', deleteTag, name="delete_tag"),
     url(r'^tag/delete-tag/', deleteTagAction, name="delete_tag_action"),
     url(r'^post/tag/', tagPost, name='tag_post'),
+    url(r'^import/json/', importJson, name='import_json'),
+    url(r'^parse/json/', parseJson, name='parse_json'),
     url(r'^accounts/', include(registration)),
     url(r'success/', success, name="success"),
     url(r'fail/', fail, name="fail")

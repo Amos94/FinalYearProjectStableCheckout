@@ -1959,3 +1959,18 @@ class Queries:
 
         # return the data
         return results
+
+
+
+    """
+    GET JSON DOCUMENTS
+    """
+    def getJSONDocumentsMeta(self):
+        # Building the SQL query qry
+        qry = "SELECT * FROM taggy_document"
+
+        # execution of the query 'qry'
+        results = self.getData(qry)
+
+        # return the data
+        return results

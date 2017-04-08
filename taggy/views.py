@@ -1682,6 +1682,48 @@ def deleteTagAction(request, tagId=-1):
 
 
 
+def importJson(request):
+    pageName = "Import JSON"
+    user = None
+    qryObject = Queries()
+    results = []
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user
+
+
+    results = qryObject.getJSONDocumentsMeta()
+
+    context = {'pageName':pageName, 'user':user, 'results':results}
+
+    return render(request, 'import_json.html', context)
+
+
+
+def parseJson(request, id=-1):
+    pageName = "Parse JSON"
+    user = None
+    qryObject = Queries()
+    results = []
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user
+
+
+
+
+    context = {'pageName':pageName, 'user':user}
+
+    return render(request, 'parse_json.html', context)
+
+
+
 def successPage(request):
     pageName = "Success"
 
