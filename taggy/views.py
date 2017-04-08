@@ -30,17 +30,19 @@ def index(request):
     pageName = "index"
     username = ''
     userId = ''
+    adminRights = False
 
     if not request.user.is_authenticated():
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
+        username = user.username
+        userId = user.id
+        adminRights = user.is_staff
 
-    print user
 
-
-    context = {"pageName":pageName , "user": user}
+    context = {"pageName":pageName , "user": user, "adminRights":adminRights}
 
     return render(request,"index.html",context)
 
