@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
+from django.core.mail import EmailMessage
 try:
     import pymysql
     pymysql.install_as_MySQLdb()
@@ -150,3 +150,12 @@ REGISTRATION_AUTO_LOGIN = True
 #LOGIN
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
+
+#EMAIL_SETTINGS
+EMAIL_BACKEND = 'django.core.email.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 't'
+EMAIL_HOST_PASSWORD = 'tt'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "bruh@bruh.com"

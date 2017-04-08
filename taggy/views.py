@@ -1,7 +1,8 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template.backends import django
 from django.middleware import csrf
+from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -27,18 +28,30 @@ from taggy.modules.post.Set import Set
 # Create your views here.
 def index(request):
     pageName = "index"
-    user = 'null'
-    sessionId = 'null'
+    username = ''
+    userId = ''
 
-    if(user != 'null' and sessionId != 'null'):
-        context = {"pageName":pageName, "sessionId":sessionId}
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
     else:
-        context = {"pageName":pageName , "sessionId": 'not a valid session id'}
+        #GETUSERID
+        user = request.user.username
+
+    print user
+
+
+    context = {"pageName":pageName , "user": user}
 
     return render(request,"index.html",context)
 
 def about(request):
     pageName = "About"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
 
     context = {"pageName":pageName}
 
@@ -47,7 +60,11 @@ def about(request):
 
 def annotation(request):
     pageName = "Annotation"
-
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
     context = {"pageName":pageName}
 
     return render(request, "annotation.html", context)
@@ -55,13 +72,24 @@ def annotation(request):
 
 def adjudication(request):
     pageName = "Adjudication"
-
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
     context = {"pageName":pageName}
 
     return render(request, "adjudication.html", context)
 
 def setCreate(request):
     pageName = "Create Set"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     sessionId = 'null'
     userid = 2
     qry = Queries()
@@ -100,6 +128,13 @@ def setCreate(request):
 
 def editSet(request, setid=-1):
     pageName = 'Edit Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = "ADMIN_TYPE"
     userId = 6
     postCase = 0
@@ -157,6 +192,13 @@ def editSet(request, setid=-1):
 
 def editSetAdd(request, setid = -1):
     pageName = 'Edit Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = "admin"
     userId = 6
     error = False
@@ -187,6 +229,13 @@ def editSetAdd(request, setid = -1):
 
 def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
     pageName = 'Edit Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     error = False
     userType = "admin"
     userId = 6
@@ -258,6 +307,13 @@ def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
 
 def deleteSet(request, setid=-1):
     pageName = 'Delete Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = "ADMIN_TYPE"
     userId = 6
     postCase = 0
@@ -300,6 +356,12 @@ def assignSet(request):
     #print("Assign Set method")
     pageName = 'Assign Set'
 
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     qry = Queries()
     helper = HelperMethods()
     annotators_divs = []
@@ -320,6 +382,13 @@ def assignSet(request):
 
 def assignSetAdd(request, setid=-1):
     pageName = 'Assign Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = "admin"
     userId = 6
     error = False
@@ -346,6 +415,13 @@ def assignSetAdd(request, setid=-1):
 
 def assignSetAnnotator(request, setid=-1, annotatorid=-1):
     pageName = 'Assign Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     error = False
     userType = "admin"
     userId = 6
@@ -393,6 +469,13 @@ def assignSetAnnotator(request, setid=-1, annotatorid=-1):
 
 def browseSet(request, setId=None, postId=None):
     pageName = 'Browse'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = 'admin'
     userId = 0
     dbname = 'perseus'
@@ -450,6 +533,14 @@ def browseSet(request, setId=None, postId=None):
 def tagSet(request, setId=None):
 
     pageName = 'Tag Set'
+
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = 'admin'
     userId = 6
     i=0
@@ -484,6 +575,13 @@ def tagSet(request, setId=None):
 def adjudicateSet(request, setId=None):
 
     pageName = 'Adjudicate Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = 'admin'
     userId = 0
     i=0
@@ -516,6 +614,13 @@ def adjudicateSet(request, setId=None):
 def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 
     pageName = 'Tag Post'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     pageTitle = ''
     userType = 'annotator'
     userId = 7
@@ -613,6 +718,14 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 @csrf_exempt
 def tagUpdateDb(request):
     pageName = 'TAG POST'
+
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     variables = []
     array = []
     qryObject = Queries()
@@ -647,6 +760,13 @@ def tagUpdateDb(request):
 
 def deletePostTags(request, annotatorid=-1, postid=-1, sentenceid=-1):
     pageName = 'EDIT POST TAGS'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     qryObject = Queries()
     sentence = []
     sentenceTags = []
@@ -705,6 +825,13 @@ def deletePostTags(request, annotatorid=-1, postid=-1, sentenceid=-1):
 
 def tagDeleteDb(request, sentenceid=-1, tagid=-1, postid=-1, annotatorid=-1):
     pageName = 'Delete TAGS'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     qryObject = Queries()
     error = False
     errorMsg = ''
@@ -740,6 +867,13 @@ def tagDeleteDb(request, sentenceid=-1, tagid=-1, postid=-1, annotatorid=-1):
 @csrf_exempt
 def reviewSet(request, setId=None):
     pageName = 'Review set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = 'admin_test'
     userId = 1
     qryObject = Queries()
@@ -761,6 +895,13 @@ def reviewSet(request, setId=None):
 @csrf_exempt
 def reviewParse(request, setId=None, postId=None):
     pageName = 'Review set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = 'admin'
     userId = 7
     user = 'amos'
@@ -770,7 +911,7 @@ def reviewParse(request, setId=None, postId=None):
     prevPostId = None
     qryObject = Queries()
     results = []
-    parseTools = ['nltk-v0.9.9', 'opennlp-v1.4.3', 'manually' ]
+    parseTools = ['NLTK parser']
 
 
     if(userType == 'admin'):
@@ -909,6 +1050,13 @@ def reviewParse(request, setId=None, postId=None):
 @csrf_exempt
 def postKappaDetails(request):
     pageName = "Post Kappa Details"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     q = Queries()
 
     a_set = None
@@ -1010,6 +1158,13 @@ def postKappaDetails(request):
 
 @csrf_exempt
 def tagAction(request):
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     ta = TagAction()
     annotatorId = 0#annotator who is making the action
     array = []#POST args
@@ -1030,6 +1185,13 @@ def tagAction(request):
 
 @csrf_exempt
 def annotationAction(request):
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     array = []
     annotatorId = 0  # annotator who is making the action
     aa = AnnotationAction()
@@ -1045,6 +1207,13 @@ def annotationAction(request):
 
 @csrf_exempt
 def setAction(request):
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     array = []
     annotatorId = 0
     sa = SetAction()
@@ -1057,6 +1226,13 @@ def setAction(request):
     return request
 
 def list(request):
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -1083,6 +1259,13 @@ def list(request):
 
 def domainCreate(request):
     pageName = "Create domain"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     sessionId = 'null'
     userid = 2
     qry = Queries()
@@ -1110,6 +1293,13 @@ def domainCreate(request):
 
 def domainEdit(request, domainId=-1):
     pageName = "Edit domain"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     qryObject = Queries()
     results = []
     postCase = 0
@@ -1137,6 +1327,13 @@ def domainEdit(request, domainId=-1):
 
 def editDomainName(request, domainId = -1):
     pageName = 'Edit Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = "admin"
     userId = 6
     results = []
@@ -1177,6 +1374,13 @@ def assignDomain(request):
 
     pageName = 'Assign Domain'
 
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     qry = Queries()
     helper = HelperMethods()
     annotators_divs = []
@@ -1198,6 +1402,13 @@ def assignDomain(request):
 
 def assignDomainAdd(request, domainId=-1):
     pageName = 'Assign Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     userType = "admin"
     userId = 6
     error = False
@@ -1225,6 +1436,13 @@ def assignDomainAdd(request, domainId=-1):
 
 def assignDomainAnnotator(request, domainId = -1, annotatorid = -1):
     pageName = 'Assign Set'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     error = False
     userType = "admin"
     userId = 6
@@ -1275,6 +1493,13 @@ def assignDomainAnnotator(request, domainId = -1, annotatorid = -1):
 
 def createTag(request, tagpor='N/A', domainid=-1):
     pageName = "Create TAG"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     sessionId = 'null'
     userid = 2
     results = []
@@ -1312,6 +1537,13 @@ def createTag(request, tagpor='N/A', domainid=-1):
 
 def createTagAdd(request, tagpor='N/A', tagdomain=-1):
     pageName = "Create TAG"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     sessionId = 'null'
     userid = 2
     qry = Queries()
@@ -1367,6 +1599,13 @@ def createTagAdd(request, tagpor='N/A', tagdomain=-1):
 
 def deleteTag(request, tagpor='N/A', domainid=-1):
     pageName = "Delete TAG"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     sessionId = 'null'
     userid = 2
     results = []
@@ -1405,6 +1644,13 @@ def deleteTag(request, tagpor='N/A', domainid=-1):
 
 def deleteTagAction(request, tagId=-1):
     pageName = "Delete TAG"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     sessionId = 'null'
     userid = 2
     error = False
@@ -1436,12 +1682,26 @@ def deleteTagAction(request, tagId=-1):
 
 def successPage(request):
     pageName = "Success"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     context = {'pageName': pageName}
 
     return render(request, "success.html", context)
 
 def failPage(request):
     pageName = "FAIL"
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user.username
+
     context = {'pageName': pageName}
 
 

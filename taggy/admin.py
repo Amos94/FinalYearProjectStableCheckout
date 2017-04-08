@@ -124,3 +124,5 @@ class TopicsAdmin(admin.ModelAdmin):
     list_display = ['topicId', 'url', 'title', 'creationDate', 'profileId', 'lastDate', 'numViews', 'forumId']
 
 admin.site.register(Topics, TopicsAdmin)
+
+#[TODO] COMPLETE THE TABLES! REVIEW THE DATABASE!!!!!
