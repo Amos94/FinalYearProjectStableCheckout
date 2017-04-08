@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -55,6 +55,7 @@ from taggy.views import deleteTagAction
 from taggy.views import tagUpdateDb
 from taggy.views import deletePostTags
 from taggy.views import tagDeleteDb
+import registration.backends.default.urls as registration
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -92,6 +93,7 @@ urlpatterns = [
     url(r'^tag/delete/', deleteTag, name="delete_tag"),
     url(r'^tag/delete-tag/', deleteTagAction, name="delete_tag_action"),
     url(r'^post/tag/', tagPost, name='tag_post'),
+    url(r'^accounts/', include(registration)),
     url(r'success/', success, name="success"),
     url(r'fail/', fail, name="fail")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
