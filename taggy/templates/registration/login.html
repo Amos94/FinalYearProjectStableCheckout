@@ -68,7 +68,8 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit" class="btn btn-primary" value="Log In"/>
-                <input type="hidden" name="next" value="{{ next }}"/>
+                <input type="hidden" name="next" value="{{ next }}"/><br /><br/>
+                <strong><font color=#b22222><a href="/accounts/register/">Register</a></font></strong>
             </div>
         </form>
     </div>
