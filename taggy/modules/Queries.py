@@ -124,7 +124,7 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT taggy_annotators_sets.annotatorId, taggy_annotators.username "
         qry += "FROM taggy_annotators_sets, taggy_annotators "
-        qry += "WHERE setId='"+setid+"' "
+        qry += "WHERE setId='"+str(setid)+"' "
         qry += "AND taggy_annotators.usertype='ANNOT_TYPE.' "
         qry += "AND taggy_annotators_sets.annotatorId = taggy_annotators.annotatorId "
         qry += "ORDER BY taggy_annotators_sets.annotatorId"
@@ -199,10 +199,10 @@ class Queries:
    * @param text $usertype  user type (default is ANNOT_TYPE)
     """
 
-    def insertAnnotator(self,  username, password, usertype='ANNOT_TYPE'):
+    def insertAnnotator(self,  username, password, usertype='annotator'):
         # Building the SQL query
         qry =  "INSERT INTO  taggy_annotators (username, password, usertype) "
-        qry += "VALUES ('"+username+"','"+password+"','"+usertype+"')"
+        qry += "VALUES ('"+str(username)+"','"+str(password)+"','"+str(usertype)+"')"
 
 
         # execution of the query 'qry'
@@ -226,14 +226,14 @@ class Queries:
         updates = []
 
         if(password):
-            updates.append("password= '"+password+"' ")
+            updates.append("password= '"+str(password)+"' ")
 
         if(usertype):
-            updates.append("usertype= '"+usertype+"' ")
+            updates.append("usertype= '"+str(usertype)+"' ")
 
         qry =  "UPDATE taggy_annotators SET"
         qry += ",".join(updates)
-        qry += "WHERE (username='"+username+"')"
+        qry += "WHERE (username='"+str(username)+"')"
 
 
         # execution of the query 'qry'
@@ -286,7 +286,7 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT forumName,formDescription,categoryId, domainId "
         qry += "FROM taggy_forums "
-        qry += "WHERE forumId="+forumid
+        qry += "WHERE forumId="+str(forumid)
 
         # execution of the query 'qry'
         qryResult = self.getData(qry)
@@ -341,7 +341,7 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT userName "
         qry += "FROM taggy_topics, taggy_profiles "
-        qry += "WHERE topicId="+topicid+" "
+        qry += "WHERE topicId="+str(topicid)+" "
         qry += "AND taggy_topics.profileId = taggy_profiles.profileId "
         qry += "ORDER BY topicId"
 
@@ -461,7 +461,7 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT postState "
         qry += "FROM taggy_posts "
-        qry += "WHERE postId="+postid+" "
+        qry += "WHERE postId="+str(postid)+" "
 
         # execution of the query 'qry'
         qryResult = self.getData(qry)
@@ -484,7 +484,7 @@ class Queries:
         qry += "DATE_FORMAT(dateParsed,'%e-%b-%Y') AS parsed,"
         qry += "parseHistory,parseVersion,parseTool "
         qry += "FROM taggy_posts "
-        qry += "WHERE postId="+postid
+        qry += "WHERE postId="+str(postid)
 
 
         # execution of the query 'qry'
@@ -553,7 +553,7 @@ class Queries:
         # Building the SQL query
         qry =  "SELECT userName "
         qry += "FROM taggy_posts, taggy_profiles "
-        qry += "WHERE postId="+postid+" "
+        qry += "WHERE postId="+str(postid)+" "
         qry += "AND taggy_posts.profileId=taggy_profiles.profileId"
 
 
@@ -624,7 +624,7 @@ class Queries:
         qry += "SET numSentencesTagged = ( "
         qry +=      "SELECT count(DISTINCT sentenceId) "
         qry +=      "FROM taggy_sentences_tags "
-        qry +=      "WHERE (postId = "+postid+") AND (annotatorId = "+annotatorid+")) "
+        qry +=      "WHERE (postId = "+str(postid)+") AND (annotatorId = "+str(annotatorid)+")) "
 
         if(unescaped_comment != None):
             escaped_comment = MySQLdb.escape_string(unescaped_comment)
@@ -656,7 +656,7 @@ class Queries:
     def updatePostState(self, postid, postState = ''):
         updateStatus = []
         if(postState != ''):
-            newPostState = ''  # initially no change
+            newPostState = postState  # initially no change
         else:
             #update post state
             #get old post state
@@ -739,7 +739,7 @@ class Queries:
             qry += " parseTool='"+parsetool+"', "
 
         qry += " dateReviewed=now() "
-        qry += "WHERE postId="+postid
+        qry += "WHERE postId="+str(postid)
 
 
         # execution of the query 'qry'
@@ -968,9 +968,9 @@ class Queries:
 
         #Building the SQL query qry
         qry =  "SELECT COUNT(*) AS num FROM taggy_sentences_tags "
-        qry += "WHERE sentenceId = "+sentenceid
-        qry += " AND annotatorId = "+annotatorid
-        qry += " AND tagId IN "+tagidstring
+        qry += "WHERE sentenceId = "+str(sentenceid)
+        qry += " AND annotatorId = "+str(annotatorid)
+        qry += " AND tagId IN "+str(tagidstring)
 
         # execution of the query 'qry'
         qryResult = self.getData(qry)
@@ -995,7 +995,7 @@ class Queries:
         #Building the SQL query 'qry'
         qry =  "SELECT DISTINCT annotatorId, sentenceId "
         qry += "FROM taggy_sentences_tags "
-        qry += "WHERE (postId = "+postid+") "
+        qry += "WHERE (postId = "+str(postid)+") "
 
         qry += " AND (annotatorId IN ("
         for a in annotatorids:
@@ -1031,7 +1031,7 @@ class Queries:
 
         # Building the SQL query 'qry'
         qry =  "INSERT INTO taggy_sentences_tags (sentenceId,tagId,postId,annotatorId,timestamp) "
-        qry += "VALUES ("+sentenceid+","+tagid+","+postid+","+annotatorid+",NOW())"
+        qry += "VALUES ("+str(sentenceid)+","+str(tagid)+","+str(postid)+","+str(annotatorid)+",NOW())"
 
         # execution of the query 'qry'
         status = self.getData(qry)
@@ -1054,10 +1054,10 @@ class Queries:
 
         # Building the SQL query 'qry'
         qry =  "DELETE FROM taggy_sentences_tags "
-        qry += "WHERE ((sentenceId = "+sentenceid+") "
-        qry += "AND (tagId = "+tagid+") "
-        qry += "AND (postId = "+postid+") "
-        qry += "AND (annotatorId = "+annotatorid+"))"
+        qry += "WHERE ((sentenceId = "+str(sentenceid)+") "
+        qry += "AND (tagId = "+str(tagid)+") "
+        qry += "AND (postId = "+str(postid)+") "
+        qry += "AND (annotatorId = "+str(annotatorid)+"))"
 
         # execution of the query 'qry'
         status = self.getData(qry)
@@ -1100,7 +1100,7 @@ class Queries:
         #Building the SQL query 'qry'
         qry =  "SELECT setId,name,description,username AS creator, domainId "
         qry += "FROM taggy_sets, taggy_annotators "
-        qry += "WHERE creatorId="+creatorid+" "
+        qry += "WHERE creatorId="+str(creatorid)+" "
         qry += "AND taggy_annotators.annotatorId=taggy_sets.creatorId "
         qry += "ORDER BY setId"
 
@@ -1231,7 +1231,7 @@ class Queries:
         qry += "COUNT(distinct taggy_sentences_tags.postId) as numPosts "
         qry += "FROM taggy_sentences_tags JOIN(taggy_posts_sets,annotators) "
         qry += "WHERE ( (taggy_sentences_tags.postId = taggy_posts_sets.postId) "
-        qry += "    AND (taggy_posts_sets.setId = " +setid+ ") "
+        qry += "    AND (taggy_posts_sets.setId = " +str(setid)+ ") "
         qry += "    AND (taggy_annotators.annotatorId = taggy_sentences_tags.annotatorId) ) "
         qry += "GROUP BY annotatorId"
 
@@ -1311,13 +1311,13 @@ class Queries:
         if(self.DBName == "perseus" ):
             qry =  "UPDATE taggy_posts, taggy_posts_sets "
             qry += "SET postState='INITIAL' "
-            qry += "WHERE taggy_posts_sets.setId="+setid
+            qry += "WHERE taggy_posts_sets.setId="+str(setid)
             qry += " AND taggy_posts_sets.postId = taggy_posts.postId"
 
             # execution of the query 'qry'
             status = self.getData(qry)
 
-        qry = "DELETE FROM taggy_posts_sets WHERE setId=" + setid
+        qry = "DELETE FROM taggy_posts_sets WHERE setId=" + str(setid)
         # execution of the query 'qry'
         status = self.getData(qry)
 
@@ -1338,7 +1338,7 @@ class Queries:
                         row = self.getData(result)
                         if(row['count'] == 0 ):
                             qry =  "INSERT INTO taggy_posts_sets (setId,postId) "
-                            qry += "VALUES ("+setid+","+tok+")"
+                            qry += "VALUES ("+str(setid)+","+tok+")"
 
                             status = self.getData(qry)
 
@@ -1443,7 +1443,7 @@ class Queries:
 
         #Building the SQL query qry
         qry =  "DELETE FROM taggy_annotators_sets "
-        qry += "WHERE (annotaotrId='("+annotatorid+")' AND (setId='"+setid+"'))"
+        qry += "WHERE (annotaotrId='("+str(annotatorid)+")' AND (setId='"+str(setid)+"'))"
 
         # execution of the query 'qry'
         status = self.getData(qry)

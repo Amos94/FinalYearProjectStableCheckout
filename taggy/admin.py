@@ -1,6 +1,8 @@
 from django.contrib import admin
 from models import Annotators, Annotators_sets, Categories, Check_posts, Emoticons, Emoticons_tag, Forums, Posts, Posts_annotators, Posts_emoticons, Posts_sets, Profiles, Sentences, Sentences_tags, Sets, Signatures, Tags, Topics
 # Register your models here.
+from django.contrib.auth.models import User
+
 class AnnotatorsAdmin(admin.ModelAdmin):
     list_display = ['annotatorId','username','password','usertype']
 

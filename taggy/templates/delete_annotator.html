@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,61 +67,33 @@
     </header>
 
     <div class="jumbotron text-center col-md-10 col-md-offset-1">
-
-        {% if setid == '-1'%}
-            <p>Click on <b>set id</b> to tag posts in that set.<br /></p>
-            <i>sets:</i><br />
-            <div class='scrollLongList'>
+        <center>
+            <p>Sets:</p><br />
+            <div id='setAssignment'>
                 <table class="table table-striped table-hover table-condensed">
-                    <tr><th>#</th><th>Name</th><th>Description</th><th>Start tagging</th></tr>
+                    <tr><th>setId</th><th>name</th><th>description</th><th>assigned to annotator(s)</th><th>Delete annotator</th></tr>
                     {% for result in results %}
-                        <tr>
-                            <td valign=top align=left>{{ forloop.counter }}</td>
-                            <td valign=top align=left>{{ result.1 }}</td>
-                            <td valign=top align=left>{{ result.2 }}</td>
-                            <td valign=top align=left><a href="/set/tag/?s={{ result.0 }}"><button class="btn btn-primary">Start tagging set {{ result.0 }}</button></a></td>
+
+                        <tr id="s{{ result.0 }}" class="setRow">
+                            <td>{{ result.0 }}</td>
+                            <td>{{ result.1 }}</td>
+                            <td>{{ result.2 }}</td>
+                            <td class="annotatorsSets">
+                                {% for annotatorSetDiv in annotatorsSets_divs %}
+                                    {% if annotatorSetDiv.result == result.0 %}
+                                        {% autoescape off %}{{ annotatorSetDiv.div.0.0 }}<br>{% endautoescape %}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td class="btn btn-success"><a href="/set/delete-assign/?s={{ result.0 }}"><font color="#fffafa">Delete annotator from set {{ result.0 }}</font></a></td>
                         </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        {% else %}
-            <a href="/set/tag/?s=-1">[go back to list of sets]</a>
-            <p><i>posts in set "{{ setid }}":</i><br /></p>
-            <div class='scrollLongList'>
-                <table class="table table-striped table-hover table-condensed text-left">
-                    <tr><th>#</th><th>Post id</th><th>Post state</th><th>Forum Id - Topic Id</th><th>Opening content</th></tr>
-                    {% for result in results%}
-                        <tr>
-                            <td valign=top align=left>
-                                {{ forloop.counter }}
-                            </td>
-                            <td valign=top align=left>
-                                {% if result.5 == 'INITIAL' or result.5 == 'SELECTED' or result.5 == 'REPARSE'%}
-                                    {{ result.0 }}
 
-                                {% else %}
-                                    <a href="/post/tag/?postId={{result.0}}&setId={{ setid }}&adjudicationFlag={{ adjudicationFlag }}">"{{ result.0}}"</a>
-
-                                {% endif %}
-
-                            </td>
-                            <td>
-                                {{ result.5 }}
-                                <!--{% for a in annsts%}
-                                   {{ a.0 }}: {{ a.1 }}
-                                {% endfor %}-->
-                            </td>
-                            <td valign=top align=left>{{ result.1 }} - {{ result.2 }}</td>
-                            <td valign=top align=left>{{ result.6|striptags }}</td>
-                        </tr>
                     {% endfor %}
                 </table>
             </div>
 
-        {% endif %}
-
+        </center>
     </div>
-
 
 
 </body>

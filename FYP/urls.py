@@ -57,6 +57,7 @@ from taggy.views import deletePostTags
 from taggy.views import tagDeleteDb
 from taggy.views import parseJson
 import registration.backends.default.urls as registration
+from taggy.views import postFinalize
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -94,6 +95,7 @@ urlpatterns = [
     url(r'^tag/delete/', deleteTag, name="delete_tag"),
     url(r'^tag/delete-tag/', deleteTagAction, name="delete_tag_action"),
     url(r'^post/tag/', tagPost, name='tag_post'),
+    url(r'^post/finalize/', postFinalize, name='finalize_post'),
     url(r'^import/json/', importJson, name='import_json'),
     url(r'^parse/json/', parseJson, name='parse_json'),
     url(r'^accounts/', include(registration)),

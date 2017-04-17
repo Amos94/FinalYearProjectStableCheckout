@@ -109,3 +109,14 @@ class EditDomain(forms.Form):
                 'placeholder':placeholder
             })
     domainname = forms.CharField(label='New domain name')
+
+
+class FinalizePost(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(FinalizePost, self).__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control',
+                'style':'width:10%;',
+            })
+    postId = forms.CharField(disabled=True)

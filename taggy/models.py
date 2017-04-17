@@ -288,7 +288,8 @@ class Tags_keywords(models.Model):
     class Meta:
         verbose_name_plural = "Tags keywords"
 
-
+class Users_types(models.Model):
+    pass
 
 class Document(models.Model):
     docfile = models.FileField(upload_to='documents/%Y/%m/%d')

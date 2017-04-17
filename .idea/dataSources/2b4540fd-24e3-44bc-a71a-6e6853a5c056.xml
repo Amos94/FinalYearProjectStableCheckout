@@ -9,7 +9,9 @@
     <schema id="3" parent="1" name="information_schema"/>
     <schema id="4" parent="1" name="mysql"/>
     <schema id="5" parent="1" name="performance_schema"/>
-    <schema id="6" parent="1" name="fyp_new"/>
+    <schema id="6" parent="1" name="fyp_new">
+      <Current>1</Current>
+    </schema>
     <schema id="7" parent="1" name="newschema"/>
     <schema id="8" parent="1" name="sd"/>
     <schema id="9" parent="1" name="sys"/>

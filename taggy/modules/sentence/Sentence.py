@@ -98,16 +98,16 @@ class Sentence():
         if(not annotator.canAdjudicate()):
             adjudicationFlag = 'false'
 
-        if(annotator.canAdjudicate() and adjudicationFlag == 'true'):
-            #SEE TAGS FROM ALL USERS THAT ANNOTATED THAT SENTENCE
-                annotators = qryObject.getAnnotatorsForPost(postId)
-                for annotator in annotators:
-                    results = qryObject.getSentenceTags(postId, sententenceId, annotator[0])
-                    for result in results:
-                        tags = qryObject.getTag(str(result[2]))
-                        for tag in tags:
-                            toReturn += tag[1] + " - " + tag[3] + "<br />"
-        elif(annotator.canAdjudicate()and adjudicationFlag == 'false'):
+        # if(annotator.canAdjudicate() and adjudicationFlag == 'true'):
+        #     #SEE TAGS FROM ALL USERS THAT ANNOTATED THAT SENTENCE
+        #         annotators = qryObject.getAnnotatorsForPost(postId)
+        #         for annotator in annotators:
+        #             results = qryObject.getSentenceTags(postId, sententenceId, annotator[0])
+        #             for result in results:
+        #                 tags = qryObject.getTag(str(result[2]))
+        #                 for tag in tags:
+        #                     toReturn += tag[1] + " - " + tag[3] + "<br />"
+        if(annotator.canAdjudicate()):
             # an adjudicator can annotate as well
             # make a form
             #annotate

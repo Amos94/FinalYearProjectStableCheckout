@@ -22,6 +22,7 @@ from taggy.modules.post.AdjudicatedPost import AdjudicatedPost
 from taggy.modules.post.AnnotatedPost import AnnotatedPost
 from taggy.modules.post.Post import Post
 from taggy.modules.post.Set import Set
+from taggy.forms import FinalizePost
 
 
 
@@ -53,7 +54,7 @@ def about(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     context = {"pageName":pageName}
 
@@ -66,7 +67,7 @@ def annotation(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
     context = {"pageName":pageName}
 
     return render(request, "annotation.html", context)
@@ -78,7 +79,7 @@ def adjudication(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
     context = {"pageName":pageName}
 
     return render(request, "adjudication.html", context)
@@ -90,7 +91,7 @@ def setCreate(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     sessionId = 'null'
     userid = 2
@@ -135,7 +136,7 @@ def editSet(request, setid=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     userType = "ADMIN_TYPE"
     userId = 6
@@ -199,7 +200,7 @@ def editSetAdd(request, setid = -1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     userType = "admin"
     userId = 6
@@ -236,7 +237,7 @@ def editSetTopic(request, setid = -1, topicid = -1, forumid = -1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     error = False
     userType = "admin"
@@ -314,7 +315,7 @@ def deleteSet(request, setid=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     userType = "ADMIN_TYPE"
     userId = 6
@@ -362,7 +363,7 @@ def assignSet(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     qry = Queries()
     helper = HelperMethods()
@@ -389,7 +390,7 @@ def assignSetAdd(request, setid=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     userType = "admin"
     userId = 6
@@ -422,7 +423,7 @@ def assignSetAnnotator(request, setid=-1, annotatorid=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     error = False
     userType = "admin"
@@ -476,7 +477,7 @@ def browseSet(request, setId=None, postId=None):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     userType = 'admin'
     userId = 0
@@ -541,17 +542,18 @@ def tagSet(request, setId=None):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
-    userType = 'admin'
-    userId = 6
+    annotator = Annotator(user.id)
     i=0
     qryObject = Queries()
     results = []
     annsts = []
+    userType = 'admin'
+    userId = user.id
 
     adjudicationFlag = 'false'
-    if(userType=='admin' or userType=='adjud'):
+    if(annotator.canAdjudicate()):
         adjudicationFlag = 'true'
 
     if(request.GET['s'] != None):
@@ -621,7 +623,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     pageTitle = ''
     userType = 'annotator'
@@ -643,12 +645,15 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
         set = Set(int(setId))
     else:
         setid = '-1'
-
+    form = FinalizePost()
     try:
         if (request.GET['postId'] != None):
             postId = request.GET['postId']
+
         else:
             postId = str(-1)
+
+
     except:
         pass
     if(postId == None):
@@ -676,7 +681,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
 
     if(userId != None):
         annotator = Annotator(userId)
-        if(annotator.canAdjudicate() and adjudicationFlag == 'true'):
+        if(annotator.canAdjudicate()):
             a_post = AdjudicatedPost(int(postId), annotator)
         else:
             a_post = AnnotatedPost(int(postId), annotator)
@@ -684,7 +689,7 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
         a_post = Post(int(postId))
 
 
-    if(adjudicationFlag == 'true'):
+    if(annotator.canAdjudicate()):
         pageTitle = 'ADJUDICATE POST: '+postId+ ' '
     else:
         pageTitle = 'TAG POST: '+postId+' '
@@ -717,6 +722,48 @@ def tagPost(request, postId=None, setId=None, adjudicationFlag=''):
     context = {'pageName': pageName, "assigned":assigned ,"setid":setId, "postid":postId, 'pageTitle':pageTitle, 'display_nav_tagpost':dnt, 'postTableHeader':postTableHeader,'postTableRnd':postTableRnd, 'a':a, 'b':b, 'c':c}
     return render(request, "tag_post.html", context)
 
+
+def postFinalize(request, postId=-1):
+    pageName = 'FINALIZE POST'
+    qryObject = Queries()
+    results = []
+    errorMsg = ''
+    error = False
+
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        # GETUSERID
+        user = request.user
+    annotator = Annotator(user.id)
+    try:
+        postId = request.GET['p']
+
+    except:
+        error = True
+        errorMsg = 'Invalid link.'
+        pass
+
+    if(postId == -1):
+        error = True
+        errorMsg = 'Invalid Post'
+    else:
+        try:
+            if(annotator.canAdjudicate()):
+                results = qryObject.updatePostState(postId, 'ADJUDICATED')
+            else:
+                results = qryObject.updatePostState(postId, 'ANNOTATED')
+        except:
+            error = True
+            errorMsg = 'SQL query execution problem.'
+            pass
+
+
+    context = {'pageName':pageName, 'error':error, 'errorMsg':errorMsg, 'results':results}
+    return render(request, 'finalize_post.html', context)
+
+
 @csrf_exempt
 def tagUpdateDb(request):
     pageName = 'TAG POST'
@@ -726,7 +773,7 @@ def tagUpdateDb(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     variables = []
     array = []
@@ -767,7 +814,7 @@ def deletePostTags(request, annotatorid=-1, postid=-1, sentenceid=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     qryObject = Queries()
     sentence = []
@@ -832,7 +879,7 @@ def tagDeleteDb(request, sentenceid=-1, tagid=-1, postid=-1, annotatorid=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     qryObject = Queries()
     error = False
@@ -874,7 +921,7 @@ def reviewSet(request, setId=None):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     userType = 'admin_test'
     userId = 1
@@ -902,7 +949,7 @@ def reviewParse(request, setId=None, postId=None):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     userType = 'admin'
     userId = 7
@@ -1057,7 +1104,7 @@ def postKappaDetails(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     q = Queries()
 
@@ -1165,7 +1212,7 @@ def tagAction(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     ta = TagAction()
     annotatorId = 0#annotator who is making the action
@@ -1192,7 +1239,7 @@ def annotationAction(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     array = []
     annotatorId = 0  # annotator who is making the action
@@ -1214,7 +1261,7 @@ def setAction(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     array = []
     annotatorId = 0
@@ -1233,7 +1280,7 @@ def list(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     # Handle file upload
     if request.method == 'POST':
@@ -1266,7 +1313,7 @@ def domainCreate(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     sessionId = 'null'
     userid = 2
@@ -1300,7 +1347,7 @@ def domainEdit(request, domainId=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     qryObject = Queries()
     results = []
@@ -1334,7 +1381,7 @@ def editDomainName(request, domainId = -1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     userType = "admin"
     userId = 6
@@ -1381,7 +1428,7 @@ def assignDomain(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     qry = Queries()
     helper = HelperMethods()
@@ -1409,7 +1456,7 @@ def assignDomainAdd(request, domainId=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     userType = "admin"
     userId = 6
@@ -1443,7 +1490,7 @@ def assignDomainAnnotator(request, domainId = -1, annotatorid = -1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     error = False
     userType = "admin"
@@ -1500,7 +1547,7 @@ def createTag(request, tagpor='N/A', domainid=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     sessionId = 'null'
     userid = 2
@@ -1544,7 +1591,7 @@ def createTagAdd(request, tagpor='N/A', tagdomain=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     sessionId = 'null'
     userid = 2
@@ -1606,7 +1653,7 @@ def deleteTag(request, tagpor='N/A', domainid=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     sessionId = 'null'
     userid = 2
@@ -1651,7 +1698,7 @@ def deleteTagAction(request, tagId=-1):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     sessionId = 'null'
     userid = 2
@@ -1731,7 +1778,7 @@ def successPage(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     context = {'pageName': pageName}
 
@@ -1744,7 +1791,7 @@ def failPage(request):
         return redirect('/accounts/login/')
     else:
         #GETUSERID
-        user = request.user.username
+        user = request.user
 
     context = {'pageName': pageName}
 

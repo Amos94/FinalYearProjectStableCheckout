@@ -108,7 +108,7 @@ class AnnotatedPost(Post):
     def render_finalize_button(self):
         qryObject = Queries()
         toReturn = ''
-        #annotator_states[self.annotator.id]
+    #annotator_states[self.annotator.id]
         try:
             if(self.annotator_states[self.annotator.id] == 'DONE' or self.annotator_states[self.annotator.id] == 'ADJUDICATED'):
                 finalizeHiddenCls = "initiallyHidden"
@@ -148,7 +148,10 @@ class AnnotatedPost(Post):
         toReturn +="Comments:"
         toReturn +="</i><br>"
         toReturn +="<textarea id='annotatorsComment' class='form-control'><br>"
-        toReturn += self.comments[self.annotator.id]#self.annotator.id
+        try:
+            toReturn += self.comments[self.annotator.id]#self.annotator.id
+        except:
+            pass
         toReturn +="</textarea><br>"
         toReturn +="<div id='annotatorsCommentSave' class='postBtn saveCommentsBtn '>SAVE COMMENTS</div>"
         toReturn +="</div><br>"

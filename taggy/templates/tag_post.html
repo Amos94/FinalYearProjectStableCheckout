@@ -115,7 +115,9 @@
                 </div> <!-- div#instructions -->
                 <p></p>
             {% autoescape off %}{{ postTableRnd }}{% endautoescape %}
-            {% autoescape off %}{{ a }}{% endautoescape %}
+            <!--{% autoescape off %}{{ a }}{% endautoescape %}-->
+
+            <a href="/post/finalize/?p={{postid}}"><button class="btn btn-primary">Finalize</button></a>
             {% autoescape off %}{{ b }}{% endautoescape %}
             {% autoescape off %}{{ c }}{% endautoescape %}
 

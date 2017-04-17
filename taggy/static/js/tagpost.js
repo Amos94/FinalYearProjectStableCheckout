@@ -1,24 +1,6 @@
-/**
- * tagpost.js
- * created: 27-jun-2011/chipp
- *
- * Corresponds with the 'tagpost.php' page, and facilitates interactive
- * elements such as Tag buttons, and asynchronous communication with tagging
- * and annotating sentences with the database via POST requests to ajax/*.php
- * 
- * @author chipp
- */
+
 $(document).ready(function() {
-  
-  /**
-   * Makes a AJAX request to the server (ajax/tag.php) to tag a specific 
-   * sentence with a request 
-   * 
-   * @param {string} actionType Possible actions 'INSERT', 'DELETE'
-   * @param {integer} sentenceID Sentence ID
-   * @param {integer} tagID Tag ID
-   * @param {integer} postID Post ID
-   */
+
   var tagSentenceRequest = function (actionType, sentenceID, tagID, postID) {
     var jqxhr = $.ajax({
       type: 'POST',
@@ -32,15 +14,8 @@ $(document).ready(function() {
                                      " tagID: " + tagID + 
                                     " postID: " + postID);
     });     
-  } // function tagSentenceRequest
+  }
 
-  /**
-   * Makes an AJAX request to the server (ajax/annotation.php) to annotate
-   * a comment for a particular Post.
-   * 
-   * @param {integer} postID Post ID
-   * @param {string} comment Updated coment
-   */
   var annotatePostRequest = function(postID, comment) {
     var jqxhr = $.ajax({
       type: 'POST',
@@ -53,15 +28,7 @@ $(document).ready(function() {
        console.log("Error annotating post: " + postID +
                                 " comment: " + comment);
     });
-  } // function annotatePostRequest
-
-  /**
-   * Makes an AJAX request to the server (ajax/annotation.php) update a Post's
-   * Annotation State ('DONE' or'PROBLEM')
-   * 
-   * @param {integer} postID Post ID
-   * @param {string} state Annotation State ('DONE' or'PROBLEM')
-   */
+  }
   var updatePostAnnotationStateRequest = function(postID, state) {
     var jqxhr = $.ajax({
       type: 'POST',
@@ -74,13 +41,9 @@ $(document).ready(function() {
        console.log("Error annotating post: " + postID +
                                 " state: "   + state);
     });
-  } // function updatePostAnnotationStateRequest
-  
-  /**
-   * PostId Accessor from the DOM
-   */
+  }
   var getPostId = function() { 
-    return $(".postTbl").prop("id").substr(1); // chop prefix 'p' from id
+    return $(".postTbl").prop("id").substr(1);
   }
 
   // -- Tag Instance Behavior --
@@ -100,31 +63,24 @@ $(document).ready(function() {
     $(this).remove();
   });
 
-  // -- Tag Button Behavior --
-  // When a Tag Button is clicked on at the bottom of the interface, the
-  // currently selected row has a tag added to it, and an tagSentenceRequest
-  // is called.
   $(".tagBtn").click(function() {
-    // Check if the tag is disabled
     if($(this).hasClass("tagDisabled")) {
-      return; // skip if tag is disabled
+      return;
     }                  
     
-    // Currently selected sentence ID
-    var sentenceID = $(".selected").prop("id").substr(1);  // chop prefix 's' from id
-    var tagID = $(this).prop("id").substr(1); // chop prefix 't' from id
+
+    var sentenceID = $(".selected").prop("id").substr(1);
+    var tagID = $(this).prop("id").substr(1);
     var postID = getPostId();
 
-    if(sentenceID && tagID &&  postID) { // valid post
-      // Only post INSERT if tag is not already in the selected row's tags
-      // AND only 
+    if(sentenceID && tagID &&  postID) {
       if($('.selected .tagsSentence #t' + tagID).length == 0) {
         $(this).clone()
                .removeClass("tagBtn")
                .addClass("tagInstance")
                .click(function() { 
                  if($(this).hasClass("tagDisabled")) {
-                   return; // skip if tag is disabled
+                   return;
                  }                  
                  tagSentenceRequest('DELETE', sentenceID, tagID, postID);
                  $(this).remove();                   
@@ -146,112 +102,51 @@ $(document).ready(function() {
   $('#instructionsDisplay').click(function() {
     $('#instructions').toggle();
   });
-  
-  // Clicking on the 'Show/Hide Others Comments' button
+
   $('#othersComments').hide();  
   $('#othersCommentsDisplay').click(function() {
     $('#othersComments').toggle();
   });
-  
-  // Initially hide the Save Button
+
   $('#annotatorsCommentSave').addClass("invisible");
 
-  // Annotators Comment Box
-  // - This implements an automatic editably comment box.
-  // $('#annotatorsComment textarea').toggleEdit({
-  //   onpreview: function(event, ui) {
-  //                // Save the updated Comment Box Value back to the server
-  //                var postID = getPostId();
-  //                annotatePostRequest(postID, ui.text);                 
-  //                // log.val(log.val()+'onpreview triggered\n');
-  //                $('#annotatorsCommentSave').addClass("invisible");
-  //              },
-  //   onedit: function() {
-  //             // log.val(log.val()+'onedit triggered\n');
-  //             $('#annotatorsCommentSave').removeClass("invisible");                 
-  //           }
-  // }); // $('#annotatorsComment textarea').toggleEdit
-  
-  // Implements a Comment Box with id='annotatorsComment' textarea
-  $("#annotatorsCommentSave").click(function(event) {
-	  // Save the updated Comment Box Value back to the server
-	  var postID = getPostId();
-	    annotatePostRequest(postID, $("#annotatorsComment").val());
-  });
+  $(".initiallyHidden").toggle(false);
 
-  // Implements a Comment Box with a input form
-   // $("#annotatorsCommentSave").click(function() {
-   //    // Save the updated Comment Box Value back to the server
-   //    var postID = getPostId();
-   //    annotatePostRequest(postID, $("#annotatorsComment").val());
-   // });
-  
-  
-  // -- (un)Finalize and (un)Flag --
-  // Manage toggling the Finalize and the Problem Flagging buttons
-  $(".initiallyHidden").toggle(false); // initially hidden
-
-
-  // "PROBLEM" flag is disabled - chipp 25jan2011
-  // $(".flagPostBtn").click(function() { // when a flagPostBtn is clicked
-  //   $(".flagPostBtn").toggle(); // toggle *all* flagPostBtns
-  // });
-
-  $(".finalizePostBtn").click(function() { // when a finalizePostBtn is clicked
-    // Check if the finalized button is disabled
+  $(".finalizePostBtn").click(function() {
     if($(this).hasClass("finalizedDisabled")) {
-      return; // skip if tag is disabled
+      return;
     }
-    $(".finalizePostBtn").toggle(); // toggle *all* finalizePostBtns 
+    $(".finalizePostBtn").toggle();
       });
-  
-  // -- Flag/Finalize Button actions --
-  
-  // "PROBLEM" flag is disabled - chipp 25jan2011
-  // $('#flag').click(function() {
-  //   var postID = getPostId();
-  //   updatePostAnnotationStateRequest(postID, 'PROBLEM');
-  //   $('#unfinalize').toggle(false); // enforce mutex to finalize state
-  //   $('#finalize').toggle(true);
-  // });
-  // 
-  // $('#unflag').click(function() {
-  //   var postID = getPostId();
-  //   updatePostAnnotationStateRequest(postID, 'IN_PROGRESS');
-  // });
    
   $('#finalize').click(function() {
-    // Check if the finalized button is disabled
     if($(this).hasClass("finalizedDisabled")) {
-      return; // skip if tag is disabled
+      return;
     }
     var postID = getPostId();
     
-    if($(this).hasClass("adjudicatorPostBtn")) { // Finalize btn on Adjudication interface
+    if($(this).hasClass("adjudicatorPostBtn")) {
       updatePostAnnotationStateRequest(postID, 'ADJUDICATED');
-    } else { // Finalize btn on Annotator's interface
+    } else {
       updatePostAnnotationStateRequest(postID, 'DONE');
     }
     
-    $('#unflag').toggle(false); // enforce mutex to flag state
+    $('#unflag').toggle(false);
     $('#flag').toggle(true);
     $(".tag").addClass("tagDisabled");
   });
   
   $('#unfinalize').click(function() {
-    // Check if the finalized button is disabled
     if($(this).hasClass("finalizedDisabled")) {
-      return; // skip if tag is disabled
+      return;
     }
     var postID = getPostId();
     updatePostAnnotationStateRequest(postID, 'IN_PROGRESS');
     $(".tag").removeClass("tagDisabled");
   });
-  
   if($('#finalize').hasClass("initiallyHidden")) {
     $(".tag").addClass("tagDisabled");
   }
-  // Disable all tags if post is finalized (i.e., postState = ADJUDICATED)    
   if($('#finalize').hasClass("finalizedDisabled")) {
     $(".tag").addClass("tagDisabled");
   }

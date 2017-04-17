@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'FYP.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fyp',
+        'NAME': 'fyp_new',
         'USER': 'root',
         'PASSWORD': 'Amos.expert94',
         'HOST': 'localhost',
