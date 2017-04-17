@@ -58,6 +58,9 @@ from taggy.views import tagDeleteDb
 from taggy.views import parseJson
 import registration.backends.default.urls as registration
 from taggy.views import postFinalize
+from taggy.views import deleteSetAnnotator
+from taggy.views import delete_annotator_set_view
+from taggy.views import deleteAnnotatorSetAction
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -96,6 +99,9 @@ urlpatterns = [
     url(r'^tag/delete-tag/', deleteTagAction, name="delete_tag_action"),
     url(r'^post/tag/', tagPost, name='tag_post'),
     url(r'^post/finalize/', postFinalize, name='finalize_post'),
+    url(r'^set/delete-annotator/', deleteSetAnnotator, name='delete_set_annotator'),
+    url(r'^set/delete-annotator-set/', delete_annotator_set_view, name='delete_annotator_set_view'),
+    url(r'^set/delete-annotator-set-action/', deleteAnnotatorSetAction, name='delete_annotator_set_action'),
     url(r'^import/json/', importJson, name='import_json'),
     url(r'^parse/json/', parseJson, name='parse_json'),
     url(r'^accounts/', include(registration)),

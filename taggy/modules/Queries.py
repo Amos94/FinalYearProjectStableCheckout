@@ -125,7 +125,7 @@ class Queries:
         qry =  "SELECT taggy_annotators_sets.annotatorId, taggy_annotators.username "
         qry += "FROM taggy_annotators_sets, taggy_annotators "
         qry += "WHERE setId='"+str(setid)+"' "
-        qry += "AND taggy_annotators.usertype='ANNOT_TYPE.' "
+        qry += "AND taggy_annotators.usertype='annotator' "
         qry += "AND taggy_annotators_sets.annotatorId = taggy_annotators.annotatorId "
         qry += "ORDER BY taggy_annotators_sets.annotatorId"
 
@@ -137,7 +137,26 @@ class Queries:
 
 
 
+    """
+    * getAnnotatorsForSet()
+    *
+    * returns the Annotator IDs for a particular Set ID
+    *
+    * @param integer $setid  set ID
+    """
+    def getUsersForSet(self, setid):
 
+        # Building the SQL query
+        qry =  "SELECT taggy_annotators_sets.annotatorId, taggy_annotators.username "
+        qry += "FROM taggy_annotators_sets, taggy_annotators "
+        qry += "WHERE setId='"+str(setid)+"' "
+        qry += "AND taggy_annotators_sets.annotatorId = taggy_annotators.annotatorId "
+
+        # execution of the query 'qry'
+        qryResult = self.getData(qry)
+
+        # return the data
+        return qryResult
 
 
     """
@@ -1443,7 +1462,7 @@ class Queries:
 
         #Building the SQL query qry
         qry =  "DELETE FROM taggy_annotators_sets "
-        qry += "WHERE (annotaotrId='("+str(annotatorid)+")' AND (setId='"+str(setid)+"'))"
+        qry += "WHERE (annotatorId='"+str(annotatorid)+"' AND setId='"+str(setid)+"')"
 
         # execution of the query 'qry'
         status = self.getData(qry)

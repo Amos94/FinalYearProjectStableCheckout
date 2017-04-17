@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,34 +65,19 @@
         </div>
     </header>
 
-    <div class="jumbotron text-center col-md-10 col-md-offset-1">
-        <center>
-            <p>Sets:</p><br />
-            <div id='setAssignment'>
-                <table class="table table-striped table-hover table-condensed">
-                    <tr><th>setId</th><th>name</th><th>description</th><th>assigned to annotator(s)</th><th>Delete annotator</th></tr>
-                    {% for result in results %}
 
-                        <tr id="s{{ result.0 }}" class="setRow">
-                            <td>{{ result.0 }}</td>
-                            <td>{{ result.1 }}</td>
-                            <td>{{ result.2 }}</td>
-                            <td class="annotatorsSets">
-                                {% for annotatorSetDiv in annotatorsSets_divs %}
-                                    {% if annotatorSetDiv.result == result.0 %}
-                                        {% autoescape off %}{{ annotatorSetDiv.div.0.0 }}<br>{% endautoescape %}
-                                    {% endif %}
-                                {% endfor %}
-                            </td>
-                            <td class="btn btn-danger"><a href="/set/delete-annotator-set/?s={{ result.0 }}"><font color="#fffafa">Delete annotator from set {{ result.0 }}</font></a></td>
-                        </tr>
+    {% if error == True %}
+        <div class="jumbotron text-center col-md-6 col-md-offset-3">
+            <h2 class="text-center"><font color='red'>FAIL</font></h2>
+            <p>{{ errorMsg }}</p>
+        </div>
+    {% else %}
+        <div class="jumbotron text-center col-md-6 col-md-offset-3">
+            <h2 class="text-center"><font color='green'>SUCCESS!</font></h2>
+            <p>Your operation has been completed successfully.</p>
+        </div>
+    {% endif %}
 
-                    {% endfor %}
-                </table>
-            </div>
-
-        </center>
-    </div>
 
 
 </body>

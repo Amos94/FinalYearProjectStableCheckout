@@ -355,6 +355,98 @@ def deleteSet(request, setid=-1):
     return render(request, "delete_set.html", context)
 
 
+def deleteSetAnnotator(request):
+    #print("Assign Set method")
+    pageName = 'Delete Set Annotators'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        #GETUSERID
+        user = request.user
+
+    qry = Queries()
+    helper = HelperMethods()
+    annotators_divs = []
+
+    results = qry.getSets()
+    annotators = helper.annotators_lookup()
+    annotatorsSets = []
+
+    for result in results:
+        annotatorsSets = qry.getAnnotatorsSets(result[0])
+        #print annotatorsSets
+
+        for a in annotatorsSets:
+            annotators_divs.append({'result':result[0], 'div':qry.getAnnotatorName(a[0])})
+
+    context = {'pageName': pageName, "results":results, "annotators":annotators, "annotatorsSets_divs":annotators_divs}
+    return render(request, "delete_annotator.html", context)
+
+
+def delete_annotator_set_view(request, setId=-1):
+    pageName = 'Delete Set Annotators'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        # GETUSERID
+        user = request.user
+
+    qry = Queries()
+    helper = HelperMethods()
+    annotators = []
+
+    try:
+        if (request.GET['s']):
+            setId = int(request.GET['s'])
+        else:
+            setId = -1
+    except:
+        pass
+
+    if(setId != -1):
+        annotators = qry.getUsersForSet(setId)
+
+
+
+    context = {'pageName': pageName, "annotators": annotators, 'setId':setId}
+    return render(request, "delete_annotator_set_view.html", context)
+
+def deleteAnnotatorSetAction(request, setId=-1, annotatorId=-1):
+    pageName = 'Delete Set Annotators'
+
+    if not request.user.is_authenticated():
+        return redirect('/accounts/login/')
+    else:
+        # GETUSERID
+        user = request.user
+
+    qry = Queries()
+    helper = HelperMethods()
+    annotators = []
+    error = False
+    errorMsg=''
+
+    try:
+        if (request.GET['s']):
+            setId = int(request.GET['s'])
+            annotatorId = int(request.GET['a'])
+        else:
+            setId = -1
+    except:
+        pass
+
+    if(setId != -1 and annotatorId !=-1):
+        try:
+            annotators = qry.deleteAnnotatorsSets(setId, annotatorId)
+        except:
+            error = True
+            errorMsg = ''
+
+    context = {'pageName': pageName, "annotators": annotators, 'setId':setId, 'annotatorId':annotatorId,'error':error,'errorMsg':errorMsg}
+    return render(request, "delete_annotator_set_action.html", context)
+
 def assignSet(request):
     #print("Assign Set method")
     pageName = 'Assign Set'
@@ -1481,6 +1573,7 @@ def assignDomainAdd(request, domainId=-1):
 
     context={'pageName':pageName, 'annotators':annotators, 'domainId':domainId}
     return render(request,'assign_domain_add.html', context)
+
 
 
 def assignDomainAnnotator(request, domainId = -1, annotatorid = -1):
