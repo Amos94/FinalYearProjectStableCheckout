@@ -18,12 +18,14 @@
     <script type="text/javascript" src="{% static 'js/jquery-ui-1.8.13.custom.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.toggleEdit.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/tagpost.js' %}"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/slidenavigation.css' %}" />
+    <script type="text/javascript" src="{% static 'js/slidenavigationscript.js' %}"></script>
 
 </head>
 <body style="background-color: #e9ebee">
     <header>
-        <nav class="navbar navbar-fixed-top" style="background-color: #4c70ba">
-            <div class="container-fixed">
+        <nav class="navbar" style="background-color: #4c70ba">
+            <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -54,27 +56,46 @@
 
             </div><!-- /.navbar-collapse -->
         </nav>
-
-        <div class="ui-menubar navbar" style="margin-top:3.6%;">
-            <ul class="breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li><a href="/annotation">Annotation Board</a></li>
-                <li><a href="/adjudication">Adjudication Board</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/set/create">Set creation</a></li>
-                <li><a href="/set/edit">Edit sets</a></li>
-                <li><a href="/set/assign">Assign sets</a></li>
-                <li><a href="/set/delete">Delete sets</a></li>
-                <li><a href="/set/browse/">Browse sets</a></li>
-                <li><a href="/set/tag/?s=-1">Tag sets</a></li>
-                <li><a href="/set/adjudicate/?s=-1">Adjudicate sets</a></li>
-                <li><a href="/post/tag/?setId=-1&postId=-1&adjudicationFlag=true">Tag post</a></li>
-                <li><a href="/set/review/?s=-1">Review Set</a></li>
-                <li><a href="/upload/json/">Upload JSON</a></li>
-                <li><a href="/postkappadetails/?p=49847&adjudicateFlag=true&s=6&a=2">Post Kappa Details</a></li>
-            </ul>
         </div>
+
+
     </header>
+    <div class="menu-text">
+        <span onclick="openNav()"><img src="https://www.ecofencing.net/images/mobile-navbar-menu.png" style="width: 35px;height: 35px;"/><br /><strong class>MENU</strong></span>
+    </div>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/" class="category">INDEX</a>
+      <a href="#" class="category">Accounts</a>
+        <a href="/admin/" class="subfield">-Administration Board</a>
+        <a href="/accounts/logout/" class="subfield">-Logout</a>
+
+
+      <a href="#" class="category">Domain</a>
+        <a href="/domain/create/" class="subfield">-Create domain</a>
+        <a href="/domain/edit/" class="subfield">-Edit domain</a>
+        <a href="/tag/create/" class="subfield">-Create tag</a>
+        <a href="/tag/delete/" class="subfield">-Delete tag Tag</a>
+
+
+
+      <a href="#" class="category">Set</a>
+        <a href="/set/create/" class="subfield">-Create set</a>
+        <a href="/set/edit/" class="subfield">-Edit set</a>
+        <a href="/set/delete/" class="subfield">-Delete set</a>
+        <a href="/set/assign/" class="subfield">-Assign to annotator</a>
+        <a href="/set/delete-annotator/" class="subfield">-Unasign from annotator</a>
+        <a href="/set/review/?s=-1" class="subfield">-Review Set</a>
+        <a href="/set/tag/?s=-1" class="subfield">-Annotatoe Set</a>
+        <a href="/postkappadetails/" class="subfield">-Post Kappa</a>
+
+
+
+      <a href="#" class="category">Import Data</a>
+        <a href="/upload/json/" class="subfield">-Upload JSON</a>
+        <a href="/import/json/" class="subfield">-Import JSON</a>
+        <a href="/parse/json/" class="subfield">-Parse JSON</a>
+    </div>
 
     <div class="jumbotron text-left col-md-10 col-md-offset-1">
         {% if assigned == False %}
